@@ -1,9 +1,9 @@
 {
-  "name": "trial-of-heroes",
+  "name": "feenr-mean",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node src/server-start.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

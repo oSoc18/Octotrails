@@ -1,30 +1,34 @@
 import Hero from '../models/hero.model';
-//import User from "../models/user.model";
 
-
-function load(params) {
-  return Hero.get(params.id);
+function load(req, res, next, id) {
+  Hero.get(id)
+    .then((hero) => {
+      req.hero = hero; // eslint-disable-line no-param-reassign
+      return next();
+    })
+    .catch(e => next(e));
 }
 
 function get(req, res) {
   return res.json(req.hero);
 }
 
-function create(params) {
+function create(req, res, next) {
   const hero = new Hero({
-    title: params.data.title,
-    content: params.data.content
+    name: req.body.name,
   });
-  return hero.save();
+
+  hero.save()
+    .then(savedHero => res.json(savedHero))
+    .catch(e => next(e));
 }
 
-function update(params) {
-  return load(params).then(hero => {
-    const tmp = hero;
-    hero.title = params.data.title;
-    hero.content = params.data.content;
-    return hero.save()
-  });
+function update(req, res, next) {
+  const hero = req.hero;
+  hero.username = req.body.name;
+  hero.save()
+    .then(savedHero => res.json(savedHero))
+    .catch(e => next(e));
 }
 
 function list(req, res, next) {

@@ -6,23 +6,23 @@ import heroesCtrl from '../controllers/heroes.controller';
 const router = express.Router();
 
 router.route('/')
-/** GET /api/posts - Get list of posts */
+  /** GET /api/heroes - Get list of heroes */
   .get(heroesCtrl.list)
 
-  /** POST /api/posts - Create new post */
-  .post(validate(paramValidation.createPost), heroesCtrl.create);
+  /** POST /api/heroes - Create new hero */
+  .post(validate(paramValidation.createHero), heroesCtrl.create);
 
-router.route('/:postId')
-/** GET /api/post/:postId - Get post */
+router.route('/:heroId')
+  /** GET /api/heroes/:heroId - Get hero */
   .get(heroesCtrl.get)
 
-  /** PUT /api/posts/:postId - Update post */
-  .put(validate(paramValidation.updatePost), heroesCtrl.update)
+  /** PUT /api/heroes/:heroId - Update hero */
+  .put(validate(paramValidation.updateHero), heroesCtrl.update)
 
-  /** DELETE /api/posts/:postId - Delete post */
+  /** DELETE /api/heroes/:heroId - Delete hero */
   .delete(heroesCtrl.remove);
 
-/** Load post when API with postId route parameter is hit */
-router.param('postId', heroesCtrl.load);
+/** Load hero when API with heroId route parameter is hit */
+router.param('heroId', heroesCtrl.load);
 
 export default router;

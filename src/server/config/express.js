@@ -28,10 +28,9 @@ app.use(helmet());
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 
+app.use('/api', routes);
+
 app.use(express.static(path.join(appRoot.path, 'dist')));
-
-app.use(routes);
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(appRoot.path, 'dist/index.html'));
 });

@@ -7,14 +7,15 @@ import APIError from '../helpers/APIError';
  * Hero Schema
  */
 const HeroSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true
   },
-  content: {
-    type: String
-  },
   createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
     type: Date,
     default: Date.now
   }
@@ -38,26 +39,26 @@ HeroSchema.method({
  */
 HeroSchema.statics = {
   /**
-   * Get post
-   * @param {ObjectId} id - The objectId of post.
+   * Get hero
+   * @param {ObjectId} id - The objectId of hero.
    * @returns {Promise<Hero, APIError>}
    */
   get(id) {
     return this.findById(id)
       .exec()
-      .then((post) => {
-        if (post) {
-          return post;
+      .then((hero) => {
+        if (hero) {
+          return hero;
         }
-        const err = new APIError('No such post exists!', httpStatus.NOT_FOUND);
+        const err = new APIError('No such hero exists!', httpStatus.NOT_FOUND);
         return Promise.reject(err);
       });
   },
 
   /**
-   * List posts in descending order of 'createdAt' timestamp.
-   * @param {number} skip - Number of posts to be skipped.
-   * @param {number} limit - Limit number of posts to be returned.
+   * List heroes in descending order of 'createdAt' timestamp.
+   * @param {number} skip - Number of heroes to be skipped.
+   * @param {number} limit - Limit number of heroes to be returned.
    * @returns {Promise<Hero[]>}
    */
   list({ skip = 0, limit = 50 } = {}) {
@@ -66,10 +67,10 @@ HeroSchema.statics = {
       .skip(+skip)
       .limit(+limit)
       .exec();
-  }
+  },
 };
 
 /**
  * @typedef Hero
  */
-export default mongoose.model('Hero', HeroSchema);
+export default mongoose.model('heroes', HeroSchema);
