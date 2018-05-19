@@ -3,15 +3,15 @@
 ## Overview
 This project serves as the boilerplate for an application using the MEAN stack. I hope to use it for my own personal angular projects, but I think it's also a great start for others looking to introduce themselves to MEAN.
 
-This project takes the result of the Trial Of Heroes angular tutorial and extends it to use Express, Mongo DB and Node.js. This should make this project a great starting point for developers just getting started with angular, like myself.
+This project takes the result of the [Tour Of Heroes angular tutorial](https://angular.io/tutorial) and extends it to use Express, Mongo DB and Node.js. This should make this project a great starting point for developers just getting started with angular.
 
-Much of the project design comes from mean.io. However, it is using Angular version 6, and the latest version of all MEAN dependencies. The ability to use the ng-cli should make extending this boilerplate significantly easier.
+Much of the project design comes from [mean.io](https://github.com/linnovate/mean). However, it is using Angular version 6, and the latest version of all MEAN dependencies. The ability to use the ng-cli should make extending this boilerplate significantly easier.
 
 ## TL;DR
 ```
 // Install mongo db
+> nom 
 > npm install
-> npm build
 > npm start
 // Navigate to http://localhost:4200/
 ```
