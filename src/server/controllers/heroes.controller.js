@@ -32,14 +32,17 @@ function update(req, res, next) {
 }
 
 function list(req, res, next) {
-  const { limit = 50, skip = 0 } = req.query;
-  Hero.list({ limit, skip })
+  const { limit = 50, skip = 0, name } = req.query;
+
+  Hero.list({ limit, skip, name })
     .then(heroes => res.json(heroes))
     .catch(e => next(e));
 }
 
-function remove(params) {
-  return load(params).then(hero => hero.remove());
+function remove(req, res, next) {
+  req.hero.remove()
+    .then(()=> res.json({status: 'OK'}))
+    .catch(e => next(e));
 }
 
 export default { load, get, create, update, list, remove };

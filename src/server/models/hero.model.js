@@ -61,12 +61,21 @@ HeroSchema.statics = {
    * @param {number} limit - Limit number of heroes to be returned.
    * @returns {Promise<Hero[]>}
    */
-  list({ skip = 0, limit = 50 } = {}) {
-    return this.find()
-      .sort({ createdAt: -1 })
-      .skip(+skip)
-      .limit(+limit)
-      .exec();
+  list({ skip = 0, limit = 50, name } = {}) {
+    if(name){
+      return this.find({"name": { $regex: ".*" + name + ".*"}})
+        .sort({ createdAt: -1 })
+        .skip(+skip)
+        .limit(+limit)
+        .exec();
+    } else {
+      return this.find()
+        .sort({ createdAt: -1 })
+        .skip(+skip)
+        .limit(+limit)
+        .exec();
+    }
+
   },
 };
 

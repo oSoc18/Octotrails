@@ -64,6 +64,21 @@ nav a.active {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.style-0 {
+  background-color: #cf8acf;
+}
+.style-1 {
+  background-color: #6461A0;
+}
+.style-2 {
+  background-color: #949396;
+}
+.style-3 {
+  background-color: #314CB6;
+}
+.style-4 {
+  background-color: #0A81D1;
+}
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.

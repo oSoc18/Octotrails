@@ -22,13 +22,39 @@ export class HeroService {
   getHeroes (): Observable<Hero[]> {
     return this.http.get<Object[]>(this.heroesUrl)
       .pipe<Hero[]>(
-        map<Object[], Hero[]>(heroes => heroes.map<Hero>(hero => ( {name: hero['name'], id: hero['_id']})))
+        map<Object[], Hero[]>(heroes => heroes.map<Hero>(hero => new Hero(hero['_id'], hero['name'])))
       );
   }
 
   getHero(id: string): Observable<Hero> {
     this.messageService.add(`HeroService: looking up hero ${id}`);
-    return this.http.get<Hero>(this.heroesUrl + '/' + id);
+    return this.http.get<Object>(this.heroesUrl + '/' + id)
+      .pipe<Hero>(
+        map<Object, Hero>(hero => new Hero(hero['_id'], hero['name']))
+      );
+  }
+
+  deleteHero(hero: Hero): Observable<Hero> {
+    this.messageService.add(`HeroService: Deleting hero ${hero.id}`);
+    return this.http.delete<Object>(this.heroesUrl + '/' + hero.id)
+      .pipe<Hero>(
+        map<Object, Hero>(retHero => new Hero(retHero['_id'], retHero['name']))
+      );
+  }
+
+  addHero(hero: Hero): Observable<Hero> {
+    this.messageService.add(`HeroService: Creating hero ${hero.name}`);
+    return this.http.post<Object>(this.heroesUrl, hero)
+      .pipe<Hero>(
+        map<Object, Hero>(retHero => new Hero(retHero['_id'], retHero['name']))
+      );
+  }
+
+  searchHeroes(text: string): Observable<Hero[]> {
+    return this.http.get<Object[]>(this.heroesUrl + '?name=' + text)
+      .pipe<Hero[]>(
+        map<Object[], Hero[]>(heroes => heroes.map<Hero>(hero => new Hero(hero['_id'], hero['name'])))
+      );
   }
 
 
