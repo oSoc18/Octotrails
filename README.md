@@ -52,6 +52,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Mongo DB
 - Default db is named `mean`
 - Default port is `27017`
-- Configuration can be updated in `server/config/config-validation.js`
+- Configuration can be updated in `.env`
 # Node
 - Dependencies can be imported with `npm install`
