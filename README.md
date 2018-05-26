@@ -53,5 +53,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Default db is named `mean`
 - Default port is `27017`
 - Configuration can be updated in `.env`
-# Node
-- Dependencies can be imported with `npm install`
+# Docker
+- To start a dockerized version of your application, use `docker-compose up --build`
