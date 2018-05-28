@@ -57,6 +57,12 @@ export class HeroService {
       );
   }
 
+  updateHero(hero: Hero): Observable<Hero> {
+    return this.http.put<Object>(this.heroesUrl + '/' +  hero.id, hero)
+      .pipe<Hero>(
+        map<Object, Hero>(retHero => new Hero(retHero['_id'], retHero['name']))
+      );
+  }
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {

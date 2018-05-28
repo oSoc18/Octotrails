@@ -9,10 +9,27 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 }
+nav {
+  float: left;
+}
+
+app-hero-search{
+  float:right;
+}
+
+.app-content{
+  margin: 2em;
+}
+
+.header{
+  background-color: #1B4965;
+  height: 28px;
+  padding: 10px;
+}
+
 nav a {
   padding: 5px 10px;
   text-decoration: none;
-  margin-top: 10px;
   display: inline-block;
   background-color: #eee;
   border-radius: 4px;

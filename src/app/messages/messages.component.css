@@ -20,6 +20,7 @@ button.clear {
   border-radius: 4px;
   cursor: pointer;
   cursor: hand;
+
 }
 button:hover {
   background-color: #cfd8dc;
@@ -32,4 +33,18 @@ button:disabled {
 button.clear {
   color: #888;
   margin-bottom: 12px;
+}
+
+.messages-panel{
+  position:absolute;
+  bottom: 50px;
+  left: 10px;
+  height: 120px;
+  width: 100%;
+}
+
+.messages-list{
+  border-top: 1px solid gray;
+  overflow-y: auto;
+  height: 60px;
 }

@@ -54,4 +54,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Default port is `27017`
 - Configuration can be updated in `.env`
 # Docker
-- To start a dockerized version of your application, use `docker-compose up --build`
+- To start a dockerized version of your application, use `docker-compose up`

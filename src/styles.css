@@ -10,7 +10,8 @@ h2, h3 {
   font-weight: lighter;
 }
 body {
-  margin: 2em;
+  margin: 0px;
+  background-color: #fff;
 }
 body, input[text], button {
   color: #888;
@@ -43,7 +44,6 @@ nav a {
   padding: 5px 10px;
   text-decoration: none;
   margin-right: 10px;
-  margin-top: 10px;
   display: inline-block;
   background-color: #eee;
   border-radius: 4px;
@@ -79,6 +79,8 @@ nav a.active {
 .style-4 {
   background-color: #0A81D1;
 }
+
+
 
 /*
 Copyright 2017-2018 Google Inc. All Rights Reserved.
