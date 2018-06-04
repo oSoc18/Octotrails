@@ -60,3 +60,7 @@ h4 {
     min-width: 60px;
   }
 }
+
+mat-grid-tile h2 {
+  color: white;
+}

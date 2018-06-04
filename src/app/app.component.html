@@ -1,10 +1,12 @@
-<div class="header">
-  <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/heroes">Heroes</a>
-  </nav>
-  <app-hero-search></app-hero-search>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-raised-button color="secondary" routerLink="/dashboard">Dashboard</button>
+    <button mat-raised-button color="secondary" routerLink="/heroes">Heroes</button>
+    <span class="fill-remaining-space"></span>
+
+    <app-hero-search></app-hero-search>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class="app-content">
   <router-outlet></router-outlet>
   <app-messages></app-messages>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatButtonModule, MatToolbarModule, MatGridListModule, MatInputModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -17,7 +17,11 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatGridListModule,
+    MatInputModule
   ],
   declarations: [
     AppComponent,
