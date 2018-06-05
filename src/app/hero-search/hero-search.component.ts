@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 
 import {
@@ -17,6 +17,8 @@ import { HeroService } from '../hero.service';
 export class HeroSearchComponent implements OnInit {
   heroes$: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
+  heroCtrl: FormControl = new FormControl();
+  filteredHeroes: Observable<any[]>;
 
   constructor(private heroService: HeroService) {}
 
@@ -26,7 +28,8 @@ export class HeroSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes$ = this.searchTerms.pipe(
+
+    this.filteredHeroes = this.heroCtrl.valueChanges.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
 

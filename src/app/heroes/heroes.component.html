@@ -1,4 +1,3 @@
-<h2>My Heroes</h2>
 <div>
   <mat-form-field class="example-full-width">
     <input #heroName matInput placeholder="Hero name" value="">
@@ -8,11 +7,13 @@
     add
   </button>
 </div>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge style-{{hero.getStyle()}}">{{hero.name.substring(0,1)}}</span> {{hero.name}}
-    </a>
-    <button mat-raised-button color="secondary" (click)="delete(hero)">x</button>
-  </li>
-</ul>
+<mat-list>
+  <mat-list-item *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}">
+    <mat-icon color="primary">arrow_upward</mat-icon>
+    <mat-icon color="accent">arrow_downward</mat-icon>
+      {{"&nbsp;"+hero.name}}
+    <span class="fill-remaining-space"></span>
+    <mat-icon (click)="delete(hero)">delete</mat-icon>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

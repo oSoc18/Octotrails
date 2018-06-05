@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatToolbarModule, MatGridListModule, MatInputModule} from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatGridListModule, MatInputModule, MatListModule, MatIconModule, MatDividerModule, MatAutocompleteModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -21,7 +23,13 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     MatButtonModule,
     MatToolbarModule,
     MatGridListModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    MatIconModule,
+    MatDividerModule,
+    MatAutocompleteModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

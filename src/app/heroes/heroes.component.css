@@ -3,9 +3,9 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  #width: 15em;
 }
-.heroes li {
+.heroes li, .heroes mat-list-item {
   position: relative;
   cursor: pointer;
   background-color: #EEE;
@@ -15,7 +15,7 @@
   border-radius: 4px;
 }
 
-.heroes li:hover {
+.heroes li:hover, .heroes mat-list-item:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
@@ -26,7 +26,7 @@
   text-decoration: none;
   position: relative;
   display: block;
-  width: 250px;
+  #width: 250px;
 }
 
 .heroes a:hover {
