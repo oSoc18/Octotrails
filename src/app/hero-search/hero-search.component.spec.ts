@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroSearchComponent } from './hero-search.component';
+import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {HeroService} from '../hero.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FormControl {}
 
 describe('HeroSearchComponent', () => {
   let component: HeroSearchComponent;
@@ -8,7 +18,19 @@ describe('HeroSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeroSearchComponent ]
+      declarations: [ HeroSearchComponent ],
+      imports: [
+        MatAutocompleteModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule
+      ],
+      providers: [
+        FormControl,
+        {provide: HeroService, use: jasmine.createSpyObj('HeroService', ['.getHero'])}
+      ]
     })
     .compileComponents();
   }));
