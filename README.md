@@ -1,7 +1,7 @@
 # Mean Hero
 
 ## Overview
-This project serves as the boilerplate for an application using the MEAN stack. I hope to use it for my own personal angular projects, but I think it's also a great start for others looking to introduce themselves to MEAN.
+This project serves as the boilerplate for an application using the MEAN stack. I hope to use it for my own personal angular projects, but I think it's also a good start for others looking to introduce themselves to MEAN.
 
 This project takes the result of the [Tour Of Heroes angular tutorial](https://angular.io/tutorial) and extends it to use Express, Mongo DB and Node.js. This should make this project a great starting point for developers just getting started with angular.
 
@@ -15,7 +15,11 @@ Much of the project design comes from [mean.io](https://github.com/linnovate/mea
 > npm start
 // Navigate to http://localhost:4200/
 ```
-
+Or with Docker
+```
+> docker-compose up
+// Navigate to http://localhost:4200/
+```
 
 # Angular
 
