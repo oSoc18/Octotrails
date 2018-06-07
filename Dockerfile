@@ -6,4 +6,5 @@ RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 4040
-CMD ["npm","run", "start-express"]
+EXPOSE 4200
+CMD ["npm","start"]

@@ -5,7 +5,7 @@
     "ng": "ng",
     "build": "ng build",
     "start-express": "node src/server-start.js",
-    "start-ng": "ng serve",
+    "start-ng": "ng serve --host 0.0.0.0",
     "start": "concurrently \"npm run start-ng\" \"npm run start-express\"",
     "test": "ng test",
     "lint": "ng lint",
