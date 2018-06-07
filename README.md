@@ -9,8 +9,7 @@ Much of the project design comes from [mean.io](https://github.com/linnovate/mea
 
 ## TL;DR
 ```
-// Install mongo db
-> nom 
+// Install mongo db 
 > npm install
 > npm start
 // Navigate to http://localhost:4200/
