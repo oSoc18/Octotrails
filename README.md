@@ -1,4 +1,4 @@
-# Mean Hero
+# MEAN Octotrails Starter
 
 ## Overview
 This project serves as the boilerplate for an application using the MEAN stack. I hope to use it for my own personal angular projects, but I think it's also a good start for others looking to introduce themselves to MEAN.
