@@ -18,7 +18,11 @@
             "main": "src/web-app/main.ts",
             "polyfills": "src/web-app/polyfills.ts",
             "tsConfig": "src/web-app/tsconfig.app.json",
-            "assets": ["src/web-app/favicon.ico", "src/web-app/assets"],
+            "assets": [
+              "src/web-app/favicon.ico",
+              "src/web-app/assets",
+              "src/web-app/manifest.json"
+            ],
             "styles": ["src/web-app/styles.css"],
             "scripts": []
           },
@@ -38,7 +42,8 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
@@ -68,7 +73,11 @@
             "karmaConfig": "src/web-app/karma.conf.js",
             "styles": ["styles.css"],
             "scripts": [],
-            "assets": ["src/web-app/favicon.ico", "src/web-app/assets"]
+            "assets": [
+              "src/web-app/favicon.ico",
+              "src/web-app/assets",
+              "src/web-app/manifest.json"
+            ]
           }
         },
         "lint": {

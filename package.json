@@ -15,10 +15,10 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "start:express": "node src/server-start.js",
+    "start:server": "nodemon src/server-start.js",
     "start:ng": "ng serve --host 0.0.0.0",
-    "start:prod": "NODE_ENV=production nodemon src/server-start.js",
-    "start": "concurrently \"npm run start:ng\" \"npm run start:express\"",
+    "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max",
+    "start": "concurrently \"npm run start:ng\" \"npm run start:server\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -58,6 +58,7 @@
     "@angular/material": "^6.2.0",
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
+    "@angular/pwa": "^0.6.8",
     "@angular/router": "^6.0.0",
     "app-root-path": "^2.0.1",
     "babel-polyfill": "^6.26.0",
@@ -76,11 +77,11 @@
     "joi": "^13.3.0",
     "jsonwebtoken": "^8.3.0",
     "method-override": "^2.3.10",
-    "nodemon": "^1.17.5",
     "path": "^0.12.7",
     "pm2": "^3.0.0",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "@angular/service-worker": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",
@@ -106,6 +107,7 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "mongoose": "^5.1.0",
+    "nodemon": "^1.17.5",
     "protractor": "^5.3.2",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
