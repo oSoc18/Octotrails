@@ -34,6 +34,20 @@
       "syntax-async-functions"
     ]
   },
+  "nodemonConfig": {
+    "ignore": [
+      "./**/*.spec*",
+      "assets/*",
+      "docs/*",
+      "test/*"
+    ],
+    "delay": "2500",
+    "restartable": "rs",
+    "execMap": {
+      "js": "node"
+    },
+    "ext": "js json"
+  },
   "dependencies": {
     "@angular/animations": "^6.0.0",
     "@angular/cdk": "^6.2.0",
@@ -64,6 +78,7 @@
     "method-override": "^2.3.10",
     "nodemon": "^1.17.5",
     "path": "^0.12.7",
+    "pm2": "^3.0.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
