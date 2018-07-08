@@ -1,6 +1,7 @@
 import Promise from 'bluebird';
 import mongoose from 'mongoose';
 import httpStatus from 'http-status';
+
 import APIError from '../helpers/APIError';
 
 /**x
@@ -31,8 +32,7 @@ const HeroSchema = new mongoose.Schema({
 /**
  * Methods
  */
-HeroSchema.method({
-});
+HeroSchema.method({});
 
 /**
  * Statics
@@ -46,7 +46,7 @@ HeroSchema.statics = {
   get(id) {
     return this.findById(id)
       .exec()
-      .then((hero) => {
+      .then(hero => {
         if (hero) {
           return hero;
         }
@@ -62,8 +62,8 @@ HeroSchema.statics = {
    * @returns {Promise<Hero[]>}
    */
   list({ skip = 0, limit = 50, name } = {}) {
-    if(name){
-      return this.find({"name": { $regex: ".*" + name + ".*"}})
+    if (name) {
+      return this.find({ name: { $regex: '.*' + name + '.*' } })
         .sort({ createdAt: -1 })
         .skip(+skip)
         .limit(+limit)
@@ -75,8 +75,7 @@ HeroSchema.statics = {
         .limit(+limit)
         .exec();
     }
-
-  },
+  }
 };
 
 /**

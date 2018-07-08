@@ -7,17 +7,18 @@ import cors from 'cors';
 import httpStatus from 'http-status';
 import expressValidation from 'express-validation';
 import helmet from 'helmet';
+import path from 'path';
+import appRoot from 'app-root-path';
+
 import routes from '../routes/index.route';
 import APIError from '../helpers/APIError';
-import path from 'path';
-import config from './config'
-import appRoot from 'app-root-path';
+import config from './config';
 
 const app = express();
 
 // parse body params and attache them to req.body
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compress());
 app.use(methodOverride());
@@ -30,16 +31,19 @@ app.use(cors());
 
 app.use('/api', routes);
 
-app.use(express.static(path.join(appRoot.path, 'dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(appRoot.path, 'dist/index.html'));
-});
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '..', 'public/index.html'));
+// });
 
 // if error is not an instanceOf APIError, convert it.
 app.use((err, req, res, next) => {
   if (err instanceof expressValidation.ValidationError) {
     // validation error contains errors which is an array of error each containing message[]
-    const unifiedErrorMessage = err.errors.map(error => error.messages.join('. ')).join(' and ');
+    const unifiedErrorMessage = err.errors
+      .map(error => error.messages.join('. '))
+      .join(' and ');
     const error = new APIError(unifiedErrorMessage, err.status, true);
     return next(error);
   } else if (!(err instanceof APIError)) {
@@ -56,7 +60,12 @@ app.use((req, res, next) => {
 });
 
 // error handler, send stacktrace only during development
-app.use((err, req, res, next) => // eslint-disable-line no-unused-vars
+app.use((
+  err,
+  req,
+  res,
+  next // eslint-disable-line no-unused-vars
+) =>
   res.status(err.status).json({
     message: err.isPublic ? err.message : httpStatus[err.status],
     stack: config.env === 'development' ? err.stack : {}
