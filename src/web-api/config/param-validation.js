@@ -17,30 +17,6 @@ export const Auth = {
 };
 
 /******************
- *  POSTS
- ***************/
-export const Posts = {
-  // POST /api/posts
-  createPost: {
-    body: {
-      title: Joi.string().required()
-    }
-  },
-
-  // UPDATE /api/posts/:postId
-  updatePost: {
-    body: {
-      title: Joi.string().required()
-    },
-    params: {
-      postId: Joi.string()
-        .hex()
-        .required()
-    }
-  }
-};
-
-/******************
  *
  ***************/
 export const Heroes = {
