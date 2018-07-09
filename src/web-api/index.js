@@ -12,10 +12,13 @@ mongoose.Promise = Bluebird;
 
 // connect to mongo db
 const mongoUri = config.mongo.host;
-mongoose.connect(
-  mongoUri,
-  { server: { socketOptions: { keepAlive: 1 } } }
-);
+mongoose
+  .connect(
+    mongoUri,
+    { keepAlive: 1 }
+  )
+  .then(_ => console.info(`[MONGODB] Connected to database : ${mongoUri}`));
+
 mongoose.connection.on('error', () => {
   throw new Error(`[MONGODB] Unable to connect to database : ${mongoUri}`);
 });

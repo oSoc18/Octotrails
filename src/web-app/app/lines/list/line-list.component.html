@@ -1,0 +1,21 @@
+<h3>ALL Lines</h3>
+
+<mat-grid-list cols="4" rowHeight="25px">
+  <mat-grid-tile *ngFor="let line of lines" routerLink="/lines/{{line.number}}" [colspan]="1" [rowspan]="1" [style.background]="">
+    <h2>{{line.number}}</h2>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+  <mat-grid-list cols="4" rowheight="75px"  *ngFor="let line of lines" routerLink="/lines/{{line.number}}" >
+      <mat-grid-tile rowspan="2" colspan="1" [style.background]="lightblue">
+        <h2> LINE NUMBER </h2>
+      </mat-grid-tile>
+      <mat-grid-tile rowspan="1" colspan="2" [style.background]="lightgreen">
+        <h2> DESTINATION FR </h2>
+      </mat-grid-tile>
+      <mat-grid-tile rowspan="1" colspan="2" [style.background]="lightpink" >
+        <h2> DESTINATION NL </h2>
+      </mat-grid-tile>
+    
+  </mat-grid-list>

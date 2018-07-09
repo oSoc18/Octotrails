@@ -1,6 +1,7 @@
 import express from 'express';
 import validate from 'express-validation';
 import expressJwt from 'express-jwt';
+import httpStatus from 'http-status';
 
 import config from '../config/config';
 import { Auth } from '../config/param-validation';
@@ -14,14 +15,15 @@ router.route('/login').post(validate(Auth.login), authCtrl.login);
 
 /** GET /api/auth/random-number - Protected route,
  * needs token returned by the above as header. Authorization: Bearer {token} */
-router
-  .route('/random-number')
-  .get(expressJwt({ secret: config.jwtSecret }), authCtrl.getRandomNumber);
+// router
+//   .route('/random-number')
+//   .get(expressJwt({ secret: config.jwtSecret }), authCtrl.getRandomNumber);
 
 router.route('/random-number').get(
   expressJwt({
     secret: config.jwtSecret,
     getToken: function fromHeaderOrQuerystring(req) {
+      console.log(req.headers);
       if (
         req.headers.authorization &&
         req.headers.authorization.split(' ')[0] === 'Bearer'

@@ -7,25 +7,22 @@ const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string()
     .allow(['development', 'production', 'test', 'provision'])
     .default('development'),
-  SERVER_PORT: Joi.number()
-    .default(4040),
-  MONGOOSE_DEBUG: Joi.boolean()
-    .when('NODE_ENV', {
-      is: Joi.string().equal('development'),
-      then: Joi.boolean().default(true),
-      otherwise: Joi.boolean().default(false)
-    }),
+  SERVER_PORT: Joi.number().default(4040),
+  MONGOOSE_DEBUG: Joi.boolean().when('NODE_ENV', {
+    is: Joi.string().equal('development'),
+    then: Joi.boolean().default(true),
+    otherwise: Joi.boolean().default(false)
+  }),
   JWT_SECRET: Joi.string()
     .description('JWT Secret required to sign')
-    .default('0a6b944d-d2fb-46fc-a85e-0295c986cd9f'),
+    .default('58d49jQc5E=6854099462989ef034a5+ihvhOjbWoa65A'),
   MONGO_HOST: Joi.string()
     .description('Mongo DB host url')
     .default('mongodb://localhost:27017/mean'),
-  MONGO_PORT: Joi.number()
-    .default(27017)
-}).unknown()
+  MONGO_PORT: Joi.number().default(27017)
+})
+  .unknown()
   .required();
-
 
 const { error, value: envVars } = Joi.validate(process.env, envVarsSchema);
 if (error) {
@@ -42,5 +39,4 @@ const config = {
     port: envVars.MONGO_PORT
   }
 };
-console.log(config.mongo.MONGO_HOST);
 export default config;

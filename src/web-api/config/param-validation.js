@@ -10,7 +10,7 @@ export const Auth = {
   // POST /api/auth/login
   login: {
     body: {
-      username: Joi.string().required(),
+      email: Joi.string().required(),
       password: Joi.string().required()
     }
   }

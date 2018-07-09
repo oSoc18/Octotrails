@@ -23,7 +23,7 @@
               "src/web-app/assets",
               "src/web-app/manifest.json"
             ],
-            "styles": ["src/web-app/styles.css"],
+            "styles": ["src/web-app/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -71,7 +71,7 @@
             "polyfills": "src/web-app/polyfills.ts",
             "tsConfig": "src/web-app/tsconfig.spec.json",
             "karmaConfig": "src/web-app/karma.conf.js",
-            "styles": ["styles.css"],
+            "styles": ["src/web-app/styles.scss"],
             "scripts": [],
             "assets": [
               "src/web-app/favicon.ico",

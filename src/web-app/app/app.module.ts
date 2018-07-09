@@ -6,22 +6,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { MatButtonModule, MatToolbarModule, MatGridListModule, MatInputModule, MatListModule, MatIconModule, MatDividerModule, MatAutocompleteModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatToolbarModule,
+  MatGridListModule,
+  MatInputModule,
+  MatListModule,
+  MatIconModule,
+  MatDividerModule,
+  MatAutocompleteModule
+} from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { MessagesComponent } from './messages/messages.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { environment } from '../environments/environment';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+/* Feature Modules */
+import { SharedModule } from './shared/shared.module';
+import { HeroesModule } from './heroes/heroes.module';
+import { LinesModule } from './lines/lines.module';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     HttpClientModule,
     MatButtonModule,
     MatToolbarModule,
@@ -33,16 +43,15 @@ import { environment } from '../environments/environment';
     MatAutocompleteModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    }),
+    SharedModule,
+    HeroesModule,
+    LinesModule,
+    AppRoutingModule // Module import order matters
   ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
-    HeroSearchComponent
-  ],
-  bootstrap: [ AppComponent ]
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
