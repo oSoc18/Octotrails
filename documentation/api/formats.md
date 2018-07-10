@@ -50,6 +50,18 @@ The format of an Input object includes the following data:
 - **question_id** — [string] The **[Question][]** ID.
 - **answer** — [string] The answer to the **[Question][]**.
 
+## History format
+
+A History is a record of the updates of a Stop. It can be linked to another history.
+
+The format of an History object includes the following data:
+
+- **stop_id** — [string] The Stop ID.
+- **date_update** — [datetime] The Linux datetime of the update.
+- **inputs** — [Array<string>] All **[Category][]** ID of updated.
+- **previous** — [string] The ID of the previous **[History][]**.
+
 [question]: ./formats.md#question-format
 [category]: ./formats.md#category-format
 [input]: ./formats.md#input-format
+[history]: ./formats.md#history-format
