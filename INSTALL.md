@@ -1,4 +1,4 @@
-# Installing MEAN stack on the server
+# Installing the project on the server
 
 **OS:** Ubuntu 16.04
 
@@ -45,6 +45,11 @@
 
     sudo npm install -g gulp
 
-### Install command line interpreter: 
+### Create database
+    use octotrails
 
-    sudo npm install -g mean-cli
+### Create user
+    db.createUser({user: "octotrails", pwd: "octotrails", roles: ["readWrite", "dbAdmin"]})
+    
+    
+
