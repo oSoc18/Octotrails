@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-raised-button color="secondary" routerLink="/heroes/dashboard">Dashboard</button>
+    <button mat-raised-button color="secondary" routerLink="/heroes/list">Heroes</button>
+    <button mat-raised-button color="secondary" routerLink="/lines">Lines</button>
+    <span class="fill-remaining-space"></span>
+
+    <app-hero-search></app-hero-search>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<div class="app-content">
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+</div>

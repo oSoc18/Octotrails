@@ -1,0 +1,8 @@
+<h3>Top Heroes</h3>
+
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile *ngFor="let hero of heroes" routerLink="/heroes/{{hero.id}}" [colspan]="1" [rowspan]="1" [style.background]="hero.getColor()">
+
+    <h2>{{hero.name}}</h2>
+  </mat-grid-tile>
+</mat-grid-list>
