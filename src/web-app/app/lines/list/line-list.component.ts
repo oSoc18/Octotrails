@@ -16,8 +16,6 @@ export class LineListComponent implements OnInit {
   }
 
   getLines(): void {
-    this.lineService
-      .getLines()
-      .subscribe(lines => (this.lines = lines.slice(0, 15)));
+    this.lineService.getLines().subscribe(lines => (this.lines = lines));
   }
 }

@@ -46,10 +46,10 @@ const routes: Routes = [
     MatIconModule,
     MatDividerModule,
     MatAutocompleteModule,
-    HeroesRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    })
+    HeroesRoutingModule
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+    //   dataEncapsulation: false
+    // })
   ],
   declarations: [
     HeroListComponent,

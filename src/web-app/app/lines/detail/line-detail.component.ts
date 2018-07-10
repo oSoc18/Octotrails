@@ -8,7 +8,6 @@ import { LineService } from '../line.service';
 import { slideInDownAnimation } from '../../shared/animations';
 
 @Component({
-  selector: 'app-line-detail',
   animations: [slideInDownAnimation],
   templateUrl: './line-detail.component.html',
   styleUrls: ['./line-detail.component.scss']
@@ -33,7 +32,9 @@ export class LineDetailComponent implements OnInit {
 
   getLine(): void {
     const lineNumber: string = this.route.snapshot.paramMap.get('number');
-    this.lineService.getLine(lineNumber).subscribe(line => (this.line = line));
+    this.lineService
+      .getLine(lineNumber)
+      .subscribe(line => (this.line = line[0]));
   }
 
   goBack(): void {
@@ -45,7 +46,6 @@ export class LineDetailComponent implements OnInit {
     // Pass along the line id if available
     // so that the LineList component can select that line.
     // Include a junk 'foo' property for fun.
-    this.router.navigate(['/linees', { number: lineNumber, foo: 'foo' }]);
+    this.router.navigate(['/lines', { number: lineNumber, foo: 'foo' }]);
   }
-
 }

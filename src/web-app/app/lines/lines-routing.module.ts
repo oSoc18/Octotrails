@@ -5,11 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LineListComponent } from './list/line-list.component';
 import { LineDetailComponent } from './detail/line-detail.component';
 
-
 const linesRoutes: Routes = [
   { path: 'lines', redirectTo: 'lines/list', pathMatch: 'full' },
   { path: 'lines/list', component: LineListComponent },
-  { path: 'lines/:id', component: LineDetailComponent }
+  { path: 'lines/:number', component: LineDetailComponent }
 ];
 
 @NgModule({
