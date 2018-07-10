@@ -44,6 +44,8 @@
 ### Install gulp: 
 
     sudo npm install -g gulp
+    
+## Database
 
 ### Create database
     use octotrails
