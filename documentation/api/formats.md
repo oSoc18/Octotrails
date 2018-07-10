@@ -40,5 +40,16 @@ The format of an Category object includes the following data:
 - **name** — [string] The name of the category.
 - **parent** — [string] The **[Category][]** ID of the enclosing category.
 
+## Input format
+
+An Input is a response to a **[Question][]**.
+
+The format of an Input object includes the following data:
+
+- **id** — [string] ID of the Input.
+- **question_id** — [string] The **[Question][]** ID.
+- **answer** — [string] The answer to the **[Question][]**.
+
 [question]: ./formats.md#question-format
 [category]: ./formats.md#category-format
+[input]: ./formats.md#input-format
