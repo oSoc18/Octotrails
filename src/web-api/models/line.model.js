@@ -91,7 +91,7 @@ LineSchema.statics = {
 
     const lines = await query;
     if (!lines) {
-      throw new APIError('No such line exists!', httpStatus.NOT_FOUND);
+      throw new APIError('No such line exists !', httpStatus.NOT_FOUND);
     } else {
       return lines;
     }
