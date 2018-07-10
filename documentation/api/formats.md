@@ -22,12 +22,23 @@ A Question is a question about the stop
 
 The format of an Question object includes the following data:
 
-- **id** — [integer] ID of the question.
-- **num** - [integer] The number of the question
+- **id** — [string] ID of the question.
+- **num** - [string] The number of the question
 - **content** — [string] The question.
 - **type** — [enum(boolean, number, multiple, text)] Which kind of question is it.
 - **hint** — [string] The hint for the question.
 - **choices** — [Array<string>] Contains all corect answers for the question of type multiple :
 - **categorie** — [string] The **[Category][]** ID of the question.
 
+## Category format
+
+A Category is a question category. It can be a subcategory.
+
+The format of an Category object includes the following data:
+
+- **id** — [string] ID of the Category.
+- **name** — [string] The name of the category.
+- **parent** — [string] The **[Category][]** ID of the enclosing category.
+
 [question]: ./formats.md#question-format
+[category]: ./formats.md#category-format
