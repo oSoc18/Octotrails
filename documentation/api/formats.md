@@ -16,6 +16,20 @@ All errors return an HTTP error response with a JSON Object as key `message` abo
 }
 ```
 
+## Stop format
+
+A Stop is a
+
+## Pictures format
+
+A Picture is related to a stop.
+
+The format of an Picture object includes the following data:
+
+- **stop_id** — [string] The Stop ID.
+- **url** — [string] The relative path of the picture on the server.
+- **comment** — [string] The comment about the picture.
+
 ## Question format
 
 A Question is a question about the stop
@@ -61,6 +75,8 @@ The format of an History object includes the following data:
 - **inputs** — [Array<string>] All **[Category][]** ID of updated.
 - **previous** — [string] The ID of the previous **[History][]**.
 
+[stop]: ./formats.md#stop-format
+[picture]: ./formats.md#picture-format
 [question]: ./formats.md#question-format
 [category]: ./formats.md#category-format
 [input]: ./formats.md#input-format
