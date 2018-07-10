@@ -20,6 +20,12 @@ All errors return an HTTP error response with a JSON Object as key `message` abo
 
 A Stop is a
 
+The format of an Stop object includes the following data:
+
+- **id** — [string] The Stop ID.
+- **tech_id** — [string] The technical ID.
+- **name** — [string] The name.
+
 ## Pictures format
 
 A Picture is related to a stop.
@@ -32,7 +38,7 @@ The format of an Picture object includes the following data:
 
 ## Question format
 
-A Question is a question about the stop
+A Question is a question about the stop.
 
 The format of an Question object includes the following data:
 
