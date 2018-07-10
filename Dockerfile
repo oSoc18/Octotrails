@@ -6,5 +6,6 @@ RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 4040
+EXPOSE 8081
 EXPOSE 4200
 CMD ["npm","start"]
