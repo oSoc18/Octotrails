@@ -20,7 +20,7 @@
 ### Begin using mongodb: 
 * mongo --host 127.0.0.1:27017
 
-### Install nodeje: 
+### Install nodejs: 
 * curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 * sudo apt-get install -y nodejs
 * sudo apt-get install build-essential
