@@ -1,4 +1,4 @@
-# MEAN Octotrails Starter
+# oSoc18 - Octotrails project
 
 ## Overview
 
@@ -64,4 +64,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Docker
 
-- To start a dockerized version of your application, use `docker-compose up`
+- # To start a dockerized version of your application, use `docker-compose up`
