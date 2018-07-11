@@ -1,17 +1,4 @@
-import Stop from '../models/stop.model';
 
-function load(req, res, next, tech_id) {
-  Stop.getByTechId({ tech_id })
-    .then(stop => {
-      req.stops = stop; // eslint-disable-line no-param-reassign
-      return next();
-    })
-    .catch(e => next(e));
-}
-
-function get(req, res) {
-  return res.json(req.stops);
-}
 
 // function list(req, res, next) {
 //   const { limit = 50, skip = 0, name } = req.query;
@@ -21,11 +8,14 @@ function get(req, res) {
 //     .catch(e => next(e));
 // }
 
+
 function search(req, res){
   let by = req.query.by;
   let term = req.query.term;
 
   //TODO filter by the query params
+  
+  console.log("Search in progress ")
 
   return res.json({
     "id": "811",
@@ -61,4 +51,6 @@ function search(req, res){
   })
 }
 
-export default { load, get, search };
+
+
+export default { search };
