@@ -10,6 +10,8 @@ router
   /** GET /api/stops/:techId - Get specific line by it number */
   .get(stopsCtrl.get);
 
+router.route('/search').get(stopsCtrl.search)
+
 /** Load line with techId route parameter is hit */
 router.param('techId', stopsCtrl.load);
 
