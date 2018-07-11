@@ -2,6 +2,9 @@ import https from 'https';
 import httpStatus from 'http-status';
 
 import APIError from '../helpers/APIError';
+import {
+  validateLocaleAndSetLanguage
+} from 'typescript';
 
 
 // function list(req, res, next) {
@@ -18,6 +21,8 @@ function search(req, res, next) {
   let by = req.query.by;
   let term = req.query.term;
   let url;
+
+  validateSearch(by, term);
 
   if (by == "name") {
     url = '/stops/name' + term;
@@ -43,6 +48,15 @@ function search(req, res, next) {
   });
 }
 
+function validateSearch(by, term) {
+  if (!by || by != "name" || by != "tech_id") {
+    throw new APIError('"by" can only be "name" or "tech_id"', httpStatus.BAD_REQUEST);
+  } else if (!term || term == "") {
+    throw new APIError('"term" must be defined', httpStatus.BAD_REQUEST);
+  }
+}
+
 export default {
-  search
+  search,
+  validateSearch
 };

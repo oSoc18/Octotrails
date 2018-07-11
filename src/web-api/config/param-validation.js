@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 //  mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required()
 
@@ -36,6 +36,19 @@ export const Heroes = {
       heroId: Joi.string()
         .hex()
         .required()
+    }
+  }
+};
+
+export const Stops = {
+  getSearch: {
+    by: {
+      in: ["query"],
+      errorMessage: '"by" can only "name" or "tech_id"'
+    },
+    term: {
+      in: ["query"],
+      errorMessage: '"term" must be defined'
     }
   }
 };
