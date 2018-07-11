@@ -1,0 +1,18 @@
+<section class="page">
+  <form>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Search..." aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let stop of filteredStops | async" [value]="stop.name">
+          <ul class="search-result">
+            <li *ngFor="let stop of stops$ | async" >
+              <a routerLink="/detail/{{stop.id}}">
+                {{stop.name}}
+              </a>
+            </li>
+          </ul>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</section>
