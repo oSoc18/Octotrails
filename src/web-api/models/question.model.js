@@ -12,7 +12,7 @@ import APIError from '../helpers/APIError';
  * content — [string] The question.
  * type — [enum(boolean, number, multiple, text)] Which kind of question is it.
  * hint — [string] The hint for the question.
- * choices — [Array<string>] Contains all correct answers for the question of type multiple :
+ * choices — [Array<string>] Contains all correct answers for the question of type multiple 
  * categorie_id — [string] The [Category][] ID of the question.
  */
 const QuestionSchema = new mongoose.Schema({
