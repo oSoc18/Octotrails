@@ -61,7 +61,7 @@ QuestionSchema.statics = {
    * @returns {Promise<Question[]>}
    */
   list({ skip = 0, limit = 50 } = {}) {
-    return this.find()
+    return this.find({})
       .sort({
         createdAt: -1
       })
