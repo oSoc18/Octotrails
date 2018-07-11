@@ -1,3 +1,5 @@
+import Questions from '../models/question.model';
+
 function list(req, res, next) {
   const { limit = 50, skip = 0, name } = req.query;
 
