@@ -9,7 +9,7 @@ import mockData from './questions.mock.json';
 function run() {
   Question.insertMany(mockData)
     .then(_ => console.log('[QUESTION_SEEDER] Inserted alll questions'))
-    .catch(err => new APIError('[QUESTION_SEEDER] Error on insertions'));
+    .catch(err => new Error('[QUESTION_SEEDER] Error on insertions'));
 }
 
 export default { run };

@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 import config from './config/config';
 import app from './config/express';
+import Seeder from '../web-api/models/seeds';
 //const debug = require('debug')('express-mongoose-es6-rest-api:index');
 
 // make bluebird default Promise
@@ -17,7 +18,10 @@ mongoose
     mongoUri,
     { keepAlive: 1 }
   )
-  .then(_ => console.info(`[MONGODB] Connected to database : ${mongoUri}`));
+  .then(_ => {
+    console.info(`[MONGODB] Connected to database : ${mongoUri}`);
+    //TODO Check the collections count. IF count == 0  ==> Populate  DB
+  });
 
 mongoose.connection.on('error', () => {
   throw new Error(`[MONGODB] Unable to connect to database : ${mongoUri}`);
