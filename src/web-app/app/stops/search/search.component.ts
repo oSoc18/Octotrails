@@ -1,13 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+
+import {
+  debounceTime, distinctUntilChanged, switchMap
+} from 'rxjs/operators';
+
+import { StopService } from '../stops.service';
+
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.scss']
 })
 
-export class StopSearchComponent implements OnInit {
-
+export class SearchComponent implements OnInit {
+  //title: string = 'Search Stop';
+  latitude = 50.850346;
+  longitude = 4.351721;
   stopCtrl: FormControl = new FormControl();
   filteredStops: Observable<any[]>;
 
@@ -28,7 +39,7 @@ export class StopSearchComponent implements OnInit {
   }
 }
 
-// export class StopSearchComponent implements OnInit {
+// export class SearchComponent implements OnInit {
 //
 //   constructor() { }
 //

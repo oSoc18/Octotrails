@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-//import { StopSearchComponent } from './search.component';
+import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -20,7 +20,6 @@ describe('SearchComponent', () => {
       providers: [
         FormControl,
         {provide: StopService, use: jasmine.createSpyObj('StopService', ['.getStop'])}
-        // {provide: HeroService, use: jasmine.createSpyObj('HeroService', ['.getHero'])}
       ]
     })
     })

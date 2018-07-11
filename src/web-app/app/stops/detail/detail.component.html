@@ -1,3 +1,16 @@
-<p>
-  detail works!
-</p>
+<div *ngIf="stop">
+  <button (click)="goBack()">go back</button>
+  <h2>{{ stop.name }}</h2>
+  <div class="carousel">
+    <carousel [sources]="imageSources"></carousel>
+  </div>
+  <div><span>id: </span>{{stop.id}}</div>
+  <div>
+    <label>name: {{ stop.name }}</label>
+  </div>
+  <label>address:
+    <input [(ngModel)]="stop.name" placeholder="name"/>
+  </label>
+  <button mat-raised-button color="primary" (click)="history()">History</button>
+  <button mat-raised-button color="primary" (click)="update()">Update</button>
+</div>

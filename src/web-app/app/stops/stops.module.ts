@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
+import { CarouselModule  } from 'angular4-carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -18,16 +20,16 @@ import {
   MatAutocompleteModule
 } from '@angular/material';
 
-import { stopsRoutingModule } from './stops-routing.module';
+import { StopsRoutingModule } from './stops-routing.module';
 
 // import { HeroListComponent } from './list/hero-list.component';
 // import { HeroDetailComponent } from './detail/hero-detail.component';
 // import { HeroDashboardComponent } from './dashboard/hero-dashboard.component';
-import { StopSearchComponent } from './search/search.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'search', pathMatch: 'full' },
-  { path: 'search', component: StopSearchComponent },
+  { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
+  { path: 'search', component: SearchComponent },
   // { path: 'dashboard', component: HeroDashboardComponent },
   // { path: 'list', component: HeroListComponent },
   // { path: ':id', component: HeroDetailComponent }
@@ -35,6 +37,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    CarouselModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -47,18 +50,18 @@ const routes: Routes = [
     MatIconModule,
     MatDividerModule,
     MatAutocompleteModule,
-    HeroesRoutingModule
+    StopsRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
        dataEncapsulation: false
+     }),
+     AgmCoreModule.forRoot({
+       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
      })
   ],
   declarations: [
-    // HeroListComponent,
-    // HeroDetailComponent,
-    // HeroDashboardComponent,
-    StopSearchComponent
+    SearchComponent
   ],
-  exports: [RouterModule, StopSearchComponent]
+  exports: [RouterModule]
 })
 export class StopsModule {}
 
