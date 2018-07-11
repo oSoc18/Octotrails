@@ -2,9 +2,7 @@ import https from 'https';
 import httpStatus from 'http-status';
 
 import APIError from '../helpers/APIError';
-import {
-  validateLocaleAndSetLanguage
-} from 'typescript';
+
 
 
 // function list(req, res, next) {
