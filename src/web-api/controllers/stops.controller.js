@@ -1,4 +1,4 @@
-
+import https from 'https';
 
 // function list(req, res, next) {
 //   const { limit = 50, skip = 0, name } = req.query;
@@ -8,49 +8,27 @@
 //     .catch(e => next(e));
 // }
 
+const STIB_API = process.env.STIB_API;
 
-function search(req, res){
+function search(req, res) {
   let by = req.query.by;
   let term = req.query.term;
 
-  //TODO filter by the query params
-  
-  console.log("Search in progress ")
+  https.get(STIB_API + '/stops/proximity/1,1', function (respApi) {
+    let apiData = '';
 
-  return res.json({
-    "id": "811",
-		"descr_fr": "Georges Henri",
-		"descr_nl": "Georges_Henri",
-		"coord_x": 152592,
-		"coord_y": 170346,
-		"address": {
-			"fr": "Boulevard Brand Whitlock 92, Woluwe-Saint-Lambert",
-			"nl": "Boulevard Brand Whitlock 92, Sint-Lambrechts-Woluwe"
-		},
-		"lines": [
-			{
-				"line_id": 7,
-				"direction": {
-					"fr": "Heysel",
-					"nl": "Heysel"
-				},
-				"route_color": "FFF06E",
-				"route_text_color": "000000"
-			},
-			{
-				"line_id": 25,
-				"direction": {
-					"fr": "Rogier",
-					"nl": "Rogier"
-				},
-				"route_color": "991F36",
-				"route_text_color": "FFFFFF"
-			}
-		],
-		"type": 0
-  })
+    // A chunk of data has been recieved.
+    respApi.on('data', (chunk) => apiData += chunk);
+
+    // The whole response has been received. Print out the result.
+    respApi.on('end', () => {
+      return res.json(
+        JSON.parse(apiData)
+      )
+    });
+  });
 }
 
-
-
-export default { search };
+export default {
+  search
+};
