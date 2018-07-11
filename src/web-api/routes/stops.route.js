@@ -6,8 +6,8 @@ import stopsCtrl from '../controllers/stops.controller';
 const router = express.Router();
 
 
-  /** GET /api/stops/search - Get specific line by it number */
-  router.get([ '/search', '/zen'], stopsCtrl.search);
+/** GET /api/stops/search - Get specific line by it number */
+router.get(['/search', '/zen'], stopsCtrl.search);
 
 
 export default router;
