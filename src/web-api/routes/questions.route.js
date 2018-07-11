@@ -5,6 +5,6 @@ import questionCtrl from '../controllers/questions.controller';
 const router = express.Router();
 
 /** GET /api/questions - Get specific question by its number */
-router.get('/questions', questionCtrl.get);
+router.get('/', questionCtrl.list);
 
 export default router;
