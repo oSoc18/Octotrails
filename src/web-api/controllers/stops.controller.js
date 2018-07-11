@@ -25,7 +25,7 @@ function search(req, res, next) {
   validateSearch(by, term);
 
   if (by == "name") {
-    url = '/stops/name' + term;
+    url = '/stops/name/' + term;
   } else if (by == "tech_id") {
     url = '/stops/' + term;
   }
@@ -49,7 +49,7 @@ function search(req, res, next) {
 }
 
 function validateSearch(by, term) {
-  if (!by || by != "name" || by != "tech_id") {
+  if (!by || (by != 'name' && by != 'tech_id')) {
     throw new APIError('"by" can only be "name" or "tech_id"', httpStatus.BAD_REQUEST);
   } else if (!term || term == "") {
     throw new APIError('"term" must be defined', httpStatus.BAD_REQUEST);

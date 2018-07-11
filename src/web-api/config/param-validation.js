@@ -42,13 +42,6 @@ export const Heroes = {
 
 export const Stops = {
   getSearch: {
-    by: {
-      in: ["query"],
-      errorMessage: '"by" can only "name" or "tech_id"'
-    },
-    term: {
-      in: ["query"],
-      errorMessage: '"term" must be defined'
-    }
+   
   }
 };
