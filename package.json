@@ -49,6 +49,7 @@
     "ext": "js json"
   },
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.3",
     "@angular/animations": "^6.0.7",
     "@angular/cdk": "^6.2.0",
     "@angular/compiler": "^6.0.7",
@@ -60,6 +61,7 @@
     "@angular/platform-browser-dynamic": "^6.0.7",
     "@angular/pwa": "^0.6.8",
     "@angular/router": "^6.0.7",
+    "@angular/service-worker": "^6.0.0",
     "app-root-path": "^2.0.1",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
@@ -80,8 +82,8 @@
     "path": "^0.12.7",
     "pm2": "^3.0.0",
     "rxjs": "^6.2.1",
-    "zone.js": "^0.8.26",
-    "@angular/service-worker": "^6.0.0"
+    "rxjs-compat": "^6.2.1",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",
