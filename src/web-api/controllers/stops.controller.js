@@ -55,12 +55,12 @@ function validateSearch(by, term) {
 }
 
 function getProximity(req, res, next) {
-  let x = req.query.x;
-  let y = req.query.y;
+  let lon = req.query.lon;
+  let lat = req.query.lat;
 
-  validateProximity(x, y);
+  validateProximity(lon, lat);
 
-  let url = '/stops/proximity/' + x + ',' + y;
+  let url = '/stops/proximity/' + lon + ',' + lat;
 
   https.get(STIB_API + url, function (respApi) {
     let apiData = '';
@@ -80,11 +80,11 @@ function getProximity(req, res, next) {
   });
 }
 
-function validateProximity(x, y) {
-  if (!x || isNaN(x)) {
-    throw new APIError('The value of x must be a number!', httpStatus.BAD_REQUEST);
-  } else if (!y || isNaN(y)) {
-    throw new APIError('The value of y must be a number!', httpStatus.BAD_REQUEST);
+function validateProximity(lon, lat) {
+  if (!lon || isNaN(lon)) {
+    throw new APIError('The value of the longitude must be a number!', httpStatus.BAD_REQUEST);
+  } else if (!lat || isNaN(lat)) {
+    throw new APIError('The value of the latitude must be a number!', httpStatus.BAD_REQUEST);
   }
 }
 
