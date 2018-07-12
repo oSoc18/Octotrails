@@ -9,7 +9,7 @@ import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
-  { path: 'stops', redirectTo: 'heroes/search', pathMatch: 'full' },
+  { path: 'stops', redirectTo: 'stops/search', pathMatch: 'full' },
   { path: 'stops/search', component: SearchComponent },
   { path: 'stops/:id', component:  DetailComponent },
   { path: 'stops/:id/history', component: HistoryComponent },
