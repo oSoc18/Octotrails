@@ -1,35 +1,26 @@
 export class Stop {
-  id: string;
-  name: string;
-  // lines: object;
-
-  constructor(id: string, name: string) {
-    // , lines: object
-    this.id = id;
-    this.name = name;
-    // this.lines = lines;
-  }
-
-  getStyle(): number {
-    const midChar = this.name.length / 2;
-    const midCharCode: number = this.name.charCodeAt(midChar);
-    return midCharCode % 5;
-  }
-
-  getColor(): string {
-    switch(this.getStyle()) {
-      case 0:
-        return '#cf8acf';
-      case 1:
-        return '#6461A0';
-      case 2:
-        return '#949396';
-      case 3:
-        return '#314CB6';
-      case 4:
-        return '#0A81D1';
-      default:
-        return '#cf8acf';
+  "id": string;
+  "alpha_fr": string;
+  "alpha_nl": string;
+  "descr_fr": string;
+  "descr_nl": string;
+  "coord_x": string;
+  "coord_y": string;
+  "address": {
+    fr: string;
+    nl: string;
+  };
+  "type": number;
+  "transport": [
+    {
+      line_id: number;
+      type: string;
+      direction: {
+        fr: string;
+        nl: string;
+      };
+      route_color: string;
+      route_text_color: string;
     }
-  }
+  ];
 }
