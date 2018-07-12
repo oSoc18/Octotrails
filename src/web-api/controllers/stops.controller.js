@@ -54,7 +54,42 @@ function validateSearch(by, term) {
   }
 }
 
+function getProximity(req, res, next) {
+  let x = req.query.x;
+  let y = req.query.y;
+
+  validateProximity(x, y);
+
+  let url = '/stops/proximity/' + x + ',' + y;
+
+  https.get(STIB_API + url, function (respApi) {
+    let apiData = '';
+
+    // A chunk of data has been recieved.
+    respApi.on('data', (chunk) => apiData += chunk);
+
+    // The whole response has been received. Print out the result.
+    respApi.on('end', () => {
+      return res.json(
+        JSON.parse(apiData)
+      )
+    });
+  }).on('error', function (error) {
+    const err = new APIError('No location for your search!', httpStatus.NOT_FOUND);
+    next(error);
+  });
+}
+
+function validateProximity(x, y) {
+  if (!x || isNaN(x)) {
+    throw new APIError('The value of x must be a number!', httpStatus.BAD_REQUEST);
+  } else if (!y || isNaN(y)) {
+    throw new APIError('The value of y must be a number!', httpStatus.BAD_REQUEST);
+  }
+}
+
 export default {
   search,
-  validateSearch
+  validateSearch,
+  getProximity
 };
