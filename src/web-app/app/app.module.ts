@@ -24,8 +24,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 /* Feature Modules */
 import { SharedModule } from './shared/shared.module';
-import { HeroesModule } from './heroes/heroes.module';
-import { LinesModule } from './lines/lines.module';
+import { StopsModule } from './stops/stops.module';
+import { SearchComponent } from './stops/search/search.component';
+import { DetailComponent } from './stops/detail/detail.component';
+// import { HistoryComponent } from './octotrails/history/history.component';
+// import { CategoriesComponent } from './octotrails/categories/categories.component';
+// import { QuestionsComponent } from './octotrails/questions/questions.component';
 
 
 @NgModule({
@@ -47,11 +51,10 @@ import { LinesModule } from './lines/lines.module';
       enabled: environment.production
     }),
     SharedModule,
-    HeroesModule,
-    LinesModule,
+    StopsModule,
     AppRoutingModule // Module import order matters
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, DetailComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
