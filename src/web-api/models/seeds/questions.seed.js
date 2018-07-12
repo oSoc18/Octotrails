@@ -1,15 +1,20 @@
 import APIError from '../../helpers/APIError';
 
-import Question from '../questions.model';
+import Question from '../question.model';
 import mockData from './questions.mock.json';
 
 /**
  * Insert the DB seeds for Questions collection
  */
 function run() {
-  Question.insertMany(mockData)
-    .then(_ => console.log('[QUESTION_SEEDER] Inserted alll questions'))
-    .catch(err => new Error('[QUESTION_SEEDER] Error on insertions'));
+  Question.collection.countDocuments().then(count => {
+    console.log('Question', count);
+    if (count === 0) {
+      Question.insertMany(mockData)
+        .then(_ => console.log('[QUESTION_SEEDER] Inserted alll questions'))
+        .catch(err => new Error('[QUESTION_SEEDER] Error on insertions'));
+    }
+  });
 }
 
 export default { run };
