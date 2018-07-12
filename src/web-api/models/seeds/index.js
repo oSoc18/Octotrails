@@ -11,7 +11,7 @@ export default {
    */
   populate: function runThemAll() {
     seeders.forEach(seeder => {
-      if (seeder != undefined && typeof seeder['run'] === 'function')
+      if (seeder != undefined && typeof seeder['run'] !== 'function')
         throw new APIError(
           `[SEEDER] The provider seeder \'${seeder}\' must be a function`
         );
