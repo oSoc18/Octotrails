@@ -1,0 +1,16 @@
+<div *ngIf="stop">
+  <a routerLink="/stops/search">Go Back</a>
+  <h2>{{ stop.name }}</h2>
+  <div class="carousel">
+    <carousel [sources]="imageSources" [config]="config"></carousel>
+  </div>
+  <div><span>id: </span>{{stop.id}}</div>
+  <div>
+    <label>name: {{ stop.name }}</label>
+  </div>
+  <label>address:
+    <input [(ngModel)]="stop.name" placeholder="name"/>
+  </label>
+  <a routerLink="/stops/{{stop.id}}/history">History</a>
+  <a routerLink="/stops/{{stop.id}}/update">Update</a>
+</div>
