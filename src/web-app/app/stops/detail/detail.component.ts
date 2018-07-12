@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Optional, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Stop } from '../stop';
 import { StopService } from '../stops.service';
-import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
+import { ICarouselConfig, AnimationConfig } from '../../my-octotrails-ng6-carousel';
 
 import { slideInDownAnimation } from '../../shared/animations';
 
@@ -22,16 +22,16 @@ export class DetailComponent implements OnInit {
   @Input() stop: Stop;
 
   public imageSources: string[] = [
-   '../../../assets/img/stop1',
-   '../../../assets/img/stop2',
-   '../../../assets/img/stop3'
+   'https://picsum.photos/1920/1080/?random',
+   'https://picsum.photos/1920/1080/?random',
+   'https://picsum.photos/1920/1080/?random'
   ]
 
   public config: ICarouselConfig = {
     verifyBeforeLoad: true,
     log: false,
     animation: true,
-    animationType: AnimationConfig.SLIDE,
+    animationType: AnimationConfig.SLIDE_OVERLAP,
     autoplay: true,
     autoplayDelay: 2000,
     stopAutoplayMinWidth: 768

@@ -1,8 +1,8 @@
 <div *ngIf="stop">
-  <button (click)="goBack()">go back</button>
+  <a routerLink="/stops/search">Go Back</a>
   <h2>{{ stop.name }}</h2>
   <div class="carousel">
-    <carousel [sources]="imageSources"></carousel>
+    <carousel [sources]="imageSources" [config]="config"></carousel>
   </div>
   <div><span>id: </span>{{stop.id}}</div>
   <div>
@@ -11,6 +11,6 @@
   <label>address:
     <input [(ngModel)]="stop.name" placeholder="name"/>
   </label>
-  <button mat-raised-button color="primary" (click)="history()">History</button>
-  <button mat-raised-button color="primary" (click)="update()">Update</button>
+  <a routerLink="/stops/{{stop.id}}/history">History</a>
+  <a routerLink="/stops/{{stop.id}}/update">Update</a>
 </div>

@@ -19,7 +19,7 @@ export const Auth = {
 /******************
  *
  ***************/
-export const Heroes = {
+export const Stops = {
   // POST /api/heroes
   createHero: {
     body: {
@@ -28,12 +28,12 @@ export const Heroes = {
   },
 
   // UPDATE /api/heroes/:heroId
-  updateHero: {
+  updateStop: {
     body: {
       name: Joi.string().required()
     },
     params: {
-      heroId: Joi.string()
+      stopId: Joi.string()
         .hex()
         .required()
     }

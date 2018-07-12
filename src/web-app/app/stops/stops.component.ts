@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Stop } from './stop';
-import { StopService } from './stop.service';
+import { StopService } from './stops.service';
 
 @Component({
   selector: 'app-stops',

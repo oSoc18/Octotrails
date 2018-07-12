@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-import { CarouselModule  } from 'angular4-carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CarouselModule } from '../my-octotrails-ng6-carousel';
 
 import { InMemoryDataService } from './stops.mock';
 
@@ -26,10 +26,17 @@ import { StopsRoutingModule } from './stops-routing.module';
 // import { HeroDetailComponent } from './detail/hero-detail.component';
 // import { HeroDashboardComponent } from './dashboard/hero-dashboard.component';
 import { SearchComponent } from './search/search.component';
+import { DetailComponent } from './detail/detail.component';
+import { HistoryComponent } from './history/history.component';
+import { UpdateComponent } from './update/update.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
+  { path: 'search/:id', component: DetailComponent },
+  { path: 'search/:id/history', component: HistoryComponent },
+  { path: 'search/:id/update', component: UpdateComponent },
   // { path: 'dashboard', component: HeroDashboardComponent },
   // { path: 'list', component: HeroListComponent },
   // { path: ':id', component: HeroDetailComponent }
@@ -59,9 +66,11 @@ const routes: Routes = [
      })
   ],
   declarations: [
-    SearchComponent
+    SearchComponent,
+    HistoryComponent,
+    UpdateComponent
   ],
-  exports: [RouterModule]
+  exports: [RouterModule, CarouselModule]
 })
 export class StopsModule {}
 
