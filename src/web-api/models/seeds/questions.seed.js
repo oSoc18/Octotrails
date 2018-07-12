@@ -9,7 +9,6 @@ import mockData from './questions.mock.json';
  */
 function run() {
   Question.count({}).then(count => {
-    console.log('Question', count);
     if (count === 0) {
       Question.insertMany(mockData)
         .then(_ => console.log('[QUESTION_SEEDER] Inserted alll questions'))
