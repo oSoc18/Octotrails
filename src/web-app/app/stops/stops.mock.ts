@@ -26,7 +26,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Paris'
+        direction: 'Paris',
+        type: 'M'
       },
       {
         id:'220',
@@ -49,7 +50,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Barcelona'
+        direction: 'Barcelona',
+        type: 'M'
       },
       {
         id:'351',
@@ -72,7 +74,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Lyon'
+        direction: 'Lyon',
+        type: 'M'
       },
       {
         id:'664',
@@ -95,7 +98,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Pauline'
+        direction: 'Pauline',
+        type: 'M'
       },
       {
         id:'740',
@@ -118,7 +122,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Pauline'
+        direction: 'Pauline',
+        type: 'M'
       },
       {
         id:'718',
@@ -141,7 +146,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Pauline'
+        direction: 'Pauline',
+        type: 'M'
       },
       {
         id:'262',
@@ -164,7 +170,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Pauline'
+        direction: 'Pauline',
+        type: 'M'
       },
       {
         id:'282',
@@ -187,7 +194,8 @@ export class InMemoryDataService implements InMemoryDbService {
           color: 'yellow',
           },
         ],
-        direction: 'Pauline'
+        direction: 'Pauline',
+        type: 'M'
       }
     ];
     return { stops };

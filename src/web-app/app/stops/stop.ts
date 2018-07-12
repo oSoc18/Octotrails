@@ -3,14 +3,14 @@ export class Stop {
   name: string;
   lines: string[];
   direction: string;
-  // lines: object;
+  type: string;
 
-  constructor(id: string, name: string, lines: string[], direction: string) {
-    // , lines: object
+  constructor(id: string, name: string, lines: string[], direction: string, type: string) {
     this.id = id;
     this.name = name;
     this.lines = [lines];
     this.direction = direction;
+    this.type = type;
   }
 
   getStyle(): number {

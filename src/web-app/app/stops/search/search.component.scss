@@ -62,9 +62,19 @@ html {
   align-items: center;
 }
 
-.search-result-info-direction{
+.search-result-info-direction, .search-result-info-type{
   font-size: 16px;
   color: black;
+}
+
+.search-result-info-type {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
 }
 
 .cdk-overlay-pane {

@@ -27,7 +27,7 @@ export class StopService {
       .get<Object[]>(this.stopsUrl)
       .pipe<Stop[]>(
         map<Object[], Stop[]>(stops =>
-          stops.map<Stop>(stop => new Stop(stop['id'], stop['name']))
+          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction'], stop['type']))
         )
       );
   }
@@ -39,7 +39,7 @@ export class StopService {
     return this.http
       .get<Object>(this.stopsUrl + '/' + id)
       .pipe<Stop>(
-        map<Object, Stop>(stop => new Stop(stop['id'], stop['name']))
+        map<Object, Stop>(stop => new Stop(stop['id'], stop['name'] stop['lines'], stop['direction'], stop['type']))
       );
   }
 
@@ -68,7 +68,7 @@ export class StopService {
       .get<Object[]>(this.stopsUrl + '?name=' + text)
       .pipe<Stop[]>(
         map<Object[], Stop[]>(stops =>
-          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction']))
+          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction'], stop['type']))
         )
       );
   }
