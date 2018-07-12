@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
   longitude = 4.351721;
   stopCtrl: FormControl = new FormControl();
   filteredStops: Observable<any[]>;
+  lines: Observable<any[]>;
 
   constructor(private stopService: StopService) {}
 
@@ -36,6 +37,7 @@ export class SearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.stopService.searchStops(term)),
     );
+
   }
 }
 

@@ -1,13 +1,16 @@
 export class Stop {
   id: string;
   name: string;
+  lines: string[];
+  direction: string;
   // lines: object;
 
-  constructor(id: string, name: string) {
+  constructor(id: string, name: string, lines: string[], direction: string) {
     // , lines: object
     this.id = id;
     this.name = name;
-    // this.lines = lines;
+    this.lines = [lines];
+    this.direction = direction;
   }
 
   getStyle(): number {

@@ -68,7 +68,7 @@ export class StopService {
       .get<Object[]>(this.stopsUrl + '?name=' + text)
       .pipe<Stop[]>(
         map<Object[], Stop[]>(stops =>
-          stops.map<Stop>(stop => new Stop(stop['id'], stop['name']))
+          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction']))
         )
       );
   }

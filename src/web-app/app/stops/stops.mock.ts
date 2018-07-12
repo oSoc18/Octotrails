@@ -7,35 +7,187 @@ export class InMemoryDataService implements InMemoryDbService {
     const stops = [
       {
         id:'187',
-        name: 'Black Panther'
+        name: 'Black Panther',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Paris'
       },
       {
         id:'220',
-        name: 'Captain America'
+        name: 'Captain America',
+        lines: [
+          {
+          number: 14,
+          color: 'blue',
+          },
+          {
+          number: 19,
+          color: 'pink',
+          },
+          {
+          number: 1,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Barcelona'
       },
       {
         id:'351',
-        name: 'HULK'
+        name: 'HULK',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Lyon'
       },
       {
         id:'664',
-        name: 'Thor'
+        name: 'Thor',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Pauline'
       },
       {
         id:'740',
-        name: 'Silver Surfer'
+        name: 'Silver Surfer',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Pauline'
       },
       {
         id:'718',
-        name: 'Wolverine'
+        name: 'Wolverine',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Pauline'
       },
       {
         id:'262',
-        name: 'Daredevil'
+        name: 'Daredevil',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Pauline'
       },
       {
         id:'282',
-        name: 'Doctor Strange'
+        name: 'Doctor Strange',
+        lines: [
+          {
+          number: 24,
+          color: 'blue',
+          },
+          {
+          number: 14,
+          color: 'pink',
+          },
+          {
+          number: 7,
+          color: 'orange',
+          },
+          {
+          number: 90,
+          color: 'yellow',
+          },
+        ],
+        direction: 'Pauline'
       }
     ];
     return { stops };
