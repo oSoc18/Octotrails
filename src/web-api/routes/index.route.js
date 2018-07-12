@@ -3,6 +3,7 @@ import authRoutes from './auth.route';
 import heroesRoutes from './heroes.route';
 import linesRoutes from './lines.route';
 import stopsRoutes from './stops.route';
+import questionsRoutes from './questions.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -23,5 +24,8 @@ router.use('/lines', linesRoutes);
 
 // mount stops routes at /stops
 router.use('/stops', stopsRoutes);
+
+// mount question routes at /questions
+router.use('/questions', questionsRoutes);
 
 export default router;
