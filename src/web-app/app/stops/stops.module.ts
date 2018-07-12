@@ -30,13 +30,12 @@ import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
 import { UpdateComponent } from './update/update.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
   { path: 'search', component: SearchComponent },
   { path: 'search/:id', component: DetailComponent },
   { path: 'search/:id/history', component: HistoryComponent },
-  { path: 'search/:id/update', component: UpdateComponent },
+  { path: 'search/:id/update', component: UpdateComponent }
   // { path: 'dashboard', component: HeroDashboardComponent },
   // { path: 'list', component: HeroListComponent },
   // { path: ':id', component: HeroDetailComponent }
@@ -59,17 +58,13 @@ const routes: Routes = [
     MatAutocompleteModule,
     StopsRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-       dataEncapsulation: false
-     }),
-     AgmCoreModule.forRoot({
-       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
-     })
+      dataEncapsulation: false
+    }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
+    })
   ],
-  declarations: [
-    SearchComponent,
-    HistoryComponent,
-    UpdateComponent
-  ],
+  declarations: [SearchComponent, HistoryComponent, UpdateComponent],
   exports: [RouterModule, CarouselModule]
 })
 export class StopsModule {}
