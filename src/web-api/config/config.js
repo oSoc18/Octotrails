@@ -19,7 +19,12 @@ const envVarsSchema = Joi.object({
   MONGO_HOST: Joi.string()
     .description('Mongo DB host url')
     .default('mongodb://localhost:27017/mean'),
-  MONGO_PORT: Joi.number().default(27017)
+  MONGO_PORT: Joi.number().default(27017),
+  STIB_API: Joi.string()
+    .description('STIB API url')
+    .default(
+      'https://proxy.sulliops.co/index.php?http://detobel36.ddns.net/files/osoc/'
+    )
 })
   .unknown()
   .required();
