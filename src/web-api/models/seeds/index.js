@@ -9,7 +9,7 @@ export default {
   /**
    * Run all DB seeds
    */
-  runAll: function runThemAll() {
+  populate: function runThemAll() {
     seeders.forEach(seeder => {
       if (seeder != undefined && typeof seeder['run'] === 'function')
         throw new APIError(
