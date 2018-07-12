@@ -1,13 +1,14 @@
 import APIError from '../../helpers/APIError';
 
 import Question from '../question.model';
+// @ts-ignore
 import mockData from './questions.mock.json';
 
 /**
  * Insert the DB seeds for Questions collection
  */
 function run() {
-  Question.collection.countDocuments().then(count => {
+  Question.count({}).then(count => {
     console.log('Question', count);
     if (count === 0) {
       Question.insertMany(mockData)
