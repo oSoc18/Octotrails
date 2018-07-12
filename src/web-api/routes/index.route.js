@@ -1,7 +1,5 @@
 import express from 'express';
 import authRoutes from './auth.route';
-import heroesRoutes from './heroes.route';
-import linesRoutes from './lines.route';
 import stopsRoutes from './stops.route';
 import questionsRoutes from './questions.route';
 
@@ -15,12 +13,6 @@ router.get(['/', '/health-check', '/zen'], (req, res) => {
 
 // mount auth routes at /auth
 router.use('/auth', authRoutes);
-
-// mount heroes routes at /heroes
-router.use('/heroes', heroesRoutes);
-
-// mount lines routes at /lines
-router.use('/lines', linesRoutes);
 
 // mount stops routes at /stops
 router.use('/stops', stopsRoutes);
