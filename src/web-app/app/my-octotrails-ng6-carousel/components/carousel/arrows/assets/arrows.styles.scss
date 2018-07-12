@@ -1,0 +1,54 @@
+.carousel-nav__clickable-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--left {
+    right: auto;
+    left: 0;
+
+    &:hover .carousel-nav__btn--left {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &--right {
+    left: auto;
+    right: 0;
+
+    &:hover .carousel-nav__btn--right {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.carousel-nav__btn {
+  position: absolute;
+  top: 50%;
+  font-size: 46px;
+  transform: scaleX(0.8) translateY(-50%);
+  text-shadow: rgba(0, 0, 0, 0.8) 0 0 7px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &--left {
+    left: 15px;
+  }
+
+  &--right {
+    right: 15px;
+  }
+
+  &--disabled {
+    pointer-events: none;
+  }
+}

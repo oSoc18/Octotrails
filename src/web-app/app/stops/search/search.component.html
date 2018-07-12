@@ -1,0 +1,15 @@
+<form class="search-component">
+  <mat-form-field class="search-form-field">
+    <input matInput placeholder="Search a stop" aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.name">
+        <a routerLink="/stops/{{stop.id}}">{{stop.name}}</a>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<section>
+  <agm-map class="map" [latitude]="latitude" [longitude]="longitude">
+
+  </agm-map>
+</section>
