@@ -42,9 +42,13 @@ function saveInputs(req, res, next) {
       })
     )
     .then(nHistory => {
-      return res.json(nHistory);
+      return res.json({
+        message: 'Inputs saved'
+      });
     })
-    .catch(e => new APIError('tet', 500));
+    .catch(
+      e => new APIError('Operation failed', httpStatus.INTERNAL_SERVER_ERROR)
+    );
 }
 
 export default { saveInputs };
