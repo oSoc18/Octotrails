@@ -5,7 +5,6 @@ import compress from 'compression';
 import methodOverride from 'method-override';
 import cors from 'cors';
 import httpStatus from 'http-status';
-import expressValidation from 'express-validation';
 import helmet from 'helmet';
 import path from 'path';
 import appRoot from 'app-root-path';
@@ -39,14 +38,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // if error is not an instanceOf APIError, convert it.
 app.use((err, req, res, next) => {
-  if (err instanceof expressValidation.ValidationError) {
-    // validation error contains errors which is an array of error each containing message[]
-    const unifiedErrorMessage = err.errors
-      .map(error => error.messages.join('. '))
-      .join(' and ');
-    const error = new APIError(unifiedErrorMessage, err.status, true);
-    return next(error);
-  } else if (!(err instanceof APIError)) {
+  if (!(err instanceof APIError)) {
     const apiError = new APIError(err.message, err.status, err.isPublic);
     return next(apiError);
   }
@@ -67,8 +59,9 @@ app.use((
   next // eslint-disable-line no-unused-vars
 ) =>
   res.status(err.status).json({
+    status: err.status,
     message: err.isPublic ? err.message : httpStatus[err.status],
-    stack: config.env === 'development' ? err.stack : {}
+    stack: config.env === 'development' ? err.stack : undefined
   })
 );
 

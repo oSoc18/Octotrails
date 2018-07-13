@@ -1,6 +1,6 @@
 import https from 'https';
 import httpStatus from 'http-status';
-import { check, validationResult, Result } from 'express-validator/check';
+import { validationResult, Result } from 'express-validator/check';
 
 import APIError from '../helpers/APIError';
 
