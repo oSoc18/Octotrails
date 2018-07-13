@@ -28,10 +28,20 @@ The format of an Stop object includes the following data:
 - **coord_x** — [string] The Longitude coordinate.
 - **coord_y** — [string] The Latitude coordinate.
 - **address** — [**[Address][]**] The adddress
-- **type** — [string] The first letter of the type of trransport (`M` for `Metro`, `T` for `Tram`, `M` for `Metro`).
 - **transport** — [**[Line][]**[]] A list of **[Line][]** which by pass by this stop.
+- **type** — [string] Represented by a single character :
+
+  - `0` : It's a Stop type. A location where passengers board or disembark from a transit vehicle,
+  - `1` : It's a Station type. A physical structure or area that contains one or more stop.
+  - `2` : It's a Station type Entrance/Exit. A location where passengers can enter or exit a station from the street.
+    - The stop entry must also specify a parent_station value referencing the stop ID of the parent station for the entrance.}
+      .
 
 ## Address format
+
+An address is related to a stop.
+
+The format of an Address object includes the following data:
 
 - **fr** — [string] The French full address details.
 - **fr** — [string] The Dutch full address details.
