@@ -1,5 +1,7 @@
 import express from 'express';
+import { checkSchema } from 'express-validator/check';
 
+import { Stops } from '../config/param-validation';
 import stopsCtrl from '../controllers/stops.controller';
 
 const router = express.Router();
