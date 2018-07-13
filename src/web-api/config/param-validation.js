@@ -62,5 +62,21 @@ export const Stops = {
       isInt: true,
       toString: true
     }
+  },
+  // GET /api/stops/proximity/:lat/:long
+  inputs: {
+    stop_id: {
+      in: ['query'],
+      errorMessage: 'The stop ID must be defined',
+      exists: true,
+      isString: true,
+      toString: true
+    },
+    inputs: {
+      in: ['query'],
+      errorMessage: 'The value of the "lon" must be a number!',
+      is: true,
+      toString: true
+    }
   }
 };
