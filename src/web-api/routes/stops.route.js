@@ -1,4 +1,5 @@
 import express from 'express';
+import asyncHandler from 'express-async-handler';
 
 import stopsCtrl from '../controllers/stops.controller';
 import inputsCtrl from '../controllers/inputs.controller';
@@ -12,6 +13,6 @@ router.get('/search', stopsCtrl.search);
 router.get('/proximity', stopsCtrl.getProximity);
 
 /** GET /api/stops/proximity - Get the surroundings stops of given location */
-router.post('/:stop_id/inputs', inputsCtrl.saveInputs);
+router.post('/:stop_id/inputs', asyncHandler(inputsCtrl.saveInputs));
 
 export default router;

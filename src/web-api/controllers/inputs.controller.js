@@ -17,38 +17,38 @@ const checkValidationErrors = function check(errors) {
   });
 };
 
-function saveInputs(req, res, next) {
+async function saveInputs(req, res, next) {
+  // Check for errors
   checkValidationErrors(validationResult(req));
 
   const { stop_id } = req.params;
-  const { inputs } = req.body;
 
-  // Create Input Documents
-  Input.create(inputs)
-    .then(inputDocs => inputDocs.map(n => n._id))
-    .then(inputIDs =>
-      History.getByStopId({ stop_id }).then(previous => {
-        // Create new history
-        const history = new History({
-          stop_id,
-          inputs: inputIDs
-        });
+  try {
+    // Create Input Documents
+    const inputDocs = await Input.create(req.body.inputs);
 
-        // ? Link to the previous history ?
-        if (previous) {
-          history.set({ previous: previous._id });
-        }
-        return history.save();
-      })
-    )
-    .then(nHistory => {
-      return res.json({
-        message: 'Inputs saved'
-      });
-    })
-    .catch(
-      e => new APIError('Operation failed', httpStatus.INTERNAL_SERVER_ERROR)
-    );
+    const inputs = inputDocs.map(doc => doc._id);
+
+    const previous = await History.getByStopId({ stop_id });
+
+    // Create new history
+    const history = new History({
+      stop_id,
+      inputs
+    });
+
+    // ? Link to the previous history ?
+    if (previous) {
+      history.set({ previous: previous._id });
+    }
+    const nHistory = await history.save();
+
+    return res.json({
+      message: 'Inputs saved'
+    });
+  } catch (error) {
+    throw new APIError('Operation failed', httpStatus.INTERNAL_SERVER_ERROR);
+  }
 }
 
 export default { saveInputs };
