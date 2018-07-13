@@ -4,7 +4,7 @@ This document details all resources retrievable via the API.
 
 ## Base
 
-All requests for the API **must** be prefix by `/api`.
+All requests for the API **must** be prefixed by `/api`.
 
 ## Error Format
 
@@ -32,7 +32,7 @@ The format of an Stop object includes the following data:
   - **fr** — [string] The French full address details.
   - **nl** — [string] The Dutch full address details.
 
-- **transport** — [**[Line][]**[]] A list of **[Line][]** which by pass by this stop.
+- **transport** — [**[Line][]**[]] A list of **[Line][]** which pass by this stop.
 - **type** — [string] Represented by a single character :
 
   - `0` : It's a Stop type. A location where passengers board or disembark from a transit vehicle,
@@ -72,7 +72,7 @@ The format of an Line object includes the following data:
 
 A Picture is related to a stop.
 
-The format of an Picture object includes the following data:
+The format of a Picture object includes the following data:
 
 - **stop_id** — [string] The Stop ID.
 - **url** — [string] The relative path of the picture on the server.
@@ -89,7 +89,7 @@ The format of an Question object includes the following data:
 - **content** — [string] The question.
 - **type** — [enum(boolean, number, multiple, text)] Which kind of question is it.
 - **hint** — [string] The hint for the question.
-- **choices** — [Array<string>] Contains all corect answers for the question of type multiple :
+- **choices** — [string[]] Contains all possible answers to the question of type multiple :
 - **categorie** — [string] The **[Category][]** ID of the question.
 
 ## Category format
@@ -114,15 +114,19 @@ The format of an Input object includes the following data:
 
 ## History format
 
-A History is a record of the updates of a Stop. It can be linked to another history.
+A History is a record of the updates **[Input][]** of a Stop. It can be linked to another history.
+
+**The current history of a stop is the last updated.**
 
 The format of an History object includes the following data:
 
+- **id** — [string] The history ID.
 - **stop_id** — [string] The Stop ID.
 - **date_update** — [datetime] The Linux datetime of the update.
-- **inputs** — [Array<string>] All **[Category][]** ID of updated.
-- **previous** — [string] The ID of the previous **[History][]**.
+- **inputs** — [string[]] All **[Input][]** ID of updated.
+- **previous** — [**[History][]**[]] The list of 5 previous **[History][]**.
 
+[base]: ./formats.md#base
 [stop]: ./formats.md#stop-format
 [address]: ./formats.md#address-format
 [line]: ./formats.md#line-format
