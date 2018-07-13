@@ -7,10 +7,10 @@ import APIError from '../helpers/APIError';
 const options = {
   toJSON: {
     virtuals: true,
-    versionKey: false,
     transform: function(doc, ret) {
       ret.id = ret._id.toHexString();
       delete ret._id;
+      delete ret._v;
     }
   }
 };
