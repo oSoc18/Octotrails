@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 //  mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required()
 
@@ -21,12 +21,6 @@ export const Auth = {
  ***************/
 
 export const Stops = {
-  // GET /api/heroes
+  // GET /api/stops/search
   getSearch: {}
-};
-
-export const Stops = {
-  getSearch: {
-   
-  }
 };
