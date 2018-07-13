@@ -1,9 +1,8 @@
 import https from 'https';
 import httpStatus from 'http-status';
+import { check, validationResult, Result } from 'express-validator/check';
 
 import APIError from '../helpers/APIError';
-
-
 
 // function list(req, res, next) {
 //   const { limit = 50, skip = 0, name } = req.query;
@@ -15,81 +14,83 @@ import APIError from '../helpers/APIError';
 
 const STIB_API = process.env.STIB_API;
 
+/**
+ * Check if the validatio has generated some errors.
+ *
+ * @param {Result<any>} errors
+ */
+const checkValidationErrors = function check(errors) {
+  if (errors.isEmpty()) return;
+
+  errors.array().forEach(e => {
+    throw new APIError(e.msg, httpStatus.BAD_REQUEST);
+  });
+};
+
 function search(req, res, next) {
   let by = req.query.by;
   let term = req.query.term;
   let url;
 
-  validateSearch(by, term);
+  checkValidationErrors(validationResult(req));
 
-  if (by == "stop_name") {
+  if (by == 'stop_name') {
     url = '/stops/name/' + term;
-  } else if (by == "stop_id") {
+  } else if (by == 'stop_id') {
     url = '/stops/' + term;
   }
 
-  https.get(STIB_API + url, function (respApi) {
-    let apiData = '';
+  https
+    .get(STIB_API + url, function(respApi) {
+      let apiData = '';
 
-    // A chunk of data has been recieved.
-    respApi.on('data', (chunk) => apiData += chunk);
+      // A chunk of data has been recieved.
+      respApi.on('data', chunk => (apiData += chunk));
 
-    // The whole response has been received. Print out the result.
-    respApi.on('end', () => {
-      return res.json(
-        JSON.parse(apiData)
-      )
+      // The whole response has been received. Print out the result.
+      respApi.on('end', () => {
+        return res.json(JSON.parse(apiData));
+      });
+    })
+    .on('error', function(error) {
+      const err = new APIError(
+        'No results for your search!',
+        httpStatus.NOT_FOUND
+      );
+      next(error);
     });
-  }).on('error', function (error) {
-    const err = new APIError('No results for your search!', httpStatus.NOT_FOUND);
-    next(error);
-  });
-}
-
-function validateSearch(by, term) {
-  if (!by || (by != 'stop_name' && by != 'stop_id')) {
-    throw new APIError('"by" can only be "stop_name" or "stop_id"', httpStatus.BAD_REQUEST);
-  } else if (!term || term == "") {
-    throw new APIError('"term" must be defined', httpStatus.BAD_REQUEST);
-  }
 }
 
 function getProximity(req, res, next) {
   let lon = req.query.lon;
   let lat = req.query.lat;
 
-  validateProximity(lon, lat);
+  checkValidationErrors(validationResult(req));
 
   let url = '/stops/proximity/' + lon + ',' + lat;
 
-  https.get(STIB_API + url, function (respApi) {
-    let apiData = '';
+  https
+    .get(STIB_API + url, function(respApi) {
+      let apiData = '';
 
-    // A chunk of data has been recieved.
-    respApi.on('data', (chunk) => apiData += chunk);
+      // A chunk of data has been recieved.
+      respApi.on('data', chunk => (apiData += chunk));
 
-    // The whole response has been received. Print out the result.
-    respApi.on('end', () => {
-      return res.json(
-        JSON.parse(apiData)
-      )
+      // The whole response has been received. Print out the result.
+      respApi.on('end', () => {
+        return res.json(JSON.parse(apiData));
+      });
+    })
+    .on('error', function(error) {
+      const err = new APIError(
+        'No location for your search!',
+        httpStatus.NOT_FOUND
+      );
+      next(error);
     });
-  }).on('error', function (error) {
-    const err = new APIError('No location for your search!', httpStatus.NOT_FOUND);
-    next(error);
-  });
-}
-
-function validateProximity(lon, lat) {
-  if (!lon || isNaN(lon)) {
-    throw new APIError('The value of the longitude must be a number!', httpStatus.BAD_REQUEST);
-  } else if (!lat || isNaN(lat)) {
-    throw new APIError('The value of the latitude must be a number!', httpStatus.BAD_REQUEST);
-  }
 }
 
 export default {
   search,
-  validateSearch,
   getProximity
 };
