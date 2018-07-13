@@ -27,7 +27,11 @@ The format of an Stop object includes the following data:
 - **descr_nl** — [string] The Dutch functional name in uppercase.
 - **coord_x** — [string] The Longitude coordinate.
 - **coord_y** — [string] The Latitude coordinate.
-- **address** — [**[Address][]**] The adddress
+- **address** — [object] The adddress in FRench and Dutch.
+
+  - **fr** — [string] The French full address details.
+  - **nl** — [string] The Dutch full address details.
+
 - **transport** — [**[Line][]**[]] A list of **[Line][]** which by pass by this stop.
 - **type** — [string] Represented by a single character :
 
@@ -44,9 +48,27 @@ An address is related to a stop.
 The format of an Address object includes the following data:
 
 - **fr** — [string] The French full address details.
-- **fr** — [string] The Dutch full address details.
+- **nl** — [string] The Dutch full address details.
 
-## Pictures format
+## Line format
+
+A Line is related to a stop.
+
+The format of an Line object includes the following data:
+
+- **id** — [string] The Stop ID.
+- **type** — [string] The first character of the type of transport :
+  - `M` : Metro
+  - `T` : Tramway
+  - `B` : Bus
+- **type** — [Object] The stop destination in French and Dutch :
+  - **fr** — [string] The French stop destination.
+  - **nl** — [string] The Dutch stop destination.
+
+* **route_color** — [string] The relative path of the picture on the server.
+* **comment** — [string] The comment about the picture.
+
+## Picture format
 
 A Picture is related to a stop.
 
@@ -55,6 +77,16 @@ The format of an Picture object includes the following data:
 - **stop_id** — [string] The Stop ID.
 - **url** — [string] The relative path of the picture on the server.
 - **comment** — [string] The comment about the picture.
+
+## Input format
+
+An Input is a response to a **[Question][]**.
+
+The format of an Input object includes the following data:
+
+- **id** — [string] ID of the Input.
+- **question_id** — [string] The **[Question][]** ID.
+- **answer** — [string] The answer to the **[Question][]**.
 
 ## Question format
 
