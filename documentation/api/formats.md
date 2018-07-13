@@ -27,9 +27,14 @@ The format of an Stop object includes the following data:
 - **descr_nl** — [string] The Dutch functional name in uppercase.
 - **coord_x** — [string] The Longitude coordinate.
 - **coord_y** — [string] The Latitude coordinate.
-- **address** — [**[Adress][]**] The adddress
+- **address** — [**[Address][]**] The adddress
 - **type** — [string] The first letter of the type of trransport (`M` for `Metro`, `T` for `Tram`, `M` for `Metro`).
 - **transport** — [**[Line][]**[]] A list of **[Line][]** which by pass by this stop.
+
+## Address format
+
+- **fr** — [string] The French full address details.
+- **fr** — [string] The Dutch full address details.
 
 ## Pictures format
 
@@ -87,6 +92,7 @@ The format of an History object includes the following data:
 - **previous** — [string] The ID of the previous **[History][]**.
 
 [stop]: ./formats.md#stop-format
+[address]: ./formats.md#address-format
 [picture]: ./formats.md#picture-format
 [question]: ./formats.md#question-format
 [category]: ./formats.md#category-format
