@@ -29,6 +29,7 @@ export const Auth = {
  * STOPS
  ***************/
 export const Stops = {
+  // POST /api/stops/search
   getSearch: {
     by: {
       in: ['query'],
@@ -44,6 +45,21 @@ export const Stops = {
         options: { min: 2 },
         errorMessage: '"?term" must be defined'
       },
+      toString: true
+    }
+  },
+  // GET /api/stops/proximity/:lat/:long
+  proximity: {
+    lon: {
+      in: ['query'],
+      errorMessage: 'The value of the "lon" must be a number!',
+      isInt: true,
+      toString: true
+    },
+    lat: {
+      in: ['query'],
+      errorMessage: 'The value of the "lat" must be a number!',
+      isInt: true,
       toString: true
     }
   }
