@@ -9,7 +9,7 @@
             <div class="search-result-info-more">
               <ul class="search-result-info-lines">
                 <span class="search-result-info-type">{{stop.type}}</span>
-                <li class="search-result-info-line" *ngFor="let line of stop.lines[0]" [ngStyle]="{'background-color':line.color}">{{line.number}}</li>
+                <li class="search-result-info-line" *ngFor="let line of stop.lines" [ngStyle]="{'background-color':line.color}">{{line.number}}</li>
               </ul>
               <div class="search-result-info-direction">
                 <span>&rarr;</span>
