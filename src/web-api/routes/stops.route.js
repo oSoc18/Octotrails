@@ -10,4 +10,7 @@ router.get('/search', stopsCtrl.search);
 /** GET /api/stops/proximity - Get the surroundings stops of given location */
 router.get('/proximity', stopsCtrl.getProximity);
 
+/** GET /api/stops/proximity - Get the surroundings stops of given location */
+router.post('/:stop_id/inputs', stopsCtrl.saveInputs);
+
 export default router;
