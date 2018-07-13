@@ -1,8 +1,19 @@
 import Promise from 'bluebird';
-import mongoose from 'mongoose';
+import mongoose, { SchemaTypes } from 'mongoose';
 import httpStatus from 'http-status';
 
 import APIError from '../helpers/APIError';
+
+const options = {
+  toJSON: {
+    virtuals: true,
+    versionKey: false,
+    transform: function(doc, ret) {
+      ret.id = ret._id.toHexString();
+      delete ret._id;
+    }
+  }
+};
 
 /**
  * Question Schema
@@ -15,15 +26,17 @@ import APIError from '../helpers/APIError';
  * choices — [Array<string>] Contains all correct answers for the question of type multiple
  * categorie_id — [string] The [Category][] ID of the question.
  */
-const QuestionSchema = new mongoose.Schema({
-  id: String,
-  num: String,
-  content: String,
-  type: String,
-  hint: String,
-  choices: [String],
-  categorie_id: String
-});
+const QuestionSchema = new mongoose.Schema(
+  {
+    num: String,
+    content: String,
+    type: String,
+    hint: String,
+    choices: [String],
+    categorie_id: String
+  },
+  options
+);
 
 /**
  * Methods
