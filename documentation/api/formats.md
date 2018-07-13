@@ -78,16 +78,6 @@ The format of an Picture object includes the following data:
 - **url** — [string] The relative path of the picture on the server.
 - **comment** — [string] The comment about the picture.
 
-## Input format
-
-An Input is a response to a **[Question][]**.
-
-The format of an Input object includes the following data:
-
-- **id** — [string] ID of the Input.
-- **question_id** — [string] The **[Question][]** ID.
-- **answer** — [string] The answer to the **[Question][]**.
-
 ## Question format
 
 A Question is a question about the stop.
@@ -114,7 +104,7 @@ The format of an Category object includes the following data:
 
 ## Input format
 
-An Input is a response to a **[Question][]**.
+An Input is a given response to a **[Question][]**.
 
 The format of an Input object includes the following data:
 
