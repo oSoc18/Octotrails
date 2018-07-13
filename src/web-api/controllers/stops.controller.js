@@ -3,15 +3,31 @@ import httpStatus from 'http-status';
 
 import APIError from '../helpers/APIError';
 
-// function list(req, res, next) {
-//   const { limit = 50, skip = 0, name } = req.query;
+const { STIB_API } = process.env;
 
-//   Stop.list({ limit, skip, name })
-//     .then(stops => res.json(stops))
-//     .catch(e => next(e));
-// }
+/**
+ * Send a HTTP Request to external API
+ * @param {string} url - the full URL of the API
+ * @param {function} callback - The callback function when done or error.
+ */
+const sendRequestToAPI = function sendReq(url, callback) {
+  const sendError = () =>
+    callback(new APIError('No results for your search!', httpStatus.NOT_FOUND));
 
-const STIB_API = process.env.STIB_API;
+  https.get(url, function(respApi) {
+    let apiData = '';
+
+    if (respApi.statusCode !== 200) return sendError();
+
+    // A chunk of data has been recieved.
+    respApi.on('data', chunk => (apiData += chunk));
+
+    // The whole response has been received. Print out the result.
+    respApi.on('end', () => callback(null, JSON.parse(apiData)));
+
+    respApi.on('error', sendError);
+  });
+};
 
 function search(req, res, next) {
   let by = req.query.by;
@@ -26,25 +42,13 @@ function search(req, res, next) {
     url = '/stops/' + term;
   }
 
-  https
-    .get(STIB_API + url, function(respApi) {
-      let apiData = '';
-
-      // A chunk of data has been recieved.
-      respApi.on('data', chunk => (apiData += chunk));
-
-      // The whole response has been received. Print out the result.
-      respApi.on('end', () => {
-        return res.json(JSON.parse(apiData));
-      });
-    })
-    .on('error', function(error) {
-      const err = new APIError(
-        'No results for your search!',
-        httpStatus.NOT_FOUND
-      );
-      next(error);
-    });
+  sendRequestToAPI(STIB_API + url, (err, apiData) => {
+    if (err) {
+      next(err);
+    } else {
+      return res.json(apiData);
+    }
+  });
 }
 
 function validateSearch(by, term) {
