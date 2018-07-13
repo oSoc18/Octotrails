@@ -2,17 +2,14 @@ import { Injectable } from '@angular/core';
 import { Stop } from './stop';
 import { Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
-import { MessageService } from '../shared/services/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
+import { SERVER_TRANSITION_PROVIDERS } from '@angular/platform-browser/src/browser/server-transition';
 @Injectable({
   providedIn: 'root'
 })
 export class StopService {
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) {}
+  constructor(private http: HttpClient) {}
   private stopsUrl = env.api_url + 'api/stops'; // URL to web api
 
   /** GET stop by id. Return `undefined` when id not found */
@@ -27,54 +24,73 @@ export class StopService {
       .get<Object[]>(this.stopsUrl)
       .pipe<Stop[]>(
         map<Object[], Stop[]>(stops =>
-          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction'], stop['type']))
+          stops.map<Stop>(
+            stop =>
+              new Stop(
+                stop['id'],
+                stop['name'],
+                stop['lines'],
+                stop['direction'],
+                stop['type']
+              )
+          )
         )
       );
   }
 
   //Get specific stop
-  getStop(id: string): Observable<Stop> {
-    console.log("hello", id);
-    this.messageService.add(`StopService: looking up stop ${id}`);
-    return this.http
-      .get<Object>(this.stopsUrl + '/' + id)
-      .pipe<Stop>(
-        map<Object, Stop>(stop => new Stop(stop['id'], stop['name'] stop['lines'], stop['direction'], stop['type']))
-      );
+  getStop(term: any): Observable<Stop> {
+    let url;
+    if (isNaN(term)) {
+      url = '?by=stop_name&term=' + term;
+    } else {
+      url = '?by=stop_id&term=' + term;
+    }
+
+    return this.http.get<Object>(this.stopsUrl + url).pipe<Stop>(
+      map<Object, Stop>(
+        stop =>
+          new Stop(
+            stop['id'],
+            stop['name'],
+            stop['lines'],
+            stop['direction'],
+            stop['type']
+          )
+      ),
+      catchError(this.handleError('getStop', []))
+    );
   }
 
-  // deleteHero(hero: Hero): Observable<Hero> {
-  //   this.messageService.add(`HeroService: Deleting hero ${hero.id}`);
-  //   return this.http
-  //     .delete<Object>(this.heroesUrl + '/' + hero.id)
-  //     .pipe<Hero>(
-  //       map<Object, Hero>(retHero => new Hero(retHero['id'], retHero['name']))
-  //     );
-  // }
-  //
-  // addHero(hero: Hero): Observable<Hero> {
-  //   this.messageService.add(`HeroService: Creating hero ${hero.name}`);
-  //   return this.http
-  //     .post<Object>(this.heroesUrl, hero)
-  //     .pipe<Hero>(
-  //       map<Object, Hero>(retHero => new Hero(retHero['id'], retHero['name']))
-  //     );
-  // }
+  searchStops(term: any): Observable<Stop[]> {
+    let url;
+    if (isNaN(term)) {
+      url = '/search?by=stop_name&term=' + term;
+    } else {
+      url = '/search?by=stop_id&term=' + term;
+    }
 
-  //---SEARCH STOPS BY NAME/ID---//
-
-  searchStops(text: string): Observable<Stop[]> {
     return this.http
-      .get<Object[]>(this.stopsUrl + '?name=' + text)
+      .get<Object>(this.stopsUrl + url)
       .pipe<Stop[]>(
-        map<Object[], Stop[]>(stops =>
-          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction'], stop['type']))
+        map<Object[], Stop[]>(
+          stops =>
+            stops.map<Stop>(
+              stop =>
+                new Stop(
+                  stop['id'],
+                  stop['name'],
+                  stop['lines'],
+                  stop['direction'],
+                  stop['type']
+                )
+            ),
+          catchError(this.handleError('searchStops', []))
         )
       );
   }
 
-
-//---UPDATE STOP---//
+  //---UPDATE STOP---//
 
   // updateHero(hero: Hero): Observable<Hero> {
   //   return this.http
@@ -83,7 +99,6 @@ export class StopService {
   //       map<Object, Hero>(retHero => new Hero(retHero['id'], retHero['name']))
   //     );
   // }
-
 
   // /** Log a HeroService message with the MessageService */
   // private log(message: string) {

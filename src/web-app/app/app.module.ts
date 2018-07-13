@@ -25,14 +25,11 @@ import { AppRoutingModule } from './app-routing.module';
 /* Feature Modules */
 import { SharedModule } from './shared/shared.module';
 import { StopsModule } from './stops/stops.module';
-// import { LinesModule } from './lines/lines.module';
-// import { TestComponent } from './pauline/test/test.component';
 import { SearchComponent } from './stops/search/search.component';
 import { DetailComponent } from './stops/detail/detail.component';
 // import { HistoryComponent } from './octotrails/history/history.component';
 // import { CategoriesComponent } from './octotrails/categories/categories.component';
 // import { QuestionsComponent } from './octotrails/questions/questions.component';
-
 
 @NgModule({
   imports: [

@@ -5,10 +5,16 @@ export class Stop {
   direction: string;
   type: string;
 
-  constructor(id: string, name: string, lines: string[], direction: string, type: string) {
+  constructor(
+    id: string,
+    name: string,
+    lines: string[],
+    direction: string,
+    type: string
+  ) {
     this.id = id;
     this.name = name;
-    this.lines = [lines];
+    this.lines = lines;
     this.direction = direction;
     this.type = type;
   }
@@ -20,7 +26,7 @@ export class Stop {
   }
 
   getColor(): string {
-    switch(this.getStyle()) {
+    switch (this.getStyle()) {
       case 0:
         return '#cf8acf';
       case 1:

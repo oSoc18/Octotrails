@@ -17,25 +17,10 @@ export const Auth = {
 };
 
 /******************
- *
+ * STOPS
  ***************/
-export const Stops = {
-  // POST /api/heroes
-  createHero: {
-    body: {
-      name: Joi.string().required()
-    }
-  },
 
-  // UPDATE /api/heroes/:heroId
-  updateStop: {
-    body: {
-      name: Joi.string().required()
-    },
-    params: {
-      stopId: Joi.string()
-        .hex()
-        .required()
-    }
-  }
+export const Stops = {
+  // GET /api/heroes
+  getSearch: {}
 };
