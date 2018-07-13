@@ -1,5 +1,4 @@
 import express from 'express';
-import validate from 'express-validation';
 import expressJwt from 'express-jwt';
 import httpStatus from 'http-status';
 
@@ -11,7 +10,7 @@ import APIError from '../helpers/APIError';
 const router = express.Router(); // eslint-disable-line new-cap
 
 /** POST /api/auth/login - Returns token if correct username and password is provided */
-router.route('/login').post(validate(Auth.login), authCtrl.login);
+router.route('/login').post(authCtrl.login);
 
 /** GET /api/auth/random-number - Protected route,
  * needs token returned by the above as header. Authorization: Bearer {token} */
