@@ -33,15 +33,17 @@ export const Stops = {
     by: {
       in: ['query'],
       isIn: {
-        errorMessage: 'User email is wrong',
+        errorMessage: '"?by" can only be "stop_name" or "stop_id"',
         options: [['stop_id', 'stop_name']]
       },
       toString: true
     },
     term: {
       in: ['query'],
-      errorMessage: 'User password must be defined',
-      exists: true,
+      isLength: {
+        options: { min: 2 },
+        errorMessage: '"?term" must be defined'
+      },
       toString: true
     }
   }
