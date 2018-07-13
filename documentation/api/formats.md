@@ -103,6 +103,7 @@ The format of an History object includes the following data:
 
 [stop]: ./formats.md#stop-format
 [address]: ./formats.md#address-format
+[line]: ./formats.md#line-format
 [picture]: ./formats.md#picture-format
 [question]: ./formats.md#question-format
 [category]: ./formats.md#category-format
