@@ -6,6 +6,14 @@ This document details all resources retrievable via the API.
 
 All requests for the API **must** be prefixed by `/api`.
 
+Some routes accept the following query parameters :
+
+- `?skip=(number)`: Specifies the number of resources to skip.
+
+- `?limit=(number)`: Specifies the maximum number of resources to return.
+
+- `?full=(true|false)` : Specifies if the reference should be replaced by their entity.
+
 ## Error Format
 
 All errors return an HTTP error response with a JSON Object as key `message` about the error and the status of the response set to match the error.
