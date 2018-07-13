@@ -18,13 +18,18 @@ All errors return an HTTP error response with a JSON Object as key `message` abo
 
 ## Stop format
 
-A Stop is a
-
 The format of an Stop object includes the following data:
 
-- **id** — [string] The Stop ID.
-- **tech_id** — [string] The technical ID.
-- **name** — [string] The name.
+- **id** — [string] The identifier stop number (internal identifier, 5 characters).
+- **alpha_fr** — [string] The french official name of the stop in small letters and in French.
+- **alpha_nl** — [string] The Dutch official name.
+- **descr_fr** — [string] The French functional name in uppercase.
+- **descr_nl** — [string] The Dutch functional name in uppercase.
+- **coord_x** — [string] The Longitude coordinate.
+- **coord_y** — [string] The Latitude coordinate.
+- **address** — [**[Adress][]**] The adddress
+- **type** — [string] The first letter of the type of trransport (`M` for `Metro`, `T` for `Tram`, `M` for `Metro`).
+- **transport** — [**[Line][]**[]] A list of **[Line][]** which by pass by this stop.
 
 ## Pictures format
 
