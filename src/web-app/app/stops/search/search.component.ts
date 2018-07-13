@@ -38,12 +38,3 @@ export class SearchComponent implements OnInit {
     );
   }
 }
-
-// export class SearchComponent implements OnInit {
-//
-//   constructor() { }
-//
-//   ngOnInit() {
-//   }
-//
-// }
