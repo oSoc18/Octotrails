@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CarouselModule } from '../my-octotrails-ng6-carousel';
 
-import { InMemoryDataService } from './stops.mock';
+import { InMemoryDataService } from '../data.mock';
 
 import {
   MatButtonModule,
