@@ -64,17 +64,17 @@ A Line is related to a stop.
 
 The format of an Line object includes the following data:
 
-- **id** — [string] The Stop ID.
+- **line_id** — [string] The Stop ID.
 - **type** — [string] The first character of the type of transport :
   - `M` : Metro
   - `T` : Tramway
   - `B` : Bus
-- **type** — [Object] The stop destination in French and Dutch :
+- **direction** — [Object] The stop destination in French and Dutch :
   - **fr** — [string] The French stop destination.
   - **nl** — [string] The Dutch stop destination.
 
-* **route_color** — [string] The relative path of the picture on the server.
-* **comment** — [string] The comment about the picture.
+* **route_color** — [string] The main color that corresponds to a line
+* **route_text_color** — [string] The legible color to use for text drawn against a background of route_color..
 
 ## Picture format
 
@@ -130,9 +130,9 @@ The format of an History object includes the following data:
 
 - **id** — [string] The history ID.
 - **stop_id** — [string] The Stop ID.
-- **date_update** — [datetime] The Linux datetime of the update.
-- **inputs** — [string[]] All **[Input][]** ID of updated.
-- **previous** — [**[History][]**[]] The list of 5 previous **[History][]**.
+- **created** — [datetime] The Linux datetime of the update.
+- **inputs** — [string[]] All **[Input][]** ID related to.
+- **previous** — [**[History][]**] The previous **[History][]**.
 
 [base]: ./formats.md#base
 [stop]: ./formats.md#stop-format
