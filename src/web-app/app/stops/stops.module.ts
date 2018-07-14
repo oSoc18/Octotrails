@@ -20,27 +20,13 @@ import {
   MatAutocompleteModule
 } from '@angular/material';
 
+import { environment } from '../../environments/environment';
 import { StopsRoutingModule } from './stops-routing.module';
 
-// import { HeroListComponent } from './list/hero-list.component';
-// import { HeroDetailComponent } from './detail/hero-detail.component';
-// import { HeroDashboardComponent } from './dashboard/hero-dashboard.component';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
 import { UpdateComponent } from './update/update.component';
-import { environment } from '../../environments/environment.prod';
-
-const routes: Routes = [
-  { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
-  { path: 'search', component: SearchComponent },
-  { path: 'search/:id', component: DetailComponent },
-  { path: 'search/:id/history', component: HistoryComponent },
-  { path: 'search/:id/update', component: UpdateComponent }
-  // { path: 'dashboard', component: HeroDashboardComponent },
-  // { path: 'list', component: HeroListComponent },
-  // { path: ':id', component: HeroDetailComponent }
-];
 
 @NgModule({
   imports: [
@@ -58,7 +44,7 @@ const routes: Routes = [
     MatDividerModule,
     MatAutocompleteModule,
     StopsRoutingModule,
-    environment.production
+    !environment.production
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           dataEncapsulation: false
         })
@@ -67,7 +53,12 @@ const routes: Routes = [
       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
     })
   ],
-  declarations: [SearchComponent, HistoryComponent, UpdateComponent],
+  declarations: [
+    SearchComponent,
+    HistoryComponent,
+    UpdateComponent,
+    DetailComponent
+  ],
   exports: [RouterModule, CarouselModule]
 })
 export class StopsModule {}
