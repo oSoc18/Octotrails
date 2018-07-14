@@ -36,7 +36,6 @@ export class InMemoryDataService implements InMemoryDbService {
     const data = reqInfo.collection
       .filter(col => {
         if (by === 'stop_id' && col['id'].includes(term)) return true;
-        console.log(col);
         if (by === 'stop_name' && col['alpha_fr'].toLowerCase().includes(term))
           return true;
         if (by === 'stop_name' && col['alpha_nl'].toLowerCase().includes(term))

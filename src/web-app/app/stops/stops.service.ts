@@ -6,6 +6,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 import { SERVER_TRANSITION_PROVIDERS } from '@angular/platform-browser/src/browser/server-transition';
 
+const httpOpts = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,27 +19,27 @@ export class StopService {
 
   /** GET stop by id. Return `undefined` when id not found */
   getStopsNo404<Data>(id: number): Observable<{} | Stop> {
-    const url = `${this.stopsUrl}/?id=${id}`;
+    const url = `${this.stopsUrl}/search?by=stop_id&term=${id}`;
     return this.http.get<Stop[]>(url);
-  }
-
-  /** GET all stops from the server */
-  getStops() {
-    return this.http.get(this.stopsUrl).map(res => console.log(res));
   }
 
   //Get specific stop
   getStop(term: any): Observable<Stop> {
     const url = '?by=stop_id&term=' + term;
 
-    return this.http.get<Object>(this.stopsUrl + url).pipe<Stop>(
-      map(res => new Stop(res['stops'].pop())),
+    // Make a search and only take the first stop result
+    return this.searchStops(term).pipe<Stop>(
+      map(res => res.pop()),
       catchError(this.handleError('getStop', []))
     );
   }
 
   searchStops(term: any): Observable<Stop[]> {
     let url;
+    if (!term.trim()) {
+      // if not search term, return empty stop array.
+      return of([]);
+    }
     if (isNaN(term)) {
       url = '/search?by=stop_name&term=' + term;
     } else {
