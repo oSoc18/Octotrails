@@ -1,10 +1,10 @@
-# Search
+# List stops at proximity
 
-    GET /stops/proximity/lon=(number of lon)&lat=(number of lat)
+    GET /stops/proximity/?lon=(number of lon)&lat=(number of lat)
 
 ## Description
 
-Get the stops around the current device location.
+Get the stops around the given location.
 
 ## Parameters
 
@@ -14,11 +14,19 @@ Get the stops around the current device location.
 
 ## Return format
 
-Object
+{
+
+stops: [**[Stop][]**]
+
+}
 
 ## Errors
 
 - `400` : If query parameters `lon` or `lat` are missing or empty.
+
+- `404` : If any stop was found.
+
+The body of the response contains a message about the error.
 
 ## Example
 
@@ -88,3 +96,5 @@ Object
   ]
 }
 ```
+
+[stop]: ../../formats.md#stop-format
