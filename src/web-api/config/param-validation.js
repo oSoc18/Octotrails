@@ -49,33 +49,24 @@ export const Stops = {
     }
   },
   // GET /api/stops/proximity/:lat/:long
-  proximity: {
+  getProximity: {
     lon: {
       in: ['query'],
       errorMessage: 'The value of the "lon" must be a number!',
-      isInt: true,
-      toString: true
+      isInt: true
     },
     lat: {
       in: ['query'],
       errorMessage: 'The value of the "lat" must be a number!',
-      isInt: true,
-      toString: true
+      isInt: true
     }
   },
-  // GET /api/stops/proximity/:lat/:long
-  inputs: {
-    stop_id: {
-      in: ['query'],
-      errorMessage: 'The stop ID must be defined',
-      exists: true,
-      isString: true,
-      toString: true
-    },
+  // POST /api/stops/:stop_id/inputs
+  postInputs: {
     inputs: {
-      in: ['query'],
-      errorMessage: 'The value of the "lon" must be a number!',
-      is: true,
+      in: ['body'],
+      errorMessage: 'The inputs are misssing',
+      exists: true,
       toString: true
     }
   }
