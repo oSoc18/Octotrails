@@ -11,9 +11,8 @@ const { STIB_API } = process.env;
  * @param {string} url - the full URL of the API
  * @param {function} callback - The callback function when done or error.
  */
-const sendRequestToAPI = function sendReq(url, callback) {
-  const sendError = () =>
-    callback(new APIError('No results for your search!', httpStatus.NOT_FOUND));
+const sendRequestToAPI = function sendReq(url, errMsg, callback) {
+  const sendError = () => callback(new APIError(errMsg, httpStatus.NOT_FOUND));
 
   https.get(url, function(respApi) {
     let apiData = '';
@@ -56,42 +55,34 @@ function search(req, res, next) {
     url = '/stops/' + term;
   }
 
-  sendRequestToAPI(STIB_API + url, (err, apiData) => {
-    if (err) {
-      next(err);
-    } else {
-      return res.json(apiData);
+  sendRequestToAPI(
+    STIB_API + url,
+    'No results for your search!',
+    (err, apiData) => {
+      if (err) {
+        next(err);
+      } else {
+        return res.json(apiData);
+      }
     }
-  });
+  );
 }
 
-function getProximity(req, res, next) {
+function getProximity2(req, res, next) {
   let lon = req.query.lon;
   let lat = req.query.lat;
+
+  console.log(req.query);
 
   checkValidationErrors(validationResult(req));
 
   let url = '/stops/proximity/' + lon + ',' + lat;
 
-  https
-    .get(STIB_API + url, function(respApi) {
-      let apiData = '';
-
-      // A chunk of data has been recieved.
-      respApi.on('data', chunk => (apiData += chunk));
-
-      // The whole response has been received. Print out the result.
-      respApi.on('end', () => {
-        return res.json(JSON.parse(apiData));
-      });
-    })
-    .on('error', function(error) {
-      const err = new APIError(
-        'No location for your search!',
-        httpStatus.NOT_FOUND
-      );
-      next(error);
-    });
+  sendRequestToAPI(
+    STIB_API + url,
+    'No location for your search!',
+    (err, apiData) => (err ? next(err) : res.json(apiData))
+  );
 }
 
 function getProximity(req, res, next) {
