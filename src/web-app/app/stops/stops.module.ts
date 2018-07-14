@@ -29,6 +29,7 @@ import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
 import { UpdateComponent } from './update/update.component';
+import { environment } from '../../environments/environment.prod';
 
 const routes: Routes = [
   { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
@@ -57,9 +58,11 @@ const routes: Routes = [
     MatDividerModule,
     MatAutocompleteModule,
     StopsRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    }),
+    environment.production
+      ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+          dataEncapsulation: false
+        })
+      : [],
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
     })
