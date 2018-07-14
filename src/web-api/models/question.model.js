@@ -33,7 +33,7 @@ const QuestionSchema = new mongoose.Schema(
     type: String,
     hint: String,
     choices: [String],
-    categorie_id: String
+    categorie_id: String //TODO  Replace by { type: SchemaTypes.ObjectId, ref: 'Category' }
   },
   options
 );
