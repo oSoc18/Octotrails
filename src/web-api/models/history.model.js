@@ -67,21 +67,18 @@ HistorySchema.statics = {
    * @returns {Promise<History, APIError>}
    */
   getByStopId: async function get({ stop_id, full = false, full_history }) {
-    const query = this.find({ stop_id })
-      .sort('-created_at')
-      .limit(1);
+    const query = this.findOne({ stop_id }).sort('-created_at');
 
     if (full || full_history) {
-      query.populate('inputs').populate('history');
+      query
+        .populate('inputs')
+        .populate({ path: 'history', options: { limit: 5 } });
     }
 
-    const history = await query;
+    return await query;
 
-    if (!history) {
-      throw new APIError('No history exists!', httpStatus.NOT_FOUND, true);
-    } else {
-      return history.pop();
-    }
+    // if (!history) {
+    //   throw new APIError('No history exists!', httpStatus.NOT_FOUND, true);
   }
 };
 
