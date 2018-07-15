@@ -1,5 +1,6 @@
 import https from 'https';
 import httpStatus from 'http-status';
+import config from '../config/config';
 
 import APIError from '../helpers/APIError';
 
@@ -13,7 +14,7 @@ import APIError from '../helpers/APIError';
 //     .catch(e => next(e));
 // }
 
-const STIB_API = process.env.STIB_API;
+const STIB_API = config.stibApi;
 
 function search(req, res, next) {
   let by = req.query.by;
