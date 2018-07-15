@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { PageNotFoundComponent } from './components/';
 import { RangeValidatorDirective } from './directives/range.directive';
+import { MatDesignModule } from './mat-design/mat-design.module';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, MatDesignModule],
   declarations: [PageNotFoundComponent, RangeValidatorDirective],
-  exports: [
-    PageNotFoundComponent,
-    CommonModule,
-    FormsModule,
-    RangeValidatorDirective
-  ]
+  exports: [PageNotFoundComponent, RangeValidatorDirective, MatDesignModule]
 })
 export class SharedModule {}

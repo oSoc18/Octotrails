@@ -2,26 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CarouselModule } from '../my-octotrails-ng6-carousel';
 
 import { InMemoryDataService } from '../data.mock';
 
-import {
-  MatButtonModule,
-  MatToolbarModule,
-  MatGridListModule,
-  MatInputModule,
-  MatListModule,
-  MatIconModule,
-  MatDividerModule,
-  MatAutocompleteModule
-} from '@angular/material';
-
 import { environment } from '../../environments/environment';
 import { StopsRoutingModule } from './stops-routing.module';
+import { MatDesignModule } from '../shared/mat-design/mat-design.module';
 
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
@@ -32,17 +20,7 @@ import { UpdateComponent } from './update/update.component';
   imports: [
     CarouselModule,
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatGridListModule,
-    MatInputModule,
-    MatListModule,
-    MatIconModule,
-    MatDividerModule,
-    MatAutocompleteModule,
+    MatDesignModule,
     StopsRoutingModule,
     !environment.production
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
