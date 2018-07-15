@@ -38,7 +38,7 @@ html {
 }
 
 .search-result {
-  font-size: 0.3rem;
+  font-size: .3rem;
   text-decoration: none;
 }
 
@@ -48,9 +48,9 @@ html {
   padding: 0;
 }
 
-.search-result-info-line {
+.search-result-info-line{
   font-size: 16px;
-  margin: 0.2rem;
+  margin: .2rem;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -62,8 +62,7 @@ html {
   align-items: center;
 }
 
-.search-result-info-direction,
-.search-result-info-type {
+.search-result-info-direction, .search-result-info-type{
   font-size: 16px;
   color: black;
 }
@@ -87,6 +86,7 @@ html {
 .mat-autocomplete-panel {
   height: 100vh;
 }
+
 
 //
 // .search-result li {

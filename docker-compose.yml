@@ -7,7 +7,6 @@ services:
     ports:
       - "4200:4200"
       - "4040:4040"
-      - "8081:8081"
     links:
       - mongo
     depends_on:
@@ -18,4 +17,4 @@ services:
     volumes:
       - ./data:/data/db
     ports:
-      - "27018:27017"
+      - "27017:27017"

@@ -2,55 +2,93 @@ import { Injectable } from '@angular/core';
 import { Stop } from './stop';
 import { Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
+import { MessageService } from '../shared/services/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
-import { SERVER_TRANSITION_PROVIDERS } from '@angular/platform-browser/src/browser/server-transition';
-
-const httpOpts = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable({
   providedIn: 'root'
 })
 export class StopService {
-  constructor(private http: HttpClient) {}
-  private stopsUrl = env.API_URL + 'api/stops'; // URL to web api
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
+  private stopsUrl = env.api_url + 'api/stops'; // URL to web api
 
   /** GET stop by id. Return `undefined` when id not found */
   getStopsNo404<Data>(id: number): Observable<{} | Stop> {
-    const url = `${this.stopsUrl}/search?by=stop_id&term=${id}`;
+    const url = `${this.stopsUrl}/?id=${id}`;
     return this.http.get<Stop[]>(url);
   }
 
+  /** GET all stops from the server */
+  getStops(): Observable<Stop[]> {
+    return this.http
+      .get<Object[]>(this.stopsUrl)
+      .pipe<Stop[]>(
+        map<Object[], Stop[]>(stops =>
+          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction'], stop['type']))
+        )
+      );
+  }
+
   //Get specific stop
-  getStop(term: any): Observable<Stop> {
-    const url = '?by=stop_id&term=' + term;
-
-    // Make a search and only take the first stop result
-    return this.searchStops(term).pipe<Stop>(
-      map(res => res.pop()),
-      catchError(this.handleError('getStop', []))
-    );
+  getStop(id: string): Observable<Stop> {
+    console.log("hello", id);
+    this.messageService.add(`StopService: looking up stop ${id}`);
+    return this.http
+      .get<Object>(this.stopsUrl + '/' + id)
+      .pipe<Stop>(
+        map<Object, Stop>(stop => new Stop(stop['id'], stop['name'] stop['lines'], stop['direction'], stop['type']))
+      );
   }
 
-  searchStops(term: any): Observable<Stop[]> {
-    let url;
-    if (!term.trim()) {
-      // if not search term, return empty stop array.
-      return of([]);
-    }
-    if (isNaN(term)) {
-      url = '/search?by=stop_name&term=' + term;
-    } else {
-      url = '/search?by=stop_id&term=' + term;
-    }
+  // deleteHero(hero: Hero): Observable<Hero> {
+  //   this.messageService.add(`HeroService: Deleting hero ${hero.id}`);
+  //   return this.http
+  //     .delete<Object>(this.heroesUrl + '/' + hero.id)
+  //     .pipe<Hero>(
+  //       map<Object, Hero>(retHero => new Hero(retHero['id'], retHero['name']))
+  //     );
+  // }
+  //
+  // addHero(hero: Hero): Observable<Hero> {
+  //   this.messageService.add(`HeroService: Creating hero ${hero.name}`);
+  //   return this.http
+  //     .post<Object>(this.heroesUrl, hero)
+  //     .pipe<Hero>(
+  //       map<Object, Hero>(retHero => new Hero(retHero['id'], retHero['name']))
+  //     );
+  // }
 
-    return this.http.get<Object>(this.stopsUrl + url).pipe<Stop[]>(
-      map(resp => resp['stops'].map(res => new Stop(res))),
-      catchError(this.handleError('searchStops', []))
-    );
+  //---SEARCH STOPS BY NAME/ID---//
+
+  searchStops(text: string): Observable<Stop[]> {
+    return this.http
+      .get<Object[]>(this.stopsUrl + '?name=' + text)
+      .pipe<Stop[]>(
+        map<Object[], Stop[]>(stops =>
+          stops.map<Stop>(stop => new Stop(stop['id'], stop['name'], stop['lines'], stop['direction'], stop['type']))
+        )
+      );
   }
+
+
+//---UPDATE STOP---//
+
+  // updateHero(hero: Hero): Observable<Hero> {
+  //   return this.http
+  //     .put<Object>(this.heroesUrl + '/' + hero.id, hero)
+  //     .pipe<Hero>(
+  //       map<Object, Hero>(retHero => new Hero(retHero['id'], retHero['name']))
+  //     );
+  // }
+
+
+  // /** Log a HeroService message with the MessageService */
+  // private log(message: string) {
+  //   this.messageService.add('StopService: ' + message);
+  // }
 
   /**
    * Handle Http operation that failed.

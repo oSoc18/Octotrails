@@ -1,58 +1,38 @@
-export class Transport {
-  line_id: number;
-  type: string;
-  direction: {
-    fr: string;
-    nl: string;
-  };
-  route_color: string;
-  route_text_color: string;
-
-  /**
-   * Init a Transport from a raw JSON object, with all field matching
-   * @param fields All raw field of a Transport
-   */
-  public constructor(fields?: {}) {
-    if (fields) Object.assign(this, fields);
-  }
-
-  get number(): number {
-    return this.line_id;
-  }
-
-  get backColor(): string {
-    return '#' + this.route_color;
-  }
-
-  get textColor(): string {
-    return '#' + this.route_text_color;
-  }
-}
 export class Stop {
   id: string;
-  alpha_fr: string;
-  alpha_nl: string;
-  descr_fr: string;
-  descr_nl: string;
-  coord_x: string;
-  coord_y: string;
-  address: {
-    fr: string;
-    nl: string;
-  };
-  type: number;
-  transport: Transport[];
+  name: string;
+  lines: string[];
+  direction: string;
+  type: string;
 
-  /**
-   * Init a Stop from a raw JSON object, with all field matching
-   * @param fields All raw field of a Stop
-   */
-  public constructor(fields?: { transport? }) {
-    if (fields) {
-      Object.assign(this, fields);
-      if (fields.transport) {
-        this.transport = fields.transport.map(tr => new Transport(tr));
-      }
+  constructor(id: string, name: string, lines: string[], direction: string, type: string) {
+    this.id = id;
+    this.name = name;
+    this.lines = [lines];
+    this.direction = direction;
+    this.type = type;
+  }
+
+  getStyle(): number {
+    const midChar = this.name.length / 2;
+    const midCharCode: number = this.name.charCodeAt(midChar);
+    return midCharCode % 5;
+  }
+
+  getColor(): string {
+    switch(this.getStyle()) {
+      case 0:
+        return '#cf8acf';
+      case 1:
+        return '#6461A0';
+      case 2:
+        return '#949396';
+      case 3:
+        return '#314CB6';
+      case 4:
+        return '#0A81D1';
+      default:
+        return '#cf8acf';
     }
   }
 }

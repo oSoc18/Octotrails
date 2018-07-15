@@ -7,6 +7,5 @@ const router = express.Router();
 /** GET /api/stops/search - Get specific line by it number */
 router.get('/search', stopsCtrl.search);
 
-router.get('/proximity', stopsCtrl.getProximity);
 
 export default router;
