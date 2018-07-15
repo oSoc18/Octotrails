@@ -10,7 +10,7 @@ import { SERVER_TRANSITION_PROVIDERS } from "@angular/platform-browser/src/brows
 })
 export class StopService {
   constructor(private http: HttpClient) {}
-  private stopsUrl = env.api_url + "api/stops"; // URL to web api
+  private stopsUrl = env.API_URL + "api/stops"; // URL to web api
 
   /** GET stop by id. Return `undefined` when id not found */
   getStopsNo404<Data>(id: number): Observable<{} | Stop> {
