@@ -7,7 +7,7 @@ const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string()
     .allow(['development', 'production', 'test', 'provision'])
     .default('development'),
-  SERVER_PORT: Joi.number().default(4040),
+  SERVER_PORT: Joi.number().default(8081),
   MONGOOSE_DEBUG: Joi.boolean().when('NODE_ENV', {
     is: Joi.string().equal('development'),
     then: Joi.boolean().default(true),
@@ -18,8 +18,13 @@ const envVarsSchema = Joi.object({
     .default('58d49jQc5E=6854099462989ef034a5+ihvhOjbWoa65A'),
   MONGO_HOST: Joi.string()
     .description('Mongo DB host url')
-    .default('mongodb://localhost:27017/mean'),
-  MONGO_PORT: Joi.number().default(27017)
+    .default('mongodb://localhost:27017/test-octotrails'),
+  MONGO_PORT: Joi.number().default(27017),
+  STIB_API: Joi.string()
+    .description('STIB API url')
+    .default(
+      'https://proxy.sulliops.co/index.php?http://detobel36.ddns.net/files/osoc/'
+    )
 })
   .unknown()
   .required();

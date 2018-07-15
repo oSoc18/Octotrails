@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://localhost:8081/'
+  API_URL: 'http://localhost:8081/',
+  AGM_API_URL : ''
 };
 
 /*
