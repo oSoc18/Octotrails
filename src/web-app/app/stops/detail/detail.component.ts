@@ -4,9 +4,13 @@ import { Location } from '@angular/common';
 
 import { Stop } from '../stop';
 import { StopService } from '../stops.service';
-import { ICarouselConfig, AnimationConfig } from '../../my-octotrails-ng6-carousel';
+import {
+  ICarouselConfig,
+  AnimationConfig
+} from '../../my-octotrails-ng6-carousel';
 
 import { slideInDownAnimation } from '../../shared/animations';
+import { Data } from '../../shared/providers/data.provider';
 
 @Component({
   selector: 'app-detail',
@@ -22,10 +26,10 @@ export class DetailComponent implements OnInit {
   @Input() stop: Stop;
 
   public imageSources: string[] = [
-   'https://picsum.photos/1920/1080/?random',
-   'https://picsum.photos/1920/1080/?random',
-   'https://picsum.photos/1920/1080/?random'
-  ]
+    'https://picsum.photos/1920/1080/?random',
+    'https://picsum.photos/1920/1080/?random',
+    'https://picsum.photos/1920/1080/?random'
+  ];
 
   public config: ICarouselConfig = {
     verifyBeforeLoad: true,
@@ -42,10 +46,17 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private stopService: StopService,
     private location: Location,
-  ) {}
+    private data: Data
+  ) {
+    console.log(JSON.stringify(this.data.stop));
+  }
 
   ngOnInit() {
-    this.getStop();
+    if (this.data.stop) {
+      this.stop = this.data.stop;
+    } else {
+      this.getStop();
+    }
   }
 
   getStop(): void {
@@ -66,10 +77,8 @@ export class DetailComponent implements OnInit {
   }
 
   update(): void {
-    //this.stopService.updateStop(this.stop).subscribe(() => this.goBack());
+    //this.stopService.updateStop(this.stop, this.data.inputs).subscribe(() => this.goBack());
   }
 
-  history(): void {
-
-  }
+  history(): void {}
 }
