@@ -1,58 +1,88 @@
 import https from 'https';
 import httpStatus from 'http-status';
 import config from '../config/config';
+import { validationResult, Result } from 'express-validator/check';
 
 import APIError from '../helpers/APIError';
 
+/**
+ * Send a HTTP Request to external API
+ * @param {string} url - the full URL of the API
+ * @param {function} callback - The callback function when done or error.
+ */
+const sendRequestToAPI = function sendReq(url, errMsg, callback) {
+  const sendError = () => callback(new APIError(errMsg, httpStatus.NOT_FOUND));
 
+  https.get(url, function(respApi) {
+    let apiData = '';
 
-// function list(req, res, next) {
-//   const { limit = 50, skip = 0, name } = req.query;
+    if (respApi.statusCode !== 200) return sendError();
 
-//   Stop.list({ limit, skip, name })
-//     .then(stops => res.json(stops))
-//     .catch(e => next(e));
-// }
+    // A chunk of data has been recieved.
+    respApi.on('data', chunk => (apiData += chunk));
+
+    // The whole response has been received. Print out the result.
+    respApi.on('end', () => callback(null, JSON.parse(apiData)));
+
+    respApi.on('error', sendError);
+  });
+};
 
 const STIB_API = config.stibApi;
+/**
+ * Check if the validatio has generated some errors.
+ *
+ * @param {Result<any>} errors
+ */
+const checkValidationErrors = function check(errors) {
+  if (errors.isEmpty()) return;
+
+  errors.array().forEach(e => {
+    throw new APIError(e.msg, httpStatus.BAD_REQUEST);
+  });
+};
 
 function search(req, res, next) {
   let by = req.query.by;
   let term = req.query.term;
   let url;
 
-  validateSearch(by, term);
+  checkValidationErrors(validationResult(req));
 
-  if (by == "stop_name") {
+  if (by == 'stop_name') {
     url = '/stops/name/' + term;
-  } else if (by == "stop_id") {
+  } else if (by == 'stop_id') {
     url = '/stops/' + term;
   }
 
-  https.get(STIB_API + url, function (respApi) {
-    let apiData = '';
-
-    // A chunk of data has been recieved.
-    respApi.on('data', (chunk) => apiData += chunk);
-
-    // The whole response has been received. Print out the result.
-    respApi.on('end', () => {
-      return res.json(
-        JSON.parse(apiData)
-      )
-    });
-  }).on('error', function (error) {
-    const err = new APIError('No results for your search!', httpStatus.NOT_FOUND);
-    next(error);
-  });
+  sendRequestToAPI(
+    STIB_API + url,
+    'No results for your search!',
+    (err, apiData) => {
+      if (err) {
+        next(err);
+      } else {
+        return res.json(apiData);
+      }
+    }
+  );
 }
 
-function validateSearch(by, term) {
-  if (!by || (by != 'stop_name' && by != 'stop_id')) {
-    throw new APIError('"by" can only be "stop_name" or "stop_id"', httpStatus.BAD_REQUEST);
-  } else if (!term || term == "") {
-    throw new APIError('"term" must be defined', httpStatus.BAD_REQUEST);
-  }
+function getProximity2(req, res, next) {
+  let lon = req.query.lon;
+  let lat = req.query.lat;
+
+  console.log(req.query);
+
+  checkValidationErrors(validationResult(req));
+
+  let url = '/stops/proximity/' + lon + ',' + lat;
+
+  sendRequestToAPI(
+    STIB_API + url,
+    'No location for your search!',
+    (err, apiData) => (err ? next(err) : res.json(apiData))
+  );
 }
 
 function getProximity(req, res, next) {
@@ -63,34 +93,42 @@ function getProximity(req, res, next) {
 
   let url = '/stops/proximity/' + lon + ',' + lat;
 
-  https.get(STIB_API + url, function (respApi) {
-    let apiData = '';
+  https
+    .get(STIB_API + url, function(respApi) {
+      let apiData = '';
 
-    // A chunk of data has been recieved.
-    respApi.on('data', (chunk) => apiData += chunk);
+      // A chunk of data has been recieved.
+      respApi.on('data', chunk => (apiData += chunk));
 
-    // The whole response has been received. Print out the result.
-    respApi.on('end', () => {
-      return res.json(
-        JSON.parse(apiData)
-      )
+      // The whole response has been received. Print out the result.
+      respApi.on('end', () => {
+        return res.json(JSON.parse(apiData));
+      });
+    })
+    .on('error', function(error) {
+      const err = new APIError(
+        'No location for your search!',
+        httpStatus.NOT_FOUND
+      );
+      next(error);
     });
-  }).on('error', function (error) {
-    const err = new APIError('No location for your search!', httpStatus.NOT_FOUND);
-    next(error);
-  });
 }
 
 function validateProximity(lon, lat) {
   if (!lon || isNaN(lon)) {
-    throw new APIError('The value of the longitude must be a number!', httpStatus.BAD_REQUEST);
+    throw new APIError(
+      'The value of the longitude must be a number!',
+      httpStatus.BAD_REQUEST
+    );
   } else if (!lat || isNaN(lat)) {
-    throw new APIError('The value of the latitude must be a number!', httpStatus.BAD_REQUEST);
+    throw new APIError(
+      'The value of the latitude must be a number!',
+      httpStatus.BAD_REQUEST
+    );
   }
 }
 
 export default {
   search,
-  validateSearch,
   getProximity
 };
