@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-boolean',
+  selector: 'app-question-type-boolean',
   templateUrl: './boolean.component.html',
   styleUrls: ['./boolean.component.css']
 })

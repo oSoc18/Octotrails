@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-number',
+  selector: 'app-question-type-number',
   templateUrl: './number.component.html',
   styleUrls: ['./number.component.css']
 })

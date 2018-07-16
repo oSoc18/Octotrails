@@ -21,7 +21,8 @@ export class OverviewComponent implements OnInit {
 //    private stopService: StopService,
     private location: Location,
   ) {
-    this.questions = questionsMock;
+    this.questions = questionsMock[0];
+    console.log(this.questions);
   }
 
   ngOnInit() {

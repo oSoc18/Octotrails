@@ -13,6 +13,7 @@ import { MatDesignModule } from '../shared/mat-design/mat-design.module';
 import { OverviewComponent } from "./overview/overview.component";
 import { NumberComponent } from './question-types/number/number.component';
 import { BooleanComponent } from './question-types/boolean/boolean.component';
+import { MultipleComponent } from './question-types/multiple/multiple.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { BooleanComponent } from './question-types/boolean/boolean.component';
   declarations: [
     OverviewComponent,
     NumberComponent,
-    BooleanComponent
+    BooleanComponent,
+    MultipleComponent
   ],
   exports: [QuestionsRoutingModule]
 })
