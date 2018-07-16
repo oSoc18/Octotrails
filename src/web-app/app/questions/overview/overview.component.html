@@ -1,0 +1,15 @@
+<div>
+  <h1>Accessibility</h1>
+  <h2>Physical</h2>
+  <div>
+
+  <div *ngFor="let question of questions">
+      <ng-container *ngIf="question.type == 'number'">
+          <app-number [title]="question.content"></app-number>
+      </ng-container>
+      <ng-container *ngIf="question.type == 'boolean'">
+          <app-boolean [title]="question.content"></app-boolean>
+      </ng-container>
+  </div>
+</div>
+</div>
