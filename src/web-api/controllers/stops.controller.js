@@ -4,8 +4,6 @@ import config from '../config/config';
 
 import APIError from '../helpers/APIError';
 
-const { STIB_API } = process.env;
-
 /**
  * Send a HTTP Request to external API
  * @param {string} url - the full URL of the API
