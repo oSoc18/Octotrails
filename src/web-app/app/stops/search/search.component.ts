@@ -40,10 +40,12 @@ export class SearchComponent implements OnInit {
 
     function success(pos) {
       var crd = pos.coords;
+      let latitude = crd.latitude;
+      let longitude = crd.longitude;
 
       console.log("Your current position is:");
-      console.log(`Latitude : ${crd.latitude}`);
-      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`Latitude : ${latitude}`);
+      console.log(`Longitude: ${longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
     }
 
