@@ -27,5 +27,6 @@ button {
   .active {
     background: linear-gradient(to right, #00C6FF , #0072FF);
     color: white;
+    box-shadow: 0 9px 22px -6px rgba(153, 208, 253, .50);
   }
   
