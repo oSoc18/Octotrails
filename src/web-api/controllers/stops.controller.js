@@ -41,6 +41,7 @@ const checkValidationErrors = function check(errors) {
     throw new APIError(e.msg, httpStatus.BAD_REQUEST);
   });
 };
+const STIB_API = config.stibApi;
 
 function search(req, res, next) {
   let by = req.query.by;

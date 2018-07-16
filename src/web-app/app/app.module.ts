@@ -27,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
 import { StopsModule } from './stops/stops.module';
 import { SearchComponent } from './stops/search/search.component';
 import { DetailComponent } from './stops/detail/detail.component';
+import { MapBoxComponent } from './map-box/map-box.component';
 // import { HistoryComponent } from './octotrails/history/history.component';
 // import { CategoriesComponent } from './octotrails/categories/categories.component';
 // import { QuestionsComponent } from './octotrails/questions/questions.component';

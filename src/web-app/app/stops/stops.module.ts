@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { CarouselModule } from "../my-octotrails-ng6-carousel";
+import { MapBoxComponent } from '../map-box/map-box.component';
 
 import {
   MatButtonModule,
@@ -59,7 +60,7 @@ const routes: Routes = [
       apiKey: "AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA"
     })
   ],
-  declarations: [SearchComponent, HistoryComponent, UpdateComponent],
+  declarations: [SearchComponent, HistoryComponent, UpdateComponent, MapBoxComponent],
   exports: [RouterModule, CarouselModule]
 })
 export class StopsModule {}
