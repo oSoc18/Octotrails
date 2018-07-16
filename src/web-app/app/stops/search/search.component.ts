@@ -21,12 +21,6 @@ export class SearchComponent implements OnInit {
   constructor(private stopService: StopService) {}
 
   ngOnInit(): void {
-    let options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-
     this.filteredStops = this.stopCtrl.valueChanges.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
@@ -37,22 +31,5 @@ export class SearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.stopService.searchStops(term))
     );
-
-    function success(pos) {
-      var crd = pos.coords;
-      let latitude = crd.latitude;
-      let longitude = crd.longitude;
-
-      console.log("Your current position is:");
-      console.log(`Latitude : ${latitude}`);
-      console.log(`Longitude: ${longitude}`);
-      console.log(`More or less ${crd.accuracy} meters.`);
-    }
-
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
   }
 }
