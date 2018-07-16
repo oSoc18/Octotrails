@@ -5,7 +5,7 @@
       <h2>{{stop.alpha_nl}}</h2>
       <h3>id:{{stop.id}}</h3>
     </div>
-    <button>upload picture</button>
+    <input type='file' (change)="readURL($event);" />
   </header>
   <div class="carousel">
     <carousel [sources]="imageSources" [config]="config"></carousel>
@@ -14,19 +14,15 @@
     <header>
       <h4>Lines serving this stop</h4>
     </header>
-    <article>
-      <ul class="stop-lines">
-        <li class="stop-line" *ngFor="let line of stop.transport">
-          <div class="flex">
-            <p [ngStyle]="{'color':line.textColor}">{{line.type}}</p>
-            <p class="search-result-info-line" [ngStyle]="{'color':line.textColor, 'background-color':line.backColor}">{{line.number}}</p>
-          </div>
-          <div>
-            <p>to {{line.direction.fr}}</p>
-            <p class="search-result-info-title">{{stop.alpha_nl}}</p>
-          </div>
-        </li>
-      </ul>
+    <article class="stop-line" *ngFor="let line of stop.transport">
+      <div class="flex">
+        <p class="line-type" [ngStyle]="{'color':line.textColor}">{{line.type}}</p>
+        <p class="line-number" [ngStyle]="{'color':line.textColor, 'background-color':line.backColor}">{{line.number}}</p>
+      </div>
+      <div>
+        <p>&rarr; {{line.direction.fr}}</p>
+        <p class="search-result-info-title">{{stop.alpha_nl}}</p>
+      </div>
     </article>
   </section>
   <section>
@@ -34,7 +30,8 @@
       <h4>Address</h4>
     </header>
     <article>
-      <p>{{stop.address.nl}}</p>
+      <div>{{stop.address.nl}}</div>
+      <a routerLink="/stops/{{stop.id}}/location">show on map</a>
     </article>
   </section>
   <!-- <label>Proposed change:
