@@ -1,10 +1,9 @@
 import https from 'https';
 import httpStatus from 'http-status';
+import config from '../config/config';
 import { validationResult, Result } from 'express-validator/check';
 
 import APIError from '../helpers/APIError';
-
-const { STIB_API } = process.env;
 
 /**
  * Send a HTTP Request to external API
@@ -29,6 +28,7 @@ const sendRequestToAPI = function sendReq(url, errMsg, callback) {
   });
 };
 
+const STIB_API = config.stibApi;
 /**
  * Check if the validatio has generated some errors.
  *
