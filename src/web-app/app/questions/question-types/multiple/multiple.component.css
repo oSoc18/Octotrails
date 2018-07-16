@@ -9,20 +9,18 @@
     width: 90%;
 }
   
-  .buttons {
-      display: flex;
-  }
-  
-  button {
+.buttons {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
-    width: 40%;
-    height: 2.5rem;
+}
+  
+button {
+    padding: .5rem 1rem;
+    height: 2.8rem;
     text-align: center;
     font-size: 1rem;
-  }
+    background: linear-gradient(to right, #E8E8E8 , #F3F3F3);
+    margin: 0 1rem .5rem 0;
+}
   
   .active {
     background: linear-gradient(to right, #00C6FF , #0072FF);

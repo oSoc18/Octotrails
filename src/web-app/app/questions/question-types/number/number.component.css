@@ -7,7 +7,7 @@
     font-size: 1.2rem;
     color: rgba(29, 31, 49, 0.35);
     width: 90%;
-  }
+}
 
 ::ng-deep .mat-form-field-infix, .number {
   width: 30% !important;
@@ -17,6 +17,12 @@
 }
 
 ::ng-deep .mat-form-field-infix input {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #0072FF;
+}
+
+.unit {
+    align-self: flex-end;
+    padding: 0 1rem .5rem 0;
+    font-size: 1.2rem;
 }
