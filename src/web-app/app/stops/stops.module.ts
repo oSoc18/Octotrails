@@ -15,6 +15,8 @@ import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
 import { UpdateComponent } from './update/update.component';
+import { LocationComponent } from './location/location.component';
+import { ImageDetailComponent } from './image-detail/image-detail.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import { UpdateComponent } from './update/update.component';
     SearchComponent,
     HistoryComponent,
     UpdateComponent,
-    DetailComponent
+    DetailComponent,
+    LocationComponent,
+    ImageDetailComponent
   ],
   exports: [RouterModule, CarouselModule]
 })
