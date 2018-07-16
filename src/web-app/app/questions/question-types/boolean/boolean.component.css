@@ -1,9 +1,10 @@
 .question {
-  font-size: 1.2rem;
-  color: rgba(29, 31, 49, 0.35);
-  width: 94%;
-  margin-left: auto;
-}
+    font-size: 1.2rem;
+    color: rgba(29, 31, 49, 0.35);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 .buttons {
     display: flex;

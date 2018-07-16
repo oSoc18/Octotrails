@@ -14,6 +14,7 @@ import { OverviewComponent } from "./overview/overview.component";
 import { NumberComponent } from './question-types/number/number.component';
 import { BooleanComponent } from './question-types/boolean/boolean.component';
 import { MultipleComponent } from './question-types/multiple/multiple.component';
+import { StringComponent } from './question-types/string/string.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { MultipleComponent } from './question-types/multiple/multiple.component'
     OverviewComponent,
     NumberComponent,
     BooleanComponent,
-    MultipleComponent
+    MultipleComponent,
+    StringComponent
   ],
   exports: [QuestionsRoutingModule]
 })

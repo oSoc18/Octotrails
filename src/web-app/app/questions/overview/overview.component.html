@@ -13,6 +13,9 @@
       <ng-container *ngIf="question.type == 'multiple'">
           <app-question-type-multiple [title]="question.content" [choices]="question.choices"></app-question-type-multiple>
       </ng-container>
+      <ng-container *ngIf="question.type == 'String'">
+          <app-question-type-string [title]="question.content"></app-question-type-string>
+      </ng-container>
   </div>
 </div>
 </div>
