@@ -14,7 +14,6 @@ import { MatDesignModule } from '../shared/mat-design/mat-design.module';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
-import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   imports: [
@@ -34,8 +33,7 @@ import { UpdateComponent } from './update/update.component';
   declarations: [
     SearchComponent,
     HistoryComponent,
-    UpdateComponent,
-    DetailComponent
+    DetailComponent,
   ],
   exports: [RouterModule, CarouselModule]
 })
