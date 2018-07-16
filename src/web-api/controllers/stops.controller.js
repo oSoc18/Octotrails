@@ -28,7 +28,6 @@ const sendRequestToAPI = function sendReq(url, errMsg, callback) {
   });
 };
 
-const STIB_API = config.stibApi;
 /**
  * Check if the validatio has generated some errors.
  *
