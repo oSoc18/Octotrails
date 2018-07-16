@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-// import { Stop } from '../stop';
-// import { StopService } from '../stops.service';
-import questionsMock from "../../shared/mock/questions.mock";
+import { Question } from '../question';
+import { QuestionService } from '../questions.service';
+import questionsMock from '../../shared/mock/questions.mock';
 
 @Component({
   selector: 'app-questions-overview',
@@ -12,30 +12,28 @@ import questionsMock from "../../shared/mock/questions.mock";
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit {
-
   @Input() questions;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-//    private stopService: StopService,
-    private location: Location,
+    private questionService: QuestionService,
+    private location: Location
   ) {
-    this.questions = questionsMock[0];
     console.log(this.questions);
   }
 
   ngOnInit() {
-    this.getStop();
+    this.getQuestions();
   }
 
-  getStop(): void {
-    const id: string = this.route.snapshot.paramMap.get('id');
-    //this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
+  getQuestions(): void {
+    this.questionService
+      .getQuestions()
+      .subscribe(list => (this.questions = list));
   }
 
   goBack(): void {
     this.location.back();
   }
-
 }
