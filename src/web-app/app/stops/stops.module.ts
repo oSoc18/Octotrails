@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { AgmCoreModule } from '@agm/core';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { CarouselModule } from '../my-octotrails-ng6-carousel';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule, Routes } from "@angular/router";
+import { AgmCoreModule } from "@agm/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { CarouselModule } from "../my-octotrails-ng6-carousel";
+import { MapBoxComponent } from '../map-box/map-box.component';
 
 import { InMemoryDataService } from '../data.mock';
 
@@ -33,6 +36,7 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
     })
   ],
+<<<<<<< HEAD
   declarations: [
     SearchComponent,
     HistoryComponent,
@@ -41,6 +45,9 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
     LocationComponent,
     ImageDetailComponent
   ],
+=======
+  declarations: [SearchComponent, HistoryComponent, UpdateComponent, MapBoxComponent],
+>>>>>>> develop
   exports: [RouterModule, CarouselModule]
 })
 export class StopsModule {}

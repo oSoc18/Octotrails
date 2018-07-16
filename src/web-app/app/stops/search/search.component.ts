@@ -6,10 +6,13 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
 
+<<<<<<< HEAD
 import { Stop } from '../stop';
 import { StopService } from '../stops.service';
 import { Data } from '../../shared/providers/data.provider';
 
+=======
+>>>>>>> develop
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -41,6 +44,7 @@ export class SearchComponent implements OnInit {
       switchMap((term: string) => this.stopService.searchStops(term))
     );
   }
+<<<<<<< HEAD
 
   /**
    *LINKING
@@ -49,4 +53,6 @@ export class SearchComponent implements OnInit {
     this.data.stop = selected;
     this.router.navigate(['/stops/', selected.id]);
   }
+=======
+>>>>>>> develop
 }
