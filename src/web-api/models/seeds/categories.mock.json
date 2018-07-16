@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3",
+        "name": "Accessibility",
+        "sub_categories": [
+            {
+                "id": "3a",
+                "name": "Physical elements"
+            },
+            {
+                "id": "3b",
+                "name": "PMR"
+            }
+        ]
+    }
+]
