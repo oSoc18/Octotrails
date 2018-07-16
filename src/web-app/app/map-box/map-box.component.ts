@@ -12,10 +12,9 @@ export class MapBoxComponent implements OnInit {
   /// default settings
   map: mapboxgl.Map;
   style = "mapbox://styles/mapbox/outdoors-v9";
-  lat = 37.75;
-  lng = -122.41;
+  lat = 50.85045;
+  lng = 4.34878;
   message = "Hello World!";
-  
 
   // data
   source: any;
@@ -28,31 +27,35 @@ export class MapBoxComponent implements OnInit {
   }
 
   private initializeMap() {
+    let lat;
+    let lon;
+
     /// locate the user
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
         this.map.flyTo({
-          center: [this.lng, this.lat]
+          center: [lon, lat]
         });
       });
     }
+
+    //Add markers here
+    const coordinates = [lon, lat];
+    const newMarker = new GeoJson(coordinates, { message: this.message });
 
     this.buildMap();
   }
 
   buildMap() {
-    mapboxgl.accessToken = environment.mapbox.accessToken;
-    this.map = new mapboxgl.Map({      
+    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
+    this.map = new mapboxgl.Map({
       container: "map",
       style: this.style,
       zoom: 13,
       center: [this.lng, this.lat]
     });
-
-    /// Add map controls
-    this.map.addControl(new mapboxgl.NavigationControl());
   }
 
   /// Helpers
