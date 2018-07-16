@@ -22,7 +22,8 @@ export class UpdateComponent implements OnInit {
     private location: Location,
   ) {
     this.questions = [
-      {"title":"Minimum path width","type":"number"}
+      {"title":"Minimum path width","type":"number"},
+      {"title":"Is there an access for the visually impaired?","type":"boolean"}
     ]
   }
 

@@ -16,6 +16,7 @@ import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
 import { UpdateComponent } from './update/update.component';
 import { NumberComponent } from './question-types/number/number.component';
+import { BooleanComponent } from './question-types/boolean/boolean.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { NumberComponent } from './question-types/number/number.component';
     HistoryComponent,
     UpdateComponent,
     DetailComponent,
-    NumberComponent
+    NumberComponent,
+    BooleanComponent
   ],
   exports: [RouterModule, CarouselModule]
 })

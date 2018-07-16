@@ -8,9 +8,9 @@
       <ng-container *ngIf="question.type == 'number'">
           <app-number [title]="question.title"></app-number>
       </ng-container>
-      <!-- <ng-container *ngIf="question.type == 'boolean'">
-          <app-button [title]="question.title"></app-button>
-      </ng-container> -->
+      <ng-container *ngIf="question.type == 'boolean'">
+          <app-boolean [title]="question.title"></app-boolean>
+      </ng-container>
   </div>
 </div>
 </div>
