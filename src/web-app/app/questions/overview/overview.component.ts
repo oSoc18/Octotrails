@@ -29,7 +29,7 @@ export class OverviewComponent implements OnInit {
   }
 
    getQuestions(): void {
-       this.questions = questionsMock;
+       this.questions = questionsMock[0];
 //     this.questionService
 //       .getQuestions()
 //       .subscribe(list => console.log(this.questions = list));

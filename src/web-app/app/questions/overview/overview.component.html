@@ -10,7 +10,6 @@
     </mat-progress-bar>
     <p class="progress-tag">{{progressValue}} of 100</p>
 </div>
-
 <div *ngFor="let question of questions">
     <ng-container *ngIf="question.type == 'number'">
         <app-question-type-number [title]="question.content"></app-question-type-number>
