@@ -49,9 +49,7 @@ export class MapBoxComponent implements OnInit {
   }
 
   buildMap() {
-    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(
-      environment.mapbox.accessToken
-    );
+    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
     this.map = new mapboxgl.Map({
       container: "map",
       style: this.style,
