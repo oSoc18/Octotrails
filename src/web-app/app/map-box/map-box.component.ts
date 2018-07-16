@@ -15,7 +15,6 @@ export class MapBoxComponent implements OnInit {
   lat = 37.75;
   lng = -122.41;
   message = "Hello World!";
-  
 
   // data
   source: any;
@@ -43,8 +42,8 @@ export class MapBoxComponent implements OnInit {
   }
 
   buildMap() {
-    mapboxgl.accessToken = environment.mapbox.accessToken;
-    this.map = new mapboxgl.Map({      
+    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
+    this.map = new mapboxgl.Map({
       container: "map",
       style: this.style,
       zoom: 13,
