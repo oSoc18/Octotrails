@@ -10,7 +10,8 @@ import {
   MatListModule,
   MatIconModule,
   MatDividerModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
     MatListModule,
     MatIconModule,
     MatDividerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressBarModule
   ],
   exports: [
     FormsModule,
@@ -38,7 +40,8 @@ import {
     MatListModule,
     MatIconModule,
     MatDividerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressBarModule
   ]
 })
 export class MatDesignModule {}

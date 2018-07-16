@@ -14,6 +14,7 @@ import questionsMock from "../../shared/mock/questions.mock";
 export class OverviewComponent implements OnInit {
 
   @Input() questions;
+  progressValue = 10;
 
   constructor(
     private route: ActivatedRoute,

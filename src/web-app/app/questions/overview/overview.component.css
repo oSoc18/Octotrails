@@ -17,3 +17,23 @@
     color: rgba(29, 31, 45, 0.45);
     margin: 0;
 }
+
+.progress-bar {
+    margin-top: 2rem;
+}
+
+.progress-tag, .progress-bar {
+    width: 90%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background-color: #EEEFF2;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background: linear-gradient(to right, #00C6FF , #0072FF);
+}
