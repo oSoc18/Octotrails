@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
       switchMap((term: string) => this.stopService.searchStops(term))
     );
   }
-<<<<<<< HEAD
 
   /**
    *LINKING
@@ -50,6 +49,4 @@ export class SearchComponent implements OnInit {
     this.data.stop = selected;
     this.router.navigate(['/stops/', selected.id]);
   }
-=======
->>>>>>> develop
 }
