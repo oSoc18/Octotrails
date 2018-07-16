@@ -1,5 +1,4 @@
 export default [
-  [
     {
       id: '5b491ca7cbc4364f4855994f',
       choices: [],
@@ -22,7 +21,7 @@ export default [
       id: '5b491ca7cbc4364f48559951',
       num: '028',
       content: 'Is there some vegetations nearby ?',
-      type: 'String',
+      type: 'string',
       hint: 'If yes, please put some comments on that situation',
       choices: [],
       categorie_id: '3a'
@@ -36,5 +35,4 @@ export default [
       choices: ['41', '42', '43'],
       categorie_id: '3b'
     }
-  ]
 ];

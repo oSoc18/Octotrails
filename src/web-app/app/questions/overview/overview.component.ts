@@ -28,11 +28,12 @@ export class OverviewComponent implements OnInit {
     this.getQuestions();
   }
 
-  getQuestions(): void {
-    this.questionService
-      .getQuestions()
-      .subscribe(list => (this.questions = list));
-  }
+   getQuestions(): void {
+       this.questions = questionsMock;
+//     this.questionService
+//       .getQuestions()
+//       .subscribe(list => console.log(this.questions = list));
+}
 
   goBack(): void {
     this.location.back();
