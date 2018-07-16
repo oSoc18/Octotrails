@@ -10,9 +10,10 @@
     </mat-progress-bar>
     <p class="progress-tag">{{progressValue}} of 100</p>
 </div>
+
 <div *ngFor="let question of questions">
     <ng-container *ngIf="question.type == 'number'">
-        <app-question-type-number [title]="question.content"></app-question-type-number>
+        <app-question-type-number [question]="question" (answer)= "getAnswer($event)"></app-question-type-number>
     </ng-container>
     <ng-container *ngIf="question.type == 'boolean'">
         <app-question-type-boolean [title]="question.content"></app-question-type-boolean>

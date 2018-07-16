@@ -34,6 +34,9 @@ export class OverviewComponent implements OnInit {
 //       .getQuestions()
 //       .subscribe(list => console.log(this.questions = list));
 }
+getAnswer(value) {
+    console.log(value);
+}
 
   goBack(): void {
     this.location.back();

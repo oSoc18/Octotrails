@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class Data {
   public stop: any;
+  public inputs:any;
 
   public constructor() {}
 }
