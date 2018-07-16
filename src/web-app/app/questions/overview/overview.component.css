@@ -37,3 +37,26 @@
 ::ng-deep .mat-progress-bar-fill::after {
   background: linear-gradient(to right, #00C6FF , #0072FF);
 }
+
+.end-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.done-button {
+    height: 2.8rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(to right, #00C6FF , #0072FF);
+}
+
+.cancel {
+    text-align: center;
+    height: 2.8rem;
+    font-size: 1rem;
+    text-decoration: none;
+    padding-top: 1rem;
+}
