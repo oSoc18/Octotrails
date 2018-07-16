@@ -1,4 +1,6 @@
-<h2 class="question">{{title}}</h2>
-<div class="buttons" *ngFor="let choice of choices">
-  <button (click)="buttonClicked($event)" type="button" class="button">{{choice}}</button>
+<div class="multiple-component">
+    <h2 class="question">{{title}}</h2>
+    <div class="buttons" *ngFor="let choice of choices">
+        <button (click)="buttonClicked($event)" type="button" class="button">{{choice}}</button>
+    </div>
 </div>
