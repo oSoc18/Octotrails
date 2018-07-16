@@ -13,13 +13,18 @@ import { StopService } from '../stops.service';
 export class UpdateComponent implements OnInit {
 
   @Input() stop: Stop;
+  @Input() questions:Question[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private stopService: StopService,
     private location: Location,
-  ) {}
+  ) {
+    this.questions = [
+      {"title":"Minimum path width","type":"number"}
+    ]
+  }
 
   ngOnInit() {
     this.getStop();

@@ -1,4 +1,16 @@
 <div *ngIf="stop">
   <a routerLink="/stops/{{stop.id}}">Go Back</a>
   <h1>update {{stop.name}}</h1>
+  <h1>Accessibility</h1>
+  <h2>Physical</h2>
+  <div>
+  <div *ngFor="let question of questions">
+      <ng-container *ngIf="question.type == 'number'">
+          <app-number [title]="question.title"></app-number>
+      </ng-container>
+      <!-- <ng-container *ngIf="question.type == 'boolean'">
+          <app-button [title]="question.title"></app-button>
+      </ng-container> -->
+  </div>
+</div>
 </div>
