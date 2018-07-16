@@ -1,6 +1,6 @@
 import https from 'https';
 import httpStatus from 'http-status';
-import { validationResult, Result } from 'express-validator/check';
+import config from '../config/config';
 
 import APIError from '../helpers/APIError';
 
@@ -41,6 +41,7 @@ const checkValidationErrors = function check(errors) {
     throw new APIError(e.msg, httpStatus.BAD_REQUEST);
   });
 };
+const STIB_API = config.stibApi;
 
 function search(req, res, next) {
   let by = req.query.by;

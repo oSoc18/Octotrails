@@ -42,6 +42,7 @@ const config = {
   mongo: {
     host: envVars.MONGO_HOST,
     port: envVars.MONGO_PORT
-  }
+  },
+  stibApi : envVars.STIB_API
 };
 export default config;
