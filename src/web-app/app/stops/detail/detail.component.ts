@@ -29,13 +29,8 @@ export class DetailComponent implements OnInit {
 
   public imageSources: string[] = [
     'https://picsum.photos/1920/1080/?random',
-<<<<<<< HEAD
-    'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?random'
-=======
     'https://picsum.photos/1920/1080/?image=1074',
     'https://picsum.photos/1920/1080/?image=1080'
->>>>>>> b253c28371371e7773f9364fe80a610f38f2b555
   ];
 
   public config = {
