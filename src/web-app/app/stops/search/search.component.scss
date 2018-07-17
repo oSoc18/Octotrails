@@ -1,20 +1,53 @@
 /* StopSearch private styles */
 html {
-  font-size: 16px;
-}
-
-::ng-deep .mat-form-field-wrapper {
-  width: 100vw;
+  font-size: 1.6rem;
 }
 
 // ::ng-deep .mat-autocomplete-panel {
 //   background-color: rgba(255,255,255,.8);
 // }
 
+.search-section {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.search-component {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form-field {
+    font-size: 1.4rem;
+}
+
+::ng-deep .mat-form-field{
+    background-color: rgba(255, 255, 255, .90);
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, .90);
+    padding: 1rem 2rem 0 2rem;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .cdk-overlay-pane {
+    width: 1296px !important;
+    top: 75.0625px !important;
+    left: 72px !important;
+}
+
+::ng-deep .mat-autocomplete-panel.mat-autocomplete-visible {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important; 
+}
+
 ::ng-deep .mat-option {
   display: flex;
-  margin: 1rem;
-  background-color: lightgrey;
+  margin: 1.5rem 2rem;
+  border-bottom: 1px solid lightgrey;
   height: 6rem !important;
   padding: 0;
 }
@@ -124,7 +157,7 @@ html {
 // }
 
 .map {
-  height: 100vw;
+  width: 100vw;
 }
 
 // ul.search-result {
