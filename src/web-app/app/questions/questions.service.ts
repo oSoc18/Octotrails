@@ -33,7 +33,7 @@ export class QuestionService {
    * @param answers List of {question and answer}
    */
   saveAnswers(stop_id, answers) {
-    const url = env.API_URL + 'api/' + stop_id + '/inputs';
+    const url = env.API_URL + 'api/stops/' + stop_id + '/inputs';
     return this.http.post(url, { inputs: answers }, httpOpts).pipe(
       map(resp => resp['message']),
       catchError(this.handleError('saveAnswers', []))
