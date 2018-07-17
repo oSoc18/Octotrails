@@ -21,6 +21,9 @@ export class InMemoryDataService implements InMemoryDbService {
     if (collectionName === 'stops' && id === 'search') {
       return this.getStops(reqInfo);
     }
+    if (collectionName === 'questions') {
+      return this.getQuestions(reqInfo);
+    }
     return undefined; // let the default GET handle all others
   }
 
@@ -61,6 +64,18 @@ export class InMemoryDataService implements InMemoryDbService {
               body: { error: `'Stop' with ${by}='${term}' not found` },
               status: STATUS.NOT_FOUND
             };
+      return this.finishOptions(options, reqInfo);
+    });
+  }
+
+  private getQuestions(reqInfo: RequestInfo) {
+    return reqInfo.utils.createResponse$(() => {
+      console.log('HTTP GET override');
+
+      const options: ResponseOptions = {
+        body: { questions: reqInfo.collection },
+        status: STATUS.OK
+      };
       return this.finishOptions(options, reqInfo);
     });
   }

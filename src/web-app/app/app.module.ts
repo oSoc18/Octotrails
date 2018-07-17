@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 /* Feature Modules */
 import { SharedModule } from './shared/shared.module';
 import { StopsModule } from './stops/stops.module';
+import { QuestionsModule} from './questions/questions.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { StopsModule } from './stops/stops.module';
     }),
     SharedModule,
     StopsModule,
+    QuestionsModule,
     AppRoutingModule // Module import order matters
   ],
   declarations: [AppComponent],
