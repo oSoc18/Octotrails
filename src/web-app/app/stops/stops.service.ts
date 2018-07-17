@@ -24,14 +24,21 @@ export class StopService {
   }
 
   //Get specific stop
-  getStop(term: any): Observable<Stop> {
-    const url = '?by=stop_id&term=' + term;
+  getStop(term: any, by?:string): Observable<Stop> {
+    let url;
+    if(by) {
+      url = `?by=${by}&term=${term}`;
+    } else {
+      if (isNaN(term)) {
+        url = "?by=stop_name&term=" + term;
+      } else {
+        url = "?by=stop_id&term=" + term;
+      }
+    }
 
-    // Make a search and only take the first stop result
-    return this.searchStops(term).pipe<Stop>(
-      map(res => res.pop()),
-      catchError(this.handleError('getStop', []))
-    );
+    return this.http
+      .get<Object>(this.stopsUrl  +"/search"+ url)
+      .pipe<Stop>(catchError(this.handleError("getStop", [])));
   }
 
   searchStops(term: any): Observable<Stop[]> {

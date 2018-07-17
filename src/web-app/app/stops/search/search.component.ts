@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
   }
 
   /**
-   *
+   *LINKING
    */
   showDetails(selected: Stop) {
     this.data.stop = selected;

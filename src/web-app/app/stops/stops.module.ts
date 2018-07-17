@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CarouselModule } from '../my-octotrails-ng6-carousel';
+import { MapBoxComponent } from '../map-box/map-box.component';
 
 import { InMemoryDataService } from '../data.mock';
 
@@ -15,6 +18,8 @@ import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
 import { UpdateComponent } from './update/update.component';
+import { LocationComponent } from './location/location.component';
+import { ImageDetailComponent } from './image-detail/image-detail.component';
 
 @NgModule({
   imports: [
@@ -35,7 +40,10 @@ import { UpdateComponent } from './update/update.component';
     SearchComponent,
     HistoryComponent,
     UpdateComponent,
-    DetailComponent
+    DetailComponent,
+    LocationComponent,
+    ImageDetailComponent,
+    MapBoxComponent
   ],
   exports: [RouterModule, CarouselModule]
 })
