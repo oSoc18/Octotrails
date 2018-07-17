@@ -3,7 +3,23 @@
     <input matInput placeholder="Search a stop" aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.name">
-        <a routerLink="/stops/{{stop.id}}">{{stop.alpha_nl}}</a>
+        <a class="search-result" (click)="showDetails(stop)">
+          <section class="search-result-info">
+            <h1 class="search-result-info-title">{{stop.alpha_nl}}</h1>
+            <div class="search-result-info-more">
+              <ul class="search-result-info-lines">
+                <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
+                <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
+                  <span [ngStyle]="{'color':line.textColor}">{{line.number}}</span>
+                </li>
+              </ul>
+              <div class="search-result-info-direction">
+                <span>&rarr; </span>
+                <span>{{stop.transport[0].direction.nl}}</span>
+              </div>
+            </div>
+          </section>
+        </a>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

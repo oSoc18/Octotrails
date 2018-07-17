@@ -1,0 +1,22 @@
+<div class="heading">
+  <a routerLink="/stops/8022">Go Back</a>
+  <h1 class="section-title">Accessibility</h1>
+  <h2 class="section-sub-title">Physical</h2>
+</div>
+
+<div>
+  <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>
+  <p class="progress-tag">{{answeredQuestions}} of {{totalNumberOfQuestions}}</p>
+</div>
+
+<div *ngFor="let question of questions">
+  <app-question-type-number *ngIf="question.type == 'number'" [question]="question" (answer)="getAnswer($event)"></app-question-type-number>
+  <app-question-type-boolean *ngIf="question.type == 'boolean'" [question]="question" (answer)="getAnswer($event)"></app-question-type-boolean>
+  <app-question-type-multiple *ngIf="question.type == 'multiple'" [question]="question" (answer)="getAnswer($event)"></app-question-type-multiple>
+  <app-question-type-string *ngIf="question.type == 'string'" [question]="question" (answer)="getAnswer($event)"></app-question-type-string>
+</div>
+
+<div class="end-buttons">
+  <button class="done-button" (click)="saveAnswers()">Done</button>
+  <a class="cancel" routerLink="/stops/8022">Cancel</a>
+</div>

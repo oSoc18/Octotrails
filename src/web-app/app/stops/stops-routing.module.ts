@@ -5,20 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
-import { UpdateComponent } from './update/update.component';
+import { LocationComponent } from './location/location.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
-  { path: 'stops', redirectTo: 'heroes/search', pathMatch: 'full' },
+  { path: 'stops', redirectTo: 'stops/search', pathMatch: 'full' },
   { path: 'stops/search', component: SearchComponent },
-  { path: 'stops/:id', component:  DetailComponent },
+  { path: 'stops/:id', component: DetailComponent },
   { path: 'stops/:id/history', component: HistoryComponent },
-  { path: 'stops/:id/update', component: UpdateComponent }
+  { path: 'stops/:id/questions', redirectTo: 'questions', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
 export class StopsRoutingModule {}
