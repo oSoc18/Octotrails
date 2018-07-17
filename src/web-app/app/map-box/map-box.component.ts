@@ -13,7 +13,7 @@ export class MapBoxComponent implements OnInit {
   map: mapboxgl.Map;
   style = "mapbox://styles/mapbox/outdoors-v9";
   lat = 50.85045;
-  lng = 4.34878;
+  lon = 4.34878;
   message = "Hello World!";
 
   // data
@@ -27,23 +27,16 @@ export class MapBoxComponent implements OnInit {
   }
 
   private initializeMap() {
-    let lat;
-    let lon;
-
     /// locate the user
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
+        this.lat = position.coords.latitude;
+        this.lon = position.coords.longitude;
         this.map.flyTo({
-          center: [lon, lat]
+          center: [this.lon, this.lat]
         });
       });
     }
-
-    //Add markers here
-    const coordinates = [lon, lat];
-    const newMarker = new GeoJson(coordinates, { message: this.message });
 
     this.buildMap();
   }
@@ -52,11 +45,44 @@ export class MapBoxComponent implements OnInit {
     Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(
       environment.mapbox.accessToken
     );
+
     this.map = new mapboxgl.Map({
       container: "map",
       style: this.style,
       zoom: 13,
-      center: [this.lng, this.lat]
+      center: [this.lon, this.lat]
+    });
+
+    this.map.addControl(new mapboxgl.NavigationControl());
+
+    this.map.on("load", () => {
+      this.map.addSource("currentLocation", {
+        "type": "geojson",
+        "data": {
+          "type": "FeatureCollection",
+          "features": [{
+              "type": "Feature",
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [this.lon, this.lat]
+              },
+              "properties": {
+                  "title": "Mapbox DC",
+                  "icon": "monument"
+              }
+          }]
+      }
+      });
+
+      this.map.addLayer({
+        id: "currentLocation",
+        source: "currentLocation",
+        type: "circle",
+        paint: {
+          "circle-radius": 10,
+          "circle-color": "#007cbf"
+        }
+      });
     });
   }
 
