@@ -1,32 +1,30 @@
-import { Component, OnInit } from "@angular/core";
-import * as mapboxgl from "mapbox-gl";
-import { GeoJson, FeatureCollection } from "../map";
-import { environment } from "../../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import * as mapboxgl from 'mapbox-gl';
+import { GeoJson, FeatureCollection } from './map';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 
-
-import { MapService } from "./map.service";
+import { MapService } from './map.service';
 
 @Component({
-  selector: "map-box",
-  templateUrl: "./map-box.component.html",
-  styleUrls: ["./map-box.component.css"]
+  selector: 'map-box',
+  templateUrl: './map-box.component.html',
+  styleUrls: ['./map-box.component.css']
 })
 export class MapBoxComponent implements OnInit {
   /// default settings
   map: mapboxgl.Map;
-  style = "mapbox://styles/mapbox/outdoors-v9";
+  style = 'mapbox://styles/mapbox/outdoors-v9';
   lat = 50.85045;
   lon = 4.34878;
 
-  message = "Hello World!";
+  message = 'Hello World!';
 
   // data
   source: any;
   markers: any;
 
-  constructor(private mapService: MapService, private router: Router,
-  ) {}
+  constructor(private mapService: MapService, private router: Router) {}
 
   ngOnInit() {
     this.initializeMap();
@@ -39,27 +37,36 @@ export class MapBoxComponent implements OnInit {
         this.lon = position.coords.longitude;
         this.map.flyTo({
           center: [this.lon, this.lat]
-  
-   Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
+        });
+      });
+    }
+
+    this.buildMap();
+  }
+
+  buildMap() {
+    Object.getOwnPropertyDescriptor(mapboxgl, 'accessToken').set(
+      environment.mapbox.accessToken
+    );
     this.map = new mapboxgl.Map({
-      container: "map",
+      container: 'map',
       style: this.style,
       zoom: 13,
       center: [this.lon, this.lat]
     });
 
-        this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.NavigationControl());
 
-    this.map.on("load", () => {
-      this.map.addSource("currentLocation", {
-        type: "geojson",
+    this.map.on('load', () => {
+      this.map.addSource('currentLocation', {
+        type: 'geojson',
         data: {
-          type: "FeatureCollection",
+          type: 'FeatureCollection',
           features: [
             {
-              type: "Feature",
+              type: 'Feature',
               geometry: {
-                type: "Point",
+                type: 'Point',
                 coordinates: [this.lon, this.lat]
               },
               properties: {}
@@ -69,20 +76,23 @@ export class MapBoxComponent implements OnInit {
       });
 
       this.map.addLayer({
-        id: "currentLocation",
-        source: "currentLocation",
-        type: "circle",
+        id: 'currentLocation',
+        source: 'currentLocation',
+        type: 'circle',
         paint: {
-          "circle-radius": 10,
-          "circle-color": "#007cbf"
+          'circle-radius': 10,
+          'circle-color': '#007cbf'
         }
       });
 
       this.findStopsInProximity();
-      this.map.on("click", "proximityStops", (e) => {
-        this.router.navigate(['/stops', e.features[0].properties.id ], {queryParams : {
-          by:'stop_id'
-        }});
+      this.map.on('click', 'proximityStops', e => {
+        const mapStopId = e.features[0].properties.id;
+        this.router.navigate(['/stops', mapStopId], {
+          queryParams: {
+            by: 'stop_id'
+          }
+        });
       });
     });
   }
@@ -100,36 +110,31 @@ export class MapBoxComponent implements OnInit {
 
       data.forEach(element => {
         features.push({
-          type: "Feature",
+          type: 'Feature',
           geometry: {
-            type: "Point",
+            type: 'Point',
             coordinates: [element.longitude, element.latitude]
           },
-          properties: {id: element.id}
-          
+          properties: { id: element.id }
         });
       });
-      this.map.addSource("proximityStops", {
-        type: "geojson",
+      this.map.addSource('proximityStops', {
+        type: 'geojson',
         data: {
-          type: "FeatureCollection",
+          type: 'FeatureCollection',
           features: features
         }
       });
 
       this.map.addLayer({
-        id: "proximityStops",
-        source: "proximityStops",
-        type: "circle",
+        id: 'proximityStops',
+        source: 'proximityStops',
+        type: 'circle',
         paint: {
-          "circle-radius": 10,
-          "circle-color": "#ff0000"
+          'circle-radius': 10,
+          'circle-color': '#ff0000'
         }
       });
-
-     
     });
   }
-
-  
 }
