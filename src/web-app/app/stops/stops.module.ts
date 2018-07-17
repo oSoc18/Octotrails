@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from '../my-octotrails-ng6-carousel';
 import { MapBoxComponent } from '../map-box/map-box.component';
 
@@ -23,7 +21,6 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
     CommonModule,
     MatDesignModule,
     StopsRoutingModule,
-
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
     })
