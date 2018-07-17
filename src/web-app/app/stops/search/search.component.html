@@ -10,7 +10,7 @@
               <ul class="search-result-info-lines">
                 <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
                 <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
-                  <span [ngStyle]="{'color':line.textColor}">{{line.number}}</span>
+                  <span [ngStyle]="{'color':line.textColor}">{{line.number}}  </span>
                 </li>
               </ul>
               <div class="search-result-info-direction">
