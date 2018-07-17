@@ -5,10 +5,10 @@
       <h2>{{stop.alpha_nl}}</h2>
       <h3>id:{{stop.id}}</h3>
     </div>
-    <input type='file' (change)="readURL($event);" />
+    <input type='file' accept="image/*" (change)="readURL($event);" />
   </header>
   <div class="carousel">
-    <carousel [sources]="imageSources" [config]="config"></carousel>
+    <carousel *ngIf="enabledCaroussel" [sources]="imageSources" [config]="config"></carousel>
   </div>
   <section>
     <header>

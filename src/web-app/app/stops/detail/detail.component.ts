@@ -19,7 +19,6 @@ import { Data } from '../../shared/providers/data.provider';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-
 export class DetailComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
@@ -29,19 +28,21 @@ export class DetailComponent implements OnInit {
 
   public imageSources: string[] = [
     'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?random'
+    'https://picsum.photos/1920/1080/?image=1074',
+    'https://picsum.photos/1920/1080/?image=1080'
   ];
 
-  public config: ICarouselConfig = {
+  public config = {
     verifyBeforeLoad: true,
     log: true,
     animation: true,
-    animationType: AnimationConfig.SLIDE_OVERLAP,
+    animationType: AnimationConfig.APPEAR,
     autoplay: true,
     autoplayDelay: 2000,
     stopAutoplayMinWidth: 768
   };
+
+  enabledCaroussel = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,9 +51,7 @@ export class DetailComponent implements OnInit {
     private location: Location,
     private data: Data,
     private carouselService: CarouselService
-  ) {
-    console.log(JSON.stringify(this.data.stop));
-  }
+  ) {}
 
   ngOnInit() {
     if (this.data.stop) {
@@ -60,8 +59,6 @@ export class DetailComponent implements OnInit {
     } else {
       this.getStop();
     }
-
-
   }
 
   getStop(): void {
@@ -83,23 +80,26 @@ export class DetailComponent implements OnInit {
   }
 
   readURL(input) {
-    console.log(input, input.target.files, input.target.files[0]);
+    // console.log(input, input.target.files, input.target.files[0]);
     if (input.target.files && input.target.files[0]) {
-        console.log(`JA`);
-        const reader = new FileReader();
+      const reader = new FileReader();
+      reader.readAsDataURL(input.target.files[0]);
 
-        reader.onload = e => {
-          console.log("Load image")
-          this.imageSources.push('https://picsum.photos/1920/1080');
-
-          console.log(this.imageSources);
-        };
-
-        reader.readAsDataURL(input.target.files[0]);
-        this.carouselService.init(this.imageSources, this.config);
+      reader.onload = e => {
+        this.loadImage(reader.result);
+      };
     }
+  }
 
+  private loadImage(img) {
+    this.enabledCaroussel = false;
 
+    setTimeout(() => {
+      this.imageSources = [img, ...this.imageSources];
+
+      this.config = { ...this.config };
+      this.enabledCaroussel = true;
+    }, 300);
   }
 
   update(): void {
