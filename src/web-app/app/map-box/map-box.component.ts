@@ -17,7 +17,6 @@ export class MapBoxComponent implements OnInit {
   style = 'mapbox://styles/mapbox/light-v9';
   lat = 50.85045;
   lon = 4.34878;
-  message = 'Hello World!';
 
   // data
   source: any;
