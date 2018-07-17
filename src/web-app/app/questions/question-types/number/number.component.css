@@ -18,11 +18,6 @@
   margin-right: auto;
 }
 
-::ng-deep .mat-form-field-infix input {
-  font-size: 1.5rem;
-  color: #0072FF;
-}
-
 .unit {
     align-self: flex-end;
     padding: 0 1rem .5rem 0;

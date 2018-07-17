@@ -14,7 +14,9 @@ import { Data } from '../../shared/providers/data.provider';
 })
 export class OverviewComponent implements OnInit {
   @Input() questions;
-  progressValue = 10;
+  answeredQuestions = 1
+  totalNumberOfQuestions;
+  progressValue = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +34,11 @@ export class OverviewComponent implements OnInit {
     //  this.questions = questionsMock;
     this.questionService
       .getQuestions()
-      .subscribe(list => (this.questions = list));
+      .subscribe(list => {
+        this.questions = list;
+        this.totalNumberOfQuestions = this.questions.length;
+        this.progressValue = (100/this.totalNumberOfQuestions) * this.answeredQuestions;
+      });
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;

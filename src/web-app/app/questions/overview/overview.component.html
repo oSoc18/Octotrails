@@ -5,10 +5,8 @@
 </div>
 
 <div>
-    <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}">
-        
-    </mat-progress-bar>
-    <p class="progress-tag">{{progressValue}} of 100</p>
+    <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>
+    <p class="progress-tag">{{answeredQuestions}} of {{totalNumberOfQuestions}}</p>
 </div>
 
 <div *ngFor="let question of questions">
