@@ -2,6 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import * as mapboxgl from "mapbox-gl";
 import { GeoJson, FeatureCollection } from "../map";
 import { environment } from "../../environments/environment";
+import { Router } from '@angular/router';
+
+
+import { MapService } from "./map.service";
 
 @Component({
   selector: "map-box",
@@ -20,14 +24,14 @@ export class MapBoxComponent implements OnInit {
   source: any;
   markers: any;
 
-  constructor() {}
+  constructor(private mapService: MapService, private router: Router,
+  ) {}
 
   ngOnInit() {
     this.initializeMap();
   }
 
   private initializeMap() {
-    /// locate the user
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
@@ -57,21 +61,20 @@ export class MapBoxComponent implements OnInit {
 
     this.map.on("load", () => {
       this.map.addSource("currentLocation", {
-        "type": "geojson",
-        "data": {
-          "type": "FeatureCollection",
-          "features": [{
-              "type": "Feature",
-              "geometry": {
-                  "type": "Point",
-                  "coordinates": [this.lon, this.lat]
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [this.lon, this.lat]
               },
-              "properties": {
-                  "title": "Mapbox DC",
-                  "icon": "monument"
-              }
-          }]
-      }
+              properties: {}
+            }
+          ]
+        }
       });
 
       this.map.addLayer({
@@ -83,6 +86,13 @@ export class MapBoxComponent implements OnInit {
           "circle-color": "#007cbf"
         }
       });
+
+      this.findStopsInProximity();
+      this.map.on("click", "proximityStops", (e) => {
+        this.router.navigate(['/stops', e.features[0].properties.id ], {queryParams : {
+          by:'stop_id'
+        }});
+      });
     });
   }
 
@@ -92,4 +102,43 @@ export class MapBoxComponent implements OnInit {
       center: data.geometry.coordinates
     });
   }
+
+  findStopsInProximity() {
+    this.mapService.findProximityStops(this.lon, this.lat).subscribe(data => {
+      let features = [];
+
+      data.forEach(element => {
+        features.push({
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [element.longitude, element.latitude]
+          },
+          properties: {id: element.id}
+          
+        });
+      });
+      this.map.addSource("proximityStops", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: features
+        }
+      });
+
+      this.map.addLayer({
+        id: "proximityStops",
+        source: "proximityStops",
+        type: "circle",
+        paint: {
+          "circle-radius": 10,
+          "circle-color": "#ff0000"
+        }
+      });
+
+     
+    });
+  }
+
+  
 }

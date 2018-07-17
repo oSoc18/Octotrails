@@ -4,8 +4,8 @@ export class Stop {
   "alpha_nl": string;
   "descr_fr": string;
   "descr_nl": string;
-  "coord_x": string;
-  "coord_y": string;
+  "longitude": number;
+  "latitude": number;
   "address": {
     fr: string;
     nl: string;
