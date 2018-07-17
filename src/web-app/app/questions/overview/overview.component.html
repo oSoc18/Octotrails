@@ -12,18 +12,10 @@
 </div>
 
 <div *ngFor="let question of questions">
-    <ng-container *ngIf="question.type == 'number'">
-        <app-question-type-number [question]="question" (answer)= "getAnswer($event)"></app-question-type-number>
-    </ng-container>
-    <ng-container *ngIf="question.type == 'boolean'">
-        <app-question-type-boolean [title]="question.content"></app-question-type-boolean>
-    </ng-container>
-    <ng-container *ngIf="question.type == 'multiple'">
-        <app-question-type-multiple [title]="question.content" [choices]="question.choices"></app-question-type-multiple>
-    </ng-container>
-    <ng-container *ngIf="question.type == 'string'">
-        <app-question-type-string [title]="question.content"></app-question-type-string>
-    </ng-container>
+    <app-question-type-number *ngIf="question.type == 'number'" [question]="question" (answer)= "getAnswer($event)"></app-question-type-number>
+    <app-question-type-boolean *ngIf="question.type == 'boolean'" [question]="question" (answer)= "getAnswer($event)"></app-question-type-boolean>
+    <app-question-type-multiple *ngIf="question.type == 'multiple'" [title]="question.content" [choices]="question.choices"></app-question-type-multiple>
+    <app-question-type-string *ngIf="question.type == 'string'" [title]="question.content"></app-question-type-string>
 </div>
 
 <div class="end-buttons">
