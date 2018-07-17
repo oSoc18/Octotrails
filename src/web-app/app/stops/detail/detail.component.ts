@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Stop } from '../stop';
@@ -35,7 +35,7 @@ export class DetailComponent implements OnInit {
 
   public config: ICarouselConfig = {
     verifyBeforeLoad: true,
-    log: true,
+    log: false,
     animation: true,
     animationType: AnimationConfig.SLIDE_OVERLAP,
     autoplay: true,
@@ -78,6 +78,15 @@ export class DetailComponent implements OnInit {
     // so that the HeroList component can select that hero.
     // Include a junk 'foo' property for fun.
     this.router.navigate(['/stops', { id: stopId, foo: 'foo' }]);
+  }
+
+  goToQuestions() {
+    const extras: NavigationExtras = {
+      queryParams: {
+        stop_id: this.stop.id
+      }
+    };
+    this.router.navigate(['/questions'], extras);
   }
 
   readURL(input) {
