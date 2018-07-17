@@ -21,9 +21,21 @@ export class QuestionService {
    * Get the list of questions
    */
   getQuestions(): Observable<Question[]> {
-    return this.http.get<Object>(this.questionsUrl).pipe<Question[]>(
-      map(resp => resp['questions'].map(q => new Question(q))),
-      catchError(this.handleError('getQuestions', []))
+    return this.http.get<Object>(this.questionsUrl).pipe<Question[]>();
+    map(resp => resp['questions'].map(q => new Question(q))),
+      catchError(this.handleError('getQuestions', []));
+  }
+
+  /**
+   * Save the updates for a stop
+   * @param stop_id The Stop ID
+   * @param answers List of {question and answer}
+   */
+  saveAnswers(stop_id, answers) {
+    const url = env.API_URL + 'api/' + stop_id + '/inputs';
+    return this.http.post(url, { inputs: answers }, httpOpts).pipe(
+      map(resp => resp['message']),
+      catchError(this.handleError('saveAnswers', []))
     );
   }
 
