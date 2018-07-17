@@ -32,11 +32,9 @@ export class MapBoxComponent implements OnInit {
 
   private initializeMap() {
     this.buildMap();
-
-   
   }
 
-  getLocation(){
+  getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
@@ -61,7 +59,7 @@ export class MapBoxComponent implements OnInit {
             ]
           }
         });
-  
+
         this.map.addLayer({
           id: "currentLocation",
           source: "currentLocation",
@@ -92,7 +90,7 @@ export class MapBoxComponent implements OnInit {
       this.getLocation();
       this.findStopsInProximity();
 
-      this.map.on("click", "proximityStops", e => {
+      this.map.on("click", "unclustered-point", e => {
         const mapStopId = e.features[0].properties.id;
         this.router.navigate(["/stops", mapStopId], {
           queryParams: {
@@ -124,21 +122,63 @@ export class MapBoxComponent implements OnInit {
           properties: { id: element.id }
         });
       });
+
       this.map.addSource("proximityStops", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
           features: features
+        },
+        cluster: true,
+        clusterMaxZoom: 12,
+        clusterRadius: 50
+      });
+
+      this.map.addLayer({
+        id: "unclustered-point",
+        type: "circle",
+        source: "proximityStops",
+        paint: {
+            "circle-color": "#FF0000",
+            "circle-radius": 10,
+        }
+    });
+
+      this.map.addLayer({
+        id: "clusters",
+        type: "circle",
+        source: "proximityStops",
+        filter: ["has", "point_count"],
+        paint: {
+          "circle-color": [
+            "step",
+            ["get", "point_count"],
+            "#51bbd6",
+            100,
+            "#f1f075",
+            750,
+            "#f28cb1"
+          ],
+          "circle-radius": [
+            "step",
+            ["get", "point_count"],
+            20,
+            100,
+            30,
+            750,
+            40
+          ]
         }
       });
 
       this.map.addLayer({
-        id: "proximityStops",
+        id: "cluster-count",
+        type: "symbol",
         source: "proximityStops",
-        type: "circle",
-        paint: {
-          "circle-radius": 10,
-          "circle-color": "#ff0000"
+        layout: {
+          "text-field": "{point_count_abbreviated}",
+          "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+          "text-size": 12
         }
       });
     });
