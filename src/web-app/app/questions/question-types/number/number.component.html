@@ -1,0 +1,9 @@
+<div class="number-component">
+  <h2 class="question">{{question.content}}</h2>
+  <div class="number">
+    <mat-form-field>
+      <input matInput type="number" value="0" [(ngModel)]="answer" (keyup)="sendAnswer()">
+    </mat-form-field>
+    <p class="unit">cm</p>
+  </div>
+</div>
