@@ -8,4 +8,8 @@ export class Data {
   public inputs: any = {};
 
   public constructor() {}
+
+  public get answers() {
+    return Object.entries(this.inputs).map(([key, value]) => value);
+  }
 }
