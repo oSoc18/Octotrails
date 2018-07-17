@@ -28,15 +28,15 @@ export class DetailComponent implements OnInit {
 
   public imageSources: string[] = [
     'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?random'
+    'https://picsum.photos/1920/1080/?image=1074',
+    'https://picsum.photos/1920/1080/?image=1080'
   ];
 
   public config = {
     verifyBeforeLoad: true,
     log: true,
     animation: true,
-    animationType: AnimationConfig.SLIDE_OVERLAP,
+    animationType: AnimationConfig.APPEAR,
     autoplay: true,
     autoplayDelay: 2000,
     stopAutoplayMinWidth: 768
@@ -100,7 +100,7 @@ export class DetailComponent implements OnInit {
 
       this.config = { ...this.config };
       this.enabledCaroussel = true;
-    });
+    }, 300);
   }
 
   update(): void {
