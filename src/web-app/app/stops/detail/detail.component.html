@@ -8,7 +8,7 @@
     <input type='file' (change)="readURL($event);" />
   </header>
   <div class="carousel">
-    <carousel [sources]="imageSources" [config]="config"></carousel>
+    <carousel *ngIf="enabledCaroussel" [sources]="imageSources" [config]="config"></carousel>
   </div>
   <section>
     <header>

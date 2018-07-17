@@ -19,7 +19,6 @@ import { Data } from '../../shared/providers/data.provider';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-
 export class DetailComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
@@ -33,7 +32,7 @@ export class DetailComponent implements OnInit {
     'https://picsum.photos/1920/1080/?random'
   ];
 
-  public config: ICarouselConfig = {
+  public config = {
     verifyBeforeLoad: true,
     log: true,
     animation: true,
@@ -43,6 +42,8 @@ export class DetailComponent implements OnInit {
     stopAutoplayMinWidth: 768
   };
 
+  enabledCaroussel = true;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -50,9 +51,7 @@ export class DetailComponent implements OnInit {
     private location: Location,
     private data: Data,
     private carouselService: CarouselService
-  ) {
-    console.log(JSON.stringify(this.data.stop));
-  }
+  ) {}
 
   ngOnInit() {
     if (this.data.stop) {
@@ -60,8 +59,6 @@ export class DetailComponent implements OnInit {
     } else {
       this.getStop();
     }
-
-
   }
 
   getStop(): void {
@@ -84,21 +81,26 @@ export class DetailComponent implements OnInit {
   readURL(input) {
     console.log(input, input.target.files, input.target.files[0]);
     if (input.target.files && input.target.files[0]) {
-        console.log(`JA`);
-        const reader = new FileReader();
+      console.log(`JA`);
+      const reader = new FileReader();
+      reader.readAsDataURL(input.target.files[0]);
 
-        reader.onload = e => {
-          console.log("Load image")
-          this.imageSources.push('https://picsum.photos/1920/1080');
-
-          console.log(this.imageSources);
-        };
-
-        reader.readAsDataURL(input.target.files[0]);
-        this.carouselService.init(this.imageSources, this.config);
+      reader.onload = e => {
+        console.log('Load image');
+        this.loadImage(reader.result);
+      };
     }
+  }
 
+  loadImage(img) {
+    this.enabledCaroussel = false;
 
+    setTimeout(() => {
+      this.imageSources = [img, ...this.imageSources];
+
+      this.config = { ...this.config };
+      this.enabledCaroussel = true;
+    });
   }
 
   update(): void {
