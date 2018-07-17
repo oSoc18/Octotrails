@@ -26,12 +26,12 @@ export class BooleanComponent implements OnInit {
       }
       this.activeButton = event.currentTarget;
       event.currentTarget.classList.add("active");
-      this.answer = event.currentTarget.value;
+      this.answer = this.activeButton.value;
       this.sendAnswer();
     }else {
       this.activeButton.classList.remove("active");
       this.activeButton = null
-      this.answer = null;
+      this.answer = this.activeButton.value;
       this.sendAnswer();
     }
   }
@@ -39,7 +39,6 @@ export class BooleanComponent implements OnInit {
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.outputAnswer.emit(value);
-    console.log(value);
   }
 
 }

@@ -36,6 +36,7 @@ export class OverviewComponent implements OnInit {
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;
+    console.log(this.data);
   }
 
   goBack(): void {
