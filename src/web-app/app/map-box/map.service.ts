@@ -19,7 +19,6 @@ export class MapService {
     }
 
     return this.http.get<Object>(this.stopsUrl + url).pipe<Stop[]>(
-      tap(res => console.log(res)),
       map<Object, Stop[]>((res: any) => res.stops.map(st => new Stop(st))),
       catchError(this.handleError('findProximityStops', []))
     );
