@@ -67,10 +67,10 @@ export class MapBoxComponent implements OnInit {
         this.map.flyTo({
           center: [this.lon, this.lat]
         });
+        
+        this.displayLocation(this.lon, this.lat);
+        this.findStopsInProximity(this.lon, this.lat);
       });
-
-      this.displayLocation(this.lon, this.lat);
-      this.findStopsInProximity(this.lon, this.lat);
     }
   }
 
@@ -135,15 +135,15 @@ export class MapBoxComponent implements OnInit {
       if (this.map.getLayer('cluster-count') !== undefined) {
         this.map.removeLayer('cluster-count');
       }
-  
+
       if (this.map.getLayer('unclustered-point') !== undefined) {
         this.map.removeLayer('unclustered-point');
       }
-  
+
       if (this.map.getLayer('clusters') !== undefined) {
         this.map.removeLayer('clusters');
       }
-  
+
       if (this.map.getSource('proximityStops') !== undefined) {
         this.map.removeSource('proximityStops');
       }
