@@ -79,20 +79,18 @@ export class DetailComponent implements OnInit {
   }
 
   readURL(input) {
-    console.log(input, input.target.files, input.target.files[0]);
+    // console.log(input, input.target.files, input.target.files[0]);
     if (input.target.files && input.target.files[0]) {
-      console.log(`JA`);
       const reader = new FileReader();
       reader.readAsDataURL(input.target.files[0]);
 
       reader.onload = e => {
-        console.log('Load image');
         this.loadImage(reader.result);
       };
     }
   }
 
-  loadImage(img) {
+  private loadImage(img) {
     this.enabledCaroussel = false;
 
     setTimeout(() => {
