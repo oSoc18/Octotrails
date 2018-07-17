@@ -29,19 +29,26 @@ export class DetailComponent implements OnInit {
 
   public imageSources: string[] = [
     'https://picsum.photos/1920/1080/?random',
+<<<<<<< HEAD
     'https://picsum.photos/1920/1080/?random',
     'https://picsum.photos/1920/1080/?random'
+=======
+    'https://picsum.photos/1920/1080/?image=1074',
+    'https://picsum.photos/1920/1080/?image=1080'
+>>>>>>> b253c28371371e7773f9364fe80a610f38f2b555
   ];
 
-  public config: ICarouselConfig = {
+  public config = {
     verifyBeforeLoad: true,
     log: false,
     animation: true,
-    animationType: AnimationConfig.SLIDE_OVERLAP,
+    animationType: AnimationConfig.APPEAR,
     autoplay: true,
     autoplayDelay: 2000,
     stopAutoplayMinWidth: 768
   };
+
+  enabledCaroussel = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,9 +57,13 @@ export class DetailComponent implements OnInit {
     private location: Location,
     private data: Data,
     private carouselService: CarouselService
+<<<<<<< HEAD
   ) {
     console.log(JSON.stringify(this.data.stop));
   }
+=======
+  ) {}
+>>>>>>> b253c28371371e7773f9364fe80a610f38f2b555
 
   ngOnInit() {
     if (this.data.stop) {
@@ -60,12 +71,16 @@ export class DetailComponent implements OnInit {
     } else {
       this.getStop();
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b253c28371371e7773f9364fe80a610f38f2b555
   }
 
   getStop(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
-    this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
+    const by: string = this.route.snapshot.queryParamMap.get('by');
+    this.stopService.getStop(id, by).subscribe(stop => (this.stop = stop));
   }
 
   goBack(): void {
@@ -87,6 +102,7 @@ export class DetailComponent implements OnInit {
       }
     };
     this.router.navigate(['/questions'], extras);
+<<<<<<< HEAD
   }
 
   readURL(input) {
@@ -113,5 +129,36 @@ export class DetailComponent implements OnInit {
     //this.stopService.updateStop(this.stop, this.data.inputs).subscribe(() => this.goBack());
   }
 
+=======
+  }
+
+  readURL(input) {
+    // console.log(input, input.target.files, input.target.files[0]);
+    if (input.target.files && input.target.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(input.target.files[0]);
+
+      reader.onload = e => {
+        this.loadImage(reader.result);
+      };
+    }
+  }
+
+  private loadImage(img) {
+    this.enabledCaroussel = false;
+
+    setTimeout(() => {
+      this.imageSources = [img, ...this.imageSources];
+
+      this.config = { ...this.config };
+      this.enabledCaroussel = true;
+    }, 300);
+  }
+
+  update(): void {
+    //this.stopService.updateStop(this.stop, this.data.inputs).subscribe(() => this.goBack());
+  }
+
+>>>>>>> b253c28371371e7773f9364fe80a610f38f2b555
   history(): void {}
 }

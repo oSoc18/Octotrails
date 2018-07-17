@@ -14,7 +14,11 @@ import { MapService } from './map.service';
 export class MapBoxComponent implements OnInit {
   /// default settings
   map: mapboxgl.Map;
+<<<<<<< HEAD
   style = 'mapbox://styles/mapbox/outdoors-v9';
+=======
+  style = 'mapbox://styles/mapbox/light-v9';
+>>>>>>> b253c28371371e7773f9364fe80a610f38f2b555
   lat = 50.85045;
   lon = 4.34878;
 
