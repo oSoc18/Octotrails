@@ -19,7 +19,6 @@ export class MapBoxComponent implements OnInit {
   lon = 4.34878;
   message = "Hello World!";
 
-
   // data
   source: any;
   markers: any;
@@ -49,7 +48,6 @@ export class MapBoxComponent implements OnInit {
 
     this.map.on("load", () => {
       this.getLocation();
-      this.findStopsInProximity();
 
       this.map.on("click", "unclustered-point", e => {
         const mapStopId = e.features[0].properties.id;
@@ -70,34 +68,10 @@ export class MapBoxComponent implements OnInit {
         this.map.flyTo({
           center: [this.lon, this.lat]
         });
-
-        this.map.addSource("currentLocation", {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: [
-              {
-                type: "Feature",
-                geometry: {
-                  type: "Point",
-                  coordinates: [this.lon, this.lat]
-                },
-                properties: {}
-              }
-            ]
-          }
-        });
-
-        this.map.addLayer({
-          id: "currentLocation",
-          source: "currentLocation",
-          type: "circle",
-          paint: {
-            "circle-radius": 10,
-            "circle-color": "#007cbf"
-          }
-        });
       });
+
+      this.displayLocation(this.lon, this.lat);
+      this.findStopsInProximity(this.lon, this.lat);
     }
   }
 
@@ -107,8 +81,45 @@ export class MapBoxComponent implements OnInit {
     });
   }
 
-  findStopsInProximity() {
-    this.mapService.findProximityStops(this.lon, this.lat).subscribe(data => {
+  displayLocation(lon: number, lat: number) {
+    if (this.map.getLayer("currentLocation") !== undefined) {
+      this.map.removeLayer("currentLocation");
+    }
+
+    if (this.map.getSource("currentLocation") !== undefined) {
+      this.map.removeSource("currentLocation");
+    }
+
+    this.map.addSource("currentLocation", {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [lon, lat]
+            },
+            properties: {}
+          }
+        ]
+      }
+    });
+
+    this.map.addLayer({
+      id: "currentLocation",
+      source: "currentLocation",
+      type: "circle",
+      paint: {
+        "circle-radius": 10,
+        "circle-color": "#007cbf"
+      }
+    });
+  }
+
+  findStopsInProximity(lon: number, lat: number) {
+    this.mapService.findProximityStops(lon, lat).subscribe(data => {
       let features = [];
 
       data.forEach(element => {
@@ -121,6 +132,22 @@ export class MapBoxComponent implements OnInit {
           properties: { id: element.id }
         });
       });
+
+      if (this.map.getLayer("cluster-count") !== undefined) {
+        this.map.removeLayer("cluster-count");
+      }
+  
+      if (this.map.getLayer("unclustered-point") !== undefined) {
+        this.map.removeLayer("unclustered-point");
+      }
+  
+      if (this.map.getLayer("clusters") !== undefined) {
+        this.map.removeLayer("clusters");
+      }
+  
+      if (this.map.getSource("proximityStops") !== undefined) {
+        this.map.removeSource("proximityStops");
+      }
 
       this.map.addSource("proximityStops", {
         type: "geojson",
@@ -184,20 +211,9 @@ export class MapBoxComponent implements OnInit {
   }
 
   success(pos) {
-    let target = {
-      latitude: 0,
-      longitude: 0
-    };
-
-    var crd = pos.coords;
-
-    if (
-      target.latitude === crd.latitude &&
-      target.longitude === crd.longitude
-    ) {
-      console.log("Congratulations, you reached the target");
-      navigator.geolocation.clearWatch(this.id);
-    }
+    let crd = pos.coords;
+    this.displayLocation(crd.longitude, crd.latitude);
+    this.findStopsInProximity(crd.longitude, crd.latitude);
   }
 
   error(err) {
@@ -205,7 +221,7 @@ export class MapBoxComponent implements OnInit {
   }
 
   id = navigator.geolocation.watchPosition(
-    this.success,
+    this.success.bind(this),
     this.error,
     {
       enableHighAccuracy: true,
