@@ -15,6 +15,22 @@ export class InMemoryDataService implements InMemoryDbService {
     return { stops, questions };
   }
 
+  post(reqInfo: RequestInfo) {
+    const { collectionName, id, req } = reqInfo;
+
+    if (collectionName === 'stops' && id && req['body'].inputs) {
+      const res = {
+        status: STATUS.OK,
+        body: {
+          message: 'Done :-)'
+        }
+      };
+      return reqInfo.utils.createResponse$(() =>
+        this.finishOptions(res, reqInfo)
+      );
+    }
+  }
+
   // HTTP GET interceptor
   get(reqInfo: RequestInfo) {
     const { collectionName, id } = reqInfo;
