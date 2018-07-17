@@ -21,6 +21,7 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
     CommonModule,
     MatDesignModule,
     StopsRoutingModule,
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
     })

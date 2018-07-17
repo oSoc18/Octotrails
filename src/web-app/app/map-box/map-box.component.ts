@@ -67,7 +67,7 @@ export class MapBoxComponent implements OnInit {
         this.map.flyTo({
           center: [this.lon, this.lat]
         });
-        
+
         this.displayLocation(this.lon, this.lat);
         this.findStopsInProximity(this.lon, this.lat);
       });
