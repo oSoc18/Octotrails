@@ -8,23 +8,18 @@ import { Data } from '../../../shared/providers/data.provider';
   styleUrls: ['./number.component.css']
 })
 export class NumberComponent implements OnInit {
+  @Input() question: Question;
+  @Output('answer')
+  outputAnswer: EventEmitter<object> = new EventEmitter<object>();
 
-  @Input()
-  question:Question;
+  answer: number;
 
-  @Output()
-  outputAnswer: EventEmitter<Object> = new EventEmitter<Object>();
+  constructor() {}
 
-  constructor(private data:Data) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  sendAnswer() {
+    const value = { question_id: this.question.id, answer: this.answer };
+    this.outputAnswer.emit(value);
   }
-
-  sendAnswer(value) {
-      const answer = {question_id : this.question.id, answer : value };
-    this.outputAnswer.emit(answer);
-    this.data.inputs.push(answer);
-  }
-
-
 }

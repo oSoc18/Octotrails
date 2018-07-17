@@ -72,8 +72,6 @@ export class InMemoryDataService implements InMemoryDbService {
     return reqInfo.utils.createResponse$(() => {
       console.log('HTTP GET override');
 
-      console.log(reqInfo.collection)
-
       const options: ResponseOptions = {
         body: { questions: reqInfo.collection },
         status: STATUS.OK

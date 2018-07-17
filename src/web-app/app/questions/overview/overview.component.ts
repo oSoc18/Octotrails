@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Question } from '../question';
 import { QuestionService } from '../questions.service';
 import questionsMock from '../../shared/mock/questions.mock';
+import { Data } from '../../shared/providers/data.provider';
 
 @Component({
   selector: 'app-questions-overview',
@@ -18,25 +19,24 @@ export class OverviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private questionService: QuestionService,
-    private location: Location
-  ) {
-    console.log(this.questions);
-  }
+    private data: Data
+  ) {}
 
   ngOnInit() {
     this.getQuestions();
   }
 
-   getQuestions(): void {
-       this.questions = questionsMock[0];
-//     this.questionService
-//       .getQuestions()
-//       .subscribe(list => console.log(this.questions = list));
-}
-getAnswer(value) {
-    console.log(value);
-}
+  getQuestions(): void {
+    //  this.questions = questionsMock;
+    this.questionService
+      .getQuestions()
+      .subscribe(list => (this.questions = list));
+  }
+  getAnswer(value) {
+    this.data.inputs[value.question_id] = value;
+  }
 
   goBack(): void {
     this.location.back();
