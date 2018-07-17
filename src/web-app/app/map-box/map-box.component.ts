@@ -191,7 +191,6 @@ export class MapBoxComponent implements OnInit {
 
     var crd = pos.coords;
 
-    console.log(crd);
     if (
       target.latitude === crd.latitude &&
       target.longitude === crd.longitude
