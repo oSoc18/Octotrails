@@ -4,6 +4,9 @@ import config from '../config/config';
 import { validationResult, Result } from 'express-validator/check';
 
 import APIError from '../helpers/APIError';
+import History from '../models/history.model';
+
+const STIB_API = config.stibApi;
 
 /**
  * Send a HTTP Request to external API
@@ -40,7 +43,6 @@ const checkValidationErrors = function check(errors) {
     throw new APIError(e.msg, httpStatus.BAD_REQUEST);
   });
 };
-const STIB_API = config.stibApi;
 
 function search(req, res, next) {
   let by = req.query.by;
@@ -68,7 +70,7 @@ function search(req, res, next) {
   );
 }
 
-function getProximity2(req, res, next) {
+function getProximity(req, res, next) {
   let lon = req.query.lon;
   let lat = req.query.lat;
 
@@ -85,6 +87,7 @@ function getProximity2(req, res, next) {
   );
 }
 
+/*
 function getProximity(req, res, next) {
   let lon = req.query.lon;
   let lat = req.query.lat;
@@ -127,8 +130,23 @@ function validateProximity(lon, lat) {
     );
   }
 }
+*/
+
+async function getHistory(req, res) {
+  const { stop_id, history_id } = req.params;
+  const { full: full_history } = req.query;
+  let data;
+
+  if (history_id) {
+    data = await History.findById({ history_id, full_history });
+  } else {
+    data = await History.getByStopId({ stop_id, full_history });
+  }
+  res.json(data);
+}
 
 export default {
   search,
-  getProximity
+  getProximity,
+  getHistory
 };
