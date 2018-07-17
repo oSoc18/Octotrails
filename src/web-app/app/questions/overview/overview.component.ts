@@ -14,9 +14,10 @@ import { Data } from '../../shared/providers/data.provider';
 })
 export class OverviewComponent implements OnInit {
   @Input() questions;
-  answeredQuestions = 1
+  answeredQuestions = 1;
   totalNumberOfQuestions;
   progressValue = 0;
+  stop_id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,18 +28,18 @@ export class OverviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.stop_id = this.route.snapshot.queryParamMap.get('stop_id');
     this.getQuestions();
   }
 
   getQuestions(): void {
     //  this.questions = questionsMock;
-    this.questionService
-      .getQuestions()
-      .subscribe(list => {
-        this.questions = list;
-        this.totalNumberOfQuestions = this.questions.length;
-        this.progressValue = (100/this.totalNumberOfQuestions) * this.answeredQuestions;
-      });
+    this.questionService.getQuestions().subscribe(list => {
+      this.questions = list;
+      this.totalNumberOfQuestions = this.questions.length;
+      this.progressValue =
+        (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
+    });
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;
@@ -47,5 +48,11 @@ export class OverviewComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  saveAnswers() {
+    this.questionService
+      .saveAnswers(this.stop_id, this.data.answers)
+      .subscribe(msg => console.log(msg));
   }
 }
