@@ -17,8 +17,8 @@ export class MapBoxComponent implements OnInit {
   style = "mapbox://styles/mapbox/light-v9";
   lat = 50.85045;
   lon = 4.34878;
-
   message = "Hello World!";
+
 
   // data
   source: any;
@@ -32,6 +32,34 @@ export class MapBoxComponent implements OnInit {
 
   private initializeMap() {
     this.buildMap();
+  }
+
+  buildMap() {
+    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(
+      environment.mapbox.accessToken
+    );
+    this.map = new mapboxgl.Map({
+      container: "map",
+      style: this.style,
+      zoom: 13,
+      center: [this.lon, this.lat]
+    });
+
+    this.map.addControl(new mapboxgl.NavigationControl());
+
+    this.map.on("load", () => {
+      this.getLocation();
+      this.findStopsInProximity();
+
+      this.map.on("click", "unclustered-point", e => {
+        const mapStopId = e.features[0].properties.id;
+        this.router.navigate(["/stops", mapStopId], {
+          queryParams: {
+            by: "stop_id"
+          }
+        });
+      });
+    });
   }
 
   getLocation() {
@@ -73,35 +101,6 @@ export class MapBoxComponent implements OnInit {
     }
   }
 
-  buildMap() {
-    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(
-      environment.mapbox.accessToken
-    );
-    this.map = new mapboxgl.Map({
-      container: "map",
-      style: this.style,
-      zoom: 13,
-      center: [this.lon, this.lat]
-    });
-
-    this.map.addControl(new mapboxgl.NavigationControl());
-
-    this.map.on("load", () => {
-      this.getLocation();
-      this.findStopsInProximity();
-
-      this.map.on("click", "unclustered-point", e => {
-        const mapStopId = e.features[0].properties.id;
-        this.router.navigate(["/stops", mapStopId], {
-          queryParams: {
-            by: "stop_id"
-          }
-        });
-      });
-    });
-  }
-
-  /// Helpers
   flyTo(data: GeoJson) {
     this.map.flyTo({
       center: data.geometry.coordinates
@@ -139,10 +138,10 @@ export class MapBoxComponent implements OnInit {
         type: "circle",
         source: "proximityStops",
         paint: {
-            "circle-color": "#FF0000",
-            "circle-radius": 10,
+          "circle-color": "#FF0000",
+          "circle-radius": 10
         }
-    });
+      });
 
       this.map.addLayer({
         id: "clusters",
@@ -183,4 +182,36 @@ export class MapBoxComponent implements OnInit {
       });
     });
   }
+
+  success(pos) {
+    let target = {
+      latitude: 0,
+      longitude: 0
+    };
+
+    var crd = pos.coords;
+
+    console.log(crd);
+    if (
+      target.latitude === crd.latitude &&
+      target.longitude === crd.longitude
+    ) {
+      console.log("Congratulations, you reached the target");
+      navigator.geolocation.clearWatch(this.id);
+    }
+  }
+
+  error(err) {
+    console.warn("ERROR(" + err.code + "): " + err.message);
+  }
+
+  id = navigator.geolocation.watchPosition(
+    this.success,
+    this.error,
+    {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 1000
+    }
+  );
 }
