@@ -18,8 +18,6 @@ export class MapBoxComponent implements OnInit {
   lat = 50.85045;
   lon = 4.34878;
 
-  message = 'Hello World!';
-
   // data
   source: any;
   markers: any;
@@ -31,16 +29,6 @@ export class MapBoxComponent implements OnInit {
   }
 
   private initializeMap() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lon = position.coords.longitude;
-        this.map.flyTo({
-          center: [this.lon, this.lat]
-        });
-      });
-    }
-
     this.buildMap();
   }
 
@@ -58,35 +46,9 @@ export class MapBoxComponent implements OnInit {
     this.map.addControl(new mapboxgl.NavigationControl());
 
     this.map.on('load', () => {
-      this.map.addSource('currentLocation', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [this.lon, this.lat]
-              },
-              properties: {}
-            }
-          ]
-        }
-      });
+      this.getLocation();
 
-      this.map.addLayer({
-        id: 'currentLocation',
-        source: 'currentLocation',
-        type: 'circle',
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#007cbf'
-        }
-      });
-
-      this.findStopsInProximity();
-      this.map.on('click', 'proximityStops', e => {
+      this.map.on('click', 'unclustered-point', e => {
         const mapStopId = e.features[0].properties.id;
         this.router.navigate(['/stops', mapStopId], {
           queryParams: {
@@ -97,15 +59,66 @@ export class MapBoxComponent implements OnInit {
     });
   }
 
-  /// Helpers
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lon = position.coords.longitude;
+        this.map.flyTo({
+          center: [this.lon, this.lat]
+        });
+        
+        this.displayLocation(this.lon, this.lat);
+        this.findStopsInProximity(this.lon, this.lat);
+      });
+    }
+  }
+
   flyTo(data: GeoJson) {
     this.map.flyTo({
       center: data.geometry.coordinates
     });
   }
 
-  findStopsInProximity() {
-    this.mapService.findProximityStops(this.lon, this.lat).subscribe(data => {
+  displayLocation(lon: number, lat: number) {
+    if (this.map.getLayer('currentLocation') !== undefined) {
+      this.map.removeLayer('currentLocation');
+    }
+
+    if (this.map.getSource('currentLocation') !== undefined) {
+      this.map.removeSource('currentLocation');
+    }
+
+    this.map.addSource('currentLocation', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [lon, lat]
+            },
+            properties: {}
+          }
+        ]
+      }
+    });
+
+    this.map.addLayer({
+      id: 'currentLocation',
+      source: 'currentLocation',
+      type: 'circle',
+      paint: {
+        'circle-radius': 10,
+        'circle-color': '#007cbf'
+      }
+    });
+  }
+
+  findStopsInProximity(lon: number, lat: number) {
+    this.mapService.findProximityStops(lon, lat).subscribe(data => {
       let features = [];
 
       data.forEach(element => {
@@ -118,23 +131,101 @@ export class MapBoxComponent implements OnInit {
           properties: { id: element.id }
         });
       });
+
+      if (this.map.getLayer('cluster-count') !== undefined) {
+        this.map.removeLayer('cluster-count');
+      }
+
+      if (this.map.getLayer('unclustered-point') !== undefined) {
+        this.map.removeLayer('unclustered-point');
+      }
+
+      if (this.map.getLayer('clusters') !== undefined) {
+        this.map.removeLayer('clusters');
+      }
+
+      if (this.map.getSource('proximityStops') !== undefined) {
+        this.map.removeSource('proximityStops');
+      }
+
       this.map.addSource('proximityStops', {
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
           features: features
+        },
+        cluster: true,
+        clusterMaxZoom: 12,
+        clusterRadius: 50
+      });
+
+      this.map.addLayer({
+        id: 'unclustered-point',
+        type: 'circle',
+        source: 'proximityStops',
+        paint: {
+          'circle-color': '#FF0000',
+          'circle-radius': 10
         }
       });
 
       this.map.addLayer({
-        id: 'proximityStops',
-        source: 'proximityStops',
+        id: 'clusters',
         type: 'circle',
+        source: 'proximityStops',
+        filter: ['has', 'point_count'],
         paint: {
-          'circle-radius': 10,
-          'circle-color': '#ff0000'
+          'circle-color': [
+            'step',
+            ['get', 'point_count'],
+            '#51bbd6',
+            100,
+            '#f1f075',
+            750,
+            '#f28cb1'
+          ],
+          'circle-radius': [
+            'step',
+            ['get', 'point_count'],
+            20,
+            100,
+            30,
+            750,
+            40
+          ]
+        }
+      });
+
+      this.map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'proximityStops',
+        layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-size': 12
         }
       });
     });
   }
+
+  success(pos) {
+    let crd = pos.coords;
+    this.displayLocation(crd.longitude, crd.latitude);
+    this.findStopsInProximity(crd.longitude, crd.latitude);
+  }
+
+  error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  }
+
+  id = navigator.geolocation.watchPosition(
+    this.success.bind(this),
+    this.error,
+    {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 1000
+    }
+  );
 }
