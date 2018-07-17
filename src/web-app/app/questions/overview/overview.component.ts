@@ -53,6 +53,6 @@ export class OverviewComponent implements OnInit {
   saveAnswers() {
     this.questionService
       .saveAnswers(this.stop_id, this.data.answers)
-      .subscribe(msg => console.log(msg));
+      .subscribe(msg => alert(msg));
   }
 }
