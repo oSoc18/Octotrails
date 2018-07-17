@@ -18,6 +18,7 @@ export class MapBoxComponent implements OnInit {
   style = "mapbox://styles/mapbox/outdoors-v9";
   lat = 50.85045;
   lon = 4.34878;
+
   message = "Hello World!";
 
   // data
@@ -38,18 +39,8 @@ export class MapBoxComponent implements OnInit {
         this.lon = position.coords.longitude;
         this.map.flyTo({
           center: [this.lon, this.lat]
-        });
-      });
-    }
-
-    this.buildMap();
-  }
-
-  buildMap() {
-    Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(
-      environment.mapbox.accessToken
-    );
-
+  
+   Object.getOwnPropertyDescriptor(mapboxgl, "accessToken").set(environment.mapbox.accessToken);
     this.map = new mapboxgl.Map({
       container: "map",
       style: this.style,
@@ -57,7 +48,7 @@ export class MapBoxComponent implements OnInit {
       center: [this.lon, this.lat]
     });
 
-    this.map.addControl(new mapboxgl.NavigationControl());
+        this.map.addControl(new mapboxgl.NavigationControl());
 
     this.map.on("load", () => {
       this.map.addSource("currentLocation", {

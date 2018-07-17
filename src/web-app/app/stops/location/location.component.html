@@ -1,0 +1,12 @@
+<header class="header">
+  <a routerLink="/stops/{{stop.id}}/">Go Back</a>
+  <div class="header-title">
+    <h2>{{stop.alpha_nl}}</h2>
+    <h3>id:{{stop.id}}</h3>
+  </div>
+  <input type='file' (change)="readURL($event);" />
+</header>
+<section>
+  <p>x:{{stop.coord_x}}</p>
+  <p>y:{{stop.coord_y}}</p>
+</section>

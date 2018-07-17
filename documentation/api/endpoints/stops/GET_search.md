@@ -14,13 +14,19 @@ Search for stops based on name or stop ID.
 
 ## Return format
 
-Object
+{
+
+stops: [**[Stop][]**]
+
+}
 
 ## Errors
 
-- `400` : If query parameters `by` or `term` are missing or empty.
+- `400` : If the query parameter `by` or `term` are missing or empty.
 
-- The body of the response contains a message about the error.
+- `404` : If any stop was found.
+
+The body of the response contains a message about the error.
 
 ## Example
 
@@ -110,3 +116,5 @@ Object
   ]
 }
 ```
+
+[stop]: ../../formats.md#stop-format
