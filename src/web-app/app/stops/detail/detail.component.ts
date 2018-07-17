@@ -66,7 +66,8 @@ export class DetailComponent implements OnInit {
 
   getStop(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
-    this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
+    const by: string = this.route.snapshot.queryParamMap.get('by');
+    this.stopService.getStop(id, by).subscribe(stop => (this.stop = stop));
   }
 
   goBack(): void {
