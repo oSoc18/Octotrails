@@ -21,9 +21,10 @@ export class QuestionService {
    * Get the list of questions
    */
   getQuestions(): Observable<Question[]> {
-    return this.http.get<Object>(this.questionsUrl).pipe<Question[]>();
-    map(resp => resp['questions'].map(q => new Question(q))),
-      catchError(this.handleError('getQuestions', []));
+    return this.http.get<Object>(this.questionsUrl).pipe<Question[]>(
+      map(resp => resp['questions'].map(q => new Question(q))),
+      catchError(this.handleError('getQuestions', []))
+    );
   }
 
   /**
