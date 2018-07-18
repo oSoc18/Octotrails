@@ -10,7 +10,7 @@ const options = {
     transform: function(doc, ret) {
       ret.id = ret._id.toHexString();
       delete ret._id;
-      delete ret._v;
+      delete ret.__v;
     }
   }
 };
@@ -72,7 +72,7 @@ HistorySchema.statics = {
     if (full || full_history) {
       query
         .populate('inputs')
-        .populate({ path: 'history', options: { limit: 5 } });
+        .populate({ path: 'previous', options: { limit: 5 } });
     }
 
     return await query;

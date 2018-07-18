@@ -134,14 +134,18 @@ function validateProximity(lon, lat) {
 
 async function getHistory(req, res) {
   const { stop_id, history_id } = req.params;
-  const { full: full_history } = req.query;
+  const { full } = req.query;
   let data;
 
   if (history_id) {
-    data = await History.findById({ history_id, full_history });
+    data = await History.findById({ history_id });
   } else {
-    data = await History.getByStopId({ stop_id, full_history });
+    data = await History.getByStopId({ stop_id, full });
   }
+  if (full)
+    data
+      .populate('inputs')
+      .populate({ path: 'history', options: { limit: 5 } });
   res.json(data);
 }
 
