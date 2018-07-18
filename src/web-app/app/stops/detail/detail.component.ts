@@ -6,7 +6,6 @@ import { Stop } from '../stop';
 import { StopService } from '../stops.service';
 import {
   ICarouselConfig,
-  CarouselService,
   AnimationConfig
 } from '../../my-octotrails-ng6-carousel';
 
@@ -50,8 +49,7 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private stopService: StopService,
     private location: Location,
-    private data: Data,
-    private carouselService: CarouselService
+    private data: Data
   ) {}
 
   ngOnInit() {

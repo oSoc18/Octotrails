@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Stop } from './stop';
 import { Observable, of } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
-import { SERVER_TRANSITION_PROVIDERS } from '@angular/platform-browser/src/browser/server-transition';
 
 const httpOpts = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,35 +22,30 @@ export class StopService {
     return this.http.get<Stop[]>(url);
   }
 
-  //Get specific stop
-  getStop(term: any, by?:string): Observable<Stop> {
-    let url;
-    if(by) {
-      url = `?by=${by}&term=${term}`;
-    } else {
-      if (isNaN(term)) {
-        url = "?by=stop_name&term=" + term;
-      } else {
-        url = "?by=stop_id&term=" + term;
-      }
-    }
+  private createSearchUrl(term: string, by?: string) {
+    if (by) return `/search?by=${by}&term=${term}`;
 
-    return this.http
-      .get<Object>(this.stopsUrl  +"/search"+ url)
-      .pipe<Stop>(catchError(this.handleError("getStop", [])));
+    if (by === 'stop_id' || !isNaN(parseInt(term))) {
+      return '/search?by=stop_id&term=' + term;
+    } else {
+      return '/search?by=stop_name&term=' + term;
+    }
   }
 
-  searchStops(term: any): Observable<Stop[]> {
-    let url;
-    if (!term.trim()) {
-      // if not search term, return empty stop array.
-      return of([]);
-    }
-    if (isNaN(term)) {
-      url = '/search?by=stop_name&term=' + term;
-    } else {
-      url = '/search?by=stop_id&term=' + term;
-    }
+  //Get specific stop
+  getStop(term: any, by?: string): Observable<Stop> {
+    let url = this.createSearchUrl(term, by);
+    return this.http.get<Object>(this.stopsUrl + url).pipe<Stop>(
+      map(resp => new Stop(resp['stop'])),
+      catchError(this.handleError('getStop', {}))
+    );
+  }
+
+  searchStops(term: string, by?: string): Observable<Stop[]> {
+    // if not search term, return empty stop array.
+    if (!term.trim()) return of([]);
+
+    let url = this.createSearchUrl(term, by);
 
     return this.http.get<Object>(this.stopsUrl + url).pipe<Stop[]>(
       map(resp => resp['stops'].map(res => new Stop(res))),
