@@ -34,8 +34,8 @@ export class Stop {
   alpha_nl: string;
   descr_fr: string;
   descr_nl: string;
-  longitude: string;
-  latitude: string;
+  longitude: number;
+  latitude: number;
   address: {
     fr: string;
     nl: string;
