@@ -2,9 +2,10 @@ import APIError from '../../helpers/APIError';
 
 import QuestionSeeder from './questions.seed';
 import InputSeeder from './inputs.seed';
+import CategorySeeder from './categories.seed';
 
 //
-const seeders = [QuestionSeeder, InputSeeder];
+const seeders = [QuestionSeeder, InputSeeder,CategorySeeder];
 
 export default {
   /**
