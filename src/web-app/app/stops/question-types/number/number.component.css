@@ -1,0 +1,18 @@
+.question {
+  font-size: 1.2rem;
+  color: rgba(29, 31, 49, 0.35);
+  width: 94%;
+  margin-left: auto;
+}
+
+::ng-deep .mat-form-field-infix, .number {
+  width: 30% !important;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::ng-deep .mat-form-field-infix input {
+  font-size: 2rem;
+  color: #0072FF;
+}

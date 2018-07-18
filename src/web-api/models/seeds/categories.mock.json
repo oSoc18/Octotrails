@@ -1,0 +1,16 @@
+[
+    {
+        "id": "3",
+        "name": "Accessibility"
+    },
+    {
+        "id": "3a",
+        "name": "Physical elements",
+        "parent_id": "3"
+    },
+    {
+        "id": "3b",
+        "name": "PMR",
+        "parent_id": "3"
+    }
+]
