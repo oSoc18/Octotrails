@@ -24,12 +24,6 @@ import { QuestionsModule } from './questions/questions.module';
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     }),
-    !environment.production
-      ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-          dataEncapsulation: false,
-          passThruUnknownUrl: true
-        })
-      : [],
     SharedModule,
     StopsModule,
     QuestionsModule,
