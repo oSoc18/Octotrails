@@ -1,6 +1,6 @@
 import History from '../history.model';
 
-import mockData from './histories.mock.js';
+import mockData from './histories.mock.json';
 
 /**
  * Insert the DB seeds for Histories collection
