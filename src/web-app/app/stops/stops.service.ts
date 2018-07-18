@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
-import { SERVER_TRANSITION_PROVIDERS } from '@angular/platform-browser/src/browser/server-transition';
 
 const httpOpts = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,21 +23,21 @@ export class StopService {
   }
 
   //Get specific stop
-  getStop(term: any, by?:string): Observable<Stop> {
+  getStop(term: any, by?: string): Observable<Stop> {
     let url;
-    if(by) {
+    if (by) {
       url = `?by=${by}&term=${term}`;
     } else {
       if (isNaN(term)) {
-        url = "?by=stop_name&term=" + term;
+        url = '?by=stop_name&term=' + term;
       } else {
-        url = "?by=stop_id&term=" + term;
+        url = '?by=stop_id&term=' + term;
       }
     }
 
     return this.http
-      .get<Object>(this.stopsUrl  +"/search"+ url)
-      .pipe<Stop>(catchError(this.handleError("getStop", [])));
+      .get<Object>(this.stopsUrl + '/search' + url)
+      .pipe<Stop>(catchError(this.handleError('getStop', [])));
   }
 
   searchStops(term: any): Observable<Stop[]> {

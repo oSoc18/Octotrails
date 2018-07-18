@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../question';
-import { Data } from '../../../shared/providers/data.provider';
 
 @Component({
   selector: 'app-question-type-number',

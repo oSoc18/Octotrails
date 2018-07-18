@@ -1,17 +1,18 @@
 .number-component {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.5rem;    
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
 }
 .question {
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    color: rgba(29, 31, 49, 0.35);
-    width: 90%;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  color: rgba(29, 31, 49, 0.35);
+  width: 90%;
 }
 
-::ng-deep .mat-form-field-infix, .number {
+::ng-deep .mat-form-field-infix,
+.number {
   width: 30% !important;
   display: flex;
   margin-left: auto;
@@ -19,7 +20,7 @@
 }
 
 .unit {
-    align-self: flex-end;
-    padding: 0 1rem .5rem 0;
-    font-size: 1.2rem;
+  align-self: flex-end;
+  padding: 0 1rem 0.5rem 0;
+  font-size: 1.2rem;
 }
