@@ -10,7 +10,7 @@
                       <a class="search-result" (click)="showDetails(stop)">
                         <section class="search-result-info">
                             <div class="search-result-text">
-                                <h1 class="search-result-info-title">{{stop.alpha_nl}}</h1>
+                                <h1 class="search-result-info-title">{{stop.alpha["nl"]}}</h1>
                                 <ul class="search-result-info-lines">
                                     <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
                                     <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
@@ -38,7 +38,7 @@
                                 </svg>
                                 <div>
                                     <span>&rarr; </span>
-                                    <span>{{stop.transport[0].direction.nl}}</span>
+                                    <span>{{stop.transport[0].direction["nl"]}}</span>
                                 </div>
                             </div>
                         </section>
