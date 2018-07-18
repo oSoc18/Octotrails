@@ -142,12 +142,7 @@ async function getHistory(req, res) {
   } else {
     data = await History.getByStopId({ stop_id, full });
   }
-  /*
-  if (full)
-    data
-      .populate('inputs')
-      .populate({ path: 'history', options: { limit: 5 } });
-    */
+
   res.json(data);
 }
 
