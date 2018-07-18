@@ -86,6 +86,11 @@ export class DetailComponent implements OnInit {
     this.router.navigate(['/questions'], extras);
   }
 
+  
+  goToHistories() {
+    this.router.navigate(['/stops', this.stop.id, '/history']);
+  }
+
   readURL(input) {
     // console.log(input, input.target.files, input.target.files[0]);
     if (input.target.files && input.target.files[0]) {
