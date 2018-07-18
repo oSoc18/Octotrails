@@ -86,9 +86,12 @@ export class DetailComponent implements OnInit {
     this.router.navigate(['/questions'], extras);
   }
 
-  
   goToHistories() {
-    this.router.navigate(['/stops', this.stop.id, '/history']);
+    this.router.navigate(['/histories'], {
+      queryParams: {
+        stop_id: this.stop.id
+      }
+    });
   }
 
   readURL(input) {
