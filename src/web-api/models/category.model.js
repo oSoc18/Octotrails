@@ -2,7 +2,6 @@ import mongoose, {
   SchemaTypes
 } from 'mongoose';
 
-
 const options = {
   toJSON: {
     virtuals: true,
