@@ -127,8 +127,12 @@ html {
   height: 100vh;
 }
 
-.map {
-  width: 100vw;
+::ng-deep .map {
+    height: 100vh !important;
+    width: 100vw !important;
 }
 
-
+::ng-deep .mapboxgl-canvas {
+    height: 100vh !important;
+    width: 100vw !important;
+}
