@@ -35,7 +35,9 @@ export class InMemoryDataService implements InMemoryDbService {
   // HTTP GET interceptor
   get(reqInfo: RequestInfo) {
     const { collectionName, id } = reqInfo;
+
     if (collectionName === 'stops' && id === 'search') {
+      console.log(reqInfo);
       return this.getStops(reqInfo);
     }
     if (collectionName === 'questions') {
