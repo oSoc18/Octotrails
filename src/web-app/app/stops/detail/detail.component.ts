@@ -18,7 +18,6 @@ import { Data } from '../../shared/providers/data.provider';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-
 export class DetailComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
@@ -59,14 +58,13 @@ export class DetailComponent implements OnInit {
     } else {
       console.log(`getting stop`);
       this.getStop();
-
     }
   }
 
   getStop(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
     const by: string = this.route.snapshot.queryParamMap.get('by');
-    this.stopService.getStop(id, by).subscribe(stop => console.log(this.stop = stop.stops[0]));
+    this.stopService.getStop(id, by).subscribe(stop => (this.stop = stop));
   }
 
   goBack(): void {
