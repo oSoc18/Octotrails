@@ -138,7 +138,11 @@ async function getHistory(req, res) {
   let data;
 
   if (history_id) {
-    data = await History.findById({ history_id });
+    data = await History.findOne({ '_id' : history_id }).populate({
+      path: 'inputs',
+      // Get the question of the input
+      populate: { path: 'question', select: 'type content' }
+    });
   } else {
     data = await History.getByStopId({ stop_id, full });
   }
