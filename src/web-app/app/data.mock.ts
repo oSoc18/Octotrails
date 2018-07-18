@@ -40,7 +40,7 @@ export class InMemoryDataService implements InMemoryDbService {
     if (collectionName === 'questions') {
       return this.getQuestions(reqInfo);
     }
-    return undefined; // let the default GET handle all others
+    return reqInfo.utils.getPassThruBackend().handle(reqInfo.req); // let the default GET handle all others
   }
 
   // HTTP GET interceptor handles requests for stops

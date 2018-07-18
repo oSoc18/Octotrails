@@ -20,7 +20,7 @@ router.get(
   stopsCtrl.getProximity
 );
 
-/** GET /api/stops/proximity - Get the surroundings stops of given location */
+/** POST /api/stops/:stop_id/inputs - Post the new update of a stop */
 router.post(
   '/:stop_id/inputs',
   checkSchema(Stops.postInputs),
