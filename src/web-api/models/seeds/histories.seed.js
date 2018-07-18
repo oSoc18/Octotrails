@@ -7,7 +7,6 @@ import mockData from './histories.mock.js';
  */
 function run() {
   History.count({}).then(count => {
-    console.log('Yep', count);
     if (count === 0) {
       History.insertMany(mockData)
         .then(_ => console.log('[HISTORY_SEEDER] Inserted all histories'))
