@@ -50,9 +50,15 @@ export class OverviewComponent implements OnInit {
   }
 
   saveAnswers() {
-    this.questionService
-      .saveAnswers(this.stop_id, this.data.answers)
-      .subscribe(msg => console.log(msg));
+    let answers = {};
 
+    localStorage.forEach(element => {
+      //https://stackoverflow.com/questions/14234646/adding-elements-to-object
+      //Put it in array and use json.stringify
+    });
+
+    // this.questionService
+    //   .saveAnswers(this.stop_id)
+    //   .subscribe(msg => console.log(msg));
   }
 }
