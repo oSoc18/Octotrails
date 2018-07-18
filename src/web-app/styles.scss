@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section, main {
 
 body {
   line-height: 1;
+  font-family: helvetica;
 }
 
 ol, ul {
@@ -76,3 +77,65 @@ $my-app-foreground:    mat-palette($mat-gray, 900);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 @include angular-material-theme($my-app-theme);
+
+
+//----NAV-STYLING---//
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+}
+
+.header-title {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  height: 6rem;
+  padding-bottom: 2.5rem;
+  padding-top: 2.7rem;
+  width: 92%;
+  margin: 0 auto;
+}
+
+.stop-title {
+  color: #1B1B1B;
+  font-size: 1.6rem;
+  padding-bottom: .4rem;
+}
+
+.stop-id {
+  color: rgba(29, 31, 45, 0.45);
+  font-size: 1.4rem;
+}
+
+.backbutton {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #039BE5;
+}
+
+.back-svg {
+  padding-right: .5rem;
+}
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
