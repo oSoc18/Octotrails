@@ -15,7 +15,7 @@ export default {
     seeders.forEach(seeder => {
       if (seeder != undefined && typeof seeder['run'] !== 'function')
         throw new APIError(
-          `[SEEDER] The provider seeder \'${seeder}\' must be a function`
+          `[SEEDER] The seeder \'${seeder}\' must be implement 'run' function`
         );
       seeder['run'].call({});
     });
