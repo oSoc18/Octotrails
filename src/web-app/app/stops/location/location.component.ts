@@ -59,7 +59,7 @@ export class LocationComponent implements OnInit {
       container: 'detailMap',
       style: this.style,
       zoom: 13,
-      center: [this.stop.longitude, this.stop.latitude],
+      center: [this.stop.longitude, this.stop.latitude]
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
