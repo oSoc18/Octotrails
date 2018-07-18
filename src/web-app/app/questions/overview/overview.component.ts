@@ -43,7 +43,6 @@ export class OverviewComponent implements OnInit {
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;
-    console.log(this.data);
   }
 
   goBack(): void {
@@ -53,6 +52,7 @@ export class OverviewComponent implements OnInit {
   saveAnswers() {
     this.questionService
       .saveAnswers(this.stop_id, this.data.answers)
-      .subscribe(msg => alert(msg));
+      .subscribe(msg => console.log(msg));
+
   }
 }

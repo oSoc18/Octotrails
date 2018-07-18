@@ -1,99 +1,61 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit; /* stylelint-disable-line */
+ vertical-align: baseline;
+}
 
-/* Master Styles */
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+  display: block;
 }
-h2,
-h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}
+
 body {
-  margin: 0px;
-  background-color: #fff;
-}
-body,
-input[text],
-button {
-  color: #888;
-  font-family: Cambria, Georgia;
-}
-a {
-  cursor: pointer;
-  cursor: hand;
-}
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
+  line-height: 1;
+  font-family: helvetica;
 }
 
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited,
-a:link {
-  color: #607d8b;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #cfd8dc;
-}
-nav a.active {
-  color: #039be5;
+ol, ul {
+  list-style: none;
 }
 
-/* everywhere else */
-* {
-  font-family: Arial, Helvetica, sans-serif;
+blockquote, q {
+  quotes: none;
 }
 
-.style-0 {
-  background-color: #cf8acf;
-}
-.style-1 {
-  background-color: #6461a0;
-}
-.style-2 {
-  background-color: #949396;
-}
-.style-3 {
-  background-color: #314cb6;
-}
-.style-4 {
-  background-color: #0a81d1;
+blockquote::before, blockquote::after,
+q::before, q::after {
+  content: '';
+  content: none;
 }
 
-.fill-remaining-space {
-  /* This fills the remaining space, by using flexbox.
-     Every toolbar row uses a flexbox row layout. */
-  flex: 1 1 auto;
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.mat-toolbar .mat-form-field-label {
-  font-size: 12px;
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *::before, *::after { /* stylelint-disable-line */
+  box-sizing: inherit;
 }
 
 /*
@@ -112,3 +74,65 @@ $my-app-foreground:    mat-palette($mat-gray, 900);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 @include angular-material-theme($my-app-theme);
+
+
+//----NAV-STYLING---//
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+}
+
+.header-title {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  height: 6rem;
+  padding-bottom: 2.5rem;
+  padding-top: 2.7rem;
+  width: 92%;
+  margin: 0 auto;
+}
+
+.stop-title {
+  color: #1B1B1B;
+  font-size: 1.6rem;
+  padding-bottom: .4rem;
+}
+
+.stop-id {
+  color: rgba(29, 31, 45, 0.45);
+  font-size: 1.4rem;
+}
+
+.backbutton {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #039BE5;
+}
+
+.back-svg {
+  padding-right: .5rem;
+}
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
