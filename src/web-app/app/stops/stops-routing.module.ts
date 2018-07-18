@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
 import { HistoryComponent } from './history/history.component';
+import { LocationComponent } from './location/location.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'stops/search', component: SearchComponent },
   { path: 'stops/:id', component: DetailComponent },
   { path: 'stops/:id/history', component: HistoryComponent },
+  { path: 'stops/:id/questions', redirectTo: 'questions', pathMatch: 'full' },
+  { path: 'stops/:id/location', component: LocationComponent }
 ];
 
 @NgModule({
