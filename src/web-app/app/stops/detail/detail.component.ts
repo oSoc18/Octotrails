@@ -54,7 +54,9 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     if (this.data.stop) {
       this.stop = this.data.stop;
+      console.log(`stop exists`);
     } else {
+      console.log(`getting stop`);
       this.getStop();
     }
   }

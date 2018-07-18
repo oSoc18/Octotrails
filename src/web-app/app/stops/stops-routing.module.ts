@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'stops/search', component: SearchComponent },
   { path: 'stops/:id', component: DetailComponent },
   { path: 'stops/:id/history', component: HistoryComponent },
-  { path: 'stops/:id/questions', redirectTo: 'questions', pathMatch: 'full' }
 ];
 
 @NgModule({
