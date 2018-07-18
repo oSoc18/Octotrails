@@ -5,7 +5,7 @@
       <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.name">
         <a class="search-result" (click)="showDetails(stop)">
           <section class="search-result-info">
-            <h1 class="search-result-info-title">{{stop.alpha_nl}}</h1>
+            <h1 class="search-result-info-title">{{stop.alpha["nl"]}}</h1>
             <div class="search-result-info-more">
               <ul class="search-result-info-lines">
                 <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
@@ -15,7 +15,7 @@
               </ul>
               <div class="search-result-info-direction">
                 <span>&rarr; </span>
-                <span>{{stop.transport[0].direction.nl}}</span>
+                <span>{{stop.transport[0].direction["nl"]}}</span>
               </div>
             </div>
           </section>

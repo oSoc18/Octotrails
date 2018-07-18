@@ -29,12 +29,15 @@ export class InMemoryDataService implements InMemoryDbService {
         this.finishOptions(res, reqInfo)
       );
     }
+    return reqInfo.utils.getPassThruBackend().handle(reqInfo.req); // let the default GET handle all others
   }
 
   // HTTP GET interceptor
   get(reqInfo: RequestInfo) {
     const { collectionName, id } = reqInfo;
+
     if (collectionName === 'stops' && id === 'search') {
+      console.log(reqInfo);
       return this.getStops(reqInfo);
     }
     if (collectionName === 'questions') {

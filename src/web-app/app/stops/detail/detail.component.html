@@ -2,7 +2,7 @@
   <header class="header">
     <a routerLink="/stops/search">Go Back</a>
     <div class="header-title">
-      <h2>{{stop.alpha_nl}}</h2>
+      <h2>{{stop.alpha["nl"]}}</h2>
       <h3>id:{{stop.id}}</h3>
     </div>
     <input type='file' accept="image/*" (change)="readURL($event);" />
@@ -30,7 +30,7 @@
       <h4>Address</h4>
     </header>
     <article>
-      <div>{{stop.address.nl}}</div>
+      <div>{{stop.address["nl"]}}</div>
       <a routerLink="/stops/{{stop.id}}/location">show on map</a>
     </article>
   </section>

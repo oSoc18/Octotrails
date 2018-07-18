@@ -8,7 +8,7 @@ function list(req, res, next) {
     skip,
     name
   })
-    .then(questions => res.json(questions))
+    .then(questions => res.json({ questions }))
     .catch(e => next(e));
 }
 
