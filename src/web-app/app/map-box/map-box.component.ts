@@ -15,6 +15,7 @@ export class MapBoxComponent implements OnInit {
   /// default settings
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/light-v9';
+
   lat = 50.85045;
   lon = 4.34878;
 
