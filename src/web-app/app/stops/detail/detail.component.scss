@@ -14,7 +14,7 @@
   color: black;
   margin: 0 auto;
   height: 4.8rem;
-  margin: .5rem;
+  margin-bottom: 1rem;
 }
 
 .buttons {
@@ -68,4 +68,15 @@
   margin: 0 auto;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.direction {
+  font-size: 1.4rem;
+  margin-left: 1.5rem;
+  border-left: .2rem solid lightgrey;
+  padding-left: 1.5rem;
+}
+
+.line-direction {
+  padding-bottom: .5rem;
 }

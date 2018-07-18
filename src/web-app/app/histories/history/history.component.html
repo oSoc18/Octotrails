@@ -1,6 +1,6 @@
 <div *ngIf="histories">
   <header class="header">
-    <a class="backbutton" routerLink="/stops/{{stop.id}}/history">
+    <a class="backbutton" routerLink="/stops/{{stop.id}}">
       <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
         x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
         <defs>
@@ -18,16 +18,14 @@
     </a>
     <div class="header-title">
       <h2 class="stop-title">History of {{stop.alpha["nl"]}}</h2>
-      <h3 class="stop-id">date: {{history.created}}</h3>
+      <h3 class="stop-id">id: {{stop.id}}</h3>
     </div>
     <div width="32.433"></div>
   </header>
-  <section class="history">
-    <article class="history-input">
-      <header>
-        <h1>{{history.created}}</h1>
-      </header>
-      <!-- create overview component with answer already filled in & buttons disabld   -->
-    </article>
+  <section class="histories">
+    <!-- foreach history: make history a link  -->
+    <a class="history" routerLink="/stops/{{history.stop_id}}/history/{{history.id}}">
+      <p>Update of {{history.created}}</p>
+    </a>
   </section>
 </div>

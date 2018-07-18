@@ -10,7 +10,7 @@
                       <a class="search-result" (click)="showDetails(stop)">
                         <section class="search-result-info">
                             <div class="search-result-text">
-                                <h1 class="search-result-info-title">{{stop.alpha["nl"]}}</h1>
+                                <h1 class="search-result-info-title">{{stop.alpha["nl"]}} / {{stop.alpha["fr"]}}</h1>
                                 <ul class="search-result-info-lines">
                                     <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
                                     <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
@@ -26,7 +26,7 @@
                                 xml:space="preserve">
                                 <defs>
                                     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-    
+
                                         <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
                                         <stop offset="100%" style="stop-color:#039BE5;stop-opacity:1" />
                                     </linearGradient>
@@ -48,5 +48,3 @@
                 </mat-form-field>
               </form>
 </section>
-
-
