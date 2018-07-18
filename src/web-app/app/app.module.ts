@@ -4,11 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-<<<<<<< HEAD
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-=======
->>>>>>> Frontend (#84)
 import { environment } from '../environments/environment';
 import { InMemoryDataService } from './data.mock';
 
