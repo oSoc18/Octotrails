@@ -1,19 +1,18 @@
-import mongoose, {
-  SchemaTypes
-} from 'mongoose';
+import mongoose, { SchemaTypes } from 'mongoose';
 
 const options = {
   toJSON: {
     virtuals: true,
     versionKey: false,
-    transform: function (doc, ret) {
+    transform: function(doc, ret) {
       ret.id = ret._id.toHexString();
       delete ret._id;
     }
   }
 };
 
-const CategorySchema = new mongoose.Schema({
+const CategorySchema = new mongoose.Schema(
+  {
     id: String,
     num: String,
     name: String,
@@ -23,10 +22,7 @@ const CategorySchema = new mongoose.Schema({
 );
 
 CategorySchema.statics = {
-  list({
-    skip = 0,
-    limit = 50
-  } = {}) {
+  list({ skip = 0, limit = 50 } = {}) {
     return this.find({})
       .skip(+skip)
       .limit(+limit)
@@ -34,4 +30,4 @@ CategorySchema.statics = {
   }
 };
 
-export default mongoose.model('categories', CategorySchema);
+export default mongoose.model('Category', CategorySchema);

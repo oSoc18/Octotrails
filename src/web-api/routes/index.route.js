@@ -24,6 +24,7 @@ router.use('/questions', questionsRoutes);
 
 // mount question routes at /categories
 router.use('/categories', categoriesRoutes);
+
 // mount history routes at /histories
 router.use('/histor(y|ies)', historiesRoutes);
 
