@@ -44,7 +44,7 @@ export class MapBoxComponent implements OnInit {
       center: [this.lon, this.lat]
     });
 
-    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
     this.geolocateControl = new mapboxgl.GeolocateControl({
       fitBoundsOptions: {
@@ -55,7 +55,7 @@ export class MapBoxComponent implements OnInit {
       },
       trackUserLocation: true
     });
-    this.map.addControl(this.geolocateControl);
+    this.map.addControl(this.geolocateControl, 'bottom-right');
 
     this.map.on('load', () => {
       this.geolocateControl.trigger();
