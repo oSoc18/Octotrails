@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { StopsModule } from './stops/stops.module';
 import { QuestionsModule } from './questions/questions.module';
+import { HistoriesModule } from './histories/histories.module';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { QuestionsModule } from './questions/questions.module';
     SharedModule,
     StopsModule,
     QuestionsModule,
+    HistoriesModule,
     AppRoutingModule // Module import order matters
   ],
   declarations: [AppComponent],

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router, ActivatedRoute } from '@angular/router';
+import { HistoryService } from '../histories.service';
+import { History } from '../history';
 
 @Component({
   selector: 'app-history',
@@ -6,10 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
+  stopId: string;
+  stopName: string;
+  histories: History[];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private historyService: HistoryService
+  ) {}
 
   ngOnInit() {
+    this.stopId = this.route.snapshot.queryParamMap.get('stop_id');
+    this.stopName = this.route.snapshot.queryParamMap.get('stop_name');
+    this.getStopHistories();
   }
 
+  getStopHistories(stopId?: string) {
+    return this.historyService
+      .getHistoriesByStopId(this.stopId)
+      .subscribe(list => (this.histories = list));
+  }
+
+  getHistory(historyId: string) {
+    return this.historyService
+      .getHistory(historyId)
+      .subscribe(history => (this.histories = [history]));
+  }
 }
