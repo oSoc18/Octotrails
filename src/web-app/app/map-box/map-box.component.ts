@@ -48,6 +48,13 @@ export class MapBoxComponent implements OnInit {
 
     this.map.on('load', () => {
       this.getLocation();
+      console.log("ik ben hier");
+      this.map.loadImage('/assets/icons/locationPin.png', (error, image) => {
+        console.log(image);
+        console.log(error);
+        if (error) throw error;
+        this.map.addImage('location', image);
+    });
 
       this.map.on('click', 'unclustered-point', e => {
         const mapStopId = e.features[0].properties.id;
@@ -160,15 +167,26 @@ export class MapBoxComponent implements OnInit {
         clusterRadius: 50
       });
 
-      this.map.addLayer({
-        id: 'unclustered-point',
-        type: 'circle',
-        source: 'proximityStops',
-        paint: {
-          'circle-color': '#00C6FF',
-          'circle-radius': 10
-        }
-      });
+      
+        this.map.addLayer({
+            "id": 'unclustered-point',
+            "type": "symbol",
+            "source": 'proximityStops',
+            "layout": {
+                "icon-image": "location",
+                "icon-size" : .25
+            }
+        });
+
+    //   this.map.addLayer({
+    //     id: 'unclustered-point',
+    //     type: 'circle',
+    //     source: 'proximityStops',
+    //     paint: {
+    //       'circle-color': '#00C6FF',
+    //       'circle-radius': 10
+    //     }
+    //   });
 
       this.map.addLayer({
         id: 'clusters',
