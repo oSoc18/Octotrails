@@ -53,7 +53,8 @@ function search(req, res, next) {
 
   if (by == 'stop_name') {
     url = '/stops/name/' + term;
-  } else if (by == 'stop_id') {
+  }
+  else if (by == 'stop_id') {
     url = '/stops/' + term;
   }
 
@@ -63,7 +64,8 @@ function search(req, res, next) {
     (err, apiData) => {
       if (err) {
         next(err);
-      } else {
+      }
+      else {
         return res.json(apiData);
       }
     }
@@ -138,13 +140,14 @@ async function getHistory(req, res) {
   let data;
 
   if (history_id) {
-    data = await History.findOne({ '_id' : history_id }).populate({
-      path: 'inputs',
-      // Get the question of the input
-      populate: { path: 'question', select: 'type content' }
-    });
+    const history = await History.getById({ _id: history_id });
+
+    if (!history)
+      throw new APIError(`No such history(${history_id}) exists!`, httpStatus.NOT_FOUND, true);
+    else
+      data = { history };
   } else {
-    data = await History.getByStopId({ stop_id, full });
+    data = { histories: await History.getByStopId({ stop_id, full }) };
   }
 
   res.json(data);
