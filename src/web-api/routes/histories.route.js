@@ -1,9 +1,7 @@
 import express from 'express';
 
-
 import asyncHandler from 'express-async-handler';
 import hitsoryCtrl from '../controllers/histories.controller';
-
 
 const router = express.Router();
 
