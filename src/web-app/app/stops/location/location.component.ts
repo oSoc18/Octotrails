@@ -66,7 +66,7 @@ export class LocationComponent implements OnInit {
     this.map.dragPan.disable();
     this.map.touchZoomRotate.disable();
     this.map.on('load', () => {
-     this.displayLocation(this.stop.longitude, this.stop.latitude);
+      this.displayLocation(this.stop.longitude, this.stop.latitude);
     });
   }
 
@@ -74,11 +74,11 @@ export class LocationComponent implements OnInit {
     if (this.map.getLayer('stopLocation') !== undefined) {
       this.map.removeLayer('stopLocation');
     }
-  
+
     if (this.map.getSource('stopLocation') !== undefined) {
       this.map.removeSource('stopLocation');
     }
-  
+
     this.map.addSource('stopLocation', {
       type: 'geojson',
       data: {
@@ -95,7 +95,7 @@ export class LocationComponent implements OnInit {
         ]
       }
     });
-  
+
     this.map.addLayer({
       id: 'stopLocation',
       source: 'stopLocation',

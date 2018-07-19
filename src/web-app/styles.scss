@@ -1,27 +1,105 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
- margin: 0;
- padding: 0;
- border: 0;
- font-size: 100%;
- font: inherit; /* stylelint-disable-line */
- vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit; /* stylelint-disable-line */
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, main {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+main {
   display: block;
 }
 
@@ -30,16 +108,20 @@ body {
   font-family: helvetica;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote::before, blockquote::after,
-q::before, q::after {
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
   content: '';
   content: none;
 }
@@ -54,7 +136,10 @@ html {
   font-size: 62.5%;
 }
 
-*, *::before, *::after { /* stylelint-disable-line */
+*,
+*::before,
+*::after {
+  /* stylelint-disable-line */
   box-sizing: inherit;
 }
 
@@ -67,14 +152,13 @@ can be found in the LICENSE file at http://angular.io/license
 @include mat-core();
 
 $my-app-primary: mat-palette($mat-blue);
-$my-app-accent:  mat-palette($mat-light-blue, 400, 200, 600);
-$my-app-warn:    mat-palette($mat-deep-orange);
-$my-app-foreground:    mat-palette($mat-gray, 900);
+$my-app-accent: mat-palette($mat-light-blue, 400, 200, 600);
+$my-app-warn: mat-palette($mat-deep-orange);
+$my-app-foreground: mat-palette($mat-gray, 900);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 @include angular-material-theme($my-app-theme);
-
 
 //----NAV-STYLING---//
 
@@ -101,9 +185,9 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 }
 
 .stop-title {
-  color: #1B1B1B;
+  color: #1b1b1b;
   font-size: 1.6rem;
-  padding-bottom: .4rem;
+  padding-bottom: 0.4rem;
 }
 
 .stop-id {
@@ -116,20 +200,20 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   align-items: center;
   font-size: 1.4rem;
   text-decoration: none;
-  color: #039BE5;
+  color: #039be5;
 }
 
 .back-svg {
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 }
 
 .input-file {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 .section-title {

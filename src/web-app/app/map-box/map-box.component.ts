@@ -16,7 +16,6 @@ export class MapBoxComponent implements OnInit {
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/light-v9';
   geolocateControl: mapboxgl.GeolocateControl;
-
   lat = 50.85045;
   lon = 4.34878;
 

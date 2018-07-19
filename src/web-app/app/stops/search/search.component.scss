@@ -8,41 +8,41 @@ html {
 // }
 
 .search-section {
-    position: absolute;
-    z-index: 100;
-    top: 0;
-    width: 100%;
-    margin-top: 2rem;
-    position: fixed;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  margin-top: 2rem;
+  position: fixed;
 }
 
 .search-component {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .search-form-field {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
-::ng-deep .mat-form-field{
-    background-color: rgba(255, 255, 255, .90);
-    border-radius: 5px;
-    border: 2px solid rgba(255, 255, 255, .90);
-    padding: 1rem 2rem 0 2rem;
-    width: 90%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+::ng-deep .mat-form-field {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem 0 2rem;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 ::ng-deep .cdk-overlay-pane {
-    width: 90% !important;
-    top: 75.0625px !important;
-    left: 5% !important;
+  width: 90% !important;
+  top: 75.0625px !important;
+  left: 5% !important;
 }
 
 ::ng-deep .mat-autocomplete-panel.mat-autocomplete-visible {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
 ::ng-deep .mat-option {
@@ -55,9 +55,9 @@ html {
 }
 
 .search-result-text {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .search-result-info {
@@ -68,11 +68,11 @@ html {
 }
 
 .arrow {
-    width: 14px;
-    height: 20px;
-    align-self: flex-end;
-    margin-top: 0.8rem;
-    color: #ffffff;
+  width: 14px;
+  height: 20px;
+  align-self: flex-end;
+  margin-top: 0.8rem;
+  color: #ffffff;
 }
 
 .search-result-info-title {
@@ -112,9 +112,9 @@ html {
 }
 
 .search-result-info-direction {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .cdk-overlay-pane {
@@ -128,11 +128,11 @@ html {
 }
 
 ::ng-deep .map {
-    height: 100vh !important;
-    width: 100vw !important;
+  height: 100vh !important;
+  width: 100vw !important;
 }
 
 ::ng-deep .mapboxgl-canvas {
-    height: 100vh !important;
-    width: 100vw !important;
+  height: 100vh !important;
+  width: 100vw !important;
 }
