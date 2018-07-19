@@ -2,7 +2,7 @@
   <h2 class="question">{{question.content}}</h2>
   <div class="number">
     <mat-form-field>
-      <input matInput type="number" value="0" [(ngModel)]="answer" (keyup)="sendAnswer()">
+      <input matInput type="number" disabled="{{isAnswered}}" [(ngModel)]="question.answer || answer" (keyup)="sendAnswer()">
     </mat-form-field>
     <p class="unit">cm</p>
   </div>

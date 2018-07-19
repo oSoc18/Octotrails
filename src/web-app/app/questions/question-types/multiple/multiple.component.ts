@@ -10,7 +10,7 @@ export class MultipleComponent implements OnInit {
   activeButton = null;
   @Input() question: Question;
   @Output('answer')
-  outputAnswer: EventEmitter<object> = new EventEmitter<object>();
+  outputChange: EventEmitter<object> = new EventEmitter<object>();
   answer: string;
 
   constructor() {}
@@ -36,6 +36,6 @@ export class MultipleComponent implements OnInit {
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.outputAnswer.emit(value);
+    this.outputChange.emit(value);
   }
 }

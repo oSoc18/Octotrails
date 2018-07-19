@@ -18,6 +18,8 @@ import { StopsModule } from './stops/stops.module';
 import { QuestionsModule } from './questions/questions.module';
 import { HistoriesModule } from './histories/histories.module';
 
+/* Import Global Components*/
+
 @NgModule({
   imports: [
     BrowserModule,

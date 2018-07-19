@@ -11,10 +11,8 @@ import { MatDesignModule } from '../shared/mat-design/mat-design.module';
 
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
-import { HistoriesComponent } from './histories/histories.component';
 import { LocationComponent } from './location/location.component';
 import { ImageDetailComponent } from './image-detail/image-detail.component';
-import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   imports: [
@@ -28,12 +26,10 @@ import { HistoryComponent } from './history/history.component';
   ],
   declarations: [
     SearchComponent,
-    HistoriesComponent,
     DetailComponent,
     LocationComponent,
     ImageDetailComponent,
-    MapBoxComponent,
-    HistoryComponent
+    MapBoxComponent
   ],
   exports: [RouterModule, CarouselModule]
 })

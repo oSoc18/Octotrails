@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
+import { Question } from '../questions/question';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,7 +31,7 @@ export class HistoryService {
    * @param stopId The stop Id
    */
   getHistoriesByStopId(stopId: string): Observable<History[]> {
-    const url = `${env.API_URL}/api/stops/${stopId}/histories`;
+    const url = env.API_URL + `api/stops/${stopId}/histories`;
     return this.http.get<Object>(url).pipe<History[]>(
       map(resp => resp['histories'].map(res => new History(res))),
       catchError(this.handleError('getHistoriesByStopId', []))

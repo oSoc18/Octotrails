@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Route, Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { HistoryService } from '../histories.service';
 import { History } from '../history';
 
@@ -15,6 +15,7 @@ export class HistoryComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private historyService: HistoryService
   ) {}
 
@@ -33,6 +34,15 @@ export class HistoryComponent implements OnInit {
   getHistory(historyId: string) {
     return this.historyService
       .getHistory(historyId)
-      .subscribe(history => (this.histories = [history]));
+      .subscribe(history => (this.histories = history));
+  }
+
+  goToHistoryDetail(id) {
+    this.router.navigate(['/histories', id ], {
+      queryParams: {
+        stop_id: this.stopId,
+        stop_name: this.stopName
+      }
+    });
   }
 }

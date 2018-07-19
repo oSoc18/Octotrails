@@ -10,7 +10,7 @@ import { Data } from '../../../shared/providers/data.provider';
 export class StringComponent implements OnInit {
     @Input() question: Question;
     @Output('answer')
-    outputAnswer: EventEmitter<object> = new EventEmitter<object>();
+    outputChange: EventEmitter<object> = new EventEmitter<object>();
   
     answer: string;
   constructor() { }
@@ -20,7 +20,7 @@ export class StringComponent implements OnInit {
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.outputAnswer.emit(value);
+    this.outputChange.emit(value);
   }
 
 }

@@ -1,4 +1,5 @@
 <div *ngIf="histories">
+  {{histories|json}}
   <header class="header">
     <a class="backbutton" routerLink="/stops/{{stopId}}">
       <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -23,9 +24,8 @@
     <div width="32.433"></div>
   </header>
   <section class="histories">
-    <!-- foreach history: make history a link  -->
-    <a class="history" routerLink="/stops/{{history.stop_id}}/history/{{history.id}}">
-      <p>Update of {{history.created}}</p>
+    <a class="history" *ngFor="let history of histories" (click)="goToHistoryDetail(history.id)">
+      <p>Update of {{history.created_at.slice(0,10)}}</p>
     </a>
   </section>
 </div>
