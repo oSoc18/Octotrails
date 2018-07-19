@@ -123,14 +123,14 @@ export class MapBoxComponent implements OnInit {
         clusterMaxZoom: 12,
         clusterRadius: 50
       });
-      
+
       this.map.addLayer({
-        "id": 'unclustered-point',
-        "type": "symbol",
-        "source": 'proximityStops',
-        "layout": {
-          "icon-image": "location",
-          "icon-size" : .25
+        id: 'unclustered-point',
+        type: 'symbol',
+        source: 'proximityStops',
+        layout: {
+          'icon-image': 'location',
+          'icon-size': .25
         }
       });
 
@@ -171,7 +171,7 @@ export class MapBoxComponent implements OnInit {
           'text-size': 12,
         },
         paint: {
-            "text-color": "#FFFFFF"
+          'text-color': '#FFFFFF'
         }
       });
     });
