@@ -113,7 +113,7 @@ export class MapBoxComponent implements OnInit {
       type: 'circle',
       paint: {
         'circle-radius': 10,
-        'circle-color': '#007cbf'
+        'circle-color': '#29B6F6'
       }
     });
   }
@@ -165,7 +165,7 @@ export class MapBoxComponent implements OnInit {
         type: 'circle',
         source: 'proximityStops',
         paint: {
-          'circle-color': '#FF0000',
+          'circle-color': '#039BE5',
           'circle-radius': 10
         }
       });
@@ -179,11 +179,11 @@ export class MapBoxComponent implements OnInit {
           'circle-color': [
             'step',
             ['get', 'point_count'],
-            '#51bbd6',
+            '#00C6FF',
             100,
-            '#f1f075',
+            '#00C6FF',
             750,
-            '#f28cb1'
+            '#00C6FF'
           ],
           'circle-radius': [
             'step',
@@ -203,8 +203,11 @@ export class MapBoxComponent implements OnInit {
         source: 'proximityStops',
         layout: {
           'text-field': '{point_count_abbreviated}',
-          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-          'text-size': 12
+          'text-font': ['Arial Unicode MS Bold'],
+          'text-size': 12,
+        },
+        paint: {
+            "text-color": "#FFFFFF"
         }
       });
     });
