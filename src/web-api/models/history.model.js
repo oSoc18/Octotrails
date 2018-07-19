@@ -1,0 +1,108 @@
+import bluebird from 'bluebird';
+import mongoose, { SchemaTypes } from 'mongoose';
+import httpStatus from 'http-status';
+
+import APIError from '../helpers/APIError';
+
+const options = {
+  toJSON: {
+    virtuals: true,
+    transform: function(doc, ret) {
+      ret.id = ret._id.toHexString();
+      delete ret._id;
+      delete ret.__v;
+    }
+  }
+};
+
+/*
+ ******************
+ *  History Schema
+ *******************
+ *
+ * A History is a record of the updated Input of a Stop.
+ * It can be linked to another history.
+ * The current history of a stop is the one with the last update datetime.
+ *
+ * Details :
+ * ----------
+ *
+ * id — The History ID.
+ * stop_id - The Stop ID.
+ * create_at - The UNIX Date of the update
+ * inputs - All inputs related to the update
+ * previous - List of previous history of the stop
+ *
+ */
+const HistorySchema = new mongoose.Schema(
+  {
+    stop_id: String,
+    created_at: { type: Date, default: Date.now },
+    inputs: [{ type: SchemaTypes.ObjectId, ref: 'Input' }],
+    previous: { type: SchemaTypes.ObjectId, ref: 'History', default: null }
+  },
+  options
+);
+
+/**
+ * Add your
+ * - pre-save hooks
+ * - validations
+ * - virtuals
+ */
+
+/**
+ * Methods
+ */
+HistorySchema.method({});
+
+/**
+ * Statics
+ */
+HistorySchema.statics = {
+  /**
+   * Get stop' histories by the required stop_id
+   * @param {String} stop_id - The id of the the stop.
+   * @returns {Promise<History, APIError>}
+   */
+  getByStopId: async function get({ stop_id }) {
+    const query = this.find({ stop_id }).sort('-created_at');
+
+    query.populate({
+      path: 'inputs',
+      // Get the question of the input
+      populate: { path: 'question', select: 'type content  num ' }
+    });
+    // .populate({ path: 'previous', options: { limit: 5 } });
+
+    return await query;
+
+    // if (!history) {
+    //   throw new APIError('No history exists!', httpStatus.NOT_FOUND, true);
+  },
+  
+    /**
+   * Get stop' histories by the required stop_id
+   * @param {String} stop_id - The id of the the stop.
+   * @returns {Promise<History, APIError>}
+   */
+  getById: async function get({ _id }) {
+    const query = this.findOne({ _id });
+
+    query.populate({
+      path: 'inputs',
+      // Get the question of the input
+      populate: { path: 'question', select: 'type content  num ' }
+    })
+    .populate({ path: 'previous', options: { limit: 5 } });
+
+    return await query;
+
+  },
+
+};
+
+/**
+ * @typedef History
+ */
+export default mongoose.model('History', HistorySchema);

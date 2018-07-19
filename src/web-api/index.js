@@ -24,7 +24,7 @@ const stopMongoDB = function() {
 mongoose
   .connect(
     mongoUri,
-    { keepAlive: 1 }
+    { keepAlive: 1 , useNewUrlParser: true }
   )
   .then(db => {
     mongoDB = db;
@@ -53,9 +53,19 @@ server.on('error', err => {
   if (server && typeof server['close'] == 'function') {
     server.close();
   }
+});
+
+// Before closing the server
+server.on('close', () => {
   stopMongoDB();
-  console.error('[SERVER] Exit now !');
+  console.info('[SERVER] Exit now !');
   process.exit();
 });
+
+//// If ctrl+c
+process.on('SIGINT', code => server.close());
+process.on('SIGTERM', code => server.close());
+// If Exception
+process.on('uncaughtException', err => server.close());
 
 export default app;

@@ -1,63 +1,138 @@
 /* StopSearch private styles */
-
-.page {
-  width: 100%;
+html {
+  font-size: 1.6rem;
 }
-.search-form-field {
-  margin-top: 3rem;
+
+// ::ng-deep .mat-autocomplete-panel {
+//   background-color: rgba(255,255,255,.8);
+// }
+
+.search-section {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  margin-top: 2rem;
+  position: fixed;
+}
+
+.search-component {
+  width: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
-.search-form {
-  width: 100%;
+.search-form-field {
+  font-size: 1.4rem;
 }
 
-.search-form {
-  margin-top: 3rem;
+::ng-deep .mat-form-field {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem 0 2rem;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .cdk-overlay-pane {
+  width: 90% !important;
+  top: 75.0625px !important;
+  left: 5% !important;
+}
+
+::ng-deep .mat-autocomplete-panel.mat-autocomplete-visible {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+::ng-deep .mat-option {
+  display: flex;
+  margin: 1.5rem 2rem;
+  border-bottom: 1px solid lightgrey;
+  padding: 0;
+  height: auto !important;
+  line-height: normal !important;
+}
+
+.search-result-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-result-info {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.arrow {
+  width: 14px;
+  height: 20px;
+  align-self: flex-end;
+  margin-top: 0.8rem;
+  color: #ffffff;
+}
+
+.search-result-info-title {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search-result {
+  font-size: 0.3rem;
+  text-decoration: none;
+}
+
+.search-result-info-lines {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.search-result-info-line {
+  font-size: 16px;
+  margin: 0.2rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-result-info-direction,
+.search-result-info-type {
+  font-size: 16px;
+  color: black;
+}
+
+.search-result-info-direction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cdk-overlay-pane {
   width: 100vw;
-}
-//
-// .search-result li {
-//   border-bottom: 1px solid gray;
-//   border-left: 1px solid gray;
-//   border-right: 1px solid gray;
-//   width:195px;
-//   height: 16px;
-//   padding: 5px;
-//   background-color: white;
-//   cursor: pointer;
-//   list-style-type: none;
-// }
-//
-// .search-result li:hover {
-//   background-color: #607D8B;
-// }
-//
-// .search-result li a {
-//   color: #888;
-//   display: block;
-//   text-decoration: none;
-// }
-
-// .search-result li a:hover {
-//   color: white;
-// }
-// .search-result li a:active {
-//   color: white;
-// }
-
-// #search-box {
-//   width: 200px;
-//   height: 20px;
-// }
-
-.map {
   height: 100vw;
+  top: 66px;
 }
 
-// ul.search-result {
-//   margin-top: 0;
-//   padding-left: 0;
-// }
+.mat-autocomplete-panel {
+  height: 100vh;
+}
+
+::ng-deep .map {
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+::ng-deep .mapboxgl-canvas {
+  height: 100vh !important;
+  width: 100vw !important;
+}
