@@ -165,7 +165,7 @@ export class MapBoxComponent implements OnInit {
         type: 'circle',
         source: 'proximityStops',
         paint: {
-          'circle-color': '#039BE5',
+          'circle-color': '#00C6FF',
           'circle-radius': 10
         }
       });
