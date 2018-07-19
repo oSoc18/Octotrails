@@ -1,8 +1,8 @@
 import https from 'https';
 import httpStatus from 'http-status';
-import config from '../config/config';
 import { validationResult, Result } from 'express-validator/check';
 
+import config from '../config/config';
 import APIError from '../helpers/APIError';
 import History from '../models/history.model';
 
@@ -140,12 +140,7 @@ async function getHistory(req, res) {
   let data;
 
   if (history_id) {
-    const history = await History.getById({ _id: history_id });
-
-    if (!history)
-      throw new APIError(`No such history(${history_id}) exists!`, httpStatus.NOT_FOUND, true);
-    else
-      data = { history };
+   return res.redirect('/api/histories/'+history_id);
   } else {
     data = { histories: await History.getByStopId({ stop_id, full }) };
   }
