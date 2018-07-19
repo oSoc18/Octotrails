@@ -50,9 +50,32 @@ export class OverviewComponent implements OnInit {
   }
 
   saveAnswers() {
-    this.questionService
-      .saveAnswers(this.stop_id, this.data.answers)
-      .subscribe(msg => console.log(msg));
+    let keys = [];
+    let values = [];
+    let answers = [];
 
+    for (let i = 0; i < localStorage.length; i++) {
+      keys.push(localStorage.key(i));
+      values.push(localStorage.getItem(keys[i]));
+      answers.push({ question_id: keys[i], answer: values[i] });
+    }
+    
+    this.router.navigate(['/stops', this.stop_id]);
+
+    return this.questionService
+      .saveAnswers(this.stop_id, answers)
+      .subscribe(msg => console.log(msg));
+  }
+
+  cancel() {
+    const OK = window.confirm('Do you want to save your progress?');
+
+    if (OK) {
+      this.saveAnswers();
+    } else {
+      localStorage.clear();
+    }
+
+    this.router.navigate(['/stops', this.stop_id]);
   }
 }

@@ -1,52 +1,50 @@
 <section>
-    <map-box></map-box>
+  <map-box></map-box>
 </section>
 <section class="search-section">
-    <form class="search-component">
-                <mat-form-field class="search-form-field">
-                  <input matInput placeholder="Search a stop" aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.name">
-                      <a class="search-result" (click)="showDetails(stop)">
-                        <section class="search-result-info">
-                            <div class="search-result-text">
-                                <h1 class="search-result-info-title">{{stop.alpha["nl"]}}</h1>
-                                <ul class="search-result-info-lines">
-                                    <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
-                                    <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
-                                        <span [ngStyle]="{'color':line.textColor}">{{line.number}}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="search-result-info-direction">
-                            <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In  -->
-                                <svg class="arrow" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                                x="0px" y="0px" width="175px" height="294px" viewBox="0 0 175 294" style="enable-background:new 0 0 175 294;"
-                                xml:space="preserve">
-                                <defs>
-                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-    
-                                        <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#039BE5;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                                <g>
-                                <path fill=url(#grad1) d="M4.8,288.2c3.5,3.8,8.4,5.8,13.2,5.8c4.4,0,8.8-1.6,12.2-4.8l139-129c3.7-3.4,5.8-8.2,5.8-13.2s-2.1-9.8-5.8-13.2l-139-129
-                                C23-2,11.6-1.5,4.8,5.8C-2,13-1.5,24.4,5.8,31.2L130.5,147L5.8,262.8C-1.5,269.6-2,281,4.8,288.2z"/>
-                                </g>
-                                </svg>
-                                <div>
-                                    <span>&rarr; </span>
-                                    <span>{{stop.transport[0].direction["nl"]}}</span>
-                                </div>
-                            </div>
-                        </section>
-                      </a>
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
-              </form>
+  <form class="search-component">
+    <mat-form-field class="search-form-field">
+      <input matInput placeholder="Search a stop" aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.name">
+          <a class="search-result" (click)="showDetails(stop)">
+            <section class="search-result-info">
+              <div class="search-result-text">
+                <h1 class="search-result-info-title">{{stop.alpha["nl"]}}</h1>
+                <ul class="search-result-info-lines">
+                  <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
+                  <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
+                    <span [ngStyle]="{'color':line.textColor}">{{line.number}}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="search-result-info-direction">
+                <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In  -->
+                <svg class="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+                  x="0px" y="0px" width="175px" height="294px" viewBox="0 0 175 294" style="enable-background:new 0 0 175 294;"
+                  xml:space="preserve">
+                  <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+
+                      <stop offset="0%" style="stop-color:#29B6F6;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#039BE5;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <g>
+                    <path fill=url(#grad1) d="M4.8,288.2c3.5,3.8,8.4,5.8,13.2,5.8c4.4,0,8.8-1.6,12.2-4.8l139-129c3.7-3.4,5.8-8.2,5.8-13.2s-2.1-9.8-5.8-13.2l-139-129
+                                C23-2,11.6-1.5,4.8,5.8C-2,13-1.5,24.4,5.8,31.2L130.5,147L5.8,262.8C-1.5,269.6-2,281,4.8,288.2z"
+                    />
+                  </g>
+                </svg>
+                <div>
+                  <span>&rarr; </span>
+                  <span>{{stop.transport[0].direction["nl"]}}</span>
+                </div>
+              </div>
+            </section>
+          </a>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 </section>
-
-

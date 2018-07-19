@@ -33,10 +33,19 @@ const QuestionSchema = new mongoose.Schema(
     type: String,
     hint: String,
     choices: [String],
-    categorie_id: String //TODO  Replace by { type: SchemaTypes.ObjectId, ref: 'Category' }
+    category_num: String
   },
   options
 );
+
+QuestionSchema.virtual('category', {
+  ref: 'Category', // The model to use
+  localField: 'category_num', // Find people where `localField`
+  foreignField: 'num', // is equal to `foreignField`
+  // If `justOne` is true, 'members' will be a single doc otherwise an array.
+  // `justOne` is false by default.
+  justOne: true
+});
 
 /**
  * Methods
@@ -54,6 +63,7 @@ QuestionSchema.statics = {
    */
   get(id) {
     return this.findById(id)
+      .populate({ path: 'category', select: 'num', populate: 'category' })
       .exec()
       .then(question => {
         if (question) {
@@ -75,6 +85,7 @@ QuestionSchema.statics = {
    */
   list({ skip = 0, limit = 50 } = {}) {
     return this.find({})
+      .populate('category', 'num')
       .skip(+skip)
       .limit(+limit)
       .exec();
@@ -84,4 +95,4 @@ QuestionSchema.statics = {
 /**
  * @typedef Question
  */
-export default mongoose.model('questions', QuestionSchema);
+export default mongoose.model('Question', QuestionSchema);

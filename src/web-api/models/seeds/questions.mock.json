@@ -1,38 +1,38 @@
 [
   {
-    "id": "5b4901f0a47137f00321331f",
+    "_id": "5b4901f0a47137f00321331f",
     "num": "019",
     "content": "What is the measure/distance of the 1st slant ?",
     "type": "number",
     "hint": "",
     "choices": [],
-    "categorie_id": "3a"
+    "category_num": "3a"
   },
   {
-    "id": "5b4901f0a471378fbc213320",
+    "_id": "5b4901f0a471378fbc213320",
     "num": "022",
     "content": "Is there any garages ?",
     "type": "boolean",
     "hint": "",
     "choices": [],
-    "categorie_id": "3a"
+    "category_num": "3a"
   },
   {
-    "id": "5b4901f0a47137f90e213321",
+    "_id": "5b4901f0a47137f90e213321",
     "num": "028",
     "content": "Is there some vegetations nearby ?",
     "type": "String",
     "hint": "If yes, please put some comments on that situation",
     "choices": [],
-    "categorie_id": "3a"
+    "category_num": "3a"
   },
   {
-    "id": "5b4901f0a471370c93213322",
+    "_id": "5b4901f0a471370c93213322",
     "num": "042",
     "content": "What is the accessiblity of a wheel chair ?",
     "type": "multiple",
     "hint": "",
     "choices": ["41", "42", "43"],
-    "categorie_id": "3b"
+    "category_num": "3b"
   }
 ]
