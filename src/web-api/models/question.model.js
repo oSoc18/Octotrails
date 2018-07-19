@@ -63,7 +63,7 @@ QuestionSchema.statics = {
    */
   get(id) {
     return this.findById(id)
-      .populate('category', 'category_num')
+      .populate({ path: 'category', select: 'num', populate: 'category' })
       .exec()
       .then(question => {
         if (question) {
@@ -85,7 +85,7 @@ QuestionSchema.statics = {
    */
   list({ skip = 0, limit = 50 } = {}) {
     return this.find({})
-      .populate('category', 'category_num')
+      .populate('category', 'num')
       .skip(+skip)
       .limit(+limit)
       .exec();

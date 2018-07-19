@@ -6,7 +6,7 @@
     "type": "number",
     "hint": "",
     "choices": [],
-    "categorie_id": "3a"
+    "category_num": "3a"
   },
   {
     "_id": "5b4901f0a471378fbc213320",
@@ -15,7 +15,7 @@
     "type": "boolean",
     "hint": "",
     "choices": [],
-    "categorie_id": "3a"
+    "category_num": "3a"
   },
   {
     "_id": "5b4901f0a47137f90e213321",
@@ -24,7 +24,7 @@
     "type": "String",
     "hint": "If yes, please put some comments on that situation",
     "choices": [],
-    "categorie_id": "3a"
+    "category_num": "3a"
   },
   {
     "_id": "5b4901f0a471370c93213322",
@@ -33,6 +33,6 @@
     "type": "multiple",
     "hint": "",
     "choices": ["41", "42", "43"],
-    "categorie_id": "3b"
+    "category_num": "3b"
   }
 ]
