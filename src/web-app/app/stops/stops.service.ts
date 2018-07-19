@@ -22,6 +22,14 @@ export class StopService {
     return this.http.get<Stop[]>(url);
   }
 
+  private getSearchBy(term: string): string {
+    if (isNaN(parseInt(term))) {
+      return 'stop_name';
+    } else {
+      return 'stop_id';
+    }
+  }
+
   private createSearchUrl(term: string, by?: string) {
     if (by) return `/search?by=${by}&term=${term}`;
 
@@ -33,24 +41,32 @@ export class StopService {
   }
 
   //Get specific stop
-  getStop(term: any, by?: string): Observable<Stop> {
+  getStop(term: any): Observable<Stop> {
+    let by = this.getSearchBy(term);
     let url = this.createSearchUrl(term, by);
+
     return this.http.get<Object>(this.stopsUrl + url).pipe<Stop>(
       map(resp => new Stop(resp['stop'])),
       catchError(this.handleError('getStop', {}))
     );
   }
 
-  searchStops(term: string, by?: string): Observable<Stop[]> {
+  searchStops(term: string): Observable<Stop[]> {
     // if not search term, return empty stop array.
     if (!term.trim()) return of([]);
 
-    let url = this.createSearchUrl(term, by);
+    let by = this.getSearchBy(term);
 
-    return this.http.get<Object>(this.stopsUrl + url).pipe<Stop[]>(
-      map(resp => resp['stops'].map(res => new Stop(res))),
-      catchError(this.handleError('searchStops', []))
-    );
+    if (by == 'stop_id') {
+      return this.getStop(term).pipe(map(stop => [stop]));
+    } else {
+      let url = this.createSearchUrl(term, by);
+
+      return this.http.get<Object>(this.stopsUrl + url).pipe<Stop[]>(
+        map(resp => resp['stops'].map(res => new Stop(res))),
+        catchError(this.handleError('searchStops', []))
+      );
+    }
   }
 
   /**
