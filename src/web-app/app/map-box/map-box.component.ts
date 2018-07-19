@@ -175,16 +175,6 @@ export class MapBoxComponent implements OnInit {
             }
         });
 
-    //   this.map.addLayer({
-    //     id: 'unclustered-point',
-    //     type: 'circle',
-    //     source: 'proximityStops',
-    //     paint: {
-    //       'circle-color': '#00C6FF',
-    //       'circle-radius': 10
-    //     }
-    //   });
-
       this.map.addLayer({
         id: 'clusters',
         type: 'circle',
