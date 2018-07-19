@@ -34,7 +34,6 @@ export class QuestionService {
    */
   saveAnswers(stop_id, answers) {
     localStorage.clear();
-    console.warn(answers);
 
     const url = env.API_URL + 'api/stops/' + stop_id + '/inputs';
     return this.http.post(url, { inputs: answers }, httpOpts).pipe(
