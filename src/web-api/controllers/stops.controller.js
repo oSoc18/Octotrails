@@ -1,9 +1,12 @@
 import https from 'https';
 import httpStatus from 'http-status';
-import config from '../config/config';
 import { validationResult, Result } from 'express-validator/check';
 
+import config from '../config/config';
 import APIError from '../helpers/APIError';
+import History from '../models/history.model';
+
+const STIB_API = config.stibApi;
 
 /**
  * Send a HTTP Request to external API
@@ -40,7 +43,6 @@ const checkValidationErrors = function check(errors) {
     throw new APIError(e.msg, httpStatus.BAD_REQUEST);
   });
 };
-const STIB_API = config.stibApi;
 
 function search(req, res, next) {
   let by = req.query.by;
@@ -51,7 +53,8 @@ function search(req, res, next) {
 
   if (by == 'stop_name') {
     url = '/stops/name/' + term;
-  } else if (by == 'stop_id') {
+  }
+  else if (by == 'stop_id') {
     url = '/stops/' + term;
   }
 
@@ -61,14 +64,15 @@ function search(req, res, next) {
     (err, apiData) => {
       if (err) {
         next(err);
-      } else {
+      }
+      else {
         return res.json(apiData);
       }
     }
   );
 }
 
-function getProximity2(req, res, next) {
+function getProximity(req, res, next) {
   let lon = req.query.lon;
   let lat = req.query.lat;
 
@@ -85,6 +89,7 @@ function getProximity2(req, res, next) {
   );
 }
 
+/*
 function getProximity(req, res, next) {
   let lon = req.query.lon;
   let lat = req.query.lat;
@@ -127,8 +132,24 @@ function validateProximity(lon, lat) {
     );
   }
 }
+*/
+
+async function getHistory(req, res) {
+  const { stop_id, history_id } = req.params;
+  const { full } = req.query;
+  let data;
+
+  if (history_id) {
+   return res.redirect('/api/histories/'+history_id);
+  } else {
+    data = { histories: await History.getByStopId({ stop_id, full }) };
+  }
+
+  res.json(data);
+}
 
 export default {
   search,
-  getProximity
+  getProximity,
+  getHistory
 };

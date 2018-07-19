@@ -1,5 +1,3 @@
-$default-pin-color-red: #e55342;
-
 .carousel-nav-list {
   position: absolute;
   left: 0;
@@ -28,7 +26,7 @@ $default-pin-color-red: #e55342;
   }
 
   &__item--current {
-    background-color: $default-pin-color-red;
+    background: linear-gradient(to right, #00C6FF , #0072FF);
     opacity: 1;
   }
 

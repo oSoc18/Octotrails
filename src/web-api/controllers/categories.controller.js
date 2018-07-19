@@ -11,7 +11,7 @@ function list(req, res, next) {
     .then(categories => res.json({ categories }))
     .catch(e => next(e));
 }
- 
+
 export default {
   list
 };
