@@ -123,17 +123,16 @@ export class MapBoxComponent implements OnInit {
         clusterMaxZoom: 12,
         clusterRadius: 50
       });
-
       
-        this.map.addLayer({
-            "id": 'unclustered-point',
-            "type": "symbol",
-            "source": 'proximityStops',
-            "layout": {
-                "icon-image": "location",
-                "icon-size" : .25
-            }
-        });
+      this.map.addLayer({
+        "id": 'unclustered-point',
+        "type": "symbol",
+        "source": 'proximityStops',
+        "layout": {
+          "icon-image": "location",
+          "icon-size" : .25
+        }
+      });
 
       this.map.addLayer({
         id: 'clusters',
