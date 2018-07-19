@@ -8,7 +8,7 @@ import mockData from './questions.mock.json';
  * Insert the DB seeds for Questions collection
  */
 function run() {
-  Question.count({}).then(count => {
+  Question.estimatedDocumentCount({}).then(count => {
     if (count === 0) {
       Question.insertMany(mockData)
         .then(_ => console.log('[QUESTION_SEEDER] Inserted alll questions'))
