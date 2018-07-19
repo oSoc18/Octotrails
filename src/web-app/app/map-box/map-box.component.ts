@@ -15,6 +15,7 @@ export class MapBoxComponent implements OnInit {
   /// default settings
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/light-v9';
+  geolocateControl: mapboxgl.GeolocateControl;
 
   lat = 50.85045;
   lon = 4.34878;
@@ -46,8 +47,25 @@ export class MapBoxComponent implements OnInit {
 
     this.map.addControl(new mapboxgl.NavigationControl());
 
+    this.geolocateControl = new mapboxgl.GeolocateControl({
+      fitBoundsOptions: {
+        maxZoom: 18
+      },
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    });
+    this.map.addControl(this.geolocateControl);
+
     this.map.on('load', () => {
-      this.getLocation();
+      this.geolocateControl.trigger();
+      this.geolocateControl.on('geolocate', e => {
+        this.lon = e.coords.latitude;
+        this.lat = e.coords.latitude;
+
+        this.findStopsInProximity();
+      });
 
       this.map.on('click', 'unclustered-point', e => {
         const mapStopId = e.features[0].properties.id;
@@ -60,66 +78,8 @@ export class MapBoxComponent implements OnInit {
     });
   }
 
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lon = position.coords.longitude;
-        this.map.flyTo({
-          center: [this.lon, this.lat]
-        });
-        
-        this.displayLocation(this.lon, this.lat);
-        this.findStopsInProximity(this.lon, this.lat);
-      });
-    }
-  }
-
-  flyTo(data: GeoJson) {
-    this.map.flyTo({
-      center: data.geometry.coordinates
-    });
-  }
-
-  displayLocation(lon: number, lat: number) {
-    if (this.map.getLayer('currentLocation') !== undefined) {
-      this.map.removeLayer('currentLocation');
-    }
-
-    if (this.map.getSource('currentLocation') !== undefined) {
-      this.map.removeSource('currentLocation');
-    }
-
-    this.map.addSource('currentLocation', {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: [
-          {
-            type: 'Feature',
-            geometry: {
-              type: 'Point',
-              coordinates: [lon, lat]
-            },
-            properties: {}
-          }
-        ]
-      }
-    });
-
-    this.map.addLayer({
-      id: 'currentLocation',
-      source: 'currentLocation',
-      type: 'circle',
-      paint: {
-        'circle-radius': 10,
-        'circle-color': '#007cbf'
-      }
-    });
-  }
-
-  findStopsInProximity(lon: number, lat: number) {
-    this.mapService.findProximityStops(lon, lat).subscribe(data => {
+  findStopsInProximity() {
+    this.mapService.findProximityStops(this.lon, this.lat).subscribe(data => {
       let features = [];
 
       data.forEach(element => {
@@ -209,24 +169,4 @@ export class MapBoxComponent implements OnInit {
       });
     });
   }
-
-  success(pos) {
-    let crd = pos.coords;
-    this.displayLocation(crd.longitude, crd.latitude);
-    this.findStopsInProximity(crd.longitude, crd.latitude);
-  }
-
-  error(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
-  }
-
-  id = navigator.geolocation.watchPosition(
-    this.success.bind(this),
-    this.error,
-    {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 1000
-    }
-  );
 }
