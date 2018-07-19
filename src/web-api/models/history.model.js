@@ -10,13 +10,13 @@ const options = {
     transform: function(doc, ret) {
       ret.id = ret._id.toHexString();
       delete ret._id;
-      delete ret._v;
+      delete ret.__v;
     }
   }
 };
 
 /*
- * *****************
+ ******************
  *  History Schema
  *******************
  *
@@ -61,25 +61,45 @@ HistorySchema.method({});
  */
 HistorySchema.statics = {
   /**
-   * Get stops by the required tech_id
-   * @param {String} stop_id - The tech id of the the stop.
-   * @param {boolean} full - If the document should be populated.
+   * Get stop' histories by the required stop_id
+   * @param {String} stop_id - The id of the the stop.
    * @returns {Promise<History, APIError>}
    */
-  getByStopId: async function get({ stop_id, full = false, full_history }) {
-    const query = this.findOne({ stop_id }).sort('-created_at');
+  getByStopId: async function get({ stop_id }) {
+    const query = this.find({ stop_id }).sort('-created_at');
 
-    if (full || full_history) {
-      query
-        .populate('inputs')
-        .populate({ path: 'history', options: { limit: 5 } });
-    }
+    query.populate({
+      path: 'inputs',
+      // Get the question of the input
+      populate: { path: 'question', select: 'type content  num ' }
+    });
+    // .populate({ path: 'previous', options: { limit: 5 } });
 
     return await query;
 
     // if (!history) {
     //   throw new APIError('No history exists!', httpStatus.NOT_FOUND, true);
-  }
+  },
+  
+    /**
+   * Get stop' histories by the required stop_id
+   * @param {String} stop_id - The id of the the stop.
+   * @returns {Promise<History, APIError>}
+   */
+  getById: async function get({ _id }) {
+    const query = this.findOne({ _id });
+
+    query.populate({
+      path: 'inputs',
+      // Get the question of the input
+      populate: { path: 'question', select: 'type content  num ' }
+    })
+    .populate({ path: 'previous', options: { limit: 5 } });
+
+    return await query;
+
+  },
+
 };
 
 /**

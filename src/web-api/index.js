@@ -24,7 +24,7 @@ const stopMongoDB = function() {
 mongoose
   .connect(
     mongoUri,
-    { keepAlive: 1 }
+    { keepAlive: 1 , useNewUrlParser: true }
   )
   .then(db => {
     mongoDB = db;

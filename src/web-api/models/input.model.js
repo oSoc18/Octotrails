@@ -10,7 +10,7 @@ const options = {
     transform: function(doc, ret) {
       ret.id = ret._id.toHexString();
       delete ret._id;
-      delete ret._v;
+      delete ret.__v;
     }
   }
 };
@@ -33,7 +33,7 @@ const options = {
 const InputSchema = new mongoose.Schema(
   {
     question_id: { type: SchemaTypes.ObjectId, ref: 'Question' },
-    answer: String
+    answer: SchemaTypes.Mixed
   },
   options
 );

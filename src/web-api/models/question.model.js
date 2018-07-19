@@ -84,4 +84,4 @@ QuestionSchema.statics = {
 /**
  * @typedef Question
  */
-export default mongoose.model('questions', QuestionSchema);
+export default mongoose.model('Question', QuestionSchema);
