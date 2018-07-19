@@ -58,6 +58,11 @@ export class MapBoxComponent implements OnInit {
     this.map.addControl(this.geolocateControl, 'bottom-right');
 
     this.map.on('load', () => {
+      this.map.loadImage('/assets/icons/locationPin.png', (error, image) => {
+        if (error) throw error;
+        this.map.addImage('location', image);
+      });
+
       this.geolocateControl.trigger();
       this.geolocateControl.on('geolocate', e => {
         this.lon = e.coords.latitude;
@@ -121,11 +126,11 @@ export class MapBoxComponent implements OnInit {
 
       this.map.addLayer({
         id: 'unclustered-point',
-        type: 'circle',
+        type: 'symbol',
         source: 'proximityStops',
-        paint: {
-          'circle-color': '#FF0000',
-          'circle-radius': 10
+        layout: {
+          'icon-image': 'location',
+          'icon-size': .25
         }
       });
 
@@ -138,11 +143,11 @@ export class MapBoxComponent implements OnInit {
           'circle-color': [
             'step',
             ['get', 'point_count'],
-            '#51bbd6',
+            '#00C6FF',
             100,
-            '#f1f075',
+            '#00C6FF',
             750,
-            '#f28cb1'
+            '#00C6FF'
           ],
           'circle-radius': [
             'step',
@@ -162,8 +167,11 @@ export class MapBoxComponent implements OnInit {
         source: 'proximityStops',
         layout: {
           'text-field': '{point_count_abbreviated}',
-          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-          'text-size': 12
+          'text-font': ['Arial Unicode MS Bold'],
+          'text-size': 12,
+        },
+        paint: {
+          'text-color': '#FFFFFF'
         }
       });
     });
