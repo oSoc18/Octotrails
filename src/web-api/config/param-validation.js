@@ -53,12 +53,12 @@ export const Stops = {
     lon: {
       in: ['query'],
       errorMessage: 'The value of the "lon" must be a number!',
-      isInt: true
+      exists: true
     },
     lat: {
       in: ['query'],
       errorMessage: 'The value of the "lat" must be a number!',
-      isInt: true
+      exists: true
     }
   },
   // POST /api/stops/:stop_id/inputs
