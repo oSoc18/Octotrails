@@ -63,6 +63,8 @@ export class LocationComponent implements OnInit {
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.dragPan.disable();
+    this.map.touchZoomRotate.disable();
     this.map.on('load', () => {
      this.displayLocation(this.stop.longitude, this.stop.latitude);
     });
