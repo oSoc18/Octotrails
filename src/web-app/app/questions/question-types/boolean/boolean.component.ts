@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../question';
 import { Data } from '../../../shared/providers/data.provider';
+import { QuestionService } from '../../questions.service';
 
 @Component({
   selector: 'app-question-type-boolean',
@@ -14,7 +15,7 @@ export class BooleanComponent implements OnInit {
   outputAnswer: EventEmitter<object> = new EventEmitter<object>();
   answer: boolean;
 
-  constructor() {}
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit() {}
 
@@ -38,5 +39,6 @@ export class BooleanComponent implements OnInit {
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.outputAnswer.emit(value);
+    this.questionService.addToLocalStorage(value);
   }
 }
