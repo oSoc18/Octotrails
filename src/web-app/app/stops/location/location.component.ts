@@ -62,11 +62,26 @@ export class LocationComponent implements OnInit {
       center: [this.stop.longitude, this.stop.latitude]
     });
 
-    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      fitBoundsOptions: {
+        maxZoom: 18
+      },
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }), 'bottom-right');
+
     this.map.dragPan.disable();
     this.map.touchZoomRotate.disable();
+
     this.map.on('load', () => {
-      this.displayLocation(this.stop.longitude, this.stop.latitude);
+      this.map.loadImage('/assets/icons/locationPin.png', (error, image) => {
+        if (error) throw error;
+        this.map.addImage('location', image);
+        this.displayLocation(this.stop.longitude, this.stop.latitude);
+      });
     });
   }
 
@@ -99,10 +114,10 @@ export class LocationComponent implements OnInit {
     this.map.addLayer({
       id: 'stopLocation',
       source: 'stopLocation',
-      type: 'circle',
-      paint: {
-        'circle-radius': 10,
-        'circle-color': '#007cbf'
+      type: 'symbol',
+      layout: {
+        'icon-image': 'location',
+        'icon-size': .25
       }
     });
   }
