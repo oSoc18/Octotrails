@@ -89,7 +89,8 @@ export class DetailComponent implements OnInit {
   goToHistories() {
     this.router.navigate(['/histories'], {
       queryParams: {
-        stop_id: this.stop.id
+        stop_id: this.stop.id,
+        stop_name: this.stop.alpha['nl']
       }
     });
   }

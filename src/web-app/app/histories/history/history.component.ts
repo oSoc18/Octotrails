@@ -10,6 +10,7 @@ import { History } from '../history';
 })
 export class HistoryComponent implements OnInit {
   stopId: string;
+  stopName: string;
   histories: History[];
 
   constructor(
@@ -19,6 +20,7 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.stopId = this.route.snapshot.queryParamMap.get('stop_id');
+    this.stopName = this.route.snapshot.queryParamMap.get('stop_name');
     this.getStopHistories();
   }
 

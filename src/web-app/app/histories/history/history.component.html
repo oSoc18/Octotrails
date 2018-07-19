@@ -1,6 +1,6 @@
 <div *ngIf="histories">
   <header class="header">
-    <a class="backbutton" routerLink="/stops/{{stop.id}}">
+    <a class="backbutton" routerLink="/stops/{{stopId}}">
       <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
         x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
         <defs>
@@ -17,8 +17,8 @@
       back
     </a>
     <div class="header-title">
-      <h2 class="stop-title">History of {{stop.alpha["nl"]}}</h2>
-      <h3 class="stop-id">id: {{stop.id}}</h3>
+      <h2 class="stop-title">History of {{stopName}}</h2>
+      <h3 class="stop-id">id: {{stopId}}</h3>
     </div>
     <div width="32.433"></div>
   </header>
