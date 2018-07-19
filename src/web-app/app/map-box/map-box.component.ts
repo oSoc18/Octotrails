@@ -48,10 +48,7 @@ export class MapBoxComponent implements OnInit {
 
     this.map.on('load', () => {
       this.getLocation();
-      console.log("ik ben hier");
       this.map.loadImage('/assets/icons/locationPin.png', (error, image) => {
-        console.log(image);
-        console.log(error);
         if (error) throw error;
         this.map.addImage('location', image);
     });
