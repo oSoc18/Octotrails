@@ -1,25 +1,15 @@
 import mongoose, { SchemaTypes } from 'mongoose';
-import categoriesController from '../controllers/categories.controller';
 
-const options = {
-  toJSON: {
-    virtuals: true,
-    versionKey: false,
-    transform: function(doc, ret) {
-      ret.id = ret._id.toHexString();
-      delete ret._id;
-    }
-  }
-};
+import { SchemaOptions } from '../helpers/utils';
 
 const CategorySchema = new mongoose.Schema(
   {
     id: String,
     num: String,
     name: String,
-    parent_num: String
+    parent_num: { type: String, default: null }
   },
-  options
+  SchemaOptions
 );
 
 CategorySchema.virtual('questions', {

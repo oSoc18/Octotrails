@@ -28,10 +28,12 @@ app.use(helmet());
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors());
 
+// Prefix all API request
 app.use('/api', routes);
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+// // redirect all request to pblic except /api to the
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 // });
@@ -47,11 +49,11 @@ app.use((err, req, res, next) => {
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  const err = new APIError('API not found', httpStatus.NOT_FOUND, true);
+  const err = new APIError('API ressource not found', httpStatus.NOT_FOUND);
   return next(err);
 });
 
-// error handler, send stacktrace only during development
+// error handler, send  error message ( with  stacktrace only during development)
 app.use((
   err,
   req,
@@ -60,7 +62,7 @@ app.use((
 ) =>
   res.status(err.status).json({
     status: err.status,
-    message: err.isPublic ? err.message : httpStatus[err.status],
+    message: err.isPublic ? err.message : undefined,
     stack: config.env === 'development' ? err.stack : undefined
   })
 );

@@ -20,6 +20,10 @@ history : **[History][]**
 
 ## Errors
 
+- `404` : If any stop was found.
+
+The body of the response contains a message about the error.
+
 ## Example
 
 ### **Request**

@@ -4,6 +4,8 @@ import { validationResult, Result } from 'express-validator/check';
 
 import config from '../config/config';
 import APIError from '../helpers/APIError';
+import { checkValidationErrors } from '../helpers/utils';
+
 import History from '../models/history.model';
 
 const STIB_API = config.stibApi;
@@ -16,6 +18,7 @@ const STIB_API = config.stibApi;
 const sendRequestToAPI = function sendReq(url, errMsg, callback) {
   const sendError = () => callback(new APIError(errMsg, httpStatus.NOT_FOUND));
 
+  // Send
   https.get(url, function(respApi) {
     let apiData = '';
 
@@ -24,7 +27,7 @@ const sendRequestToAPI = function sendReq(url, errMsg, callback) {
     // A chunk of data has been recieved.
     respApi.on('data', chunk => (apiData += chunk));
 
-    // The whole response has been received. Print out the result.
+    // The whole response has been received. Send back the result.
     respApi.on('end', () => callback(null, JSON.parse(apiData)));
 
     respApi.on('error', sendError);
@@ -32,55 +35,36 @@ const sendRequestToAPI = function sendReq(url, errMsg, callback) {
 };
 
 /**
- * Check if the validatio has generated some errors.
- *
- * @param {Result<any>} errors
+ * Send Request to the STIB API to search for a stop by it ID or name
  */
-const checkValidationErrors = function check(errors) {
-  if (errors.isEmpty()) return;
-
-  errors.array().forEach(e => {
-    throw new APIError(e.msg, httpStatus.BAD_REQUEST);
-  });
-};
-
 function search(req, res, next) {
-  let by = req.query.by;
-  let term = req.query.term;
+  const { by, term } = req.query;
   let url;
 
   checkValidationErrors(validationResult(req));
 
   if (by == 'stop_name') {
     url = '/stops/name/' + term;
-  }
-  else if (by == 'stop_id') {
+  } else if (by == 'stop_id') {
     url = '/stops/' + term;
   }
 
   sendRequestToAPI(
     STIB_API + url,
     'No results for your search!',
-    (err, apiData) => {
-      if (err) {
-        next(err);
-      }
-      else {
-        return res.json(apiData);
-      }
-    }
+    (err, apiData) => (err ? next(err) : res.json(apiData))
   );
 }
 
+/**
+ * Send Request to the STIB API to get the proximity stop
+ */
 function getProximity(req, res, next) {
-  let lon = req.query.lon;
-  let lat = req.query.lat;
-
-  console.log(req.query);
+  const { lon, lat } = req.query;
 
   checkValidationErrors(validationResult(req));
 
-  let url = '/stops/proximity/' + lon + ',' + lat;
+  const url = '/stops/proximity/' + lon + ',' + lat;
 
   sendRequestToAPI(
     STIB_API + url,
@@ -89,63 +73,20 @@ function getProximity(req, res, next) {
   );
 }
 
-/*
-function getProximity(req, res, next) {
-  let lon = req.query.lon;
-  let lat = req.query.lat;
-
-  validateProximity(lon, lat);
-
-  let url = '/stops/proximity/' + lon + ',' + lat;
-
-  https
-    .get(STIB_API + url, function(respApi) {
-      let apiData = '';
-
-      // A chunk of data has been recieved.
-      respApi.on('data', chunk => (apiData += chunk));
-
-      // The whole response has been received. Print out the result.
-      respApi.on('end', () => {
-        return res.json(JSON.parse(apiData));
-      });
-    })
-    .on('error', function(error) {
-      const err = new APIError(
-        'No location for your search!',
-        httpStatus.NOT_FOUND
-      );
-      next(error);
-    });
-}
-
-function validateProximity(lon, lat) {
-  if (!lon || isNaN(lon)) {
-    throw new APIError(
-      'The value of the longitude must be a number!',
-      httpStatus.BAD_REQUEST
-    );
-  } else if (!lat || isNaN(lat)) {
-    throw new APIError(
-      'The value of the latitude must be a number!',
-      httpStatus.BAD_REQUEST
-    );
-  }
-}
-*/
-
+/**
+ * Get the full history of  an stop by it stop_id
+ */
 async function getHistory(req, res) {
   const { stop_id, history_id } = req.params;
   const { full } = req.query;
   let data;
 
   if (history_id) {
-   return res.redirect('/api/histories/'+history_id);
+    return res.redirect('/api/histories/' + history_id);
   } else {
-    data = { histories: await History.getByStopId({ stop_id, full }) };
+    data = await History.getByStopId({ stop_id, full });
+    res.json({ histories: data });
   }
-
-  res.json(data);
 }
 
 export default {

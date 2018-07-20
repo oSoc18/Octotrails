@@ -8,9 +8,7 @@ const router = express.Router();
 /** GET /api/categories - List the categories */
 router.get('/', categoryCtrl.list);
 
-router.get(
-  '/:category_num/questions',
-  asyncHandler(categoryCtrl.getQuestions)
-);
+/** GET /api/categories/:category_num/question - Get the question in a category */
+router.get('/:category_num/questions', asyncHandler(categoryCtrl.getQuestions));
 
 export default router;

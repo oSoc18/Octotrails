@@ -4,7 +4,7 @@ import questionCtrl from '../controllers/questions.controller';
 
 const router = express.Router();
 
-/** GET /api/questions - Get specific question by its number */
+/** GET /api/questions - List all questions */
 router.get('/', questionCtrl.list);
 
 export default router;

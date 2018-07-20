@@ -1,19 +1,7 @@
-import bluebird from 'bluebird';
 import mongoose, { SchemaTypes } from 'mongoose';
-import httpStatus from 'http-status';
 
 import APIError from '../helpers/APIError';
-
-const options = {
-  toJSON: {
-    virtuals: true,
-    transform: function(doc, ret) {
-      ret.id = ret._id.toHexString();
-      delete ret._id;
-      delete ret.__v;
-    }
-  }
-};
+import { SchemaOptions } from '../helpers/utils';
 
 /*
  ******************
@@ -41,7 +29,7 @@ const HistorySchema = new mongoose.Schema(
     inputs: [{ type: SchemaTypes.ObjectId, ref: 'Input' }],
     previous: { type: SchemaTypes.ObjectId, ref: 'History', default: null }
   },
-  options
+  SchemaOptions
 );
 
 /**
@@ -61,7 +49,7 @@ HistorySchema.method({});
  */
 HistorySchema.statics = {
   /**
-   * Get stop' histories by the required stop_id
+   * Get stop' histories by the required stop_id in descending order of 'created_at' timestamp
    * @param {String} stop_id - The id of the the stop.
    * @returns {Promise<History, APIError>}
    */
@@ -80,8 +68,8 @@ HistorySchema.statics = {
     // if (!history) {
     //   throw new APIError('No history exists!', httpStatus.NOT_FOUND, true);
   },
-  
-    /**
+
+  /**
    * Get stop' histories by the required stop_id
    * @param {String} stop_id - The id of the the stop.
    * @returns {Promise<History, APIError>}
@@ -89,17 +77,16 @@ HistorySchema.statics = {
   getById: async function get({ _id }) {
     const query = this.findOne({ _id });
 
-    query.populate({
-      path: 'inputs',
-      // Get the question of the input
-      populate: { path: 'question', select: 'type content  num ' }
-    })
-    .populate({ path: 'previous', options: { limit: 5 } });
+    query
+      .populate({
+        path: 'inputs',
+        // Get the question of the input
+        populate: { path: 'question', select: 'type content  num ' }
+      })
+      .populate({ path: 'previous', options: { limit: 5 } });
 
     return await query;
-
-  },
-
+  }
 };
 
 /**
