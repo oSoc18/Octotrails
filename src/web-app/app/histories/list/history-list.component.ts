@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import {
+  Route,
+  Router,
+  ActivatedRoute,
+  NavigationExtras
+} from '@angular/router';
 import { HistoryService } from '../histories.service';
 import { History } from '../history';
 
 @Component({
-  selector: 'app-history',
-  templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css']
+  selector: 'app-history-list',
+  templateUrl: './history-list.component.html',
+  styleUrls: ['./history-list.component.css']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryListComponent implements OnInit {
   stopId: string;
   stopName: string;
   histories: History[];
@@ -31,14 +36,8 @@ export class HistoryComponent implements OnInit {
       .subscribe(list => (this.histories = list));
   }
 
-  getHistory(historyId: string) {
-    return this.historyService
-      .getHistory(historyId)
-      .subscribe(history => (this.histories = history));
-  }
-
   goToHistoryDetail(id) {
-    this.router.navigate(['/histories', id ], {
+    this.router.navigate(['/histories', id], {
       queryParams: {
         stop_id: this.stopId,
         stop_name: this.stopName
