@@ -10,8 +10,7 @@ import { QuestionService } from '../../questions.service';
 })
 export class StringComponent implements OnInit {
   @Input() question: Question;
-  @Output('answer')
-  outputAnswer: EventEmitter<object> = new EventEmitter<object>();
+  @Output() questionChange: EventEmitter<object> = new EventEmitter<object>();
 
   answer: string;
   constructor(private questionService: QuestionService) {}
@@ -20,7 +19,7 @@ export class StringComponent implements OnInit {
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.outputAnswer.emit(value);
+    this.questionChange.emit(value);
     this.questionService.addToLocalStorage(value);
   }
 }

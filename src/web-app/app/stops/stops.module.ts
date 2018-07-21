@@ -8,7 +8,6 @@ import { StopsRoutingModule } from './stops-routing.module';
 
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
-import { HistoryComponent } from './history/history.component';
 import { LocationComponent } from './location/location.component';
 import { ImageDetailComponent } from './image-detail/image-detail.component';
 
@@ -16,7 +15,6 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
   imports: [CarouselModule, SharedModule, StopsRoutingModule],
   declarations: [
     SearchComponent,
-    HistoryComponent,
     DetailComponent,
     LocationComponent,
     ImageDetailComponent,

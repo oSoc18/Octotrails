@@ -1,6 +1,7 @@
-<div  class="location" *ngIf="stop">
+<div *ngIf="history">
+  {{history|json}}
   <header class="header">
-    <a class="backbutton" routerLink="/stops/{{stop.id}}">
+    <a class="backbutton" (click)="goToHistories()">
       <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
         x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
         <defs>
@@ -17,11 +18,19 @@
       back
     </a>
     <div class="header-title">
-      <h2 class="stop-title">{{stop.alpha["nl"]}}</h2>
-      <h3 class="stop-id">id: {{stop.id}}</h3>
+      <h2 class="stop-title">History of {{stopName}}</h2>
+      <h3 class="stop-id">{{history.created_at.slice(0,10)}}</h3>
     </div>
     <div width="32.433"></div>
   </header>
-</div>
+  <section class="histories">
+    <a class="inputs" *ngFor="let question of history.inputs">
+      <p>{{question|json}}</p>
+      <!-- <p>{{question.question.content}}</p>
+      <p>{{question.answer}}</p>
+      <p>{{question.question.type}}</p> -->
+      <app-question-type-number *ngIf="question.question.type == 'number'" [question]="question"></app-question-type-number>
 
-<div id="detailMap" class="map"></div>
+    </a>
+  </section>
+</div>

@@ -57,9 +57,9 @@
           <p class="line-type" [ngStyle]="{'color':line.textColor}">{{line.type}}</p>
           <p class="line-number" [ngStyle]="{'color':line.textColor, 'background-color':line.backColor}">{{line.number}}</p>
         </div>
-        <div>
-          <p>&rarr; {{line.direction['nl']}}</p>
-          <p class="search-result-info-title">{{stop.alpha["nl"]}}</p>
+        <div class="direction">
+          <p class="line-direction">&rarr; {{line.direction['nl']}}</p>
+          <p class="stop-name">{{stop.alpha["nl"]}}</p>
         </div>
       </article>
     </section>

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SearchComponent } from './search/search.component';
 import { DetailComponent } from './detail/detail.component';
-import { HistoryComponent } from './history/history.component';
 import { LocationComponent } from './location/location.component';
 import { QuestionsEntrypoint } from '../questions/questions.module';
 

@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { CarouselModule } from '../my-octotrails-ng6-carousel';
+
+import { InMemoryDataService } from '../data.mock';
+
 import { environment } from '../../environments/environment';
 import { QuestionsRoutingModule } from './questions-routing.module';
 
