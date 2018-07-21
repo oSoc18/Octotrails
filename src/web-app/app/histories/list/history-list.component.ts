@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { HistoryService } from '../histories.service';
 import { History } from '../history';
+import { Data } from '../../shared/providers/data.provider';
 
 @Component({
   selector: 'app-history-list',
@@ -21,13 +22,14 @@ export class HistoryListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private historyService: HistoryService
+    private historyService: HistoryService,
+    private data: Data
   ) {}
 
   ngOnInit() {
-    this.stopId = this.route.snapshot.queryParamMap.get('stop_id');
-    this.stopName = this.route.snapshot.queryParamMap.get('stop_name');
-    this.getStopHistories();
+    this.stopId = this.route.parent.snapshot.data['stop'].id;
+    this.stopName = this.route.parent.snapshot.data['stop'].alpha['nl'];
+    this.histories = this.route.snapshot.data['histories'];
   }
 
   getStopHistories(stopId?: string) {
@@ -36,12 +38,9 @@ export class HistoryListComponent implements OnInit {
       .subscribe(list => (this.histories = list));
   }
 
-  goToHistoryDetail(id) {
-    this.router.navigate(['/histories', id], {
-      queryParams: {
-        stop_id: this.stopId,
-        stop_name: this.stopName
-      }
+  goToHistoryDetail(historyId) {
+    this.router.navigate([historyId], {
+      relativeTo: this.route
     });
   }
 }

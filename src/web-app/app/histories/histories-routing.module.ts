@@ -3,10 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HistoryListComponent } from './list/history-list.component';
 import { HistoryDetailComponent } from './detail/history-detail.component';
+import { HistoriesResolver, HistoryResolver } from './histories.resolver';
 
 const histoRoutes: Routes = [
-  { path: '', component: HistoryListComponent },
-  { path: ':history_id', component: HistoryDetailComponent }
+  {
+    path: '',
+    resolve: { histories: HistoriesResolver },
+    component: HistoryListComponent
+  },
+  {
+    path: ':history_id',
+    resolve: { history: HistoryResolver },
+    component: HistoryDetailComponent
+  }
 ];
 
 @NgModule({

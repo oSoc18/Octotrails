@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  HostBinding,
+  OnDestroy
+} from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -13,12 +19,11 @@ import { slideInDownAnimation } from '../../shared/animations';
 import { Data } from '../../shared/providers/data.provider';
 
 @Component({
-  selector: 'app-detail',
   animations: [slideInDownAnimation],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
@@ -52,11 +57,13 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.data.stop) {
-      this.stop = this.data.stop;
-    } else {
-      this.getStop();
-    }
+    this.stop = this.route.snapshot.data['stop'];
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.data.stop = this.stop;
   }
 
   getStop(): void {
@@ -66,32 +73,6 @@ export class DetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
-  }
-
-  gotoStops(stop: Stop) {
-    let stopId = stop ? stop.id : null;
-    // Pass along the hero id if available
-    // so that the HeroList component can select that hero.
-    // Include a junk 'foo' property for fun.
-    this.router.navigate(['/stops', { id: stopId, foo: 'foo' }]);
-  }
-
-  goToQuestions() {
-    const extras: NavigationExtras = {
-      queryParams: {
-        stop_id: this.stop.id
-      }
-    };
-    this.router.navigate(['/questions'], extras);
-  }
-
-  goToHistories() {
-    this.router.navigate(['/histories'], {
-      queryParams: {
-        stop_id: this.stop.id,
-        stop_name: this.stop.alpha['nl']
-      }
-    });
   }
 
   readURL(input) {
