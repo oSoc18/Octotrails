@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
 
-import { NumberComponent } from 'questions/question-types/number/number.component';
-import { BooleanComponent } from 'questions/question-types/boolean/boolean.component';
-import { MultipleComponent } from 'questions/question-types/multiple/multiple.component';
-import { StringComponent } from 'questions/question-types/string/string.component';
-
 import {
   Router,
   Event,
