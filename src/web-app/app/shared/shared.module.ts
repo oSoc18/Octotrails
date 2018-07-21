@@ -8,6 +8,11 @@ import { MatDesignModule } from './mat-design/mat-design.module';
 @NgModule({
   imports: [CommonModule, MatDesignModule],
   declarations: [PageNotFoundComponent, RangeValidatorDirective],
-  exports: [PageNotFoundComponent, RangeValidatorDirective, MatDesignModule]
+  exports: [
+    CommonModule,
+    PageNotFoundComponent,
+    RangeValidatorDirective,
+    MatDesignModule
+  ]
 })
 export class SharedModule {}
