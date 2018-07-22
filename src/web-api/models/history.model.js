@@ -65,23 +65,22 @@ HistorySchema.statics = {
    * @param {String} stop_id - The id of the the stop.
    * @returns {Promise<History, APIError>}
    */
-  getByStopId: async function get({ stop_id }) {
+  getByStopId: async function get({ stop_id, full = false }) {
     const query = this.find({ stop_id }).sort('-created_at');
 
-    query.populate({
-      path: 'inputs',
-      // Get the question of the input
-      populate: { path: 'question', select: 'type content  num ' }
-    });
-    // .populate({ path: 'previous', options: { limit: 5 } });
+    if (full) {
+      query.populate({
+        path: 'inputs',
+        // Get the question of the input
+        populate: { path: 'question', select: 'type content  num choices' }
+      });
+      // .populate({ path: 'previous', options: { limit: 5 } });
+    }
 
     return await query;
-
-    // if (!history) {
-    //   throw new APIError('No history exists!', httpStatus.NOT_FOUND, true);
   },
-  
-    /**
+
+  /**
    * Get stop' histories by the required stop_id
    * @param {String} stop_id - The id of the the stop.
    * @returns {Promise<History, APIError>}
@@ -89,17 +88,16 @@ HistorySchema.statics = {
   getById: async function get({ _id }) {
     const query = this.findOne({ _id });
 
-    query.populate({
-      path: 'inputs',
-      // Get the question of the input
-      populate: { path: 'question', select: 'type content  num ' }
-    })
-    .populate({ path: 'previous', options: { limit: 5 } });
+    query
+      .populate({
+        path: 'inputs',
+        // Get the question of the input
+        populate: { path: 'question', select: 'type content num choices' }
+      })
+      .populate({ path: 'previous', options: { limit: 5 } });
 
     return await query;
-
-  },
-
+  }
 };
 
 /**
