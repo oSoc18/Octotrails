@@ -1,19 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from '../../question';
-import { QuestionService } from '../../questions.service';
+import { Question } from '../../../../questions/question';
 
 @Component({
   selector: 'app-question-type-multiple',
-  templateUrl: './multiple.component.html',
-  styleUrls: ['./multiple.component.css']
+  templateUrl: './question-type-multiple.component.html',
+  styleUrls: ['./question-type-multiple.component.css']
 })
-export class MultipleComponent implements OnInit {
+export class QuestionTypeMultipleComponent implements OnInit {
   activeButton = null;
   @Input() question: Question;
-  @Output() questionChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output('answer')
+  questionChange: EventEmitter<object> = new EventEmitter<object>();
   answer: string;
 
-  constructor(private questionService: QuestionService) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -37,7 +37,5 @@ export class MultipleComponent implements OnInit {
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.questionChange.emit(value);
-
-    this.questionService.addToLocalStorage(value);
   }
 }

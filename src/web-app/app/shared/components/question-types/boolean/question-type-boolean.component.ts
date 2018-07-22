@@ -1,20 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from '../../question';
-import { Data } from '../../../shared/providers/data.provider';
-import { QuestionService } from '../../questions.service';
+import { Question } from '../../../../questions/question';
 
 @Component({
   selector: 'app-question-type-boolean',
-  templateUrl: './boolean.component.html',
-  styleUrls: ['./boolean.component.css']
+  templateUrl: './question-type-boolean.component.html',
+  styleUrls: ['./question-type-boolean.component.css']
 })
-export class BooleanComponent implements OnInit {
+export class QuestionTypeBooleanComponent implements OnInit {
   activeButton = null;
   @Input() question: Question;
-  @Output() questionChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output('answer')
+  questionChange: EventEmitter<object> = new EventEmitter<object>();
   answer: boolean;
 
-  constructor(private questionService: QuestionService) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -40,6 +39,5 @@ export class BooleanComponent implements OnInit {
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.questionChange.emit(value);
-    this.questionService.addToLocalStorage(value);
   }
 }

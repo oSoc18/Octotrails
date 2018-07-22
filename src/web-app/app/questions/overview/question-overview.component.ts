@@ -9,10 +9,10 @@ import { Data } from '../../shared/providers/data.provider';
 
 @Component({
   selector: 'app-questions-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css']
+  templateUrl: './question-overview.component.html',
+  styleUrls: ['./question-overview.component.css']
 })
-export class OverviewComponent implements OnInit {
+export class QuestionOverviewComponent implements OnInit {
   @Input() questions;
   answeredQuestions = 1;
   totalNumberOfQuestions;
@@ -43,6 +43,7 @@ export class OverviewComponent implements OnInit {
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;
+    this.questionService.addToLocalStorage(value);
   }
 
   goBack(): void {
@@ -50,16 +51,10 @@ export class OverviewComponent implements OnInit {
   }
 
   saveAnswers() {
-    let keys = [];
-    let values = [];
-    let answers = [];
-
-    for (let i = 0; i < localStorage.length; i++) {
-      keys.push(localStorage.key(i));
-      values.push(localStorage.getItem(keys[i]));
-      answers.push({ question_id: keys[i], answer: values[i] });
-    }
-    
+    // Get the storage answers
+    const answers = Object.entries(localStorage).map(
+      ([question_id, answer]) => ({ question_id, answer })
+    );
     this.router.navigate(['/stops', this.stop_id]);
 
     return this.questionService
