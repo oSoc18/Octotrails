@@ -1,12 +1,12 @@
 <section>
-  <map-box></map-box>
+  <app-map-box [mode]="proximity"></app-map-box>
 </section>
 <section class="search-section">
   <form class="search-component">
     <mat-form-field class="search-form-field">
       <input matInput placeholder="Search a stop" aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.name">
+        <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.id">
           <a class="search-result" (click)="showDetails(stop)">
             <section class="search-result-info">
               <div class="search-result-text">

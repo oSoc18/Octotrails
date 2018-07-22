@@ -11,17 +11,13 @@ import { StopService } from '../stops.service';
 import { Data } from '../../shared/providers/data.provider';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-stop-search',
+  templateUrl: './stop-search.component.html',
+  styleUrls: ['./stop-search.component.scss']
 })
-export class SearchComponent implements OnInit {
-  //title: string = 'Search Stop';
-  latitude = 50.850346;
-  longitude = 4.351721;
+export class StopSearchComponent implements OnInit {
   stopCtrl: FormControl = new FormControl();
   filteredStops: Observable<any[]>;
-  lines: Observable<any[]>;
 
   constructor(
     private router: Router,

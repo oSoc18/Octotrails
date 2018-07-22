@@ -9,11 +9,11 @@ import { Data } from '../../shared/providers/data.provider';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  selector: 'app-stop-location',
+  templateUrl: './stop-location.component.html',
+  styleUrls: ['./stop-location.component.css']
 })
-export class LocationComponent implements OnInit {
+export class StopLocationComponent implements OnInit {
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
 
@@ -63,15 +63,18 @@ export class LocationComponent implements OnInit {
     });
 
     this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-    this.map.addControl(new mapboxgl.GeolocateControl({
-      fitBoundsOptions: {
-        maxZoom: 18
-      },
-      positionOptions: {
-        enableHighAccuracy: true
-      },
-      trackUserLocation: true
-    }), 'bottom-right');
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+        fitBoundsOptions: {
+          maxZoom: 18
+        },
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      }),
+      'bottom-right'
+    );
 
     this.map.dragPan.disable();
     this.map.touchZoomRotate.disable();
@@ -117,7 +120,7 @@ export class LocationComponent implements OnInit {
       type: 'symbol',
       layout: {
         'icon-image': 'location',
-        'icon-size': .25
+        'icon-size': 0.25
       }
     });
   }
