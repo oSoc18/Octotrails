@@ -15,3 +15,5 @@ export {
 export {
   QuestionTypeStringComponent
 } from './question-types/string/question-type-string.component';
+
+export { NavbarComponent } from './navbar/navbar.component';
