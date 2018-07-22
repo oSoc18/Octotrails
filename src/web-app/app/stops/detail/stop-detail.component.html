@@ -1,5 +1,8 @@
 <div *ngIf="stop">
-  <header class="header">
+  <app-navbar [stopName]="stop.alpha['nl']" [stopId]="stop.id">
+
+  </app-navbar>
+  <!-- <header class="header">
     <a class="backbutton" routerLink="/stops/search">
       <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
         x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
@@ -43,7 +46,7 @@
         </figure>
       </label>
     </div>
-  </header>
+  </header> -->
   <div class="carousel">
     <carousel *ngIf="enabledCaroussel" [sources]="imageSources" [config]="config"></carousel>
   </div>

@@ -48,8 +48,6 @@ export class StopDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private stopService: StopService,
-    private location: Location,
     private data: Data
   ) {}
 
@@ -67,10 +65,6 @@ export class StopDetailComponent implements OnInit, OnDestroy {
   //   const id: string = this.route.snapshot.paramMap.get('id');
   //   this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
   // }
-
-  goBack(): void {
-    this.location.back();
-  }
 
   readURL(input) {
     // console.log(input, input.target.files, input.target.files[0]);
