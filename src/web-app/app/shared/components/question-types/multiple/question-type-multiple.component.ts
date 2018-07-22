@@ -7,35 +7,37 @@ import { Question } from '../../../../questions/question';
   styleUrls: ['./question-type-multiple.component.css']
 })
 export class QuestionTypeMultipleComponent implements OnInit {
-  activeButton = null;
   @Input() question: Question;
+  @Input() answer;
   @Output('answer')
-  questionChange: EventEmitter<object> = new EventEmitter<object>();
-  answer: string;
+  answerChange: EventEmitter<object> = new EventEmitter<object>();
+
+  btnClass;
+  activeButton = null;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.btnClass = ['button'];
+  }
+
+  private setClass(active: boolean = false) {
+    this.btnClass = { button: true, active: active };
+  }
 
   buttonClicked(event) {
     if (this.activeButton !== event.currentTarget) {
-      if (this.activeButton !== null) {
-        this.activeButton.classList.remove('active');
-      }
       this.activeButton = event.currentTarget;
-      event.currentTarget.classList.add('active');
-      this.answer = this.activeButton.value;
-      this.sendAnswer();
     } else {
-      this.activeButton.classList.remove('active');
       this.activeButton = null;
-      this.answer = this.activeButton.value;
-      this.sendAnswer();
     }
+    this.setClass(this.activeButton == event.currentTarget);
+    this.answer = this.activeButton.value;
+    this.sendAnswer();
   }
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.questionChange.emit(value);
+    this.answerChange.emit(value);
   }
 }

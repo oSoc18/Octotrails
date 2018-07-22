@@ -7,37 +7,37 @@ import { Question } from '../../../../questions/question';
   styleUrls: ['./question-type-boolean.component.css']
 })
 export class QuestionTypeBooleanComponent implements OnInit {
-  activeButton = null;
   @Input() question: Question;
-  @Output('answer')
-  questionChange: EventEmitter<object> = new EventEmitter<object>();
-  answer: boolean;
+  @Input() answer;
+  @Output() answerChange: EventEmitter<object> = new EventEmitter<object>();
+
+  activeButton = null;
+  btnClass;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.answer = this.answer === 'true';
+  }
+
+  private setClass(active: boolean = false) {
+    this.btnClass = { button: true, active: active };
+  }
 
   buttonClicked(event) {
-    if (this.question.answer) {
-      if (this.activeButton !== event.currentTarget) {
-        if (this.activeButton !== null) {
-          this.activeButton.classList.remove('active');
-        }
-        this.activeButton = event.currentTarget;
-        event.currentTarget.classList.add('active');
-        this.answer = this.activeButton.value;
-        this.sendAnswer();
-      } else {
-        this.activeButton.classList.remove('active');
-        this.activeButton = null;
-        this.answer = this.activeButton.value;
-        this.sendAnswer();
-      }
+    if (this.activeButton !== event.currentTarget) {
+      this.activeButton = event.currentTarget;
+    } else {
+      this.activeButton = null;
     }
+    const isBtnActive = this.activeButton == event.currentTarget;
+    this.answer = this.activeButton.value;
+    this.setClass(isBtnActive);
+    this.sendAnswer();
   }
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.questionChange.emit(value);
+    this.answerChange.emit(value);
   }
 }

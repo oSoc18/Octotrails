@@ -8,16 +8,15 @@ import { Question } from '../../../../questions/question';
 })
 export class QuestionTypeStringComponent implements OnInit {
   @Input() question: Question;
-  @Output('answer')
-  questionChange: EventEmitter<object> = new EventEmitter<object>();
+  @Input() answer;
+  @Output() answerChange: EventEmitter<object> = new EventEmitter<object>();
 
-  answer: string;
   constructor() {}
 
   ngOnInit() {}
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.questionChange.emit(value);
+    this.answerChange.emit(value);
   }
 }

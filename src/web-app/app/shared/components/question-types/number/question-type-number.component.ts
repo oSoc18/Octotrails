@@ -8,19 +8,16 @@ import { Question } from '../../../../questions/question';
 })
 export class QuestionTypeNumberComponent implements OnInit {
   @Input() question: Question;
+  @Input() answer;
   @Output('answer')
-  questionChange: EventEmitter<object> = new EventEmitter<object>();
-
-  answer: number;
+  answerChange: EventEmitter<object> = new EventEmitter<object>();
 
   constructor() {}
 
-  ngOnInit() {
-    this.answer = this.question.answer;
-  }
+  ngOnInit() {}
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.questionChange.emit(value);
+    this.answerChange.emit(value);
   }
 }
