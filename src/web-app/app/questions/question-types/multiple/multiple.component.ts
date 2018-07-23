@@ -30,7 +30,7 @@ export class MultipleComponent implements OnInit {
     } else {
       this.activeButton.classList.remove('active');
       this.activeButton = null;
-      this.answer = this.activeButton.value;
+      this.answer = null;
       this.sendAnswer();
     }
   }

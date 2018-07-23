@@ -1,23 +1,15 @@
 import httpStatus from 'http-status';
-import { validationResult, Result } from 'express-validator/check';
+import { validationResult } from 'express-validator/check';
 
 import APIError from '../helpers/APIError';
+import { checkValidationErrors } from '../helpers/utils';
 import Input from '../models/input.model';
 import History from '../models/history.model';
 
 /**
- * Check if the validatio has generated some errors.
- * @param {Result<any>} errors
+ * Save the received inputs into DB
  */
-const checkValidationErrors = function check(errors) {
-  if (errors.isEmpty()) return;
-
-  errors.array().forEach(e => {
-    throw new APIError(e.msg, httpStatus.BAD_REQUEST);
-  });
-};
-
-async function saveInputs(req, res, next) {
+async function saveInputs(req, res) {
   // Check for errors
   checkValidationErrors(validationResult(req));
 
@@ -26,7 +18,7 @@ async function saveInputs(req, res, next) {
   try {
     // Create Input Documents
     const inputDocs = await Input.create(req.body.inputs);
-
+    // Get the IDs of the created input
     const inputs = inputDocs.map(doc => doc._id);
 
     const previous = await History.getByStopId({ stop_id });

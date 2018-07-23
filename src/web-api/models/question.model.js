@@ -57,12 +57,12 @@ QuestionSchema.method({});
  */
 QuestionSchema.statics = {
   /**
-   * Get question
+   * Get question by it ID
    * @param {ObjectId} id - The objectId of question.
    * @returns {Promise<Question, APIError>}
    */
   get(id) {
-    return this.findById(id)
+    return this.find({ id })
       .populate({ path: 'category', select: 'num', populate: 'category' })
       .exec()
       .then(question => {
@@ -78,7 +78,7 @@ QuestionSchema.statics = {
   },
 
   /**
-   * List questions in descending order of 'createdAt' timestamp.
+   * List questions.
    * @param {number} skip - Number of questions to be skipped.
    * @param {number} limit - Limit number of questions to be returned.
    * @returns {Promise<Question[]>}

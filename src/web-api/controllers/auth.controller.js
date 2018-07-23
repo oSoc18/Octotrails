@@ -10,7 +10,7 @@ const user = {
 };
 
 /**
- * Returns jwt token if valid email and password is provided
+ * Returns JWT Token if valid email and password is provided
  * @param req
  * @param res
  * @param next
@@ -41,13 +41,13 @@ function login(req, res, next) {
 }
 
 /**
- * This is a protected route. Will return random number only if jwt token is provided in header.
+ * This is a protected route.
  * @param req
  * @param res
- * @returns {*}
+ * @returns {*} a random number only if JWT token is provided in header.
  */
 function getRandomNumber(req, res) {
-  // req.user is assigned by jwt middleware if valid token is provided
+  // req.user is assigned by JWT middleware if valid token is provided
   return res.json({
     user: req.user,
     num: Math.random() * 100

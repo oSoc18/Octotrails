@@ -1,5 +1,9 @@
 const { checkSchema } = require('express-validator/check');
 
+/**
+ * Validation for the query, param or POST body
+ */
+
 /******************
  *  AUTH
  ***************/
@@ -41,10 +45,12 @@ export const Stops = {
     },
     term: {
       in: ['query'],
-      isLength: {
-        options: { min: 2 },
-        errorMessage: '"?term" must be defined'
-      },
+      // isLength: {
+      //   options: { min: 2 },
+      //   errorMessage: '"?term" must be defined'
+      // },
+      exists: true,
+      errorMessage: '"?term" must be defined',
       toString: true
     }
   },

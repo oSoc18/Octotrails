@@ -8,10 +8,7 @@ import historiesRoutes from './histories.route';
 const router = express.Router(); // eslint-disable-line new-cap
 
 /** GET /health-check - Check service health */
-router.get(['/', '/health-check', '/zen'], (req, res) => {
-  //res.header();
-  res.send('Yello');
-});
+router.get(['/', '/zen'], (req, res) => res.send('Yello'));
 
 // mount auth routes at /auth
 router.use('/auth', authRoutes);

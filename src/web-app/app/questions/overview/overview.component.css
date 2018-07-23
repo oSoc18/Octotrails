@@ -5,14 +5,15 @@
 }
 
 .section-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: Helvetica;
     color: #1B1B1B;
     margin: 2rem 0 0 0;
+    padding-bottom: 1rem;
 }
 
 .section-sub-title {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-family: Helvetica;
     color: rgba(29, 31, 45, 0.45);
     margin: 0;
@@ -20,6 +21,7 @@
 
 .progress-bar {
     margin-top: 2rem;
+    margin-bottom: .5rem;
 }
 
 .progress-tag, .progress-bar {
@@ -30,12 +32,18 @@
     justify-content: center;
 }
 
+.progress-tag {
+    font-size: 1.4rem;
+    color: rgba(29,31,49,0.45);
+    margin-bottom: 1.5rem;
+}
+
 ::ng-deep .mat-progress-bar-buffer {
     background-color: #EEEFF2;
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
-  background: linear-gradient(to right, #00C6FF , #0072FF);
+    background-image: linear-gradient(-270deg, #0072ff 0%, #00c6ff 99%);
 }
 
 .end-buttons {
@@ -47,16 +55,25 @@
 }
 
 .done-button {
-    height: 2.8rem;
-    font-size: 1rem;
+    height: 4rem;
     color: #ffffff;
-    background: linear-gradient(to right, #00C6FF , #0072FF);
+    background-image: linear-gradient(-270deg, #0072ff 0%, #00c6ff 99%);
+    color: white;
+    box-shadow: 0 9px 22px -6px rgba(153, 208, 253, 0.5);
+    border: 2px hidden;
+    border-radius: 5px;
+    font-size: 1.6rem;
 }
 
 .cancel {
     text-align: center;
-    height: 2.8rem;
-    font-size: 1rem;
+    height: 4rem;
+    font-size: 1.4rem;
     text-decoration: none;
     padding-top: 1rem;
+    color: #323232;
+}
+
+.backbutton {
+    margin-top: 1rem;
 }
