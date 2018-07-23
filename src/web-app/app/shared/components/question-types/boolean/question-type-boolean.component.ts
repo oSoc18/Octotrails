@@ -9,7 +9,8 @@ import { Question } from '../../../../questions/question';
 export class QuestionTypeBooleanComponent implements OnInit {
   @Input() question: Question;
   @Input() answer;
-  @Output() answerChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output('answer')
+  answerChange: EventEmitter<object> = new EventEmitter<object>();
 
   isReadOnly: boolean = false;
   activeButton;
