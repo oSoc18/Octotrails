@@ -3,6 +3,7 @@ import Joi from 'joi';
 // require and configure dotenv, will load vars in .env in PROCESS.ENV
 require('dotenv').config();
 
+// Define a Schema for the env vars
 const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string()
     .allow(['development', 'production', 'test', 'provision'])
@@ -34,6 +35,7 @@ if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
 
+// Config to be shared in the web-api
 const config = {
   env: envVars.NODE_ENV,
   port: envVars.SERVER_PORT,
@@ -43,6 +45,6 @@ const config = {
     host: envVars.MONGO_HOST,
     port: envVars.MONGO_PORT
   },
-  stibApi : envVars.STIB_API
+  stibApi: envVars.STIB_API
 };
 export default config;

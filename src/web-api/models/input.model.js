@@ -1,19 +1,8 @@
-import bluebird from 'bluebird';
 import mongoose, { SchemaTypes } from 'mongoose';
 import httpStatus from 'http-status';
 
 import APIError from '../helpers/APIError';
-
-const options = {
-  toJSON: {
-    virtuals: true,
-    transform: function(doc, ret) {
-      ret.id = ret._id.toHexString();
-      delete ret._id;
-      delete ret.__v;
-    }
-  }
-};
+import { SchemaOptions } from '../helpers/utils';
 
 /*
  * *****************
@@ -29,13 +18,12 @@ const options = {
  * answer -  The answer to the Question
  *
  */
-
 const InputSchema = new mongoose.Schema(
   {
     question_id: { type: SchemaTypes.ObjectId, ref: 'Question' },
     answer: SchemaTypes.Mixed
   },
-  options
+  SchemaOptions
 );
 
 /**
@@ -63,8 +51,8 @@ InputSchema.method({});
  */
 InputSchema.statics = {
   /**
-   * Get stops by the required tech_id
-   * @param {String} question_id - The tech id of the the stop.
+   * Get the inputs by the question_id
+   * @param {String} question_id - The question Id.
    * @param {boolean} full - If the document should be populated.
    * @returns {Promise<Input, APIError>}
    */

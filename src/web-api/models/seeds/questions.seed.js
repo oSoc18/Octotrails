@@ -11,7 +11,7 @@ function run() {
   Question.collection.count({}).then(count => {
     if (count === 0) {
       Question.insertMany(mockData)
-        .then(_ => console.log('[QUESTION_SEEDER] Inserted alll questions'))
+        .then(_ => console.log('[QUESTION_SEEDER] Inserted all questions'))
         .catch(err => new Error('[QUESTION_SEEDER] Error on insertions'));
     }
   });

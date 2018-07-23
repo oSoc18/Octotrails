@@ -6,7 +6,7 @@ import CategorySeeder from './categories.seed';
 import HistorySeeder from './histories.seed';
 
 //
-const seeders = [QuestionSeeder, InputSeeder, CategorySeeder, HistorySeeder];
+const seeders = [CategorySeeder, QuestionSeeder, InputSeeder, HistorySeeder];
 
 export default {
   /**
@@ -15,7 +15,7 @@ export default {
   populate: function runThemAll() {
     for (const seeder of seeders) {
       if (seeder != undefined && typeof seeder['run'] !== 'function') {
-        throw new APIError(
+        throw new Error(
           `[SEEDER] The seeder \'${seeder}\' must be implement 'run' function`
         );
       }
