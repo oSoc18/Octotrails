@@ -16,13 +16,12 @@
     Back
   </a>
 
-  <ng-container *ngIf="!isOnHistoriesPage; else historiesTemplate">
+  <ng-container *ngIf="!isOnStopsPage;">
     <div class="header-title">
       <h2 class="stop-title">{{stopName}}</h2>
       <h3 class="stop-id">ID : {{stopId}}</h3>
     </div>
-    <div width="32.433" *ngIf="!isOnStopsSearchPage"></div>
-    <div class="photo" *ngIf="isOnStopsSearchPage">
+    <div class="photo">
       <input type='file' name="file" id="file" class="input-file" accept="image/*" (change)="readURL($event);" />
       <label for="file">
         <figure>
@@ -48,14 +47,18 @@
 
   </ng-container>
 
-  <ng-template #historiesTemplate>
+  <ng-container *ngIf="!isOnQuestionsPage;">
+    <h1 class="section-title">Accessibility</h1>
+    <h2 class="section-sub-title">Physical</h2>
+  </ng-container>
+
+  <ng-container *ngIf="!isOnHistoriesPage;">
     <div class="header-title">
       <h2 class="stop-title">History of {{stopName}}</h2>
       <h3 class="stop-id">ID : {{stopId}}</h3>
     </div>
     <div width="32.433"></div>
-
-  </ng-template>
+  </ng-container>
 
   <ng-content></ng-content>
 </header>
