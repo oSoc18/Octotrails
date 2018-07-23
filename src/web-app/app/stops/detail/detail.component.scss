@@ -12,12 +12,8 @@
     align-items: center;
     color: black;
     height: 4.8rem;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.15);
-    border-radius: 5px;
-    border: 2px hidden;
-    background-color: white !important;
+    border-bottom: 1.4px solid lightgray;
     margin: 1rem 0 !important;
-    padding: 1rem;
 }
 
 .buttons {
@@ -46,6 +42,20 @@
 
 .buttons a:hover{
   background-color: yellow;
+}
+
+.line-direction {
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    font-weight: 600;
+    letter-spacing: .06rem;
+}
+
+.search-result-info-title {
+    padding-left: 1rem;
+    font-size: 1.1rem;
+    padding-top: .4rem;
+    color: darkgray;
 }
 
 .line-number, .line-type {
