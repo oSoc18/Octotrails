@@ -1,3 +1,4 @@
-<p>
-  overview works!
-</p>
+<mat-list *ngFor="let category of categories">
+  <mat-list-item>{{ category.name }}</mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
