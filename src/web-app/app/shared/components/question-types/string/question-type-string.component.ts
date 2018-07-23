@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from '../../../../questions/question';
+import { Question } from '../../../../categories/question';
 
 @Component({
   selector: 'app-question-type-string',

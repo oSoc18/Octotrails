@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
-import { Question } from '../questions/question';
+import { Question } from '../categories/question';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
