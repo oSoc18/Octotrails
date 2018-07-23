@@ -74,7 +74,7 @@
     </section>
   </div>
   <div class="buttons">
-    <a class="history-button" (click)="goToHistories()">History</a>
-    <a class="update-button" (click)="goToQuestions()">Update</a>
+    <a class="history-button" [routerLink]="['/stops', stop.id, 'histories']">History</a>
+    <a class="update-button" routerLink="/stops/{{stop.id}}/questions">Update</a>
   </div>
 </div>

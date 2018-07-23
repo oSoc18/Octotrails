@@ -1,6 +1,7 @@
-import { Component, OnInit, Input,  Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../question';
 import { Data } from '../../../shared/providers/data.provider';
+import { QuestionService } from '../../questions.service';
 
 @Component({
   selector: 'app-question-type-string',
@@ -8,19 +9,17 @@ import { Data } from '../../../shared/providers/data.provider';
   styleUrls: ['./string.component.css']
 })
 export class StringComponent implements OnInit {
-    @Input() question: Question;
-    @Output('answer')
-    outputChange: EventEmitter<object> = new EventEmitter<object>();
-  
-    answer: string;
-  constructor() { }
+  @Input() question: Question;
+  @Output() questionChange: EventEmitter<object> = new EventEmitter<object>();
 
-  ngOnInit() {
-  }
+  answer: string;
+  constructor(private questionService: QuestionService) {}
+
+  ngOnInit() {}
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
-    this.outputChange.emit(value);
+    this.questionChange.emit(value);
+    this.questionService.addToLocalStorage(value);
   }
-
 }

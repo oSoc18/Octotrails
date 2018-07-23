@@ -40,11 +40,12 @@
   background-color: gainsboro;
 }
 
-.buttons a:hover{
+.buttons a:hover {
   background-color: yellow;
 }
 
-.line-number, .line-type {
+.line-number,
+.line-type {
   font-size: 1.4rem;
   font-weight: 500;
   color: white;
@@ -73,10 +74,10 @@
 .direction {
   font-size: 1.4rem;
   margin-left: 1.5rem;
-  border-left: .2rem solid lightgrey;
+  border-left: 0.2rem solid lightgrey;
   padding-left: 1.5rem;
 }
 
 .line-direction {
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 }

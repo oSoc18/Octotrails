@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../question';
+import { QuestionService } from '../../questions.service';
 
 @Component({
   selector: 'app-question-type-number',
@@ -8,13 +9,12 @@ import { Question } from '../../question';
 })
 export class NumberComponent implements OnInit {
   @Input() question: Question;
-  @Output()
-  questionChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output() questionChange: EventEmitter<object> = new EventEmitter<object>();
 
   answer: number;
-  isAnswered:boolean = false;
+  isAnswered: boolean = false;
 
-  constructor() {}
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit() {
     this.answer = this.question.answer;
@@ -24,5 +24,6 @@ export class NumberComponent implements OnInit {
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.questionChange.emit(value);
+    this.questionService.addToLocalStorage(value);
   }
 }

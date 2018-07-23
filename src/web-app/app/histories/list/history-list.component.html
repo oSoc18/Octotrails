@@ -24,8 +24,9 @@
     <div width="32.433"></div>
   </header>
   <section class="histories">
+    <!-- <a class="history" *ngFor="let history of histories" [routerLink]="['/stops', stopId, 'histories', history.id]"></a>> -->
     <a class="history" *ngFor="let history of histories" (click)="goToHistoryDetail(history.id)">
-      <p>Update of {{history.created_at.slice(0,10)}}</p>
+      <p>Update of {{history.created_at | date: 'dd MMMM yyyy' }}</p>
     </a>
   </section>
 </div>

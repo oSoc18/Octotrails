@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../question';
 import { Data } from '../../../shared/providers/data.provider';
+import { QuestionService } from '../../questions.service';
 
 @Component({
   selector: 'app-question-type-boolean',
@@ -10,16 +11,15 @@ import { Data } from '../../../shared/providers/data.provider';
 export class BooleanComponent implements OnInit {
   activeButton = null;
   @Input() question: Question;
-  @Output()
-  questionChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output() questionChange: EventEmitter<object> = new EventEmitter<object>();
   answer: boolean;
 
-  constructor() {}
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit() {}
 
   buttonClicked(event) {
-    if(this.question.answer) {
+    if (this.question.answer) {
       if (this.activeButton !== event.currentTarget) {
         if (this.activeButton !== null) {
           this.activeButton.classList.remove('active');
@@ -35,11 +35,11 @@ export class BooleanComponent implements OnInit {
         this.sendAnswer();
       }
     }
-
   }
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.questionChange.emit(value);
+    this.questionService.addToLocalStorage(value);
   }
 }
