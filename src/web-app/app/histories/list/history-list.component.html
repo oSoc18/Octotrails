@@ -3,9 +3,16 @@
   <app-navbar [stopName]="stopName" [stopId]="stopId"> </app-navbar>
 
   <section class="histories">
-    <!-- <a class="history" *ngFor="let history of histories" [routerLink]="['/stops', stopId, 'histories', history.id]"></a>> -->
-    <a class="history" *ngFor="let history of histories" (click)="goToHistoryDetail(history.id)">
-      <p>Update of {{history.created_at | date: 'dd MMMM yyyy' }}</p>
-    </a>
+    <!-- <a class="history" *ngFor="let history of histories" [routerLink]="['./', history.id]"></a>> -->
+    <mat-list *ngFor="let history of histories">
+      <mat-list-item>
+        <a class="history" [routerLink]="['./', history.id]">
+          <!-- <img [ngStyle="{'vertical-align: 'middle'}" src="/assets/icons/update.svg" width="30" height="30" alt="" />  -->
+          Update of {{history.created_at | date }}
+        </a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
   </section>
 </div>
