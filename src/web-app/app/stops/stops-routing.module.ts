@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { QuestionsEntrypoint } from '../questions/questions.module';
+import { CategoriesEntrypoint } from '../categories/categories.module';
 import { HistoriesEntrypoint } from '../histories/histories.module';
 import { StopResolver } from './stop.resolver';
 
@@ -20,10 +20,7 @@ const stopRoutes: Routes = [
       { path: '', component: StopDetailComponent },
       { path: 'location', component: StopLocationComponent },
       { path: 'histories', loadChildren: HistoriesEntrypoint },
-      {
-        path: 'questions',
-        loadChildren: QuestionsEntrypoint
-      }
+      { path: 'categories', loadChildren: CategoriesEntrypoint }
     ]
   }
 ];
