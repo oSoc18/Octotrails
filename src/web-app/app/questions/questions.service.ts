@@ -5,6 +5,7 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
 import { Question } from './question';
+import { Category } from './category';
 
 const httpOpts = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +17,7 @@ const httpOpts = {
 export class QuestionService {
   constructor(private http: HttpClient) {}
   private questionsUrl = env.API_URL + 'api/questions'; // URL to web api
+  private categoriesUrl = env.API_URL + 'api/categories'; 
 
   /**
    * Get the list of questions
@@ -24,6 +26,16 @@ export class QuestionService {
     return this.http.get<Object>(this.questionsUrl).pipe<Question[]>(
       map(resp => resp['questions'].map(q => new Question(q))),
       catchError(this.handleError('getQuestions', []))
+    );
+  }
+
+  /**
+   * Get the list of the categories
+   */
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Object>(this.categoriesUrl).pipe<Category[]>(
+      map(resp => resp['categories'].map(q => new Category(q))),
+      catchError(this.handleError('getCategories', []))
     );
   }
 

@@ -8,6 +8,7 @@ import { StopResolver } from './stop.resolver';
 import { StopSearchComponent } from './search/stop-search.component';
 import { StopDetailComponent } from './detail/stop-detail.component';
 import { StopLocationComponent } from './location/stop-location.component';
+import { CategoriesComponent} from '../questions/categories/categories.component';
 // import { StopImageDetailComponent } from './image-detail/stop-image-detail.component';
 
 const stopRoutes: Routes = [
@@ -20,10 +21,8 @@ const stopRoutes: Routes = [
       { path: '', component: StopDetailComponent },
       { path: 'location', component: StopLocationComponent },
       { path: 'histories', loadChildren: HistoriesEntrypoint },
-      {
-        path: 'questions',
-        loadChildren: QuestionsEntrypoint
-      }
+      { path: 'questions', loadChildren: QuestionsEntrypoint },
+      { path: 'categories', component: CategoriesComponent}
     ]
   }
 ];
