@@ -1,4 +1,4 @@
-<div class="number-component">
+<div class="string-component">
         <div class="question-flex">
                 <h2 class="question">{{question.content}}</h2>
                 
@@ -47,10 +47,10 @@
                     </g>
                 </svg>
             </div>
-  <div class="number">
-    <mat-form-field>
-      <input matInput type="number" disabled="{{!!answer}}" [(ngModel)]="answer" (keyup)="sendAnswer()">
-    </mat-form-field>
-    <p class="unit">cm</p>
-  </div>
+    <div>
+        <mat-form-field>
+            <input matInput type="string" [(ngModel)]="answer" (keyup)="sendAnswer()">
+        </mat-form-field>
+    </div>
 </div>
+
