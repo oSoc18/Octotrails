@@ -29,7 +29,7 @@
   "dataGroups": [
     {
       "name": "api-freshness",
-      "urls": ["/timeline"],
+      "urls": ["/stops/"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
