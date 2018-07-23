@@ -6,7 +6,8 @@ import {
   QuestionTypeBooleanComponent,
   QuestionTypeMultipleComponent,
   QuestionTypeNumberComponent,
-  QuestionTypeStringComponent
+  QuestionTypeStringComponent,
+  NavbarComponent
 } from './components/';
 import { RangeValidatorDirective } from './directives/range.directive';
 import { MatDesignModule } from './mat-design/mat-design.module';
@@ -19,7 +20,8 @@ import { MatDesignModule } from './mat-design/mat-design.module';
     QuestionTypeNumberComponent,
     QuestionTypeBooleanComponent,
     QuestionTypeMultipleComponent,
-    QuestionTypeStringComponent
+    QuestionTypeStringComponent,
+    NavbarComponent
   ],
   exports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { MatDesignModule } from './mat-design/mat-design.module';
     QuestionTypeNumberComponent,
     QuestionTypeBooleanComponent,
     QuestionTypeMultipleComponent,
-    QuestionTypeStringComponent
+    QuestionTypeStringComponent,
+    NavbarComponent
   ]
 })
 export class SharedModule {}
