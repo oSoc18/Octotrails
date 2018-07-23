@@ -5,11 +5,18 @@
   margin-bottom: 1.5rem;
 }
 
+.question-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
 .question {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.7rem;
-  color: rgba(29, 31, 49, 0.35);
+  color: #1b1b1b;
   width: 90%;
+  align-self: center;
 }
 
 .buttons {
@@ -19,15 +26,21 @@
 }
 
 button {
-  width: 47%;
-  height: 2.8rem;
-  text-align: center;
-  font-size: 1rem;
-  background: linear-gradient(to right, #e8e8e8, #f3f3f3);
+    width: 47%;
+    height: 4.3rem;
+    background-image: linear-gradient(-45deg, rgba(243,243,243,0.99) 0%, #E8E8E8 100%);
+    box-shadow: 0 6px 28px -17px rgba(111,109,109,0.50);
+    border-radius: 5px;
+    border: 2px hidden;
+    font-size: 16px;
+    color: rgba(29,31,49,0.45);
+    text-align: center;
 }
 
 .active {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: white;
-  box-shadow: 0 9px 22px -6px rgba(153, 208, 253, 0.5);
+
+    background-image: linear-gradient(-270deg, #0072ff 0%, #00c6ff 99%);
+    color: white;
+    box-shadow: 0 9px 22px -6px rgba(153, 208, 253, 0.5);
+
 }
