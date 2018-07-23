@@ -35,6 +35,7 @@
 .progress-tag {
     font-size: 1.4rem;
     color: rgba(29,31,49,0.45);
+    margin-bottom: 1.5rem;
 }
 
 ::ng-deep .mat-progress-bar-buffer {
@@ -71,4 +72,8 @@
     text-decoration: none;
     padding-top: 1rem;
     color: #323232;
+}
+
+.backbutton {
+    margin-top: 1rem;
 }

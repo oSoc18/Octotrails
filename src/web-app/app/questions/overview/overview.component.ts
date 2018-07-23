@@ -14,7 +14,7 @@ import { Data } from '../../shared/providers/data.provider';
 })
 export class OverviewComponent implements OnInit {
   @Input() questions;
-  answeredQuestions = 1;
+  answeredQuestions = 0;
   totalNumberOfQuestions;
   progressValue = 0;
   stop_id: string;
@@ -37,13 +37,24 @@ export class OverviewComponent implements OnInit {
     this.questionService.getQuestions().subscribe(list => {
       this.questions = list;
       this.totalNumberOfQuestions = this.questions.length;
-      this.progressValue =
-        (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
     });
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;
+    this.setProgressBar(value);
   }
+
+  setProgressBar(value) {
+    if(value.answer !== null){
+        this.answeredQuestions = Object.keys(this.data.inputs).length;
+        this.progressValue = (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
+    } else {
+        delete this.data.inputs[value.question_id];
+        this.answeredQuestions = this.answeredQuestions - 1;
+        this.progressValue = (100 / this.totalNumberOfQuestions) * this.answeredQuestions; 
+    }  
+  }
+
 
   goBack(): void {
     this.location.back();
