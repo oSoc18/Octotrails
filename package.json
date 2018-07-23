@@ -18,6 +18,7 @@
     "start:server": "nodemon src/server-start.js",
     "start:ng": "ng serve --host 0.0.0.0",
     "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max",
+    "pwa": "ng build --prod && sw-precache --root=src/web-app/dist --config=precache-config.js",
     "start": "concurrently \"npm run start:ng\" \"npm run start:server\"",
     "test": "ng test",
     "lint": "ng lint",

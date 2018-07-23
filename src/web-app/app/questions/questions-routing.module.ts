@@ -1,20 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OverviewComponent } from "./overview/overview.component";
+import { QuestionOverviewComponent } from './overview/question-overview.component';
 
-
-const routes: Routes = [
-
-    { path: 'questions', component:  OverviewComponent},
-
-  // { path: 'stops/search', component: SearchComponent },
-  // { path: 'stops/:id', component: DetailComponent },
+const questionRoutes: Routes = [
+  { path: '', component: QuestionOverviewComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(questionRoutes)],
   exports: [RouterModule]
 })
 export class QuestionsRoutingModule {}

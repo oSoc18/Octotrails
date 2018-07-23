@@ -3,9 +3,10 @@ export class Question {
   num: string;
   content: string;
   type: string;
-  hint: string;
-  choices: any[];
-  categorie_id: string;
+  hint?: string;
+  choices?: any[];
+  categorie_id?: string;
+  answer?:any;
 
   /**
    * Init a Transport from a raw JSON object, with all field matching

@@ -1,0 +1,9 @@
+<div class="boolean-component">
+  <h2 class="question">{{question.content}}</h2>
+  <div class="buttons">
+    <button type="button" [ngClass]="btnClass" [class.active]="answer" (click)="buttonClicked($event)" type="button" [ngClass]="btnClass"
+      value="{{answer || 'true'}}" [disabled]="answer != undefined">Yes</button>
+    <button type="button" [ngClass]="btnClass" [class.active]="answer == false" (click)="buttonClicked($event)" value="{{answer || 'false'}}"
+      [disabled]="answer != undefined">No</button>
+  </div>
+</div>

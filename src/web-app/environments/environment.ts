@@ -5,10 +5,10 @@
 export const environment = {
   production: false,
   API_URL: 'http://localhost:8081/',
-  AGM_API_URL: '',
   mapbox: {
     accessToken:
-      'pk.eyJ1IjoiYnJhbWJsZXlzIiwiYSI6ImNqam82cmIyZjIzcWozcW0wdjh6enB4Y3kifQ.udssCP8HoCZCKddR4FF8FA'
+      'pk.eyJ1IjoiYnJhbWJsZXlzIiwiYSI6ImNqam82cmIyZjIzcWozcW0wdjh6enB4Y3kifQ.udssCP8HoCZCKddR4FF8FA',
+    style: 'mapbox://styles/mapbox/light-v9'
   }
 };
 
