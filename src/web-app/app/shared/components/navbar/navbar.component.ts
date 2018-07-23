@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   @Input() stopId;
   @Input() stopName;
+  @Input() historyDate;
 
   isOnHistoriesPage: boolean;
   isOnStopsSearchPage: boolean;
