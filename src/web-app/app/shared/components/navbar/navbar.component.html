@@ -16,7 +16,7 @@
     Back
   </a>
 
-  <ng-container *ngIf="!isOnStopsPage;">
+  <ng-container *ngIf="isOnStopsSearchPage">
     <div class="header-title">
       <h2 class="stop-title">{{stopName}}</h2>
       <h3 class="stop-id">ID : {{stopId}}</h3>
@@ -47,12 +47,12 @@
 
   </ng-container>
 
-  <ng-container *ngIf="!isOnQuestionsPage;">
+  <ng-container *ngIf="isOnQuestionsPage">
     <h1 class="section-title">Accessibility</h1>
     <h2 class="section-sub-title">Physical</h2>
   </ng-container>
 
-  <ng-container *ngIf="!isOnHistoriesPage;">
+  <ng-container *ngIf="isOnHistoriesPage">
     <div class="header-title">
       <h2 class="stop-title">History of {{stopName}}</h2>
       <h3 class="stop-id">ID : {{stopId}}</h3>

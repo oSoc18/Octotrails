@@ -13,11 +13,13 @@ export class NavbarComponent implements OnInit {
 
   isOnHistoriesPage: boolean;
   isOnStopsSearchPage: boolean;
+  isOnQuestionsPage: boolean;
 
   constructor(private location: Location, private router: Router) {}
 
   ngOnInit() {
     this.isOnHistoriesPage = this.router.url.includes('/histories');
+    this.isOnQuestionsPage = this.router.url.includes('/questions');
     this.isOnStopsSearchPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
     if (!this.isOnStopsSearchPage) {
       this.stopId = this.router.url.match('/stops/([0-9]+[a-zA-z_-]*).*')[1];
