@@ -11,9 +11,13 @@ export class QuestionTypeStringComponent implements OnInit {
   @Input() answer;
   @Output() answerChange: EventEmitter<object> = new EventEmitter<object>();
 
+  isReadOnly: boolean;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isReadOnly = !!this.answer;
+  }
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };

@@ -9,12 +9,15 @@ import { Question } from '../../../../questions/question';
 export class QuestionTypeNumberComponent implements OnInit {
   @Input() question: Question;
   @Input() answer;
-  @Output('answer')
-  answerChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output() answerChange: EventEmitter<object> = new EventEmitter<object>();
+
+  isReadOnly: boolean;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isReadOnly = !!this.answer;
+  }
 
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };

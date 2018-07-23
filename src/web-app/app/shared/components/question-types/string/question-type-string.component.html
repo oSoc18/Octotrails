@@ -2,7 +2,7 @@
   <h2 class="question">{{question.content}}</h2>
   <div>
     <mat-form-field>
-      <input type="string" disabled="{{!!answer}}" [(ngModel)]="answer" (keyup)="sendAnswer()">
+      <input type="string" [disabled]="isReadOnly" [(ngModel)]="answer" (keyup)="sendAnswer()" (blur)="isReadOnly = false">
     </mat-form-field>
   </div>
 </div>
