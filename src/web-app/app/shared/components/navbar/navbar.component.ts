@@ -17,12 +17,18 @@ export class NavbarComponent implements OnInit {
   constructor(private location: Location, private router: Router) {}
 
   ngOnInit() {
-    // const stopId = this.router.url.split('/stops/')[1];
     this.isOnHistoriesPage = this.router.url.includes('/histories');
-    this.isOnStopsSearchPage = this.router.url.includes('/stops/search');
+    this.isOnStopsSearchPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
+    if (!this.isOnStopsSearchPage) {
+      this.stopId = this.router.url.match('/stops/([0-9]+[a-zA-z_-]*).*')[1];
+    }
   }
 
   goBack(): void {
-    this.router.navigate(['..']);
+    if (this.isOnStopsSearchPage) {
+      this.router.navigate(['stops/search']);
+    } else {
+      this.router.navigate(['stops/', this.stopId]);
+    }
   }
 }
