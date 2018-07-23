@@ -27,12 +27,12 @@
   margin-right: auto;
 }
 
-::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+/* ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
     background-color: #EEEDED;
     border: 2px solid #EEEDED;
     border-radius: 2px;
 
-}
+} */
 
 .unit {
   align-self: center;
