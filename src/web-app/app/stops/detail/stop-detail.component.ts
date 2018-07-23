@@ -5,25 +5,22 @@ import {
   HostBinding,
   OnDestroy
 } from '@angular/core';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Stop } from '../stop';
 import { StopService } from '../stops.service';
-import {
-  ICarouselConfig,
-  AnimationConfig
-} from '../../my-octotrails-ng6-carousel';
+import { AnimationConfig } from '../../my-octotrails-ng6-carousel';
 
 import { slideInDownAnimation } from '../../shared/animations';
 import { Data } from '../../shared/providers/data.provider';
 
 @Component({
   animations: [slideInDownAnimation],
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  templateUrl: './stop-detail.component.html',
+  styleUrls: ['./stop-detail.component.scss']
 })
-export class DetailComponent implements OnInit, OnDestroy {
+export class StopDetailComponent implements OnInit, OnDestroy {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'absolute';
@@ -66,10 +63,10 @@ export class DetailComponent implements OnInit, OnDestroy {
     this.data.stop = this.stop;
   }
 
-  getStop(): void {
-    const id: string = this.route.snapshot.paramMap.get('id');
-    this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
-  }
+  // getStop(): void {
+  //   const id: string = this.route.snapshot.paramMap.get('id');
+  //   this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
+  // }
 
   goBack(): void {
     this.location.back();
@@ -97,10 +94,4 @@ export class DetailComponent implements OnInit, OnDestroy {
       this.enabledCaroussel = true;
     }, 300);
   }
-
-  update(): void {
-    //this.stopService.updateStop(this.stop, this.data.inputs).subscribe(() => this.goBack());
-  }
-
-  history(): void {}
 }

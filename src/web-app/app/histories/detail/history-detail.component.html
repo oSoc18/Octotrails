@@ -24,12 +24,16 @@
     <div width="32.433"></div>
   </header>
   <section class="histories">
-    <a class="inputs" *ngFor="let question of history.inputs">
-      <p>{{question|json}}</p>
+    <a class="inputs" *ngFor="let update of history.inputs" [ngSwitch]="update.question.type">
+
+      <p>{{update | json}}</p>
       <!-- <p>{{question.question.content}}</p>
       <p>{{question.answer}}</p>
       <p>{{question.question.type}}</p> -->
-      <app-question-type-number *ngIf="question.question.type == 'number'" [question]="question"></app-question-type-number>
+      <app-question-type-number *ngSwitchCase="'number'" [question]="update.question" [answer]="update.answer"></app-question-type-number>
+      <app-question-type-boolean *ngSwitchCase="'boolean'" [question]="update.question" [answer]="update.answer"></app-question-type-boolean>
+      <app-question-type-multiple *ngSwitchCase="'multiple'" [question]="update.question" [answer]="update.answer"></app-question-type-multiple>
+      <app-question-type-string *ngSwitchCase="'string'" [question]="update.question" [answer]="update.answer"></app-question-type-string>
 
     </a>
   </section>

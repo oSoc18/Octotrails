@@ -5,11 +5,11 @@ import { SharedModule } from '../shared/shared.module';
 import { environment } from '../../environments/environment';
 import { QuestionsRoutingModule } from './questions-routing.module';
 
-import { OverviewComponent } from './overview/overview.component';
+import { QuestionOverviewComponent } from './overview/question-overview.component';
 
 @NgModule({
   imports: [SharedModule, QuestionsRoutingModule],
-  declarations: [OverviewComponent]
+  declarations: [QuestionOverviewComponent]
 })
 export class QuestionsModule {}
 

@@ -6,19 +6,19 @@ import { MapBoxComponent } from '../map-box/map-box.component';
 import { SharedModule } from '../shared/shared.module';
 import { StopsRoutingModule } from './stops-routing.module';
 
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
-import { LocationComponent } from './location/location.component';
-import { ImageDetailComponent } from './image-detail/image-detail.component';
+import { StopSearchComponent } from './search/stop-search.component';
+import { StopDetailComponent } from './detail/stop-detail.component';
+import { StopLocationComponent } from './location/stop-location.component';
+import { StopImageDetailComponent } from './image-detail/stop-image-detail.component';
 
 @NgModule({
   imports: [CarouselModule, SharedModule, StopsRoutingModule],
   declarations: [
-    SearchComponent,
-    DetailComponent,
-    LocationComponent,
-    ImageDetailComponent,
-    MapBoxComponent
+    MapBoxComponent,
+    StopSearchComponent,
+    StopDetailComponent,
+    StopLocationComponent,
+    StopImageDetailComponent
   ],
   exports: [RouterModule, CarouselModule]
 })

@@ -5,19 +5,20 @@ import { QuestionsEntrypoint } from '../questions/questions.module';
 import { HistoriesEntrypoint } from '../histories/histories.module';
 import { StopResolver } from './stop.resolver';
 
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
-import { LocationComponent } from './location/location.component';
+import { StopSearchComponent } from './search/stop-search.component';
+import { StopDetailComponent } from './detail/stop-detail.component';
+import { StopLocationComponent } from './location/stop-location.component';
+// import { StopImageDetailComponent } from './image-detail/stop-image-detail.component';
 
 const stopRoutes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
-  { path: 'search', component: SearchComponent },
+  { path: 'search', component: StopSearchComponent },
   {
     path: ':stop_id',
     resolve: { stop: StopResolver },
     children: [
-      { path: '', component: DetailComponent },
-      { path: 'location', component: LocationComponent },
+      { path: '', component: StopDetailComponent },
+      { path: 'location', component: StopLocationComponent },
       { path: 'histories', loadChildren: HistoriesEntrypoint },
       {
         path: 'questions',

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OverviewComponent } from './overview/overview.component';
+import { QuestionOverviewComponent } from './overview/question-overview.component';
 
-const questionRoutes: Routes = [{ path: '', component: OverviewComponent }];
+const questionRoutes: Routes = [
+  { path: '', component: QuestionOverviewComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(questionRoutes)],
