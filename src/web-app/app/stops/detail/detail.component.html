@@ -67,9 +67,12 @@
       <header>
         <h4 class="section-title">Address</h4>
       </header>
-      <article>
-        <div>{{stop.address["nl"]}}</div>
-        <a routerLink="/stops/{{stop.id}}/location">show on map</a>
+      <article class="address-content">
+        <div class="address">{{stop.address["nl"]}}</div>
+        <a class="location" routerLink="/stops/{{stop.id}}/location">
+            <img src="/assets/icons/locationPin.png" width="17" height="26" alt=""/>
+            Show map
+        </a>
       </article>
     </section>
   </div>

@@ -16,6 +16,33 @@
     margin: 1rem 0 !important;
 }
 
+.address-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address {
+    width: 60%;
+    padding-top: .5rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    align-self: flex-end;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #1b1b1b;
+    font-size: 1.2rem;
+}
+
+.location img {
+    align-self: center;
+    margin-bottom: .5rem;
+}
+
+
 .buttons {
   display: flex;
   width: 90%;
@@ -40,10 +67,6 @@
     line-height: 3rem;
 }
 
-.buttons a:hover{
-  background-color: yellow;
-}
-
 .line-direction {
     font-size: 1.2rem;
     padding-left: 1rem;
@@ -53,7 +76,7 @@
 
 .search-result-info-title {
     padding-left: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding-top: .4rem;
     color: darkgray;
 }
