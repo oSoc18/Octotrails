@@ -52,7 +52,7 @@
     <h2 class="section-sub-title">Physical</h2>
   </ng-container>
 
-  <ng-container *ngIf="isOnHistoriesPage">
+  <ng-container *ngIf="isOnHistoriesPage && !historyDate">
     <div class="header-title">
       <h2 class="stop-title">History of {{stopName}}</h2>
       <h3 class="stop-id">ID : {{stopId}}</h3>
@@ -60,5 +60,12 @@
     <div width="32.433"></div>
   </ng-container>
 
+  <ng-container *ngIf="historyDate">
+    <div class="header-title">
+      <h2 class="stop-title">History of {{stopName}}</h2>
+      <h3 class="stop-id">on {{ historyDate | date: 'EE dd MMMM yyyy'}}</h3>
+    </div>
+    <div width="32.433"></div>
+  </ng-container>
   <ng-content></ng-content>
 </header>
