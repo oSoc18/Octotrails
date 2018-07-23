@@ -1,5 +1,6 @@
 import History from '../history.model';
 
+// @ts-ignore
 import mockData from './histories.mock.json';
 
 /**

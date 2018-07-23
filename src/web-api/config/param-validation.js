@@ -1,5 +1,9 @@
 const { checkSchema } = require('express-validator/check');
 
+/**
+ * Validation for the query, param or POST body
+ */
+
 /******************
  *  AUTH
  ***************/

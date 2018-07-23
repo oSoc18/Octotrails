@@ -28,9 +28,12 @@ router.post(
 );
 
 /** GET /api/stops/:stop_id/histories - Get All histories of a stop */
-router.get('/:stop_id/histor(y|ies)', asyncHandler(stopsCtrl.getHistory));
+router.get('/:stop_id/histories', asyncHandler(stopsCtrl.getHistory));
 
 /** GET /api/stops/:stop_id/:history_id - Get specific history of a stop */
-router.get('/:stop_id/history/:history_id?', asyncHandler(stopsCtrl.getHistory));
+router.get(
+  '/:stop_id/history/:history_id?',
+  asyncHandler(stopsCtrl.getHistory)
+);
 
 export default router;
