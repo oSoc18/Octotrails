@@ -14,16 +14,18 @@ export class QuestionTypeBooleanComponent implements OnInit {
 
   isReadOnly: boolean = false;
   activeButton;
+  questionsDiv: HTMLCollectionOf<Element>;
 
   constructor() {}
 
   ngOnInit() {
+    window.addEventListener('scroll', this.runOnScroll);
     if (this.answer) {
       this.isReadOnly = true;
     }
   }
 
-  buttonClicked(event) {
+  buttonClicked(event: Event) {
     // ? Click on the same button ?
     if (this.activeButton === event.currentTarget) {
       return;
@@ -33,11 +35,23 @@ export class QuestionTypeBooleanComponent implements OnInit {
     this.sendAnswer();
   }
 
+  runOnScroll(event) {
+    this.questionsDiv = document.getElementsByClassName('boolean-component');
+    for (let i = 0; i < this.questionsDiv.length; i++) {
+      let positionY = this.questionsDiv[i].getBoundingClientRect().top;
+      if (positionY <= 380 && positionY >= 300) {
+        this.questionsDiv[i].classList.add('mystyle');
+      } else if (positionY < 300 || positionY > 380) {
+        this.questionsDiv[i].classList.remove('mystyle');
+      }
+    }
+  }
+
   infoClicked(event) {
-    let yPos = (event.currentTarget.getBoundingClientRect().y) + 50;
+    let yPos = event.currentTarget.getBoundingClientRect().y + 50;
     let infoText = event.currentTarget.parentElement.nextSibling;
     infoText.classList.toggle('info-active');
-    infoText.style.top = "infoText";
+    infoText.style.top = 'infoText';
   }
 
   sendAnswer() {

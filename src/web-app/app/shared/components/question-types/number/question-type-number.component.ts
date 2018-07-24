@@ -13,11 +13,13 @@ export class QuestionTypeNumberComponent implements OnInit {
   answerChange: EventEmitter<object> = new EventEmitter<object>();
 
   isReadOnly: boolean;
+  questionsDiv: HTMLCollectionOf<Element>;
 
   constructor() {}
 
   ngOnInit() {
     this.isReadOnly = !!this.answer;
+    window.addEventListener('scroll', this.runOnScroll);
   }
 
   infoClicked(event) {
@@ -25,6 +27,18 @@ export class QuestionTypeNumberComponent implements OnInit {
     let infoText = event.currentTarget.parentElement.nextSibling;
     infoText.classList.toggle('info-active');
     infoText.style.top = 'infoText';
+  }
+
+  runOnScroll(event) {
+    this.questionsDiv = document.getElementsByClassName('number-component');
+    for (let i = 0; i < this.questionsDiv.length; i++) {
+      let positionY = this.questionsDiv[i].getBoundingClientRect().top;
+      if (positionY <= 380 && positionY >= 300) {
+        this.questionsDiv[i].classList.add('mystyle');
+      } else if (positionY < 300 || positionY > 380) {
+        this.questionsDiv[i].classList.remove('mystyle');
+      }
+    }
   }
 
   sendAnswer() {

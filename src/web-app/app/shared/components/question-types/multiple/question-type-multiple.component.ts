@@ -15,10 +15,12 @@ export class QuestionTypeMultipleComponent implements OnInit {
   btnClass;
   activeButton = null;
   isReadOnly: true;
+  questionsDiv: HTMLCollectionOf<Element>;
 
   constructor() {}
 
   ngOnInit() {
+    window.addEventListener('scroll', this.runOnScroll);
     if (this.answer) {
       this.isReadOnly = true;
     }
@@ -39,6 +41,18 @@ export class QuestionTypeMultipleComponent implements OnInit {
     let infoText = event.currentTarget.parentElement.nextSibling;
     infoText.classList.toggle('info-active');
     infoText.style.top = 'infoText';
+  }
+
+  runOnScroll(event) {
+    this.questionsDiv = document.getElementsByClassName('multiple-component');
+    for (let i = 0; i < this.questionsDiv.length; i++) {
+      let positionY = this.questionsDiv[i].getBoundingClientRect().top;
+      if (positionY <= 380 && positionY >= 300) {
+        this.questionsDiv[i].classList.add('mystyle');
+      } else if (positionY < 300 || positionY > 380) {
+        this.questionsDiv[i].classList.remove('mystyle');
+      }
+    }
   }
 
   sendAnswer() {

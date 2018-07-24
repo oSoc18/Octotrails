@@ -61,14 +61,10 @@
 }
 
 .empty-div {
-  height: 5rem;
+  height: 20rem;
 }
 .empty-first-div {
-  height: 18rem;
-}
-
-.myStyle question {
-  color: #ff00ff;
+  height: 30rem;
 }
 
 .backbutton {
