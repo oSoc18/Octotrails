@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://172.21.190.112:8081/',
+  API_URL: 'http://172.21.190.115:8081/',
   AGM_API_URL: '',
   mapbox: {
     accessToken:
