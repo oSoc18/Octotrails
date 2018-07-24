@@ -19,12 +19,23 @@ export class CategoryService {
   private categoriessUrl = env.API_URL + 'api/categories'; // URL to web api
 
   /**
-   * Get the list of questions
+   * Get the list of categories
    */
   list(): Observable<Category[]> {
     return this.http.get<Object>(this.categoriessUrl).pipe<Category[]>(
       map(resp => resp['categories'].map(q => new Category(q))),
       catchError(this.handleError('listCategories', []))
+    );
+  }
+
+  /**
+   * Get a specific category by it num.
+   */
+  getByNum(category_num: string): Observable<Category> {
+    const url = this.categoriessUrl + '/' + category_num;
+    return this.http.get<Object>(url).pipe<Category>(
+      map(resp => new Category(resp['category'])),
+      catchError(this.handleError('listCategories', {}))
     );
   }
 

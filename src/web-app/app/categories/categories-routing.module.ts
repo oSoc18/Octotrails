@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {
-  CategoryResolver,
-  CategoryQuestionsResolver
-} from './category.resolver';
+import { CategoriesResolver } from './categories.resolver';
+import { CategoryResolver } from './category.resolver';
+import { CategoryQuestionsResolver } from './category-questions.resolver';
 import { CategoriesOverviewComponent } from './overview/categories-overview.component';
 import { QuestionsOverviewComponent } from './questions/questions-overview.component';
 
 const categoriesRoutes: Routes = [
   {
     path: '',
-    resolve: { categories: CategoryResolver },
+    resolve: { categories: CategoriesResolver },
     component: CategoriesOverviewComponent
   },
   {
-    path: '/:category_num/questions',
-    resolve: { questions: CategoryQuestionsResolver },
+    path: ':category_num/questions',
+    resolve: {
+      questions: CategoryQuestionsResolver,
+      category: CategoryResolver
+    },
     component: QuestionsOverviewComponent
   }
 ];
