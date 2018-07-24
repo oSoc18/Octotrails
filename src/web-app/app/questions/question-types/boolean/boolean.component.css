@@ -12,8 +12,8 @@
 }
 
 .question {
-  font-size: 1.4rem;
-  line-height: 1.7rem;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
   color: #1b1b1b;
   width: 90%;
   align-self: center;
@@ -22,7 +22,7 @@
 .buttons {
   display: flex;
   justify-content: space-between;
-  margin: 0;
+  margin: 2rem 0 2.5rem;
 }
 
 button {
@@ -44,3 +44,19 @@ button {
     box-shadow: 0 9px 22px -6px rgba(153, 208, 253, 0.5);
 
 }
+
+.info-text {
+    display: none;
+}
+
+
+.info-active {
+    display: block !important;
+    position: absolute;
+    background-color: white;
+    width: 90%;
+    left: 5%;
+    padding: 5rem 1rem;
+    box-shadow: 0 -3px 15px -4px rgba(165,195,253,0.40);
+    z-index: 1000;
+}   
