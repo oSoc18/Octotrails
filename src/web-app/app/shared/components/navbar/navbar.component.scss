@@ -18,3 +18,30 @@
   color: rgba(29, 31, 45, 0.45);
   margin: 0;
 }
+
+.stop-detail-header {
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  box-shadow: 0 3px 15px -4px rgba(165, 195, 253, 0.4);
+  z-index: 100;
+}
+
+.stop-detail-header-content {
+  width: 90%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.stop-detail-header-title {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stop-detail-photo {
+  align-self: center;
+}
