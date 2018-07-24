@@ -1462,7 +1462,7 @@ export class MultipleComponent implements OnInit {
   }
 
   sendAnswer() {
-    const value &#x3D; { question_id: this.question.id, answer: this.answer };
+    const value &#x3D; { question_num: this.question.num, answer: this.answer };
     this.outputAnswer.emit(value);
     this.questionService.addToLocalStorage(value);
   }
