@@ -58,4 +58,8 @@ button {
     padding: 5rem 1rem;
     box-shadow: 0 -3px 15px -4px rgba(165,195,253,0.40);
     z-index: 90;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.2rem;
+    color: #323232;
 }   
