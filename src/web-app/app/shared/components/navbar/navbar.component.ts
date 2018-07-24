@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   @Input() stopId;
   @Input() stopName;
   @Input() historyDate;
+  @Input('goBack') goBackCallback: Function;
 
   isOnHistoriesPage: boolean;
   isOnStopsSearchPage: boolean;
@@ -27,11 +28,20 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  goBack(): void {
-    if (this.isOnStopsSearchPage) {
-      this.router.navigate(['stops/search']);
-    } else {
-      this.router.navigate(['stops/', this.stopId]);
+  goBack() {
+    if (this.goBackCallback) {
+      this.goBackCallback();
+      return;
     }
+
+    if (this.isOnStopsSearchPage) {
+      return this.router.navigate(['stops/search']);
+    }
+
+    if (this.historyDate) {
+      return this.router.navigate(['stops/', this.stopId, 'histories']);
+    }
+
+    return this.router.navigate(['stops/', this.stopId]);
   }
 }
