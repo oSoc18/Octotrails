@@ -1,11 +1,11 @@
 <app-navbar stopName="Stop Name" [stopId]="stopId">
-
+  <div>
+    <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>
+    <p class="progress-tag">{{answeredQuestions}} of {{totalNumberOfQuestions}}</p>
+  </div>
 </app-navbar>
 
-<div>
-  <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>
-  <p class="progress-tag">{{answeredQuestions}} of {{totalNumberOfQuestions}}</p>
-</div>
+<div class="empty-first-div"></div>
 
 <div *ngFor="let question of questions" [ngSwitch]="question.type | lowercase ">
   <app-question-type-number *ngSwitchCase="'number'" [question]="question" (answer)="getAnswer($event)"></app-question-type-number>
@@ -15,6 +15,6 @@
 </div>
 
 <div class="end-buttons">
-  <button class="done-button" (click)="saveAnswers()">Done</button>
-  <a class="cancel" (click)="cancel()">Cancel</a>
+  <a class="done-button" (click)="saveAnswers()">Done</a>
 </div>
+<div class="empty-div"></div>

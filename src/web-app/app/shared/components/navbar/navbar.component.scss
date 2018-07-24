@@ -1,4 +1,17 @@
+// .heading {
+//   width: 90%;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
 .heading {
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 100;
+}
+
+.heading-content {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -6,15 +19,13 @@
 
 .section-title {
   font-size: 2rem;
-  font-family: Helvetica;
   color: #1b1b1b;
-  margin: 2rem 0 0 0;
+  // margin: 2rem 0 0 0;
   padding-bottom: 1rem;
 }
 
 .section-sub-title {
   font-size: 2rem;
-  font-family: Helvetica;
   color: rgba(29, 31, 45, 0.45);
   margin: 0;
 }
