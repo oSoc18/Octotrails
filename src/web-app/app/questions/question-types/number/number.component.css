@@ -12,11 +12,18 @@
 }
 
 .question {
-    font-size: 1.4rem;
-    line-height: 1.7rem;
+    font-size: 1.6rem;
+    line-height: 2.1rem;
     color: #1b1b1b;
     width: 90%;
     align-self: center;
+}
+
+::ng-deep .mat-form-field {
+    background-color: none;
+    border-style: none;
+    padding: 0;
+    box-shadow: none; 
 }
 
 ::ng-deep .mat-form-field-infix,
@@ -40,3 +47,23 @@
   color: rgba(29,31,49,0.45);
   margin-left: 1rem;
 }
+
+.info-text {
+    display: none;
+}
+
+
+.info-active {
+    display: block !important;
+    position: absolute;
+    background-color: white;
+    width: 90%;
+    left: 5%;
+    padding: 5rem 1rem;
+    box-shadow: 0 -3px 15px -4px rgba(165,195,253,0.40);
+    z-index: 90;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.2rem;
+    color: #323232;
+}   
