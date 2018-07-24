@@ -4,11 +4,19 @@
     margin-right: auto;
     margin-bottom: 1.5rem;  
 }
+
+.question-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
 .question {
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    color: rgba(29, 31, 49, 0.35);
-    width: 90%;
+    font-size: 1.4rem;
+  line-height: 1.7rem;
+  color: #1b1b1b;
+  width: 90%;
+  align-self: center;
 }
 
 ::ng-deep .mat-form-field-type-mat-input {

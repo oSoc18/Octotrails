@@ -9,30 +9,27 @@ import { Question } from '../../../../questions/question';
 export class QuestionTypeBooleanComponent implements OnInit {
   @Input() question: Question;
   @Input() answer;
-  @Output() answerChange: EventEmitter<object> = new EventEmitter<object>();
+  @Output('answer')
+  answerChange: EventEmitter<object> = new EventEmitter<object>();
 
-  activeButton = null;
-  btnClass;
+  isReadOnly: boolean = false;
+  activeButton;
 
   constructor() {}
 
   ngOnInit() {
-    this.answer = this.answer === 'true';
-  }
-
-  private setClass(active: boolean = false) {
-    this.btnClass = { button: true, active: active };
+    if (this.answer) {
+      this.isReadOnly = true;
+    }
   }
 
   buttonClicked(event) {
-    if (this.activeButton !== event.currentTarget) {
-      this.activeButton = event.currentTarget;
-    } else {
-      this.activeButton = null;
+    // ? Click on the same button ?
+    if (this.activeButton === event.currentTarget) {
+      return;
     }
-    const isBtnActive = this.activeButton == event.currentTarget;
+    this.activeButton = event.currentTarget;
     this.answer = this.activeButton.value;
-    this.setClass(isBtnActive);
     this.sendAnswer();
   }
 

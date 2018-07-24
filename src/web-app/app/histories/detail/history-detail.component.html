@@ -1,11 +1,11 @@
 <div>
-  {{history|json}}
   <app-navbar [stopId]="stopId" [stopName]="stopName" [historyDate]="history.created_at"> </app-navbar>
 
+  <!-- {{history|json}} -->
   <section class="histories">
     <a class="inputs" *ngFor="let update of history.inputs" [ngSwitch]="update.question.type | lowercase">
 
-      <p>{{update | json}}</p>
+      <!-- <p>{{update | json}}</p> -->
       <!-- <p>{{update.question.content}}</p>
       <p>{{update.answer}}</p>
       <p>{{update.question.type}}</p> -->

@@ -9,6 +9,7 @@ import { History } from '../history';
 })
 export class HistoryDetailComponent implements OnInit {
   stopId: string;
+
   stopName: string;
   historyId: string;
   history: History;
