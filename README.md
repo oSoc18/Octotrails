@@ -1,67 +1,62 @@
-# oSoc18 - Octotrails project
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Overview
+# qControl
 
-This project serves as the boilerplate for an oSoc18 project using the MEAN stack.
+A Data Collector
 
-Much of the project design comes from [mean.io](https://github.com/linnovate/mean). However, it is using Angular version 6, and the latest version of all MEAN dependencies. The ability to use the ng-cli should make extending this boilerplate significantly easier.
+Our partner STIB/MIVB ...
+A mobile application to make the control process of the stop easier and more efficiet.
+One of its major advantages is focusing on the accessibility of the stops (outside and inside the station) by asking differents questions to the user.
 
-## How to start
+Our team Octotrails has the pleasure to present 'qControl' .
 
+# Features & Technologies
+
+MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
+
+## [ WebApp][frontend]
+
+- Angular
+- Material Design
+- SCSS with SASS with node
+
+## [WebAPI][backend]
+
+- Node.JS
+- Express.JS
+- Mongoose
+
+## Runing
+
+```bash
+    # Run localy at the api http://0.0.0.0:8081
+    # Run localy at the web-app http://0.0.0.0:4200
+    $ npm run start
+
+    # Now, let's test that app
+    # Open this URL in a browser : http://0.0.0.0:4200
+
+    # To run in production :
+    # On the Nginx file for the site dedicated to this APi,
+    # make sure to redirect to the folder src/web-api/index.html
 ```
-// Install mongo db
-> npm install
-> npm start
-// Navigate to http://localhost:4200/
-```
 
-Or with Docker
+## Contributors
 
-```
-> docker-compose up
-// Navigate to http://localhost:4200/
-```
+| Role                           | Name          |
+| ------------------------------ | ------------- |
+| Designer & Front-end Developer | Eva Jacobs    |
+| Designer & Front-end Developer | Pauline Tahon |
+| Back-end & Front-end Developer | Bram Breys    |
+| Back-end Developer             | David A.      |
 
-# Angular
+## License
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+Octotrails-qControl is licensed under the [MIT license][info-license].
 
-## Development server
+Copyright &copy; 2018, Octotrails
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-# Express
-
-- Express server can be started with `node src/server-start.js`
-- Once the angular project has been built, it will be hosted automatically by express
-- The heroes API can be found at `http://localhost:4040/api/heroes`
-
-# Mongo DB
-
-- Default db is named `mean`
-- Default port is `27017`
-- Configuration can be updated in `.env`
-
-# Docker
-
-- To start a dockerized version of your application, use `docker-compose up`
+[info-license]: ./LICENSE
+[info-node]: ./package.json
+[backend]: ./src/web-api/
+[frontend]: ./src/web-app/

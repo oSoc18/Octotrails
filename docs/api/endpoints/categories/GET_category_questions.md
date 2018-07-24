@@ -4,7 +4,7 @@
 
 ## Description
 
-Get the questions of a specific categorie based on it num.
+Get the questions of a specific category based on it num.
 
 ## Return format
 
