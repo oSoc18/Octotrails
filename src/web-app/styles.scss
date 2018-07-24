@@ -105,7 +105,7 @@ main {
 
 body {
   line-height: 1;
-  font-family: helvetica;
+  font-family: 'Roboto', sans-serif;
 }
 
 ol,
@@ -217,7 +217,12 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 }
 
 .section-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
   padding-bottom: 1rem;
+}
+
+
+app-detail {
+    transform: none !important;
 }
