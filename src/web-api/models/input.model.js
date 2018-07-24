@@ -14,7 +14,7 @@ import { SchemaOptions } from '../helpers/utils';
  * Details :
  * ----------
  *
- * question_id — The Question ID.
+ * question_num — The Question num.
  * answer -  The answer to the Question
  *
  */

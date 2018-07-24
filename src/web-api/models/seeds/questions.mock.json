@@ -1,161 +1,143 @@
 [
   {
-    "_id": "5b4901f0a47137f00321331f",
-    "choices": [],
     "num": "019",
+    "choices": [],
     "content": "What is the measure/distance of the 1st slant ?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b5585cb72d956c905fcf93f",
-    "choices": [],
     "num": "021",
+    "choices": [],
     "content": "What is the height of the border at the 1st door?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b5586a772d956c905fcfcab",
-    "choices": [],
     "num": "021b",
+    "choices": [],
     "content": "What is the height of the border at the 2nd door?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b4901f0a471378fbc213320",
-    "choices": [],
     "num": "021c",
+    "choices": [],
     "content": "Is there any garages?",
     "type": "boolean",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b55871b72d956c905fcfe67",
-    "choices": [],
     "num": "022",
+    "choices": [],
     "content": "What is te length of the stop (m)?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b55878772d956c905fcffd9",
-    "choices": [],
     "num": "023",
+    "choices": [],
     "content": "What is the width of the sidewalk (cm)?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b5587ee72d956c905fd0154",
-    "choices": [],
     "num": "024",
+    "choices": [],
     "content": "What is the width in front of the shelter (cm)?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b55881472d956c905fd01df",
-    "choices": [],
     "num": "025",
+    "choices": [],
     "content": "What is the width behind the shelter (cm)?",
     "type": "number",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b4901f0a47137f90e213321",
-    "choices": [],
     "num": "028",
+    "choices": [],
     "content": "Is there any vegetation nearby?",
     "type": "string",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b55891c72d956c905fd05a3",
-    "choices": ["Type 1", "Type 2", "Type 3", "Type 4"],
     "num": "034",
+    "choices": ["Type 1", "Type 2", "Type 3", "Type 4"],
     "content": "What is the type of railing?",
     "type": "multiple",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b55894672d956c905fd0641",
-    "choices": [],
     "num": "036",
+    "choices": [],
     "content": "Are there posts?",
     "type": "boolean",
     "hint": "",
     "category_num": "3a"
   },
   {
-    "_id": "5b55896f72d956c905fd06c0",
-    "choices": [],
     "num": "040b",
+    "choices": [],
     "content": "Is there an access for visualy impaired?",
     "type": "boolean",
     "hint": "",
     "category_num": "3b"
   },
   {
-    "_id": "5b55898c72d956c905fd072c",
-    "choices": [],
     "num": "041",
+    "choices": [],
     "content": "Is there a visually impaired guide?",
     "type": "boolean",
     "hint": "",
     "category_num": "3b"
   },
   {
-    "_id": "5b4901f0a471370c93213322",
-    "choices": ["No changes", "Bad", "Good", "Perfect"],
     "num": "044",
+    "choices": ["No changes", "Bad", "Good", "Perfect"],
     "content": "What is the accessibility for a wheel chair?",
     "type": "multiple",
     "hint": "",
     "category_num": "3b"
   },
   {
-    "_id": "5b558a0472d956c905fd08ea",
-    "choices": [],
     "num": "048",
+    "choices": [],
     "content": "What is the procentage of the wheelchair access slope?",
     "type": "number",
     "hint": "",
     "category_num": "3b"
   },
   {
-    "_id": "5b558b9972d956c905fd0e5f",
-    "choices": [],
     "num": "049d",
+    "choices": [],
     "content": "Is there a second door marking?",
     "type": "boolean",
     "hint": "",
     "category_num": "3b"
   },
   {
-    "_id": "5b558bc672d956c905fd0ed9",
-    "choices": [],
     "num": "052",
+    "choices": [],
     "content": "Is the stop accessible by at least one access?",
     "type": "boolean",
     "hint": "",
     "category_num": "3b"
   },
   {
-    "_id": "5b558bda72d956c905fd0f46",
-    "choices": [],
     "num": "053",
+    "choices": [],
     "content": "Is the stop straight?",
     "type": "boolean",
     "hint": "",
