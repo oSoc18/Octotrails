@@ -1,62 +1,43 @@
-.heading {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.section-title {
-    font-size: 1.5rem;
-    font-family: Helvetica;
-    color: #1B1B1B;
-    margin: 2rem 0 0 0;
-}
-
-.section-sub-title {
-    font-size: 1.2rem;
-    font-family: Helvetica;
-    color: rgba(29, 31, 45, 0.45);
-    margin: 0;
-}
-
 .progress-bar {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
-.progress-tag, .progress-bar {
-    width: 90%;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+.progress-tag,
+.progress-bar {
+  width: 90%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
 
 ::ng-deep .mat-progress-bar-buffer {
-    background-color: #EEEFF2;
+  background-color: #eeeff2;
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
-  background: linear-gradient(to right, #00C6FF , #0072FF);
+  background: linear-gradient(to right, #00c6ff, #0072ff);
 }
 
 .end-buttons {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .done-button {
-    height: 2.8rem;
-    font-size: 1rem;
-    color: #ffffff;
-    background: linear-gradient(to right, #00C6FF , #0072FF);
+  height: 2.8rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
 }
 
 .cancel {
-    text-align: center;
-    height: 2.8rem;
-    font-size: 1rem;
-    text-decoration: none;
-    padding-top: 1rem;
+  text-align: center;
+  height: 2.8rem;
+  font-size: 1rem;
+  text-decoration: none;
+  padding-top: 1rem;
 }

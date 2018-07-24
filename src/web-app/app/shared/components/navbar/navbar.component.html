@@ -1,4 +1,4 @@
-<header class="header">
+<div [ngClass]="{'heading' : isOnQuestionsPage, 'header' : !isOnQuestionsPage}">
   <a class="backbutton" (click)="goBack()">
     <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
       x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
@@ -68,4 +68,4 @@
     <div width="32.433"></div>
   </ng-container>
   <ng-content></ng-content>
-</header>
+</div>
