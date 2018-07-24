@@ -78,6 +78,25 @@ QuestionSchema.statics = {
   },
 
   /**
+   * Get question by it num
+   * @param {String} num - The num of question.
+   * @returns {Promise<Question, APIError>}
+   */
+  getByNum: async function(num) {
+    const question = await this.find({ num }).populate({
+      path: 'category',
+      select: 'num name',
+      populate: 'category'
+    });
+
+    if (!question) {
+      throw new APIError('No such question exists!', httpStatus.NOT_FOUND);
+    } else {
+      return question;
+    }
+  },
+
+  /**
    * List questions.
    * @param {number} skip - Number of questions to be skipped.
    * @param {number} limit - Limit number of questions to be returned.

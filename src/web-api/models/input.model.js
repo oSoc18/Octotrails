@@ -20,7 +20,7 @@ import { SchemaOptions } from '../helpers/utils';
  */
 const InputSchema = new mongoose.Schema(
   {
-    question_id: { type: SchemaTypes.ObjectId, ref: 'Question' },
+    question_num: { type: String, ref: 'Question' },
     answer: SchemaTypes.Mixed
   },
   SchemaOptions
@@ -34,8 +34,8 @@ const InputSchema = new mongoose.Schema(
  */
 InputSchema.virtual('question', {
   ref: 'Question', // The model to use
-  localField: 'question_id', // Find people where `localField`
-  foreignField: '_id', // is equal to `foreignField`
+  localField: 'question_num', // Find people where `localField`
+  foreignField: 'num', // is equal to `foreignField`
   // If `justOne` is true, 'members' will be a single doc otherwise an array.
   // `justOne` is false by default.
   justOne: true
@@ -51,13 +51,13 @@ InputSchema.method({});
  */
 InputSchema.statics = {
   /**
-   * Get the inputs by the question_id
-   * @param {String} question_id - The question Id.
+   * Get the inputs by the question_num
+   * @param {String} question_num - The question Num.
    * @param {boolean} full - If the document should be populated.
    * @returns {Promise<Input, APIError>}
    */
-  getByQuestionId: async function get({ question_id, full }) {
-    const query = this.find({ question_id });
+  getByQuestionNum: async function get({ question_num, full }) {
+    const query = this.find({ question_num });
 
     if (full) query.populate('question');
 
