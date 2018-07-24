@@ -22,6 +22,10 @@ export class StopService {
     return this.http.get<Stop[]>(url);
   }
 
+  /**
+   * Check if the term is an id or a stop
+   * @param term The id or name that the user put in
+   */
   private getSearchBy(term: string): string {
     if (isNaN(parseInt(term))) {
       return 'stop_name';
@@ -30,6 +34,11 @@ export class StopService {
     }
   }
 
+  /**
+   * Make a url for the api
+   * @param term The id or name that the user put in
+   * @param by stop_id or stop_name
+   */
   private createSearchUrl(term: string, by?: string) {
     if (by) return `/search?by=${by}&term=${term}`;
 
@@ -40,7 +49,10 @@ export class StopService {
     }
   }
 
-  //Get specific stop
+  /**
+   * Get specific stop
+   * @param term The id or name that the user put in
+   */
   getStop(term: any): Observable<Stop> {
     let by = this.getSearchBy(term);
     let url = this.createSearchUrl(term, by);
@@ -51,6 +63,10 @@ export class StopService {
     );
   }
 
+  /**
+   * Search by id or name
+   * @param term The id or name that the user put in
+   */
   searchStops(term: string): Observable<Stop[]> {
     // if not search term, return empty stop array.
     if (!term.trim()) return of([]);

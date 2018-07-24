@@ -21,7 +21,8 @@
     "start": "concurrently \"npm run start:ng\" \"npm run start:server\"",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
   },
   "babel": {
     "presets": [
