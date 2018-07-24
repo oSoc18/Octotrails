@@ -30,8 +30,8 @@ const QuestionSchema = new mongoose.Schema(
   {
     num: String,
     content: String,
-    type: String,
-    hint: String,
+    type: { type: String, lowercase: true, trim: true },
+    hint: { type: String, default: null },
     choices: [String],
     category_num: String
   },
