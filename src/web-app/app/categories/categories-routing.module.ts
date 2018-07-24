@@ -13,7 +13,7 @@ const categoriesRoutes: Routes = [
     component: CategoriesOverviewComponent
   },
   {
-    path: '/:category_num/questions',
+    path: ':category_num/questions',
     resolve: { questions: CategoryQuestionsResolver },
     component: QuestionsOverviewComponent
   }
