@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { Data } from '../../shared/providers/data.provider';
+import { Category } from '../category';
 
 @Component({
   templateUrl: './questions-overview.component.html',
@@ -16,6 +17,7 @@ export class QuestionsOverviewComponent implements OnInit {
   totalNumberOfQuestions;
   progressValue = 0;
   stop_id: string;
+  category: Category;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,34 +29,27 @@ export class QuestionsOverviewComponent implements OnInit {
 
   ngOnInit() {
     this.stop_id = this.route.snapshot.queryParamMap.get('stop_id');
-    this.getQuestions();
+    this.questions = this.route.snapshot.data['questions'];
+    this.category = this.route.snapshot.data['category'];
+    this.totalNumberOfQuestions = this.questions.length;
   }
 
-  getQuestions(): void {
-    //  this.questions = questionsMock;
-    this.questionService.getQuestions().subscribe(list => {
-      this.questions = list;
-      this.totalNumberOfQuestions = this.questions.length;
-    });
-
-  }
   getAnswer(value) {
     console.log(value);
     this.data.inputs[value.question_id] = value;
+    this.questionService.storeAnswer(value);
     this.setProgressBar(value);
   }
 
   setProgressBar(value) {
     if (value.answer !== null) {
       this.answeredQuestions = Object.keys(this.data.inputs).length;
-      this.progressValue =
-        (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
     } else {
       delete this.data.inputs[value.question_id];
-      this.answeredQuestions = this.answeredQuestions - 1;
-      this.progressValue =
-        (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
+      this.answeredQuestions -= 1;
     }
+    this.progressValue =
+      (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
   }
 
   goBack(): void {

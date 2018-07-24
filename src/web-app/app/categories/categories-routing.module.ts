@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { CategoriesResolver } from './categories.resolver';
 import { CategoryResolver } from './category.resolver';
 import { CategoryQuestionsResolver } from './category-questions.resolver';
 import { CategoriesOverviewComponent } from './overview/categories-overview.component';
@@ -9,12 +10,15 @@ import { QuestionsOverviewComponent } from './questions/questions-overview.compo
 const categoriesRoutes: Routes = [
   {
     path: '',
-    resolve: { categories: CategoryResolver },
+    resolve: { categories: CategoriesResolver },
     component: CategoriesOverviewComponent
   },
   {
     path: ':category_num/questions',
-    resolve: { questions: CategoryQuestionsResolver },
+    resolve: {
+      questions: CategoryQuestionsResolver,
+      category: CategoryResolver
+    },
     component: QuestionsOverviewComponent
   }
 ];

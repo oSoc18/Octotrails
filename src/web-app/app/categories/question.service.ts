@@ -46,7 +46,7 @@ export class QuestionService {
    * Add the answer to the local storage
    * @param value The answer that the user put in
    */
-  addToLocalStorage(value) {
+  storeAnswer(value) {
     localStorage.setItem(value.question_id, value.answer);
   }
 
