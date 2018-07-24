@@ -73,11 +73,7 @@ export class MapBoxComponent implements OnInit {
 
       this.map.on('click', 'unclustered-point', e => {
         const mapStopId = e.features[0].properties.id;
-        this.router.navigate(['/stops', mapStopId], {
-          queryParams: {
-            by: 'stop_id'
-          }
-        });
+        this.router.navigate(['/stops', mapStopId]);
       });
     });
   }

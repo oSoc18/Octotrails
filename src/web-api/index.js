@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 import config from './config/config';
 import app from './config/express';
-import Seeder from '../web-api/models/seeds';
+import Seeder from './models/seeds';
 //const debug = require('debug')('express-mongoose-es6-rest-api:index');
 
 // make bluebird default Promise
@@ -17,19 +17,14 @@ const mongoUri = config.mongo.host;
 let server;
 let mongoDB;
 
-const stopMongoDB = function() {
-  if (mongoDB && typeof mongoDB.close === 'function') mongoDB.close();
-};
-
 mongoose
   .connect(
     mongoUri,
-    { keepAlive: 1 , useNewUrlParser: true }
+    { keepAlive: 1 }
   )
   .then(db => {
     mongoDB = db;
     console.info(`[MONGODB] Connected to database : ${mongoUri}`);
-    //TODO Check the collections count. IF count == 0  ==> Populate  DB
     Seeder.populate();
   });
 
@@ -49,7 +44,7 @@ server.on('error', err => {
   if (err['code'] === 'EADDRINUSE') {
     console.error(`[SERVER] Address in use :${config.port} (${config.env})`);
   }
-
+  // Check if server has been initialized
   if (server && typeof server['close'] == 'function') {
     server.close();
   }
@@ -57,12 +52,14 @@ server.on('error', err => {
 
 // Before closing the server
 server.on('close', () => {
-  stopMongoDB();
+  if (mongoDB && typeof mongoDB.close === 'function') {
+    mongoDB.close();
+  }
   console.info('[SERVER] Exit now !');
   process.exit();
 });
 
-//// If ctrl+c
+//// If CTRL+C
 process.on('SIGINT', code => server.close());
 process.on('SIGTERM', code => server.close());
 // If Exception

@@ -1,0 +1,19 @@
+<div>
+  <app-navbar [stopId]="stopId" [stopName]="stopName" [historyDate]="history.created_at"> </app-navbar>
+
+  <!-- {{history|json}} -->
+  <section class="histories">
+    <a class="inputs" *ngFor="let update of history.inputs" [ngSwitch]="update.question.type | lowercase">
+
+      <!-- <p>{{update | json}}</p> -->
+      <!-- <p>{{update.question.content}}</p>
+      <p>{{update.answer}}</p>
+      <p>{{update.question.type}}</p> -->
+      <app-question-type-number *ngSwitchCase="'number'" [question]="update.question" [answer]="update.answer"></app-question-type-number>
+      <app-question-type-boolean *ngSwitchCase="'boolean'" [question]="update.question" [answer]="update.answer"></app-question-type-boolean>
+      <app-question-type-multiple *ngSwitchCase="'multiple'" [question]="update.question" [answer]="update.answer"></app-question-type-multiple>
+      <app-question-type-string *ngSwitchCase="'string'" [question]="update.question" [answer]="update.answer"></app-question-type-string>
+
+    </a>
+  </section>
+</div>
