@@ -43,6 +43,22 @@ Source: <https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based
 
     sudo npm install -g gulp
     
+## Nginx
+
+    sudo apt-get install nginx
+    
+### SSL Certificate
+
+Source : <https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx>
+
+    sudo apt-get update
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt-get update
+    sudo apt-get install python-certbot-nginx
+    
+    sudo certbot --nginx
+    
 ## Database
 
 ### Create database
