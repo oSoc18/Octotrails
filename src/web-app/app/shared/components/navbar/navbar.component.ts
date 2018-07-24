@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   @Input('goBack') goBackCallback: Function;
 
   isOnHistoriesPage: boolean;
-  isOnStopsSearchPage: boolean;
+  isOnStopDetailPage: boolean;
   isOnQuestionsPage: boolean;
 
   constructor(private location: Location, private router: Router) {}
@@ -22,8 +22,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.isOnHistoriesPage = this.router.url.includes('/histories');
     this.isOnQuestionsPage = this.router.url.includes('/questions');
-    this.isOnStopsSearchPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
-    if (!this.isOnStopsSearchPage) {
+    // URL must end with the :stop_id to be on /stop-detail page
+    this.isOnStopDetailPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
+    // As the navbar is shown on all page related to specific stop
+    if (!this.isOnStopDetailPage) {
       this.stopId = this.router.url.match('/stops/([0-9]+[a-zA-z_-]*).*')[1];
     }
   }
@@ -34,7 +36,7 @@ export class NavbarComponent implements OnInit {
       return;
     }
 
-    if (this.isOnStopsSearchPage) {
+    if (this.isOnStopDetailPage) {
       return this.router.navigate(['stops/search']);
     }
 
