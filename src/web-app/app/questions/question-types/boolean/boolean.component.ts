@@ -17,7 +17,8 @@ export class BooleanComponent implements OnInit {
 
   constructor(private questionService: QuestionService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   buttonClicked(event) {
     if (this.activeButton !== event.currentTarget) {
@@ -34,6 +35,13 @@ export class BooleanComponent implements OnInit {
       this.answer = null;
       this.sendAnswer();
     }
+  }
+
+  infoClicked(event) {
+    let yPos = (event.currentTarget.getBoundingClientRect().y) + 50;
+    let infoText = event.currentTarget.parentElement.nextSibling;
+    infoText.classList.toggle('info-active');
+    infoText.style.top = "infoText";
   }
 
   sendAnswer() {

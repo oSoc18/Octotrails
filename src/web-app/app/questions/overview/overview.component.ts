@@ -38,6 +38,7 @@ export class OverviewComponent implements OnInit {
       this.questions = list;
       this.totalNumberOfQuestions = this.questions.length;
     });
+
   }
   getAnswer(value) {
     this.data.inputs[value.question_id] = value;

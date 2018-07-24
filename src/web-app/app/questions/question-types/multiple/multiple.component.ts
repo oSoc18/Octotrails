@@ -35,6 +35,13 @@ export class MultipleComponent implements OnInit {
     }
   }
 
+  infoClicked(event) {
+    let yPos = (event.currentTarget.getBoundingClientRect().y) + 50;
+    let infoText = event.currentTarget.parentElement.nextSibling;
+    infoText.classList.toggle('info-active');
+    infoText.style.top = "infoText";
+  }
+
   sendAnswer() {
     const value = { question_id: this.question.id, answer: this.answer };
     this.outputAnswer.emit(value);
