@@ -14,24 +14,22 @@ export class QuestionTypeMultipleComponent implements OnInit {
 
   btnClass;
   activeButton = null;
+  isReadOnly: true;
 
   constructor() {}
 
   ngOnInit() {
-    this.btnClass = ['button'];
-  }
-
-  private setClass(active: boolean = false) {
-    this.btnClass = { button: true, active: active };
+    if (this.answer) {
+      this.isReadOnly = true;
+    }
   }
 
   buttonClicked(event) {
-    if (this.activeButton !== event.currentTarget) {
-      this.activeButton = event.currentTarget;
-    } else {
-      this.activeButton = null;
+    // ? Click on the same button ?
+    if (this.activeButton === event.currentTarget) {
+      return;
     }
-    this.setClass(this.activeButton == event.currentTarget);
+    this.activeButton = event.currentTarget;
     this.answer = this.activeButton.value;
     this.sendAnswer();
   }

@@ -38,6 +38,7 @@ export class QuestionsOverviewComponent implements OnInit {
     });
   }
   getAnswer(value) {
+    console.log(value);
     this.data.inputs[value.question_id] = value;
     this.setProgressBar(value);
   }
