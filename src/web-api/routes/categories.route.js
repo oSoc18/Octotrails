@@ -8,6 +8,9 @@ const router = express.Router();
 /** GET /api/categories - List the categories */
 router.get('/', categoryCtrl.list);
 
+/** GET /api/histories/:history_id - Get specific hitsory by its ID */
+router.get('/:category_num', asyncHandler(categoryCtrl.getByNum));
+
 /** GET /api/categories/:category_num/question - Get the question in a category */
 router.get('/:category_num/questions', asyncHandler(categoryCtrl.getQuestions));
 
