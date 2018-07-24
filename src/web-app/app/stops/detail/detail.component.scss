@@ -8,40 +8,92 @@
 }
 
 .stop-line {
-  display: flex;
-  align-items: center;
-  background-color: #eeeded;
-  color: black;
-  margin: 0 auto;
-  height: 4.8rem;
-  margin: .5rem;
+    display: flex;
+    align-items: center;
+    color: black;
+    height: 4.8rem;
+    border-bottom: 1.4px solid lightgray;
+    margin: 1rem 0 !important;
 }
+
+.photo {
+    align-self: center;
+}
+
+.address-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address {
+    width: 60%;
+    padding-top: .5rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    align-self: flex-end;
+    color: darkgray;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #039be5;
+    font-size: 1.4rem;
+}
+
+.location img {
+    align-self: center;
+    margin-bottom: .5rem;
+}
+
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    //box-shadow: 0 -3px 10px -4px rgba(27,27,27,0.30);
+    box-shadow: 0 -3px 15px -4px rgba(165,195,253,0.40);
 }
 
-.buttons a {
-  width: 50vw;
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: black;
+.history-button, .update-button {
+    width: 47%;
+    padding: 0.5rem 1rem;
+    height: 5rem;
+    margin: 0 1rem 0.5rem 0;
+    font-size: 16px;
+    color: #1B1B1B;
+    text-align: center;
+    text-decoration: none;
+    line-height: 4rem;
 }
 
-.history-button {
-  background-color: lightgrey;
+.button-icon {
+    vertical-align: middle;
 }
 
-.update-button {
-  background-color: gainsboro;
+.stripe {
+    height: 3.5rem;
+    align-self: center;
+    width: .1rem;
+    background-color: darkgray;
 }
 
-.buttons a:hover{
-  background-color: yellow;
+.line-direction {
+    font-size: 1.6rem;
+    padding-left: 1rem;
+    font-weight: 600;
+    letter-spacing: .06rem;
+}
+
+.search-result-info-title {
+    padding-left: 1rem;
+    font-size: 1.4rem;
+    padding-top: .6rem;
+    color: darkgray;
 }
 
 .line-number, .line-type {
@@ -67,14 +119,26 @@
   width: 90%;
   margin: 0 auto;
   padding-top: 2rem;
-  padding-bottom: 2rem;
+}
+
+.section {
+    margin-bottom: 2rem;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 3px 15px -4px rgba(165,195,253,0.40);
+    z-index: 100;
+}
+
+.header-content {
+    width: 90%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
 }
 
 .header-title {
@@ -84,56 +148,6 @@
   align-items: center;
 }
 
-.flex {
-  display: flex;
-}
-
-.stop-line {
-  display: flex;
-  background-color: gainsboro;
-  color: black;
-  margin: 1rem;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-around;
-}
-
-.buttons a {
-  width: 50vw;
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: black;
-}
-
-.history-button {
-  background-color: lightgrey;
-}
-
-.update-button {
-  background-color: gainsboro;
-}
-
-.buttons a:hover{
-  background-color: yellow;
-}
-
-.line-number, .line-type {
-  font-size: 16px;
-  margin: 0.2rem;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.line-type {
-  background-color: lightgrey;
+.empty-div {
+    height: 5rem;
 }

@@ -105,7 +105,7 @@ main {
 
 body {
   line-height: 1;
-  font-family: helvetica;
+  font-family: 'Roboto', sans-serif;
 }
 
 ol,
@@ -198,13 +198,14 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 .backbutton {
   display: flex;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   text-decoration: none;
   color: #039be5;
 }
 
 .back-svg {
   padding-right: 0.5rem;
+  fill: #039be5;
 }
 
 .input-file {
@@ -217,6 +218,11 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 }
 
 .section-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
+}
+
+
+app-detail {
+    transform: none !important;
 }
