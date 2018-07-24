@@ -1,40 +1,41 @@
 import { Injectable } from '@angular/core';
-import { History } from './history';
+
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
-import { Question } from '../categories/question';
+import { Question } from './question';
+import { Category } from './category';
 
-const httpOptions = {
+const httpOpts = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
   providedIn: 'root'
 })
-export class HistoryService {
+export class CategoryService {
   constructor(private http: HttpClient) {}
-  private historiesUrl = env.API_URL + 'api/histories'; // URL to web api
+  private categoriessUrl = env.API_URL + 'api/categories'; // URL to web api
 
-  //Get specific history
-  getHistory(historyId: string): Observable<History> {
-    let url = this.historiesUrl + '/' + historyId;
-    return this.http.get<Object>(url).pipe<History>(
-      map(resp => new History(resp['history'])),
-      catchError(this.handleError('getHistory', {}))
+  /**
+   * Get the list of questions
+   */
+  list(): Observable<Category[]> {
+    return this.http.get<Object>(this.categoriessUrl).pipe<Category[]>(
+      map(resp => resp['categories'].map(q => new Category(q))),
+      catchError(this.handleError('listCategories', []))
     );
   }
 
   /**
-   * Get the stop histories specified by it ID.
-   * @param stopId The stop Id
+   * Get the list of questions for a specific category
    */
-  getHistoriesByStopId(stopId: string): Observable<History[]> {
-    const url = env.API_URL + `api/stops/${stopId}/histories`;
-    return this.http.get<Object>(url).pipe<History[]>(
-      map(resp => resp['histories'].map(res => new History(res))),
-      catchError(this.handleError('getHistoriesByStopId', []))
+  getQuestions(category_num: string): Observable<Question[]> {
+    const url = this.categoriessUrl + `/${category_num}/questions`;
+    return this.http.get<Object>(url).pipe<Question[]>(
+      map(resp => resp['questions'].map(q => new Question(q))),
+      catchError(this.handleError('getQuestions', []))
     );
   }
 

@@ -3,16 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Question } from '../question';
-import { QuestionService } from '../questions.service';
-import questionsMock from '../../shared/mock/questions.mock';
+import { QuestionService } from '../question.service';
 import { Data } from '../../shared/providers/data.provider';
 
 @Component({
-  selector: 'app-questions-overview',
-  templateUrl: './question-overview.component.html',
-  styleUrls: ['./question-overview.component.css']
+  templateUrl: './questions-overview.component.html',
+  styleUrls: ['./questions-overview.component.css']
 })
-export class QuestionOverviewComponent implements OnInit {
+export class QuestionsOverviewComponent implements OnInit {
   @Input() questions;
   answeredQuestions = 0;
   totalNumberOfQuestions;

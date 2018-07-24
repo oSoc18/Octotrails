@@ -1,4 +1,4 @@
-import { Question } from '../questions/question';
+import { Question } from '../categories/question';
 
 export class History {
   stop_id: String;
