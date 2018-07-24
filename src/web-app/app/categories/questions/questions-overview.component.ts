@@ -36,7 +36,7 @@ export class QuestionsOverviewComponent implements OnInit {
 
   getAnswer(value) {
     console.log(value);
-    this.data.inputs[value.question_id] = value;
+    this.data.inputs[value.question_num] = value;
     this.questionService.storeAnswer(value);
     this.setProgressBar(value);
   }
@@ -45,7 +45,7 @@ export class QuestionsOverviewComponent implements OnInit {
     if (value.answer !== null) {
       this.answeredQuestions = Object.keys(this.data.inputs).length;
     } else {
-      delete this.data.inputs[value.question_id];
+      delete this.data.inputs[value.question_num];
       this.answeredQuestions -= 1;
     }
     this.progressValue =
@@ -59,7 +59,7 @@ export class QuestionsOverviewComponent implements OnInit {
   saveAnswers() {
     // Get the storage answers
     const answers = Object.entries(localStorage).map(
-      ([question_id, answer]) => ({ question_id, answer })
+      ([question_num, answer]) => ({ question_num, answer })
     );
     this.router.navigate(['/stops', this.stop_id]);
 

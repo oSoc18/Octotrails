@@ -41,7 +41,7 @@ export class QuestionTypeBooleanComponent implements OnInit {
   }
 
   sendAnswer() {
-    const value = { question_id: this.question.id, answer: this.answer };
+    const value = { question_num: this.question.num, answer: this.answer };
     this.answerChange.emit(value);
   }
 }

@@ -47,7 +47,7 @@ export class QuestionService {
    * @param value The answer that the user put in
    */
   storeAnswer(value) {
-    localStorage.setItem(value.question_id, value.answer);
+    localStorage.setItem(value.question_num, value.answer);
   }
 
   /**
