@@ -1,71 +1,90 @@
-<header class="header">
-  <a class="backbutton" (click)="goBack()">
-    <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-      x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
-      <defs>
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#00C6FF;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#0072FF;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <g>
-        <path d="M13.9,0.5C13.6,0.2,13.2,0,12.8,0c-0.4,0-0.7,0.1-1,0.4L0.5,10.9C0.2,11.2,0,11.6,0,12c0,0.4,0.2,0.8,0.5,1.1l11.3,10.5
+<div [ngClass]="{'heading' : isOnQuestionsPage, 'header' : !isOnQuestionsPage, 'stop-detail-header' : isOnStopDetailPage}">
+  <div [ngClass]="{'stop-detail-header-content' : isOnStopDetailPage}">
+    <a class="backbutton" (click)="goBack()">
+      <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+        x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00C6FF;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0072FF;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <g>
+          <path d="M13.9,0.5C13.6,0.2,13.2,0,12.8,0c-0.4,0-0.7,0.1-1,0.4L0.5,10.9C0.2,11.2,0,11.6,0,12c0,0.4,0.2,0.8,0.5,1.1l11.3,10.5
           		c0.6,0.6,1.5,0.5,2.1-0.1c0.6-0.6,0.5-1.5-0.1-2.1L3.6,12l10.2-9.5C14.4,2,14.4,1.1,13.9,0.5z" fill=url(#grad1)/>
-      </g>
-    </svg>
-    Back
-  </a>
+        </g>
+      </svg>
+      Back
+    </a>
 
-  <ng-container *ngIf="isOnStopDetailPage">
-    <div class="header-title">
-      <h2 class="stop-title">{{stopName}}</h2>
-      <h3 class="stop-id">ID : {{stopId}}</h3>
-    </div>
-    <div class="photo">
-      <input type='file' name="file" id="file" class="input-file" accept="image/*" (change)="readURL($event);" />
-      <label for="file">
-        <figure>
-          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-            x="0px" y="0px" width="32.433" height="24px" viewBox="0 0 90 66.6" style="color: ;;" xml:space="preserve">
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#00C6FF;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#0072FF;stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <circle cx="45" cy="36.9" r="16.2" fill="url(#grad1)" />
-            <path d="M84.6,10.8H68.5c-1.2,0-2.3-0.6-3-1.6l-5.1-7.6c-0.7-1-1.8-1.6-3-1.6H32.5c-1.2,0-2.3,0.6-3,1.6l-5.1,7.6
+    <ng-container *ngIf="isOnStopDetailPage">
+      <div class="stop-detail-header-title">
+        <h2 class="stop-title">{{stopName}}</h2>
+        <h3 class="stop-id">ID : {{stopId}}</h3>
+      </div>
+      <div class="stop-detail-photo">
+        <input type='file' name="file" id="file" class="input-file" accept="image/*" (change)="readURL($event);" />
+        <label for="file">
+          <!-- <figure>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+              x="0px" y="0px" width="32.433" height="24px" viewBox="0 0 90 66.6" style="color: ;;" xml:space="preserve">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#00C6FF;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#0072FF;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <circle cx="45" cy="36.9" r="16.2" fill="url(#grad1)" />
+              <path d="M84.6,10.8H68.5c-1.2,0-2.3-0.6-3-1.6l-5.1-7.6c-0.7-1-1.8-1.6-3-1.6H32.5c-1.2,0-2.3,0.6-3,1.6l-5.1,7.6
                 c-0.7,1-1.8,1.6-3,1.6H5.4c-3,0-5.4,2.4-5.4,5.4v45c0,3,2.4,5.4,5.4,5.4h79.2c3,0,5.4-2.4,5.4-5.4v-45C90,13.2,87.6,10.8,84.6,10.8z
                  M45,58.5c-11.9,0-21.6-9.7-21.6-21.6c0-11.9,9.7-21.6,21.6-21.6S66.6,25,66.6,36.9C66.6,48.8,56.9,58.5,45,58.5z M72,18.9
                 c0,1-0.8,1.8-1.8,1.8h0c-1,0-1.8-0.8-1.8-1.8v0c0-1,0.8-1.8,1.8-1.8h0C71.2,17.1,72,17.9,72,18.9L72,18.9z"
-              fill="url(#grad1)" />
-            <rect x="10.8" y="3.6" width="7.2" height="3.6" fill="url(#grad1)" />
-          </svg>
-        </figure>
-      </label>
-    </div>
+                fill="url(#grad1)" />
+              <rect x="10.8" y="3.6" width="7.2" height="3.6" fill="url(#grad1)" />
+            </svg>
+          </figure> -->
+          <figure>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+              x="0px" y="0px" width="28px" height="24.48px" viewBox="0 0 95.1 76.5" style="enable-background:new 0 0 95.1 76.5;"
+              xml:space="preserve">
+              <defs>
+              </defs>
+              <g>
+                <path d="M47.5,21.1c-12,0-21.8,9.8-21.8,21.8s9.8,21.9,21.8,21.9S69.3,55,69.3,43S59.5,21.1,47.5,21.1z M47.5,58.6
+                          c-8.6,0-15.6-7-15.6-15.6s7-15.6,15.6-15.6s15.6,7,15.6,15.6S56.1,58.6,47.5,58.6z" />
+                <path d="M83.9,11.9H71.5l-2.3-5.2C67.5,2.6,63.5,0,59,0H36c-4.5,0-8.4,2.6-10.2,6.7l-2.3,5.2H11.1C5,11.9,0,16.9,0,23v42.4
+                          c0,6.1,5,11.1,11.1,11.1H84c6.1,0,11.1-5,11.1-11.1V23C95,16.9,90,11.9,83.9,11.9z M88.8,65.4c0,2.7-2.2,4.9-4.9,4.9H11.1
+                          c-2.7,0-4.9-2.2-4.9-4.9V23c0-2.7,2.2-4.9,4.9-4.9h14.5c1.2,0,2.4-0.7,2.8-1.9l3.1-7.1c0.8-1.8,2.5-3,4.5-3h23.1c2,0,3.7,1.2,4.5,3
+                          l3.1,7.1c0.5,1.1,1.6,1.9,2.8,1.9H84c2.7,0,4.9,2.2,4.9,4.9L88.8,65.4L88.8,65.4z" />
+                <circle cx="78.4" cy="28.1" r="4.6" />
+              </g>
+            </svg>
 
-  </ng-container>
+          </figure>
+        </label>
+      </div>
 
-  <ng-container *ngIf="isOnQuestionsPage">
-    <h1 class="section-title">Accessibility</h1>
-    <h2 class="section-sub-title">Physical</h2>
-  </ng-container>
+    </ng-container>
 
-  <ng-container *ngIf="isOnHistoriesPage && !historyDate">
-    <div class="header-title">
-      <h2 class="stop-title">History of {{stopName}}</h2>
-      <h3 class="stop-id">ID : {{stopId}}</h3>
-    </div>
-    <div width="32.433"></div>
-  </ng-container>
+    <ng-container *ngIf="isOnQuestionsPage">
+      <h1 class="section-title">Accessibility</h1>
+      <h2 class="section-sub-title">Physical</h2>
+    </ng-container>
 
-  <ng-container *ngIf="historyDate">
-    <div class="header-title">
-      <h2 class="stop-title">History of {{stopName}}</h2>
-      <h3 class="stop-id">on {{ historyDate | date: 'EE dd MMMM yyyy'}}</h3>
-    </div>
-    <div width="32.433"></div>
-  </ng-container>
-  <ng-content></ng-content>
-</header>
+    <ng-container *ngIf="isOnHistoriesPage && !historyDate">
+      <div class="header-title">
+        <h2 class="stop-title">History of {{stopName}}</h2>
+        <h3 class="stop-id">ID : {{stopId}}</h3>
+      </div>
+      <div width="32.433"></div>
+    </ng-container>
+
+    <ng-container *ngIf="historyDate">
+      <div class="header-title">
+        <h2 class="stop-title">History of {{stopName}}</h2>
+        <h3 class="stop-id">on {{ historyDate | date: 'EE dd MMMM yyyy'}}</h3>
+      </div>
+      <div width="32.433"></div>
+    </ng-container>
+    <ng-content></ng-content>
+  </div>
