@@ -43,6 +43,12 @@ Source: <https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based
 
     sudo npm install -g gulp
     
+### Install PM2
+
+Source: <https://pm2.io/doc/en/runtime/quick-start/>
+
+    sudo npm install -g pm2
+    
 ## Nginx
 
     sudo apt-get install nginx
