@@ -43,6 +43,8 @@ html {
 
 ::ng-deep .mat-autocomplete-panel.mat-autocomplete-visible {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1) !important;
+  max-height: 70vh;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 ::ng-deep .mat-option {
@@ -58,11 +60,19 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-size: 1.6rem;
+}
+
+.search-result-text div {
+    font-size: 1.4rem;
+    text-transform: lowercase;
+    color: darkgray;
 }
 
 .search-result-info {
   margin-top: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
 }
@@ -70,15 +80,14 @@ html {
 .arrow {
   width: 14px;
   height: 20px;
-  align-self: flex-end;
-  margin-top: 0.8rem;
+  align-self: center;
   color: #ffffff;
 }
 
 .search-result-info-title {
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: .06rem;
 }
 
 .search-result {
@@ -90,6 +99,7 @@ html {
   display: flex;
   list-style: none;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .search-result-info-line {
@@ -113,7 +123,6 @@ html {
 
 .search-result-info-direction {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 
