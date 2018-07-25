@@ -16,6 +16,12 @@ export class HistoryDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
+  /**
+   * Get the stop id
+   * Get the stop name
+   * Get the history id
+   * Get the history for the stop
+   */
   ngOnInit() {
     this.stopId = this.route.parent.snapshot.data['stop'].id;
     this.stopName = this.route.parent.snapshot.data['stop'].alpha['nl'];

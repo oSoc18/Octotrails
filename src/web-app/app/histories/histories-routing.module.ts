@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HistoryListComponent } from './list/history-list.component';
 import { HistoryDetailComponent } from './detail/history-detail.component';
-import { HistoriesResolver, HistoryResolver } from './histories.resolver';
+import { HistoriesResolver } from './histories.resolver';
+import { HistoryResolver } from './history.resolver';
 
 const histoRoutes: Routes = [
   {
