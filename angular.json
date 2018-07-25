@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tour-of-heroes": {
+    "octotrails": {
       "root": "src/web-app",
       "sourceRoot": "src/web-app",
       "projectType": "application",
@@ -12,6 +12,8 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          "serviceWorker": true,
+          "buildOptimizer": true,
           "options": {
             "outputPath": "src/web-app/dist/",
             "index": "src/web-app/index.html",
@@ -50,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tour-of-heroes:build"
+            "browserTarget": "octotrails:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tour-of-heroes:build:production"
+              "browserTarget": "octotrails:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tour-of-heroes:build"
+            "browserTarget": "octotrails:build"
           }
         },
         "test": {
@@ -92,7 +94,7 @@
         }
       }
     },
-    "tour-of-heroes-e2e": {
+    "octotrails-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -100,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tour-of-heroes:serve"
+            "devServerTarget": "octotrails:serve"
           }
         },
         "lint": {
@@ -113,5 +115,8 @@
       }
     }
   },
-  "defaultProject": "tour-of-heroes"
+  "defaultProject": "octotrails",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

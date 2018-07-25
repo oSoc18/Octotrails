@@ -22,18 +22,3 @@ export class HistoriesResolver implements Resolve<History[]> {
     return this.historyService.getHistoriesByStopId(stopId);
   }
 }
-
-@Injectable({
-  providedIn: 'root'
-})
-export class HistoryResolver implements Resolve<History> {
-  constructor(private historyService: HistoryService) {}
-
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<History> {
-    const historyId = route.paramMap.get('history_id');
-    return this.historyService.getHistory(historyId);
-  }
-}

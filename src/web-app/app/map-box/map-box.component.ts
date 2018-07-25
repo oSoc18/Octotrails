@@ -26,13 +26,18 @@ export class MapBoxComponent implements OnInit {
   constructor(private mapService: MapService, private router: Router) {}
 
   ngOnInit() {
-    this.initializeMap();
-  }
-
-  private initializeMap() {
     this.buildMap();
   }
 
+  /**
+   * Get the access token for mapbox
+   * Make a new map
+   * Add the zoom controls to the map
+   * Find the user's location and track it
+   * Add the geolocate control to the map
+   * Load and render the pin image/icon
+   * Navigate to the detail page when clicking a pin
+   */
   buildMap() {
     Object.getOwnPropertyDescriptor(mapboxgl, 'accessToken').set(
       environment.mapbox.accessToken
@@ -78,6 +83,12 @@ export class MapBoxComponent implements OnInit {
     });
   }
 
+  /**
+   * Get the proximity stops from the API
+   * Put a marker on the map for each one
+   * Delete every source and layer
+   * Add the necessary source and layers 
+   */
   findStopsInProximity() {
     this.mapService.findProximityStops(this.lon, this.lat).subscribe(data => {
       let features = [];
@@ -126,7 +137,7 @@ export class MapBoxComponent implements OnInit {
         source: 'proximityStops',
         layout: {
           'icon-image': 'location',
-          'icon-size': .25
+          'icon-size': 0.25
         }
       });
 
@@ -164,7 +175,7 @@ export class MapBoxComponent implements OnInit {
         layout: {
           'text-field': '{point_count_abbreviated}',
           'text-font': ['Arial Unicode MS Bold'],
-          'text-size': 12,
+          'text-size': 12
         },
         paint: {
           'text-color': '#FFFFFF'

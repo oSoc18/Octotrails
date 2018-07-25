@@ -26,18 +26,31 @@ export class HistoryListComponent implements OnInit {
     private data: Data
   ) {}
 
+  /**
+   * Get the stop id
+   * Get the stop name
+   * Get the history for the stop
+   */
   ngOnInit() {
     this.stopId = this.route.parent.snapshot.data['stop'].id;
     this.stopName = this.route.parent.snapshot.data['stop'].alpha['nl'];
     this.histories = this.route.snapshot.data['histories'];
   }
 
+  /**
+   * Get the history for the stop by it's id
+   * @param stopId The id of the stop
+   */
   getStopHistories(stopId?: string) {
     return this.historyService
       .getHistoriesByStopId(this.stopId)
       .subscribe(list => (this.histories = list));
   }
 
+  /**
+   * Go to the detail of the history by it's id
+   * @param historyId The id of the history
+   */
   goToHistoryDetail(historyId) {
     this.router.navigate([historyId], {
       relativeTo: this.route

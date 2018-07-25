@@ -27,11 +27,7 @@ export class StopDetailComponent implements OnInit, OnDestroy {
 
   @Input() stop: Stop;
 
-  public imageSources: string[] = [
-    'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?image=1074',
-    'https://picsum.photos/1920/1080/?image=1080'
-  ];
+  public imageSources: string[];
 
   public config = {
     verifyBeforeLoad: true,
@@ -53,6 +49,15 @@ export class StopDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.stop = this.route.snapshot.data['stop'];
+    if (this.stop.images.length > 0) {
+      this.imageSources = this.stop.images;
+    } else {
+      this.imageSources = [
+        'https://picsum.photos/1920/1080/?random',
+        'https://picsum.photos/1920/1080/?image=1074',
+        'https://picsum.photos/1920/1080/?image=1080'
+      ];
+    }
   }
 
   ngOnDestroy(): void {
@@ -61,13 +66,7 @@ export class StopDetailComponent implements OnInit, OnDestroy {
     this.data.stop = this.stop;
   }
 
-  // getStop(): void {
-  //   const id: string = this.route.snapshot.paramMap.get('id');
-  //   this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
-  // }
-
   readURL(input) {
-    // console.log(input, input.target.files, input.target.files[0]);
     if (input.target.files && input.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(input.target.files[0]);
