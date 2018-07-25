@@ -1,0 +1,97 @@
+.string-component {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10rem;
+}
+
+.question-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.question {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: #1b1b1B;
+    width: 90%;
+    align-self: center;
+    opacity: 0.3;
+}
+
+::ng-deep .mat-form-field-type-mat-input {
+    width: 100% !important;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    width: 100%;
+}
+
+.info-text {
+    display: none;
+}
+
+
+.info-active {
+    display: block !important;
+    position: absolute;
+    background-color: #ffffff;
+    width: 90%;
+    left: 5%;
+    padding: 5rem 1rem;
+    box-shadow: 0 2px 29px -2px rgba(165,195,253,0.40);
+    z-index: 90;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2.2rem;
+    color: #323232;
+    animation-name: info-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}  
+
+.mat-form-field {
+    display: none;
+}
+
+.mystyle {
+    filter: none !important;
+    animation-name: animation3;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+.mystyle .question {
+    color: #1b1B1B !important;
+    line-height: 2.3rem;
+    animation-name: animation;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+}
+
+.mystyle .mat-form-field {
+    display: block;
+    animation-name: animation2;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes animation {
+    0% {font-size: 1.8rem; opacity: 0.3;}
+    100% {font-size: 1.8rem; opacity: 1;}
+}
+
+@keyframes animation2 {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes animation3 {
+    0% {margin-bottom: 0;}
+    100% {margin-bottom: 4rem;}
+}
+

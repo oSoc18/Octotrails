@@ -114,7 +114,7 @@ An Input is a given response to a **[Question][]**.
 The format of an Input object includes the following data:
 
 - **id** — [string] ID of the Input.
-- **question_id** — [string] The **[Question][]** ID.
+- **question_num** — [string] The **[Question][]** num.
 - **answer** — [string] The answer to the **[Question][]**.
 
 ## History format

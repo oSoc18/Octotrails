@@ -12,18 +12,12 @@
     right: auto;
     left: 0;
 
-    &:hover .carousel-nav__btn--left {
-      color: rgba(255, 255, 255, 0.8);
-    }
   }
 
   &--right {
     left: auto;
     right: 0;
 
-    &:hover .carousel-nav__btn--right {
-      color: rgba(255, 255, 255, 0.8);
-    }
   }
 }
 
@@ -36,10 +30,6 @@
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
 
-  &:hover {
-    color: rgba(255, 255, 255, 0.8);
-  }
-
   &--left {
     left: 15px;
   }
@@ -51,4 +41,20 @@
   &--disabled {
     pointer-events: none;
   }
+}
+
+::ng-deep .carousel-nav__btn--left{
+    background-image: url("/assets/icons/arrow.svg");
+    background-repeat: no-repeat;
+    transform: rotate(180deg) !important;
+    width: 25px;
+    height: 25px;
+}
+
+::ng-deep .carousel-nav__btn--right{
+    background-image: url("/assets/icons/arrow.svg");
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    transform: none !important;
 }

@@ -21,9 +21,16 @@ function list(req, res, next) {
  */
 async function getById(req, res) {
   const id = req.params.caterogie_id;
-  const categorie = Categories.findById(id).populate('parent_num');
-
-  return res.json({ categorie });
+  const category = Categories.findById(id).populate('parent');
+  if (!category) {
+    throw new APIError(
+      `No such category with id=(${id}) exists!`,
+      httpStatus.NOT_FOUND,
+      true
+    );
+  } else {
+    return res.json({ category });
+  }
 }
 
 /**
@@ -31,7 +38,7 @@ async function getById(req, res) {
  */
 async function getByNum(req, res) {
   const num = req.params.category_num;
-  const category = Categories.findOne({ num }).populate('parent_num');
+  const category = await Categories.findOne({ num }).populate('parent');
   if (!category) {
     throw new APIError(
       `No such category with num=(${num}) exists!`,

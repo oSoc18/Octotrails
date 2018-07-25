@@ -30,10 +30,14 @@ export class Transport {
 }
 export class Stop {
   id: string;
-  alpha_fr: string;
-  alpha_nl: string;
-  descr_fr: string;
-  descr_nl: string;
+  alpha: {
+    fr: string;
+    nl: string;
+  };
+  descr: {
+    fr: string;
+    nl: string;
+  };
   longitude: number;
   latitude: number;
   address: {

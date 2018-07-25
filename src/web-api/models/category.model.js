@@ -12,6 +12,13 @@ const CategorySchema = new mongoose.Schema(
   SchemaOptions
 );
 
+CategorySchema.virtual('parent', {
+  ref: 'Category',
+  foreignField: 'num',
+  localField: 'parent_num',
+  justOne: true
+});
+
 CategorySchema.virtual('questions', {
   ref: 'Question',
   localField: 'num',

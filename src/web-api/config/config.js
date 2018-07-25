@@ -37,6 +37,7 @@ if (error) {
 
 // Config to be shared in the web-api
 const config = {
+  isProd: envVars.NODE_ENV === 'production',
   env: envVars.NODE_ENV,
   port: envVars.SERVER_PORT,
   mongooseDebug: envVars.MONGOOSE_DEBUG,

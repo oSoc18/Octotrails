@@ -23,6 +23,6 @@ router.use('/questions', questionsRoutes);
 router.use('/categories', categoriesRoutes);
 
 // mount history routes at /histories
-router.use('/histor(y|ies)', historiesRoutes);
+router.use('/histories', historiesRoutes);
 
 export default router;

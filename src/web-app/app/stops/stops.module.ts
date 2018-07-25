@@ -1,37 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { AgmCoreModule } from '@agm/core';
+import { RouterModule } from '@angular/router';
 import { CarouselModule } from '../my-octotrails-ng6-carousel';
 import { MapBoxComponent } from '../map-box/map-box.component';
 
-import { environment } from '../../environments/environment';
+import { SharedModule } from '../shared/shared.module';
 import { StopsRoutingModule } from './stops-routing.module';
-import { MatDesignModule } from '../shared/mat-design/mat-design.module';
 
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
-import { HistoryComponent } from './history/history.component';
-import { LocationComponent } from './location/location.component';
-import { ImageDetailComponent } from './image-detail/image-detail.component';
+import { StopSearchComponent } from './search/stop-search.component';
+import { StopDetailComponent } from './detail/stop-detail.component';
+import { StopLocationComponent } from './location/stop-location.component';
+import { StopImageDetailComponent } from './image-detail/stop-image-detail.component';
 
 @NgModule({
-  imports: [
-    CarouselModule,
-    CommonModule,
-    MatDesignModule,
-    StopsRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC7fP3yZAXe8A667n4LifCkcfrL3zqXGuA'
-    })
-  ],
+  imports: [CarouselModule, SharedModule, StopsRoutingModule],
   declarations: [
-    SearchComponent,
-    HistoryComponent,
-    DetailComponent,
-    LocationComponent,
-    ImageDetailComponent,
-    MapBoxComponent
+    MapBoxComponent,
+    StopSearchComponent,
+    StopDetailComponent,
+    StopLocationComponent,
+    StopImageDetailComponent
   ],
   exports: [RouterModule, CarouselModule]
 })
