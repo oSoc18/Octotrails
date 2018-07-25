@@ -7,7 +7,11 @@ export const environment = {
   API_URL: 'http://localhost:8081/',
   mapbox: {
     accessToken:
+<<<<<<< HEAD
+      'pk.eyJ1IjoiYnJhbWJsZXlzIiwiYSI6ImNqam82cmIyZjIzcWozcW0wdjh6enB4Y3kifQ.udssCP8HoCZCKddR4FF8FA',
+=======
     '',
+>>>>>>> origin/develop
     style: 'mapbox://styles/mapbox/light-v9'
   }
 };

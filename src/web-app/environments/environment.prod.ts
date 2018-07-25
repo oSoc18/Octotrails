@@ -3,6 +3,6 @@ export const environment = {
   API_URL: '',
   mapbox: {
     accessToken: '',
-    style: ''
+    style: 'mapbox://styles/mapbox/light-v9'
   }
 };

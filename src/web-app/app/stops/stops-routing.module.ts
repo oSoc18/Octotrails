@@ -1,24 +1,32 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
-import { HistoryComponent } from './history/history.component';
-import { LocationComponent } from './location/location.component';
+import { CategoriesEntrypoint } from '../categories/categories.module';
+import { HistoriesEntrypoint } from '../histories/histories.module';
+import { StopResolver } from './stop.resolver';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'stops/search', pathMatch: 'full' },
-  { path: 'stops', redirectTo: 'stops/search', pathMatch: 'full' },
-  { path: 'stops/search', component: SearchComponent },
-  { path: 'stops/:id', component: DetailComponent },
-  { path: 'stops/:id/history', component: HistoryComponent },
-  { path: 'stops/:id/questions', redirectTo: 'questions', pathMatch: 'full' },
-  { path: 'stops/:id/location', component: LocationComponent }
+import { StopSearchComponent } from './search/stop-search.component';
+import { StopDetailComponent } from './detail/stop-detail.component';
+import { StopLocationComponent } from './location/stop-location.component';
+// import { StopImageDetailComponent } from './image-detail/stop-image-detail.component';
+
+const stopRoutes: Routes = [
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: 'search', component: StopSearchComponent },
+  {
+    path: ':stop_id',
+    resolve: { stop: StopResolver },
+    children: [
+      { path: '', component: StopDetailComponent },
+      { path: 'location', component: StopLocationComponent },
+      { path: 'histories', loadChildren: HistoriesEntrypoint },
+      { path: 'categories', loadChildren: CategoriesEntrypoint }
+    ]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(stopRoutes)],
   exports: [RouterModule]
 })
 export class StopsRoutingModule {}

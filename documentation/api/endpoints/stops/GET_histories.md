@@ -40,7 +40,7 @@ histories : [**[History][]**]
       "previous": "5b4e1a3f36227f12e631e1c9",
       "inputs": [
         {
-          "question_id": "5b4901f0a47137f00321331f",
+          "question_num": "019",
           "answer": 1,
           "question": {
             "num": "019",
@@ -52,7 +52,7 @@ histories : [**[History][]**]
           "id": "5b4901f0a471374981213326"
         },
         {
-          "question_id": "5b4901f0a47137f00321331f",
+          "question_num": "019",
           "answer": 4,
           "question": {
             "num": "019",
@@ -64,7 +64,7 @@ histories : [**[History][]**]
           "id": "5b48e785f188271082d48c55"
         },
         {
-          "question_id": "5b4901f0a471370c93213322",
+          "question_num": "042",
           "answer": "41",
           "question": {
             "num": "042",
@@ -84,7 +84,7 @@ histories : [**[History][]**]
       "previous": "5b4e1a3f36227f12e631e1c8",
       "inputs": [
         {
-          "question_id": "5b4901f0a471370c93213322",
+          "question_num": "042",
           "answer": "41",
           "question": {
             "num": "042",
@@ -100,7 +100,7 @@ histories : [**[History][]**]
     {
       "inputs": [
         {
-          "question_id": "5b4901f0a47137f00321331f",
+          "question_num": "019",
           "answer": 4,
           "question": {
             "num": "019",
