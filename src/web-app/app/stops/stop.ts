@@ -41,8 +41,12 @@ export class Stop {
     nl: string;
   };
   type: number;
-  images: string[];
+
   transport: Transport[];
+
+  public get images(): string[] {
+    return ['1', '2', '3'].map(mb => `/assets/img/${this.id}-${mb}.jpg`);
+  }
 
   /**
    * Init a Stop from a raw JSON object, with all field matching

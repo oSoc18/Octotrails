@@ -53,21 +53,23 @@ export class DetailComponent implements OnInit {
     } else {
       this.getStop();
     }
-    
-    if (this.stop.images !== null) {
-      this.imageSources = this.stop.images;
-    } else {
-      this.imageSources = [
-        'https://picsum.photos/1920/1080/?random',
-        'https://picsum.photos/1920/1080/?image=1074',
-        'https://picsum.photos/1920/1080/?image=1080'
-      ];
-    }
+
+    this.imageSources = [
+      'https://picsum.photos/1920/1080/?random',
+      'https://picsum.photos/1920/1080/?image=1074',
+      'https://picsum.photos/1920/1080/?image=1080'
+    ];
   }
 
   getStop(): void {
     const id: string = this.route.snapshot.paramMap.get('id');
-    this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
+    this.stopService.getStop(id).subscribe(stop => {
+      this.stop = stop;
+
+      if (this.stop.images !== null) {
+        this.imageSources = this.stop.images;
+      }
+    });
   }
 
   goBack(): void {
