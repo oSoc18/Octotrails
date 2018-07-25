@@ -73,7 +73,7 @@
         <h2 class="section-sub-title">on {{ historyDate | date: 'EE dd MMMM yyyy'}}</h2>
     </ng-container> 
     
-    <ng-container *ngIf="isOnCategoriesPage">
+    <ng-container *ngIf="isOnCategoriesPage && !isOnQuestionsPage">
         <h1 class="section-title">Categories</h1>
         <h2 class="section-sub-title">Choose a category</h2>
     </ng-container>   
