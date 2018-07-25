@@ -41,6 +41,7 @@ export class Stop {
     nl: string;
   };
   type: number;
+  images: string[];
   transport: Transport[];
 
   /**

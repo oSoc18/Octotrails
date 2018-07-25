@@ -25,11 +25,7 @@ export class DetailComponent implements OnInit {
 
   @Input() stop: Stop;
 
-  public imageSources: string[] = [
-    'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?image=1074',
-    'https://picsum.photos/1920/1080/?image=1080'
-  ];
+  public imageSources: string[];
 
   public config = {
     verifyBeforeLoad: true,
@@ -56,6 +52,16 @@ export class DetailComponent implements OnInit {
       this.stop = this.data.stop;
     } else {
       this.getStop();
+    }
+    
+    if (this.stop.images !== null) {
+      this.imageSources = this.stop.images;
+    } else {
+      this.imageSources = [
+        'https://picsum.photos/1920/1080/?random',
+        'https://picsum.photos/1920/1080/?image=1074',
+        'https://picsum.photos/1920/1080/?image=1080'
+      ];
     }
   }
 
