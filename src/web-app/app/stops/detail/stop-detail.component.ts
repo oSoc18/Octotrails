@@ -49,15 +49,14 @@ export class StopDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.stop = this.route.snapshot.data['stop'];
-
-    this.imageSources = [
-      'https://picsum.photos/1920/1080/?random',
-      'https://picsum.photos/1920/1080/?image=1074',
-      'https://picsum.photos/1920/1080/?image=1080'
-    ];
-
-    if (this.stop.images !== null) {
+    if (this.stop.images.length > 0) {
       this.imageSources = this.stop.images;
+    } else {
+      this.imageSources = [
+        'https://picsum.photos/1920/1080/?random',
+        'https://picsum.photos/1920/1080/?image=1074',
+        'https://picsum.photos/1920/1080/?image=1080'
+      ];
     }
   }
 
