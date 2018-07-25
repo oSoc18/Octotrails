@@ -27,11 +27,7 @@ export class StopDetailComponent implements OnInit, OnDestroy {
 
   @Input() stop: Stop;
 
-  public imageSources: string[] = [
-    'https://picsum.photos/1920/1080/?random',
-    'https://picsum.photos/1920/1080/?image=1074',
-    'https://picsum.photos/1920/1080/?image=1080'
-  ];
+  public imageSources: string[];
 
   public config = {
     verifyBeforeLoad: true,
@@ -53,6 +49,16 @@ export class StopDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.stop = this.route.snapshot.data['stop'];
+
+    this.imageSources = [
+      'https://picsum.photos/1920/1080/?random',
+      'https://picsum.photos/1920/1080/?image=1074',
+      'https://picsum.photos/1920/1080/?image=1080'
+    ];
+
+    if (this.stop.images !== null) {
+      this.imageSources = this.stop.images;
+    }
   }
 
   ngOnDestroy(): void {
