@@ -50,6 +50,15 @@ export class StopLocationComponent implements OnInit {
     });
   }
 
+ 
+  /**
+   * Get the access token for mapbox
+   * Make a new map
+   * Add the zoom controls to the map
+   * Add the geolocate control to the map
+   * Disabled drag and zoomRotate
+   * Load and render the pin image/icon
+   */
   buildMap() {
     Object.getOwnPropertyDescriptor(mapboxgl, 'accessToken').set(
       environment.mapbox.accessToken
@@ -88,6 +97,12 @@ export class StopLocationComponent implements OnInit {
     });
   }
 
+  /**
+   * Remove the existing source and layer
+   * Add the new source and layer
+   * @param lon The longitude of the location
+   * @param lat The latitude of the location
+   */
   displayLocation(lon: number, lat: number) {
     if (this.map.getLayer('stopLocation') !== undefined) {
       this.map.removeLayer('stopLocation');

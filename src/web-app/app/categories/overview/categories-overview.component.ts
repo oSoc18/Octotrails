@@ -13,6 +13,9 @@ export class CategoriesOverviewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
+  /**
+   * Get the categories and put them in an object
+   */
   ngOnInit() {
     this.categories = this.route.snapshot.data['categories'];
     this.categories_group = this.categories.reduce((list, cat: Category) => {
@@ -28,10 +31,18 @@ export class CategoriesOverviewComponent implements OnInit {
     }, {});
   }
 
+  /**
+   * Find a subcategory by its num
+   * @param subCategoryNum The num of the subcategory
+   */
   findSubCategory(subCategoryNum) {
     return this.categories.find(c => c.num === subCategoryNum) || {};
   }
 
+  /**
+   * Go to the questions for a specific category
+   * @param categoryNum The num of the (sub)category
+   */
   goToQuestion(categoryNum) {
     this.router.navigate(['./', categoryNum, 'questions'], {
       relativeTo: this.route
