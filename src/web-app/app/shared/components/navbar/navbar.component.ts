@@ -11,17 +11,23 @@ export class NavbarComponent implements OnInit {
   @Input() stopId;
   @Input() stopName;
   @Input() historyDate;
+  @Input() doneBtnDisabled:boolean;
+  
   @Input('goBack') goBackCallback: Function;
+  @Input('done') doneCallback: Function;
+
 
   isOnHistoriesPage: boolean;
   isOnStopDetailPage: boolean;
   isOnQuestionsPage: boolean;
+  isOnCategoriesPage: boolean;
 
   constructor(private location: Location, private router: Router) {}
 
   ngOnInit() {
     this.isOnHistoriesPage = this.router.url.includes('/histories');
     this.isOnQuestionsPage = this.router.url.includes('/questions');
+    this.isOnCategoriesPage = this.router.url.includes('/categories');
     // URL must end with the :stop_id to be on /stop-detail page
     this.isOnStopDetailPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
     // As the navbar is shown on all page related to specific stop

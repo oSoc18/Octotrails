@@ -18,6 +18,10 @@ export class QuestionTypeBooleanComponent implements OnInit {
 
   constructor() {}
 
+  /**
+   * Add listener to the window
+   * Check if there is an answer, put it to readonly when there is one
+   */
   ngOnInit() {
     window.addEventListener('scroll', this.runOnScroll);
     if (this.answer) {
@@ -25,6 +29,10 @@ export class QuestionTypeBooleanComponent implements OnInit {
     }
   }
 
+  /**
+   * Check which button is active, get the value of the button and send the answer to the database
+   * @param event 
+   */
   buttonClicked(event: Event) {
     // ? Click on the same button ?
     if (this.activeButton === event.currentTarget) {
@@ -35,6 +43,12 @@ export class QuestionTypeBooleanComponent implements OnInit {
     this.sendAnswer();
   }
 
+  /**
+   * Get all the boolean components
+   * Loop through all of them and check their location on the screen
+   * If the top is between 300 and 400 pixels, then show the answer field
+   * @param event 
+   */
   runOnScroll(event) {
     this.questionsDiv = document.getElementsByClassName('boolean-component');
     for (let i = 0; i < this.questionsDiv.length; i++) {
@@ -47,6 +61,23 @@ export class QuestionTypeBooleanComponent implements OnInit {
     }
   }
 
+  openAnswer(event) {
+    this.removeMystyle();
+    event.currentTarget.parentElement.parentElement.classList.add('mystyle');
+  }
+
+  removeMystyle(){
+    this.questionsDiv = document.getElementsByClassName('boolean-component');
+
+    for (let i = 0; i < this.questionsDiv.length; i++) {
+        this.questionsDiv[i].classList.remove('mystyle');
+    }
+  }
+
+ /**
+   * If the info button is clicked, expand the info field
+   * @param event 
+   */
   infoClicked(event) {
     let yPos = event.currentTarget.getBoundingClientRect().y + 50;
     let infoText = event.currentTarget.parentElement.nextSibling;
