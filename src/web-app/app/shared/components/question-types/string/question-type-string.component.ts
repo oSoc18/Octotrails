@@ -41,6 +41,19 @@ export class QuestionTypeStringComponent implements OnInit {
     }
   }
 
+  openAnswer(event) {
+    this.removeMystyle();
+    event.currentTarget.parentElement.parentElement.classList.add('mystyle');
+  }
+
+  removeMystyle(){
+    this.questionsDiv = document.getElementsByClassName('string-component');
+
+    for (let i = 0; i < this.questionsDiv.length; i++) {
+        this.questionsDiv[i].classList.remove('mystyle');
+    }
+  }
+
   sendAnswer() {
     const value = { question_num: this.question.num, answer: this.answer };
     this.answerChange.emit(value);
