@@ -3,7 +3,10 @@
 
 </mat-toolbar> -->
 <div id="content" *ngIf="loading">
-  <img src="../assets/icons/logo.svg" width="256px" alt="Octotrails PWA logo">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
 </div>
 <div class="app-content">
   <router-outlet></router-outlet>

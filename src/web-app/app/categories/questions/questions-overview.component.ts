@@ -18,6 +18,11 @@ export class QuestionsOverviewComponent implements OnInit {
   progressValue = 0;
   stop_id: string;
   category: Category;
+  
+  public get isDoneBtnDisabled() : boolean {
+      return this.answeredQuestions == 0;
+  }
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +33,7 @@ export class QuestionsOverviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.stop_id = this.route.snapshot.queryParamMap.get('stop_id');
+    this.stop_id = this.route.parent.snapshot.paramMap.get('stop_id');
     this.questions = this.route.snapshot.data['questions'];
     this.category = this.route.snapshot.data['category'];
     this.totalNumberOfQuestions = this.questions.length;
@@ -46,7 +51,8 @@ export class QuestionsOverviewComponent implements OnInit {
       this.answeredQuestions = Object.keys(this.data.inputs).length;
     } else {
       delete this.data.inputs[value.question_num];
-      this.answeredQuestions -= 1;
+      if(this.answeredQuestions > 0)
+        this.answeredQuestions -= 1;
     }
     this.progressValue =
       (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
@@ -61,11 +67,14 @@ export class QuestionsOverviewComponent implements OnInit {
     const answers = Object.entries(localStorage).map(
       ([question_num, answer]) => ({ question_num, answer })
     );
-    this.router.navigate(['/stops', this.stop_id]);
 
     return this.questionService
       .saveAnswers(this.stop_id, answers)
-      .subscribe(msg => console.log(msg));
+      .subscribe(msg => {
+          console.log(msg)
+          this.router.navigate(['/stops', this.stop_id]);
+
+        });
   }
 
   cancel() {

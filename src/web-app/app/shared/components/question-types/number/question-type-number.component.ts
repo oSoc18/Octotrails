@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../../../categories/question';
+import { questions } from '../../../mock';
 
 @Component({
   selector: 'app-question-type-number',
@@ -38,6 +39,19 @@ export class QuestionTypeNumberComponent implements OnInit {
       } else if (positionY < 300 || positionY > 400) {
         this.questionsDiv[i].classList.remove('mystyle');
       }
+    }
+  }
+
+  openAnswer(event) {
+    this.removeMystyle();
+    event.currentTarget.parentElement.parentElement.classList.add('mystyle');
+  }
+
+  removeMystyle(){
+    this.questionsDiv = document.getElementsByClassName('number-component');
+
+    for (let i = 0; i < this.questionsDiv.length; i++) {
+        this.questionsDiv[i].classList.remove('mystyle');
     }
   }
 
