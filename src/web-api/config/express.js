@@ -33,10 +33,12 @@ app.use('/api', routes);
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// redirect all request to public except /api to the angular app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public/index.html'));
-});
+// redirect all request to public except /api to the
+if (config.isProd) {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
+  });
+}
 
 // if error is not an instanceOf APIError, convert it.
 app.use((err, req, res, next) => {
