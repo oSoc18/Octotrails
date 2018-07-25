@@ -12,10 +12,8 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "serviceWorker": true,
-          "buildOptimizer": true,
           "options": {
-            "outputPath": "src/web-app/dist/",
+            "outputPath": "src/web-api/public/",
             "index": "src/web-app/index.html",
             "main": "src/web-app/main.ts",
             "polyfills": "src/web-app/polyfills.ts",
