@@ -34,9 +34,9 @@ export class QuestionTypeNumberComponent implements OnInit {
     this.questionsDiv = document.getElementsByClassName('number-component');
     for (let i = 0; i < this.questionsDiv.length; i++) {
       let positionY = this.questionsDiv[i].getBoundingClientRect().top;
-      if (positionY <= 400 && positionY >= 300) {
+      if (positionY <= 400 && positionY >= 270) {
         this.questionsDiv[i].classList.add('mystyle');
-      } else if (positionY < 300 || positionY > 400) {
+      } else if (positionY < 290 || positionY > 400) {
         this.questionsDiv[i].classList.remove('mystyle');
       }
     }
