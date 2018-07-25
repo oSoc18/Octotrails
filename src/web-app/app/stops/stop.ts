@@ -28,6 +28,8 @@ export class Transport {
     return '#' + this.route_text_color;
   }
 }
+
+const images_stops_id:string[] = ['1348','1349','1350','1351','1356'];
 export class Stop {
   id: string;
   alpha: {
@@ -48,7 +50,10 @@ export class Stop {
   transport: Transport[];
 
   public get images(): string[] {
-    return ['1', '2', '3'].map(mb => `/assets/img/${this.id}-${mb}.jpg`);
+    if(images_stops_id.includes(this.id)) {
+      return ['1', '2', '3'].map(mb => `/assets/img/${this.id}-${mb}.jpg`);
+    }
+    return [];
   }
 
   /**
