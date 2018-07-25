@@ -61,13 +61,7 @@ export class StopDetailComponent implements OnInit, OnDestroy {
     this.data.stop = this.stop;
   }
 
-  // getStop(): void {
-  //   const id: string = this.route.snapshot.paramMap.get('id');
-  //   this.stopService.getStop(id).subscribe(stop => (this.stop = stop));
-  // }
-
   readURL(input) {
-    // console.log(input, input.target.files, input.target.files[0]);
     if (input.target.files && input.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(input.target.files[0]);
