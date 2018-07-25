@@ -7,11 +7,16 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
+        "https://qcontrol.be/0.b01062d5e36511bf39cc.js",
+        "https://qcontrol.be/1.4a5d159df3ffe40d4228.js",
+        "https://qcontrol.be/2.cd0c1fc632969edd2545.js",
+        "https://qcontrol.be/3.8f3a6c61ed1f05d3b70f.js",
+        "https://qcontrol.be/4.3c4e08b975131614dda4.js",
         "https://qcontrol.be/favicon.ico",
         "https://qcontrol.be/index.html",
-        "https://qcontrol.be/main.0d3fce9554440bd7cb75.js",
-        "https://qcontrol.be/polyfills.06de3dfe2ff310f2abff.js",
-        "https://qcontrol.be/runtime.6afe30102d8fe7337431.js",
+        "https://qcontrol.be/main.3b7539a7ae2e91d40324.js",
+        "https://qcontrol.be/polyfills.2523bbfa13f61490af7a.js",
+        "https://qcontrol.be/runtime.7343b4dd567544cc6df9.js",
         "https://qcontrol.be/styles.cd3c0f666eaa318263e9.css"
       ],
       "patterns": []
@@ -81,6 +86,11 @@
     }
   ],
   "hashTable": {
+    "https://qcontrol.be/0.b01062d5e36511bf39cc.js": "20ad3d2469a9c4460ead042dee0359a484ec9b41",
+    "https://qcontrol.be/1.4a5d159df3ffe40d4228.js": "ae7ea7016c38856008e5b6aee7022380d37e6e64",
+    "https://qcontrol.be/2.cd0c1fc632969edd2545.js": "a1979d4c3c0dff5028762b9f3e2c4808877609d7",
+    "https://qcontrol.be/3.8f3a6c61ed1f05d3b70f.js": "6acd1958da762e4a88303f4a10a8f3a091fd4d73",
+    "https://qcontrol.be/4.3c4e08b975131614dda4.js": "2fa96bd50edc3cd74144ca07e68ea3e1e9078f83",
     "https://qcontrol.be/assets/icons/arrow.svg": "5b0ec644275da39b47c30f7a2e1f3395c330ab65",
     "https://qcontrol.be/assets/icons/favicon/android-icon-192x192.png": "f3ff82c2d9e607505fb5b25c2f41fc0832d054fe",
     "https://qcontrol.be/assets/icons/favicon/apple-touch-icon.png": "3032758fa4ff676b2c3158c5e80c1a0c0b066133",
@@ -104,10 +114,10 @@
     "https://qcontrol.be/assets/img/stop2.jpg": "d9fee4ad8b780ffda7536a388141e6c95462118b",
     "https://qcontrol.be/assets/img/stop3.jpg": "ea973243b06481b26b7a32fa336abfed839667db",
     "https://qcontrol.be/favicon.ico": "c9b76b1168ce577430794e509a10a007be438d07",
-    "https://qcontrol.be/index.html": "dc3c18d0ec253dba4f869dc56526b17aab3cc971",
-    "https://qcontrol.be/main.0d3fce9554440bd7cb75.js": "06376ed2ea0d93c29ea7ebc50dcfa6da378e6427",
-    "https://qcontrol.be/polyfills.06de3dfe2ff310f2abff.js": "d00b77dbefc5c77032bd149bf1483907d2437b5e",
-    "https://qcontrol.be/runtime.6afe30102d8fe7337431.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
+    "https://qcontrol.be/index.html": "dd38db6e3a72c9629e6c7fe50c179b85a181f2fe",
+    "https://qcontrol.be/main.3b7539a7ae2e91d40324.js": "59bcfe2ee3e25f6ed478f47af2ceccd007fa2dde",
+    "https://qcontrol.be/polyfills.2523bbfa13f61490af7a.js": "6bf7d144b7b7342026c70b1c9a2a7df61e0de8dd",
+    "https://qcontrol.be/runtime.7343b4dd567544cc6df9.js": "65ebf7e725338d437bcc4bc2df2b5aeaaec8cb84",
     "https://qcontrol.be/styles.cd3c0f666eaa318263e9.css": "f9c6daca282487cd5989a1d84e48f7c747793c92"
   },
   "navigationUrls": [
