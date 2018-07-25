@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "build": "ng build --prod --build-optimizer --ngsw-config-path ./src/web-app/ngsw-config.json --output-path src/web-api/public/",
+    "build": "ng build",
     "start:server": "nodemon src/server-start.js",
     "start:ng": "ng serve --host 0.0.0.0",
     "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max",
