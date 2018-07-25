@@ -12,8 +12,6 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "serviceWorker": true,
-          "buildOptimizer": true,
           "options": {
             "outputPath": "src/web-app/dist/",
             "index": "src/web-app/index.html",
