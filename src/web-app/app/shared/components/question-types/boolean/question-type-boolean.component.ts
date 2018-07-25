@@ -39,9 +39,9 @@ export class QuestionTypeBooleanComponent implements OnInit {
     this.questionsDiv = document.getElementsByClassName('boolean-component');
     for (let i = 0; i < this.questionsDiv.length; i++) {
       let positionY = this.questionsDiv[i].getBoundingClientRect().top;
-      if (positionY <= 380 && positionY >= 300) {
+      if (positionY <= 400 && positionY >= 300) {
         this.questionsDiv[i].classList.add('mystyle');
-      } else if (positionY < 300 || positionY > 380) {
+      } else if (positionY < 300 || positionY > 400) {
         this.questionsDiv[i].classList.remove('mystyle');
       }
     }
