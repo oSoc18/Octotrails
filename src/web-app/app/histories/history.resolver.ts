@@ -11,14 +11,14 @@ import { HistoryService } from './histories.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HistoriesResolver implements Resolve<History[]> {
+export class HistoryResolver implements Resolve<History> {
   constructor(private historyService: HistoryService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<History[]> {
-    const stopId = route.parent.paramMap.get('stop_id');
-    return this.historyService.getHistoriesByStopId(stopId);
+  ): Observable<History> {
+    const historyId = route.paramMap.get('history_id');
+    return this.historyService.getHistory(historyId);
   }
 }
