@@ -1,4 +1,4 @@
-<div class="header-full" [ngClass]="{'heading' : isOnQuestionsPage, 'header' : !isOnQuestionsPage, 'stop-detail-header' : isOnStopDetailPage, 'categories-header' : isOnCategoriesPage }">
+<div class="header-full" [ngClass]="{'heading' : isOnQuestionsPage, 'header' : !isOnQuestionsPage, 'stop-detail-header' : isOnStopDetailPage, 'categories-header' : isOnCategoriesPage, 'location-header' : isOnLocationPage }">
   <div class="heading-content" [ngClass]="{'stop-detail-header-content' : !isOnQuestionsPage}">
     <div class="header-top">
             <a class="backbutton" (click)="goBack()">
@@ -76,6 +76,11 @@
     <ng-container *ngIf="isOnCategoriesPage && !isOnQuestionsPage">
         <h1 class="section-title">Categories</h1>
         <h2 class="section-sub-title">Choose a category</h2>
+    </ng-container> 
+    
+    <ng-container *ngIf="isOnLocationPage">
+        <h1 class="section-title">{{stopName}}</h1>
+        <h2 class="section-sub-title">Id:{{stopId}}</h2>
     </ng-container>   
     <ng-content></ng-content>
   </div>

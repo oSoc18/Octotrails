@@ -1,3 +1,9 @@
-.location {
-  height: 100vw;
-}
+::ng-deep .map {
+    height: 80vh !important;
+    width: 100vw !important;
+  }
+  
+  ::ng-deep .mapboxgl-canvas {
+    width: 100vw !important;
+  }
+
