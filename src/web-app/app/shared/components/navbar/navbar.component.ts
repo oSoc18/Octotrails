@@ -11,11 +11,11 @@ export class NavbarComponent implements OnInit {
   @Input() stopId;
   @Input() stopName;
   @Input() historyDate;
-  @Input() doneBtnDisabled:boolean;
-  
+  @Input() doneBtnDisabled: boolean;
+
   @Input('goBack') goBackCallback: Function;
   @Input('done') doneCallback: Function;
-
+  @Input('upload') uploadCallback: Function;
 
   isOnHistoriesPage: boolean;
   isOnStopDetailPage: boolean;

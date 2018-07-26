@@ -1,5 +1,5 @@
 <div *ngIf="stop">
-  <app-navbar [stopName]="stop.alpha['nl']" [stopId]="stop.id"> </app-navbar>
+  <app-navbar [stopName]="stop.alpha['nl']" [stopId]="stop.id" [upload]="readURL.bind(this)"> </app-navbar>
   <!--
   <div class="header">
     <div class="header-content">
