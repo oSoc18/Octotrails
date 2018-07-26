@@ -2,7 +2,7 @@
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
 }
 
 .question-flex {
@@ -27,6 +27,10 @@
     margin-right: auto;
 }
 
+::ng-deep .mat-input-element {
+    font-size: 1.8rem !important;
+}
+
 ::ng-deep .mat-form-field-wrapper {
     width: 100%;
 }
@@ -43,7 +47,7 @@
     width: 90%;
     left: 5%;
     padding: 5rem 1rem;
-    box-shadow: 0 2px 29px -2px rgba(165,195,253,0.40);
+    box-shadow: 2px 14px 81px -24px rgba(165, 195, 253, 0.4);
     z-index: 90;
     font-size: 1.5rem;
     text-align: center;
@@ -54,9 +58,9 @@
     animation-duration: 1s;
 }  
 
-.mat-form-field {
+/* .mat-form-field {
     display: none;
-}
+} */
 
 .mystyle {
     filter: none !important;

@@ -35,6 +35,11 @@ html {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
+::ng-deep .mat-form-field-type-mat-input {
+    margin: 0;
+    width: 90%;
+}
+
 ::ng-deep .cdk-overlay-pane {
   width: 90% !important;
   top: 75.0625px !important;

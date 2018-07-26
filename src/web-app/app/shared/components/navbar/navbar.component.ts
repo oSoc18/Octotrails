@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   isOnStopDetailPage: boolean;
   isOnQuestionsPage: boolean;
   isOnCategoriesPage: boolean;
+  isOnLocationPage: boolean;
 
   constructor(private location: Location, private router: Router) {}
 
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit {
     this.isOnHistoriesPage = this.router.url.includes('/histories');
     this.isOnQuestionsPage = this.router.url.includes('/questions');
     this.isOnCategoriesPage = this.router.url.includes('/categories');
+    this.isOnLocationPage = this.router.url.includes('/location');
     // URL must end with the :stop_id to be on /stop-detail page
     this.isOnStopDetailPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
     // As the navbar is shown on all page related to specific stop
