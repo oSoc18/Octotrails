@@ -18,7 +18,7 @@
     "build": "ng build --prod --build-optimizer --ngsw-config-path ./src/web-app/ngsw-config.json --output-path src/web-api/public/",
     "start:server": "nodemon src/server-start.js",
     "start:ng": "ng serve --host 0.0.0.0",
-    "start:prod": "NODE_ENV=production pm2 start src/server-start.js --name octotrails -i max --node-args=\"--max_old_space_size=500 --harmony\"  ",
+    "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max --node-args=\"--max_old_space_size=500 --harmony\"  ",
     "start": "concurrently \"npm run start:ng\" \"npm run start:server\"",
     "pwa": "ng build --prod && sw-precache --root=src/web-app/dist --config=precache-config.js",
     "test": "ng test",
