@@ -55,7 +55,7 @@ MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
 
 ## License
 
-Octotrails-qControl is licensed under the [MIT license][info-license].
+Under the [MIT license][info-license].
 
 Copyright &copy; 2018, Octotrails
 
