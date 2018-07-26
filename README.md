@@ -25,6 +25,10 @@ MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
 - Express.JS
 - Mongoose
 
+# Docker
+
+- To start a dockerized version of your application, use `docker-compose up`
+
 ## Runing
 
 ```bash
