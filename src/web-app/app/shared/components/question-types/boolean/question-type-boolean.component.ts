@@ -23,7 +23,7 @@ export class QuestionTypeBooleanComponent implements OnInit {
    * Check if there is an answer, put it to readonly when there is one
    */
   ngOnInit() {
-    window.addEventListener('scroll', this.runOnScroll);
+    // window.addEventListener('scroll', this.runOnScroll);
     if (this.answer) {
       this.isReadOnly = true;
     }
@@ -49,17 +49,17 @@ export class QuestionTypeBooleanComponent implements OnInit {
    * If the top is between 300 and 400 pixels, then show the answer field
    * @param event 
    */
-  runOnScroll(event) {
-    this.questionsDiv = document.getElementsByClassName('boolean-component');
-    for (let i = 0; i < this.questionsDiv.length; i++) {
-      let positionY = this.questionsDiv[i].getBoundingClientRect().top;
-      if (positionY <= 400 && positionY >= 300) {
-        this.questionsDiv[i].classList.add('mystyle');
-      } else if (positionY < 300 || positionY > 400) {
-        this.questionsDiv[i].classList.remove('mystyle');
-      }
-    }
-  }
+//   runOnScroll(event) {
+//     this.questionsDiv = document.getElementsByClassName('boolean-component');
+//     for (let i = 0; i < this.questionsDiv.length; i++) {
+//       let positionY = this.questionsDiv[i].getBoundingClientRect().top;
+//       if (positionY <= 400 && positionY >= 300) {
+//         this.questionsDiv[i].classList.add('mystyle');
+//       } else if (positionY < 300 || positionY > 400) {
+//         this.questionsDiv[i].classList.remove('mystyle');
+//       }
+//     }
+//   }
 
   openAnswer(event) {
     this.removeMystyle();
