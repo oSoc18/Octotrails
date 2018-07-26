@@ -4,7 +4,7 @@
 
 Hello, welcome onboard.
 
-This project design on [#oSoc18](2018.summerofcode.be/) is a little API to fetch data about STIB/MIVB stop and gathering accessibilty questions.
+This project design on [#oSoc18](2018.summerofcode.be/) is a little API to fetch data about STIB/MIVB stop and gathering useable/meaningfull data about them.
 
 This document purpose is to give an orverview about this API part of the project and necessary steps before working on it.
 
