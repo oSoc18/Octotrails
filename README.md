@@ -40,6 +40,7 @@ MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
     # Open this URL in a browser : http://0.0.0.0:4200
 
     # To run in production :
+    $ npm run start:prod
     # On the Nginx file for the site dedicated to this APi,
     # make sure to redirect to the folder src/web-api/index.html
 ```
