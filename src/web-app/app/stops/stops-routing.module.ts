@@ -19,8 +19,14 @@ const stopRoutes: Routes = [
     children: [
       { path: '', component: StopDetailComponent },
       { path: 'location', component: StopLocationComponent },
-      { path: 'histories', loadChildren: HistoriesEntrypoint },
-      { path: 'categories', loadChildren: CategoriesEntrypoint }
+      {
+        path: 'histories',
+        loadChildren: '../histories/histories.module#HistoriesModule'
+      },
+      {
+        path: 'categories',
+        loadChildren: '../categories/categories.module#CategoriesModule'
+      }
     ]
   }
 ];

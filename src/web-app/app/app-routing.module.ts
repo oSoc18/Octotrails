@@ -6,7 +6,7 @@ import { StopsEntrypoint } from './stops/stops.module';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'stops', pathMatch: 'full' },
-  { path: 'stops', loadChildren: StopsEntrypoint },
+  { path: 'stops', loadChildren: './stops/stops.module#StopsModule' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
