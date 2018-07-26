@@ -4,7 +4,7 @@
 
 ## MongoDB
 
-### Install mongodb: 
+### Install mongodb:
 
 Source: <https://docs.mongodb.com/master/tutorial/install-mongodb-on-ubuntu/>
 
@@ -12,14 +12,16 @@ Source: <https://docs.mongodb.com/master/tutorial/install-mongodb-on-ubuntu/>
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
     sudo apt-get update
     sudo apt-get install -y mongodb-org
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
 
-### Starting / stopping mongodb:  
+### Starting / stopping mongodb:
 
     sudo service mongod start
     sudo service mongod stop
     sudo service mongod restart
 
-### Begin using mongodb: 
+### Begin using mongodb:
 
     mongo --host 127.0.0.1:27017
 
@@ -27,32 +29,28 @@ Source: <https://docs.mongodb.com/master/tutorial/install-mongodb-on-ubuntu/>
 
 Source: <https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions>
 
-### Install nodejs: 
+### Install nodejs:
 
     curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
     sudo apt-get install -y nodejs
     sudo apt-get install build-essential
 
-*At this point, npm should be installed because it comes with nodejs. Try it by running: npm -v*
+_At this point, npm should be installed because it comes with nodejs. Try it by running: npm -v_
 
-### Install bower: 
-
-    sudo npm install -g bower
-
-### Install gulp: 
+### Install gulp:
 
     sudo npm install -g gulp
-    
+
 ### Install PM2
 
 Source: <https://pm2.io/doc/en/runtime/quick-start/>
 
     sudo npm install -g pm2
-    
+
 ## Nginx
 
     sudo apt-get install nginx
-    
+
 ### SSL Certificate
 
 Source : <https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx>
@@ -62,16 +60,15 @@ Source : <https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx>
     sudo add-apt-repository ppa:certbot/certbot
     sudo apt-get update
     sudo apt-get install python-certbot-nginx
-    
+
     sudo certbot --nginx
-    
+
 ## Database
 
 ### Create database
+
     use octotrails
 
 ### Create user
-    db.createUser({user: "octotrails", pwd: "octotrails", roles: ["readWrite", "dbAdmin"]})
-    
-    
 
+    db.createUser({user: "octotrails", pwd: "octotrails", roles: ["readWrite", "dbAdmin"]})
