@@ -10,7 +10,7 @@ List all categories.
 
 {
 
-categories : [**[Categorie][]**]
+categories : [**[Category][]**]
 
 }
 

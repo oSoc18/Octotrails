@@ -1,67 +1,66 @@
-# oSoc18 - Octotrails project
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Overview
+# [qControl](https://qcontrol.be)
 
-This project serves as the boilerplate for an oSoc18 project using the MEAN stack.
+All transportation stops need to be inspected by a MIVB/STIB controller. The controller needs to write everything down and put it into an Excel sheet. The whole process is inefficient and time-consuming.
 
-Much of the project design comes from [mean.io](https://github.com/linnovate/mean). However, it is using Angular version 6, and the latest version of all MEAN dependencies. The ability to use the ng-cli should make extending this boilerplate significantly easier.
+To make the controller's life easier, our team Octotrails designed an easy web application for collecting data on the stops. No double work anymore, but an easy to answer, centralized with extra functionalities.
 
-## How to start
+Our app will ease out the stop control process and make it more efficient and meaning.
+One of its major advantages is focusing on the accessibility of the stops (outside and inside the station) by asking different questions to the user.
 
-```
-// Install mongo db
-> npm install
-> npm start
-// Navigate to http://localhost:4200/
-```
+# Features & Technologies
 
-Or with Docker
+MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
 
-```
-> docker-compose up
-// Navigate to http://localhost:4200/
-```
+## [ WebApp][frontend]
 
-# Angular
+- Angular
+- Material Design
+- SCSS with SASS with node
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+## [WebAPI][backend]
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-# Express
-
-- Express server can be started with `node src/server-start.js`
-- Once the angular project has been built, it will be hosted automatically by express
-- The heroes API can be found at `http://localhost:4040/api/heroes`
-
-# Mongo DB
-
-- Default db is named `mean`
-- Default port is `27017`
-- Configuration can be updated in `.env`
+- Node.JS
+- Express.JS
+- Mongoose
 
 # Docker
 
 - To start a dockerized version of your application, use `docker-compose up`
+
+## Runing
+
+```bash
+    # Run localy the api at http://0.0.0.0:8081
+    # Run localy the app at http://0.0.0.0:4200
+    $ npm run start
+
+    # Now, let's test that app
+    # Open this URL in a browser : http://0.0.0.0:4200
+
+    # To run in production :
+    $ npm run start:prod
+    # On the Nginx file for the site dedicated to this APi,
+    # make sure to redirect to the folder src/web-api/index.html
+```
+
+## Contributors
+
+| Role                           | Name                                             |
+| ------------------------------ | ------------------------------------------------ |
+| Designer & Front-end Developer | [Eva Jacobs](https://github.com/evajacobs)       |
+| Designer & Front-end Developer | [Pauline Tahon](https://github.com/PaulineTahon) |
+| Back-end & Front-end Developer | [Bram Breys](https://github.com/BramBreys)       |
+| Back-end Developer             | [David A.](https://github.com/Dakad)             |
+
+## License
+
+Under the [MIT license][info-license].
+
+Copyright &copy; 2018, Octotrails
+
+[info-license]: ./LICENSE
+[info-node]: ./package.json
+[backend]: ./src/web-api/
+[frontend]: ./src/web-app/

@@ -7,7 +7,6 @@ import cors from 'cors';
 import httpStatus from 'http-status';
 import helmet from 'helmet';
 import path from 'path';
-import appRoot from 'app-root-path';
 
 import routes from '../routes/index.route';
 import APIError from '../helpers/APIError';
