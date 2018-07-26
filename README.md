@@ -51,7 +51,7 @@ MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
 | ------------------------------ | ------------------------------------------------ |
 | Designer & Front-end Developer | [Eva Jacobs](https://github.com/evajacobs)       |
 | Designer & Front-end Developer | [Pauline Tahon](https://github.com/PaulineTahon) |
-| Back-end & Front-end Developer | [Bram Breys](https://github.com/BramBreys)       |
+| Back-end & Front-end Developer | [Bram Bleys](https://github.com/BramBleys)       |
 | Back-end Developer             | [David A.](https://github.com/Dakad)             |
 
 ## License
