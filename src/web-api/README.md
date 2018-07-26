@@ -1,6 +1,4 @@
-# qControl API
-
-API for qControl
+# API
 
 ## Introduction
 
@@ -28,28 +26,26 @@ This document purpose is to give an orverview about this API part of the project
 
 This API exploits the following technologies :
 
-| **Name**                                         | **Description**                                           | **More infos** |
-| ------------------------------------------------ | --------------------------------------------------------- | -------------- |
-| [Node.JS v10.6](https://nodejs.org/en/)          | JavaScript runtime built on Chrome's V8 JavaScript engine | [Site web]     |
-| (https://nodejs.org/dist/latest-v10.x/docs/api/) |
-
-| [ECMAScript 6](https://www.npmjs.com/package/express)| New features added or improved to ECMAScript standard. Better way to code in JS. Only used some of them | [Site web](http://www.ecma-international.org/ecma-262/6.0/), [Overview](http://es6-features.org/)|
-
-| [ExpressJS v4.16.0](http://expressjs.com/) | Fast, minimalist web framework for Node.JS | [Site web](http://expressjs.com/en/4x/api.html) |
-| [Mongoose v5.1.0](http://mongoosejs.com/) | Elegant MongoDB Object modeling for Node.JS | [Site web](http://mongoosejs.com/docs/guides.html), [MongoDB Driver](https://www.mongodb.com/download-center?jmp=nav#community) |
+| **Name**                                              | **Description**                                                                                         | **More infos**                                                                                                                  |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [Node.JS v10.6](https://nodejs.org/en/)               | JavaScript runtime built on Chrome's V8 JavaScript engine                                               | [Site web](https://nodejs.org/dist/latest-v10.x/docs/api/)                                                                      |
+| [ECMAScript 6](https://www.npmjs.com/package/express) | New features added or improved to ECMAScript standard. Better way to code in JS. Only used some of them | [Site web](http://www.ecma-international.org/ecma-262/6.0/), [Overview](http://es6-features.org/)                               |
+| [ExpressJS v4.16.0](http://expressjs.com/)            | Fast, minimalist web framework for Node.JS                                                              | [Site web](http://expressjs.com/en/4x/api.html)                                                                                 |
+| [Mongoose v5.1.0](http://mongoosejs.com/)             | Elegant MongoDB Object modeling for Node.JS                                                             | [Site web](http://mongoosejs.com/docs/guides.html), [MongoDB Driver](https://www.mongodb.com/download-center?jmp=nav#community) |
 
 ## Installation
 
 ### Requirements
 
 - All technologies, listed above, are necessary.
-- This project was build with Node.JS v10.6, your Node environment must set to at least this version. Follow the
+- This project was build with Node.JS v10.6, your Node environment must set to at least this version.
+  Follow the [instructions][install]
 - A connection to a MongoDB to store collections and documents.
 
 ### Get Started
 
 ```bash
-    # Grab theproject on the repository
+    # Grab the project on the repository
     $ git clone https://github.com/oSoc18/octotrails.git
 
     # Move to the directory
@@ -93,7 +89,7 @@ On the first run, all required collections/documents will be created and fullfil
 
 #### STIB/MIVB API URL
 
-An URL to the STIB DATA about the stop must be provided, otherwise the stop resource will not be available.
+An URL to get the STIB DATA about the stop must be provided, otherwise the stop resource will not be available.
 
 ```env
     STIB_API = {URL to the data on the stop}
@@ -118,7 +114,8 @@ An URL to the STIB DATA about the stop must be provided, otherwise the stop reso
 **Base url** : `/api`
 
 All routes must be prefixed with this base url.
-For instance, to get all categories `https://example.com/api/categories`
+
+For instance, to get all categories , you must hit this route : `https://example.com/api/categories`
 
 **[Formats of objet send and return by this API](./docs/formats.md)**
 
@@ -126,7 +123,11 @@ For instance, to get all categories `https://example.com/api/categories`
 
 #### Test/Check endpoint
 
-- **[`GET` zen](./docs/api/endpoints/GET_zen.md)**
+- **[`GET` zen/](./docs/api/endpoints/GET_zen.md)**
+
+#### Auth
+
+- **[`POST` login/](../../docs/api/endpoints/auth/POST_login.md)**
 
 #### Stop Resource
 
@@ -146,14 +147,9 @@ For instance, to get all categories `https://example.com/api/categories`
 #### Category Resource
 
 - **[`GET` categories/](../../docs/api/endpoints/categories/GET_categories.md)**
-- **[`GET` /categories/:category_num/questions/](../../docs/api/endpoints/categories/GET_category_questions.md)**
-
-#### Aurh
-
-- **[`POST` login](../../docs/api/endpoints/auth/POST_login.md)**
-
-## Development
-
-See the [CONTRIBUTING file](../../CONTRIBUTING) for more details.
+- **[`GET` categories/:category_num](../../docs/api/endpoints/categories/GET_category.md)**
+- **[`GET` categories/:category_num/questions](../../docs/api/endpoints/categories/GET_category_questions.md)**
 
 ### Enhancements
+
+[install]: ../../docs/INSTALL.md

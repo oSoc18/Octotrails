@@ -1,0 +1,47 @@
+
+# Default server configuration
+#
+
+upstream octotrails_web_api {
+	server 127.0.0.1:8081;
+}
+
+
+
+server {
+	server_name example.be; # managed by Certbot
+
+	location / {
+		proxy_pass http://octotrails_web_api;
+		proxy_redirect off;
+	}
+
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate fullchain.pem; # managed by Certbot
+    ssl_certificate_key privkey.pem; # managed by Certbot
+
+}
+
+server {
+	listen 80 ;
+	listen [::]:80;
+
+	server_name example.be;
+	rewrite ^/(.*) https://example.be/$1 permanent;
+}
+
+server {
+    if ($host = example.be) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	listen 80 ;
+	listen [::]:80 ;
+    server_name example.be;
+    return 404; # managed by Certbot
+
+
+}

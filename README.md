@@ -1,14 +1,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-# qControl
+# [qControl](https://qcontrol.be)
 
-A Data Collector
+All transportation stops need to be inspected by a MIVB/STIB controller. The controller needs to write everything down and put it into an Excel sheet. The whole process is inefficient and time-consuming.
 
-Our partner STIB/MIVB ...
-A mobile application to make the control process of the stop easier and more efficiet.
-One of its major advantages is focusing on the accessibility of the stops (outside and inside the station) by asking differents questions to the user.
+To make the controller's life easier, our team Octotrails designed an easy web application for collecting data on the stops. No double work anymore, but an easy to answer, centralized with extra functionalities.
 
-Our team Octotrails has the pleasure to present 'qControl' .
+Our app will ease out the stop control process and make it more efficient and meaning.
+One of its major advantages is focusing on the accessibility of the stops (outside and inside the station) by asking different questions to the user.
 
 # Features & Technologies
 
@@ -29,8 +28,8 @@ MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
 ## Runing
 
 ```bash
-    # Run localy at the api http://0.0.0.0:8081
-    # Run localy at the web-app http://0.0.0.0:4200
+    # Run localy the api at http://0.0.0.0:8081
+    # Run localy the app at http://0.0.0.0:4200
     $ npm run start
 
     # Now, let's test that app
@@ -43,12 +42,12 @@ MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
 
 ## Contributors
 
-| Role                           | Name          |
-| ------------------------------ | ------------- |
-| Designer & Front-end Developer | Eva Jacobs    |
-| Designer & Front-end Developer | Pauline Tahon |
-| Back-end & Front-end Developer | Bram Breys    |
-| Back-end Developer             | David A.      |
+| Role                           | Name                                             |
+| ------------------------------ | ------------------------------------------------ |
+| Designer & Front-end Developer | [Eva Jacobs](https://github.com/evajacobs)       |
+| Designer & Front-end Developer | [Pauline Tahon](https://github.com/PaulineTahon) |
+| Back-end & Front-end Developer | [Bram Breys](https://github.com/BramBreys)       |
+| Back-end Developer             | [David A.](https://github.com/Dakad)             |
 
 ## License
 
