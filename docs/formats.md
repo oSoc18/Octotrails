@@ -29,7 +29,7 @@ All errors return an HTTP error response with a JSON Object as key `message` abo
 The format of an Stop object includes the following data:
 
 - **id** — [string] The identifier stop number (internal identifier, 5 characters).
-- **alpha_fr** — [string] The official name of the stop in small letters and in French.
+- **alpha** — [string] The official name of the stop in small letters and in French.
 
   - **fr** — [string] The French version.
   - **nl** — [string] The Dutch version
