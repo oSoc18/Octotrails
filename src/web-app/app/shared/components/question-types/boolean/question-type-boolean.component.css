@@ -2,7 +2,7 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10rem;
+  margin-bottom: 7rem;
 }
 
 .question-flex {
@@ -70,9 +70,9 @@ button {
   animation-duration: 1s;
 }
 
-.buttons {
+/* .buttons {
   display: none;
-}
+} */
 
 .mystyle {
   filter: none !important;

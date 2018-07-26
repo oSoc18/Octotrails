@@ -19,7 +19,7 @@ export class QuestionTypeStringComponent implements OnInit {
 
   ngOnInit() {
     this.isReadOnly = !!this.answer;
-    window.addEventListener('scroll', this.runOnScroll);
+    // window.addEventListener('scroll', this.runOnScroll);
   }
 
   infoClicked(event) {
@@ -29,17 +29,17 @@ export class QuestionTypeStringComponent implements OnInit {
     infoText.style.top = 'infoText';
   }
 
-  runOnScroll(event) {
-    this.questionsDiv = document.getElementsByClassName('string-component');
-    for (let i = 0; i < this.questionsDiv.length; i++) {
-      let positionY = this.questionsDiv[i].getBoundingClientRect().top;
-      if (positionY <= 400 && positionY >= 300) {
-        this.questionsDiv[i].classList.add('mystyle');
-      } else if (positionY < 300 || positionY > 400) {
-        this.questionsDiv[i].classList.remove('mystyle');
-      }
-    }
-  }
+//   runOnScroll(event) {
+//     this.questionsDiv = document.getElementsByClassName('string-component');
+//     for (let i = 0; i < this.questionsDiv.length; i++) {
+//       let positionY = this.questionsDiv[i].getBoundingClientRect().top;
+//       if (positionY <= 400 && positionY >= 300) {
+//         this.questionsDiv[i].classList.add('mystyle');
+//       } else if (positionY < 300 || positionY > 400) {
+//         this.questionsDiv[i].classList.remove('mystyle');
+//       }
+//     }
+//   }
 
   openAnswer(event) {
     this.removeMystyle();
