@@ -6,7 +6,7 @@ API for qControl
 
 Hello, welcome onboard.
 
-This project design on [#oSoc18](2018.summerofcode.be/) is a little API to fetch data about STIB/MIVB stop and gathering accessibilty questions.
+This project design on [#oSoc18](2018.summerofcode.be/) is a little API to fetch data about STIB/MIVB stop and gathering useable/meaningfull data about them.
 
 This document purpose is to give an orverview about this API part of the project and necessary steps before working on it.
 
@@ -28,12 +28,10 @@ This document purpose is to give an orverview about this API part of the project
 
 This API exploits the following technologies :
 
-| **Name**                                         | **Description**                                           | **More infos** |
-| ------------------------------------------------ | --------------------------------------------------------- | -------------- |
-| [Node.JS v10.6](https://nodejs.org/en/)          | JavaScript runtime built on Chrome's V8 JavaScript engine | [Site web]     |
-| (https://nodejs.org/dist/latest-v10.x/docs/api/) |
-
-| [ECMAScript 6](https://www.npmjs.com/package/express)| New features added or improved to ECMAScript standard. Better way to code in JS. Only used some of them | [Site web](http://www.ecma-international.org/ecma-262/6.0/), [Overview](http://es6-features.org/)|
+| **Name**                                              | **Description**                                                                                         | **More infos**                                                                                    |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [Node.JS v10.6](https://nodejs.org/en/)               | JavaScript runtime built on Chrome's V8 JavaScript engine                                               | [Site web](https://nodejs.org/dist/latest-v10.x/docs/api/)                                        |
+| [ECMAScript 6](https://www.npmjs.com/package/express) | New features added or improved to ECMAScript standard. Better way to code in JS. Only used some of them | [Site web](http://www.ecma-international.org/ecma-262/6.0/), [Overview](http://es6-features.org/) |
 
 | [ExpressJS v4.16.0](http://expressjs.com/) | Fast, minimalist web framework for Node.JS | [Site web](http://expressjs.com/en/4x/api.html) |
 | [Mongoose v5.1.0](http://mongoosejs.com/) | Elegant MongoDB Object modeling for Node.JS | [Site web](http://mongoosejs.com/docs/guides.html), [MongoDB Driver](https://www.mongodb.com/download-center?jmp=nav#community) |
