@@ -1,4 +1,4 @@
-<app-navbar stopName="Stop Name" [stopId]="stop_id" [done]="saveAnswers.bind(this)" [doneBtnDisabled]="isDoneBtnDisabled">
+<app-navbar title="Stop Name" [subTitle]="stop_id" (back)="cancel()" [doneBtnDisabled]="isDoneBtnDisabled" (done)="saveAnswers()">
   <div>
     <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>
     <p class="progress-tag">{{answeredQuestions}} of {{totalNumberOfQuestions}}</p>
