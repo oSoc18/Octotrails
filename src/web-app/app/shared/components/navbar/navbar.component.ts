@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() title;
+  @Input() subTitle;
   @Input() stopId;
   @Input() stopName;
   @Input() historyDate;
   @Input() doneBtnDisabled: boolean;
 
-  @Input('goBack') goBackCallback: Function;
-  @Input('done') doneCallback: Function;
-  @Input('upload') uploadCallback: Function;
+  @Output('back') goBack: EventEmitter<null> = new EventEmitter<null>();
+  @Output() done: EventEmitter<null> = new EventEmitter<null>();
+  @Output() upload: EventEmitter<Event> = new EventEmitter<Event>();
 
   isOnHistoriesPage: boolean;
   isOnStopDetailPage: boolean;
@@ -50,15 +52,8 @@ export class NavbarComponent implements OnInit {
     };
   }
 
-  goBack() {
-    if (this.goBackCallback) {
-      this.goBackCallback();
-      return;
-    }
-
-    if (this.isOnStopDetailPage) {
-      return this.router.navigate(['stops/search']);
-    }
+  onGoBack() {
+    this.goBack.emit();
 
     if (this.historyDate) {
       return this.router.navigate(['stops/', this.stopId, 'histories']);
@@ -67,5 +62,11 @@ export class NavbarComponent implements OnInit {
     return this.router.navigate(['stops/', this.stopId]);
   }
 
-  done(event) {}
+  OnDone() {
+    this.done.emit();
+  }
+
+  onUpload(input: Event) {
+    this.upload.emit(input);
+  }
 }
