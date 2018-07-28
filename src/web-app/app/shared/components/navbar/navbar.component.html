@@ -1,7 +1,7 @@
-<div class="header-full" [ngClass]="{'heading' : isOnQuestionsPage, 'header' : !isOnQuestionsPage, 'stop-detail-header' : isOnStopDetailPage, 'categories-header' : isOnCategoriesPage }">
-  <div class="heading-content" [ngClass]="{'stop-detail-header-content' : !isOnQuestionsPage}">
+<div class="header-full" [ngClass]="headerClass">
+  <div class="heading-content" [ngClass]="headingClass">
     <div class="header-top">
-      <a class="backbutton" (click)="goBack()">
+      <a class="backbutton" (click)="onGoBack()">
         <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
           x="0px" y="0px" width="14.3px" height="24px" viewBox="0 0 14.3 24" style="enable-background:new 0 0 14.3 24;" xml:space="preserve">
           <defs>
@@ -20,13 +20,14 @@
       </a>
 
       <ng-container *ngIf="isOnQuestionsPage">
-        <button class="done-button" [disabled]="doneBtnDisabled" (click)="doneCallback()">{{'navbar.button.done' | translate}}</button>
+        <button class="done-button" [disabled]="doneBtnDisabled" (click)="OnDone()">{{'navbar.button.done' | translate}}</button>
       </ng-container>
 
       <ng-container *ngIf="isOnStopDetailPage">
         <div class="stop-detail-photo">
-          <input type='file' name="file" id="file" class="input-file" accept="image/*" (change)="readURL($event);" />
-          <label for="file">
+          <input type='file' name="input-upload-file" id="input-upload-file" class="input-file" accept="image/*" (change)="onUpload($event);"
+          />
+          <label for="input-upload-file">
             <figure>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
                 x="0px" y="0px" width="28px" height="24.48px" viewBox="0 0 95.1 76.5" style="enable-background:new 0 0 95.1 76.5;"
@@ -59,7 +60,7 @@
       <h2 class="section-sub-title">Physical</h2>
     </ng-container>
 
-    <ng-container *ngIf="isOnStopDetailPage">
+    <ng-container *ngIf="isOnStopDetailPage || isOnLocationPage">
       <h1 class="section-title">{{stopName}}</h1>
       <h2 class="section-sub-title">ID : {{stopId}}</h2>
     </ng-container>
@@ -74,9 +75,10 @@
       <h2 class="section-sub-title">on {{ historyDate | date: 'EE dd MMMM yyyy'}}</h2>
     </ng-container>
 
-    <ng-container *ngIf="isOnCategoriesPage">
+    <ng-container *ngIf="isOnCategoriesPage && !isOnQuestionsPage">
       <h1 class="section-title">{{'navbar.categories.title' | translate}}</h1>
       <h2 class="section-sub-title">{{'navbar.categories.choose' | translate}}</h2>
     </ng-container>
+
     <ng-content></ng-content>
   </div>

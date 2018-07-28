@@ -2,7 +2,7 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10rem;
+  margin-bottom: 7rem;
 }
 
 .question-flex {
@@ -35,7 +35,7 @@ button {
     rgba(243, 243, 243, 0.99) 0%,
     #e8e8e8 100%
   );
-  box-shadow: 0 6px 28px -17px rgba(111, 109, 109, 0.5);
+  box-shadow: 2px 14px 81px -24px rgba(165, 195, 253, 0.4);
   border-radius: 5px;
   border: 2px hidden;
   font-size: 16px;
@@ -71,9 +71,9 @@ button {
   animation-duration: 1s;
 }
 
-.buttons {
+/* .buttons {
   display: none;
-}
+} */
 
 .mystyle {
   filter: none !important;

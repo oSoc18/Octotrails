@@ -48,4 +48,6 @@ export class CategoriesOverviewComponent implements OnInit {
       relativeTo: this.route
     });
   }
+
+  goBack() {}
 }

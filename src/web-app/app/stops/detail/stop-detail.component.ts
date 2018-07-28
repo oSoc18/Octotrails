@@ -66,6 +66,10 @@ export class StopDetailComponent implements OnInit, OnDestroy {
     this.data.stop = this.stop;
   }
 
+  goBack() {
+    return this.router.navigate(['stops/search']);
+  }
+
   readURL(input) {
     if (input.target.files && input.target.files[0]) {
       const reader = new FileReader();

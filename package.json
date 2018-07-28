@@ -1,25 +1,26 @@
 {
-  "name": "mean-octotrails-starter",
+  "name": "octotrails-qcontrol",
   "version": "0.0.1",
-  "description": "oSoc18 Octotrails project boilerplate",
-  "author": "Dakad",
+  "description": "oSoc18 Octotrails project",
+  "author": "octotrails",
   "keywords": [
     "angular",
-    "angular2",
-    "angular4",
+    "angular6",
     "api",
     "express",
     "rest",
-    "webapp"
+    "webapp",
+    "pwa",
+    "mongoose"
   ],
   "scripts": {
     "ng": "ng",
     "build": "ng build --prod --build-optimizer --ngsw-config-path ./src/web-app/ngsw-config.json --output-path src/web-api/public/",
     "start:server": "nodemon src/server-start.js",
     "start:ng": "ng serve --host 0.0.0.0",
-    "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max",
-    "pwa": "ng build --prod && sw-precache --root=src/web-app/dist --config=precache-config.js",
+    "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max --node-args=\"--max_old_space_size=500 --harmony\"  ",
     "start": "concurrently \"npm run start:ng\" \"npm run start:server\"",
+    "pwa": "ng build --prod && sw-precache --root=src/web-app/dist --config=precache-config.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -47,12 +48,11 @@
     "delay": "2500",
     "restartable": "rs",
     "execMap": {
-      "js": "node"
+      "js": "node --harmony"
     },
     "ext": "js json"
   },
   "dependencies": {
-    "@agm/core": "^1.0.0-beta.3",
     "@angular/animations": "^6.0.7",
     "@angular/cdk": "^6.2.0",
     "@angular/compiler": "^6.0.7",
@@ -86,9 +86,8 @@
     "joi": "^13.3.0",
     "jsonwebtoken": "^8.3.0",
     "mapbox-gl": "^0.47.0-beta.1",
-    "messageformat": "^2.0.4",
-    "mongoose": "^5.1.0",
     "method-override": "^2.3.10",
+    "mongoose": "^5.1.0",
     "ngx-translate-messageformat-compiler": "^4.1.3",
     "path": "^0.12.7",
     "pm2": "^3.0.0",
