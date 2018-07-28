@@ -1,5 +1,5 @@
-<div class="header-full" [ngClass]="{'heading' : isOnQuestionsPage, 'header' : !isOnQuestionsPage, 'stop-detail-header' : isOnStopDetailPage, 'categories-header' : isOnCategoriesPage, 'location-header' : isOnLocationPage }">
-  <div class="heading-content" [ngClass]="{'stop-detail-header-content' : !isOnQuestionsPage}">
+<div class="header-full" [ngClass]="headerClass">
+  <div class="heading-content" [ngClass]="headingClass">
     <div class="header-top">
       <a class="backbutton" (click)="goBack()">
         <svg class="back-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -20,7 +20,7 @@
       </a>
 
       <ng-container *ngIf="isOnQuestionsPage">
-        <button class="done-button" [disabled]="doneBtnDisabled" (click)="doneCallback()">Done</button>
+        <button class="done-button" [disabled]="doneBtnDisabled" (click)="done($event)">Done</button>
       </ng-container>
 
       <ng-container *ngIf="isOnStopDetailPage">
@@ -59,7 +59,7 @@
       <h2 class="section-sub-title">Physical</h2>
     </ng-container>
 
-    <ng-container *ngIf="isOnStopDetailPage">
+    <ng-container *ngIf="isOnStopDetailPage || isOnLocationPage">
       <h1 class="section-title">{{stopName}}</h1>
       <h2 class="section-sub-title">ID : {{stopId}}</h2>
     </ng-container>
@@ -79,9 +79,5 @@
       <h2 class="section-sub-title">Choose a category</h2>
     </ng-container>
 
-    <ng-container *ngIf="isOnLocationPage">
-      <h1 class="section-title">{{stopName}}</h1>
-      <h2 class="section-sub-title">Id:{{stopId}}</h2>
-    </ng-container>
     <ng-content></ng-content>
   </div>

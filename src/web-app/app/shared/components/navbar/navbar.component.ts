@@ -22,6 +22,8 @@ export class NavbarComponent implements OnInit {
   isOnQuestionsPage: boolean;
   isOnCategoriesPage: boolean;
   isOnLocationPage: boolean;
+  headerClass;
+  headingClass;
 
   constructor(private location: Location, private router: Router) {}
 
@@ -36,6 +38,16 @@ export class NavbarComponent implements OnInit {
     if (!this.isOnStopDetailPage) {
       this.stopId = this.router.url.match('/stops/([0-9]+[a-zA-z_-]*).*')[1];
     }
+    this.headerClass = {
+      heading: this.isOnQuestionsPage,
+      header: !this.isOnQuestionsPage,
+      'stop-detail-header': this.isOnStopDetailPage,
+      'categories-header': this.isOnCategoriesPage,
+      'location-header': this.isOnLocationPage
+    };
+    this.headingClass = {
+      'stop-detail-header-content': !this.isOnQuestionsPage
+    };
   }
 
   goBack() {
@@ -54,4 +66,6 @@ export class NavbarComponent implements OnInit {
 
     return this.router.navigate(['stops/', this.stopId]);
   }
+
+  done(event) {}
 }
