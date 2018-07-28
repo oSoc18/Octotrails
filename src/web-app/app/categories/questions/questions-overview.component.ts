@@ -18,11 +18,10 @@ export class QuestionsOverviewComponent implements OnInit {
   progressValue = 0;
   stop_id: string;
   category: Category;
-  
-  public get isDoneBtnDisabled() : boolean {
-      return this.answeredQuestions == 0;
+
+  public get isDoneBtnDisabled(): boolean {
+    return this.answeredQuestions == 0;
   }
-  
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +32,7 @@ export class QuestionsOverviewComponent implements OnInit {
   ) {}
 
   /**
-   * Get the stop id 
+   * Get the stop id
    * Get the questions
    * Get the category
    * Get the total number of questions
@@ -66,8 +65,7 @@ export class QuestionsOverviewComponent implements OnInit {
       this.answeredQuestions = Object.keys(this.data.inputs).length;
     } else {
       delete this.data.inputs[value.question_num];
-      if(this.answeredQuestions > 0)
-        this.answeredQuestions -= 1;
+      if (this.answeredQuestions > 0) this.answeredQuestions -= 1;
     }
     this.progressValue =
       (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
@@ -92,14 +90,12 @@ export class QuestionsOverviewComponent implements OnInit {
     return this.questionService
       .saveAnswers(this.stop_id, answers)
       .subscribe(msg => {
-          console.log(msg)
-          this.router.navigate(['/stops', this.stop_id]);
-
-        });
+        console.log(msg);
+      });
   }
 
   /**
-   * Show popup 
+   * Show popup
    * save answers or clear localStorage depending on the answer from the popup
    */
   cancel() {
@@ -108,9 +104,11 @@ export class QuestionsOverviewComponent implements OnInit {
     if (OK) {
       this.saveAnswers();
     } else {
+      // this.questionService.clearAnswers();
       localStorage.clear();
     }
 
-    this.router.navigate(['/stops', this.stop_id]);
+    // return this.router.navigate(['stops', this.stop_id, 'categories']);
+    return this.router.navigate(['stops', this.stop_id, 'categories']);
   }
 }
