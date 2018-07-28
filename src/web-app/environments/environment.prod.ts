@@ -1,9 +1,8 @@
 export const environment = {
   production: true,
-  API_URL: 'https://qcontrol.be/',
+  API_URL: '',
   mapbox: {
-    accessToken:
-      'pk.eyJ1Ijoicnlyb3YiLCJhIjoiY2prMGJpbnhvMDRybjNwbXFrbnE5ZGVndyJ9._FyNDh3puw1YnF5Ur6bmqw',
+    accessToken: '',
     style: 'mapbox://styles/mapbox/light-v9'
   }
 };
