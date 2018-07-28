@@ -55,6 +55,10 @@ export class NavbarComponent implements OnInit {
   onGoBack() {
     this.goBack.emit();
 
+    if (this.isOnQuestionsPage) {
+      return;
+    }
+
     if (this.historyDate) {
       return this.router.navigate(['stops/', this.stopId, 'histories']);
     }
