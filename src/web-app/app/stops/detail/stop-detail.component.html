@@ -1,5 +1,6 @@
 <div *ngIf="stop">
-  <app-navbar [stopName]="stop.alpha['nl']" [stopId]="stop.id" (back)="goBack()" (upload)="readURL($event)"> </app-navbar>
+  <app-navbar [stopName]="stop.alphaByLang(translate.activeLang)" [stopId]="stop.id" (back)="goBack()" (upload)="readURL($event)">
+  </app-navbar>
 
   <div class="carousel">
     <carousel *ngIf="enabledCaroussel" [sources]="imageSources" [config]="config"></carousel>
@@ -15,8 +16,8 @@
           <p class="line-number" [ngStyle]="{'color':line.textColor, 'background-color':line.backColor}">{{line.number}}</p>
         </div>
         <div>
-          <p class="line-direction">&rarr; {{line.direction['nl']}}</p>
-          <p class="search-result-info-title">{{stop.alpha["nl"]}}</p>
+          <p class="line-direction">&rarr; {{line.directionByLang(translate.activeLang)}}</p>
+          <p class="search-result-info-title">{{stop.alphaByLang(translate.activeLang)}}</p>
         </div>
       </article>
     </section>
@@ -25,7 +26,7 @@
         <h4 class="section-title">{{'stops.details.address' | translate }}</h4>
       </header>
       <article class="address-content">
-        <div class="address">{{stop.address["nl"]}}</div>
+        <div class="address">{{stop.addressByLang(translate.activeLang)}}</div>
         <a class="location" routerLink="/stops/{{stop.id}}/location">
           <img src="/assets/icons/locationPin.svg" height="30" alt="locationPin" /> {{'stops.details.button.show-map' | translate}}
         </a>

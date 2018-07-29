@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Stop } from '../stop';
 import { StopService } from '../stops.service';
 import { Data } from '../../shared/providers/data.provider';
+import { TranslateService } from '../../shared/services/translate.service';
 
 @Component({
   selector: 'app-stop-search',
@@ -22,7 +23,8 @@ export class StopSearchComponent implements OnInit {
   constructor(
     private router: Router,
     private stopService: StopService,
-    private data: Data
+    private data: Data,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {

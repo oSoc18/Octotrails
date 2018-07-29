@@ -13,18 +13,18 @@ export function setupTranslateFactory(service: TranslateService): Function {
 }
 
 export interface TranslationChangeEvent {
-  translations: any;
+  translations?: any;
   lang: string;
 }
 
 export interface LangChangeEvent {
   lang: string;
-  translations: any;
+  translations?: any;
 }
 
 export interface DefaultLangChangeEvent {
   lang: string;
-  translations: any;
+  translations?: any;
 }
 
 @Injectable({
@@ -63,7 +63,7 @@ export class TranslateService {
   /**
    * The lang currently used
    */
-  private _activeLang: string = 'en';
+  private _activeLang: string = 'fr';
 
   /**
    * The language to use for the translations.
@@ -77,7 +77,12 @@ export class TranslateService {
     const newLang = lang || this.defaultLang;
 
     if (newLang !== previousValue) {
-      this.use(newLang);
+      this.use(newLang).then(_ => {
+        this.onLangChange.emit({
+          lang: this._activeLang,
+          translations: this.translations
+        });
+      });
     }
   }
 

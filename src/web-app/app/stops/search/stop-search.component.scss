@@ -26,6 +26,10 @@ html {
   font-size: 1.4rem;
 }
 
+.mat-autocomplete-panel {
+  height: 100vh;
+}
+
 ::ng-deep .mat-form-field {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
@@ -36,14 +40,20 @@ html {
 }
 
 ::ng-deep .mat-form-field-type-mat-input {
-    margin: 0;
-    width: 90%;
+  margin: 0;
+  width: 90%;
 }
 
 ::ng-deep .cdk-overlay-pane {
   width: 90% !important;
   top: 75.0625px !important;
   left: 5% !important;
+}
+
+.cdk-overlay-pane {
+  width: 100vw;
+  height: 100vw;
+  top: 66px;
 }
 
 ::ng-deep .mat-autocomplete-panel.mat-autocomplete-visible {
@@ -61,6 +71,16 @@ html {
   line-height: normal !important;
 }
 
+::ng-deep .map {
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+::ng-deep .mapboxgl-canvas {
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
 .search-result-text {
   display: flex;
   flex-direction: column;
@@ -69,9 +89,8 @@ html {
 }
 
 .search-result-text div {
-    font-size: 1.4rem;
-    text-transform: lowercase;
-    color: darkgray;
+  font-size: 1.4rem;
+  color: darkgray;
 }
 
 .search-result-info {
@@ -92,7 +111,7 @@ html {
 .search-result-info-title {
   font-size: 1.6rem;
   text-transform: uppercase;
-  letter-spacing: .06rem;
+  letter-spacing: 0.06rem;
 }
 
 .search-result {
@@ -129,24 +148,4 @@ html {
 .search-result-info-direction {
   display: flex;
   justify-content: space-between;
-}
-
-.cdk-overlay-pane {
-  width: 100vw;
-  height: 100vw;
-  top: 66px;
-}
-
-.mat-autocomplete-panel {
-  height: 100vh;
-}
-
-::ng-deep .map {
-  height: 100vh !important;
-  width: 100vw !important;
-}
-
-::ng-deep .mapboxgl-canvas {
-  height: 100vh !important;
-  width: 100vw !important;
 }

@@ -14,6 +14,7 @@ import { AnimationConfig } from '../../my-octotrails-ng6-carousel';
 
 import { slideInDownAnimation } from '../../shared/animations';
 import { Data } from '../../shared/providers/data.provider';
+import { TranslateService } from '../../shared/services/translate.service';
 
 @Component({
   animations: [slideInDownAnimation],
@@ -44,11 +45,13 @@ export class StopDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private data: Data
+    private data: Data,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
     this.stop = this.route.snapshot.data['stop'];
+
     if (this.stop.images.length > 0) {
       this.imageSources = this.stop.images;
     } else {
