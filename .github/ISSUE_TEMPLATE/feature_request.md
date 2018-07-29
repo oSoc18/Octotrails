@@ -4,6 +4,11 @@ about: Suggesting new feature/idea for this project. Please check if a similar f
   request exists before submitting
 
 ---
+<!--
+PLEASE HELP US PROCESS GITHUB ISSUES FASTER BY PROVIDING THE FOLLOWING INFORMATION.
+
+ISSUES MISSING IMPORTANT INFORMATION MAY BE CLOSED WITHOUT INVESTIGATION.
+-->
 
 ## Current behavior
 
