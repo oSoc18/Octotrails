@@ -11,7 +11,7 @@ One of its major advantages is focusing on the accessibility of the stops (outsi
 
 # Features & Technologies
 
-MEAN Stack application based on [mean.io](https://github.com/linnovate/mean).
+MEAN Stack application based on our custom MEAN version [mean](https://github.com/Dakad/mean-octotrails-starter).
 
 ## [ WebApp][frontend]
 
