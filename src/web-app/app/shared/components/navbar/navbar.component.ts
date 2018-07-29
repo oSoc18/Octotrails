@@ -28,10 +28,6 @@ export class NavbarComponent implements OnInit {
   headerClass;
   headingClass;
 
-  private get langs(): string[] {
-    return this.translateService.supportedLangs;
-  }
-
   public get activeLang(): string {
     return this.translateService.activeLang;
   }
