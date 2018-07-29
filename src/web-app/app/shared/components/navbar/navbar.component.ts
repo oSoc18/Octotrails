@@ -29,15 +29,15 @@ export class NavbarComponent implements OnInit {
   headingClass;
 
   private get langs(): string[] {
-    return this.translateService.langs;
+    return this.translateService.supportedLangs;
   }
 
   public get cuurentLang(): string {
-    return this.translateService.currentLang;
+    return this.translateService.activeLang;
   }
 
-  public set cuurentLang(v: string) {
-    this.translateService.currentLang = v;
+  public set cuurentLang(lang: string) {
+    this.translateService.activeLang = lang;
   }
 
   constructor(

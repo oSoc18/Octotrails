@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -12,6 +12,12 @@ import {
 import { TranslatePipe } from './pipes/translate.pipe';
 import { RangeValidatorDirective } from './directives/range.directive';
 import { MatDesignModule } from './mat-design/mat-design.module';
+import { TranslateService } from './services/translate.service';
+
+// export function setupTranslateFactory(service: TranslateService): Function {
+//   service.supportedLangs = ['fr', 'en'];
+//   return () => service.use('en');
+// }
 
 @NgModule({
   imports: [CommonModule, MatDesignModule],
@@ -37,6 +43,15 @@ import { MatDesignModule } from './mat-design/mat-design.module';
     QuestionTypeMultipleComponent,
     QuestionTypeStringComponent,
     NavbarComponent
+  ],
+  providers: [
+    // TranslateService
+    //   {
+    //     provide: APP_INITIALIZER,
+    //     useFactory: setupTranslateFactory,
+    //     deps: [TranslateService],
+    //     multi: true
+    //   }
   ]
 })
 export class SharedModule {}

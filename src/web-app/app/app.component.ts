@@ -20,11 +20,6 @@ export class AppComponent {
   loading: boolean = true;
 
   constructor(private translate: TranslateService, private router: Router) {
-    translate.addLangs(['en', 'fr']);
-    translate.use('fr').subscribe(trans => console.log(trans));
-    // console.log(translate.data);
-    console.log(translate.getBrowserLang());
-
     router.events.subscribe((routerEvent: Event) => {
       this.checkRouterEvent(routerEvent);
     });

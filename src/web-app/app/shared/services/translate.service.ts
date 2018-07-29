@@ -63,12 +63,28 @@ export class TranslateService {
   /**
    * The lang currently used
    */
-  public currentLang: string;
+  private _activeLang: string = 'en';
+
+  /**
+   * The language to use for the translations.
+   */
+  get activeLang(): string {
+    return this._activeLang;
+  }
+
+  set activeLang(lang: string) {
+    const previousValue = this._activeLang;
+    const newLang = lang || this.defaultLang;
+
+    if (newLang !== previousValue) {
+      this.use(newLang);
+    }
+  }
 
   /**
    * Available langs
    */
-  public langs: string[] = [];
+  public supportedLangs: string[] = [];
 
   /**
    * List of translations/lang
@@ -83,20 +99,23 @@ export class TranslateService {
    * Initiate the file download and language switch.
    * @param lang Lang to currently use.
    */
-  use(lang: string): Observable<Object> {
-    this.currentLang = lang || this.defaultLang;
-    const langPath = `assets/i18n/${this.currentLang}.json`;
+  use(lang: string): Promise<Object> {
+    this._activeLang = lang || this.defaultLang;
+    const langPath = `assets/i18n/${this.activeLang}.json`;
 
-    return this.http.get<Object>(langPath).pipe(
-      tap(trans => (this.translations = trans)),
-      catchError(this.handleError('searchStops', {}))
-    );
+    return this.http
+      .get<Object>(langPath)
+      .pipe(
+        tap(trans => (this.translations = trans)),
+        catchError(this.handleError('use', {}))
+      )
+      .toPromise();
   }
 
   /**
    * Get the language code name from the browser, e.g. "de"
    */
-  public getBrowserLang(): string {
+  getBrowserLang(): string {
     if (
       typeof window === 'undefined' ||
       typeof window.navigator === 'undefined'
@@ -123,10 +142,10 @@ export class TranslateService {
   /**
    * Add available langs
    */
-  public addLangs(list: string[]): void {
+  addLangs(list: string[]): void {
     list.forEach((lang: string) => {
-      if (this.langs.indexOf(lang) === -1) {
-        this.langs.push(lang);
+      if (this.supportedLangs.indexOf(lang) === -1) {
+        this.supportedLangs.push(lang);
       }
     });
   }
