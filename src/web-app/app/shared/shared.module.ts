@@ -16,7 +16,8 @@ import { TranslateService } from './services/translate.service';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   service.supportedLangs = ['en', 'fr', 'nl'];
-  return () => service.use('en');
+  service.defaultLang = 'fr';
+  return () => service.use('fr');
 }
 
 @NgModule({
