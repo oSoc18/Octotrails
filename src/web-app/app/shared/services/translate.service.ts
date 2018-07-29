@@ -68,7 +68,7 @@ export class TranslateService {
   /**
    * Available langs
    */
-  public langs: Array<string> = [];
+  public langs: string[] = [];
 
   /**
    * List of translations/lang
@@ -107,11 +107,7 @@ export class TranslateService {
     let browserLang: any = window.navigator.languages
       ? window.navigator.languages[0]
       : null;
-    browserLang =
-      browserLang ||
-      window.navigator.language ||
-      window.navigator.browserLanguage ||
-      window.navigator.userLanguage;
+    browserLang = browserLang || window.navigator.language;
 
     if (browserLang.indexOf('-') !== -1) {
       browserLang = browserLang.split('-')[0];
@@ -122,6 +118,17 @@ export class TranslateService {
     }
 
     return browserLang;
+  }
+
+  /**
+   * Add available langs
+   */
+  public addLangs(list: string[]): void {
+    list.forEach((lang: string) => {
+      if (this.langs.indexOf(lang) === -1) {
+        this.langs.push(lang);
+      }
+    });
   }
 
   /**

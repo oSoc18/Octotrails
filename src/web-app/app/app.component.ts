@@ -17,10 +17,10 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: string = 'Octotrails-starter';
   loading: boolean = true;
 
   constructor(private translate: TranslateService, private router: Router) {
+    translate.addLangs(['en', 'fr']);
     translate.use('fr').subscribe(trans => console.log(trans));
     // console.log(translate.data);
     console.log(translate.getBrowserLang());

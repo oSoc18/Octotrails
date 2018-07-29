@@ -19,6 +19,13 @@
         {{'navbar.button.back' | translate}}
       </a>
 
+      <mat-form-field>
+        <mat-select [(value)]="cuurentLang">
+          <mat-option [value]="lang" *ngFor="let lang of langs">{{lang | uppercase}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
       <ng-container *ngIf="isOnQuestionsPage">
         <button class="done-button" [disabled]="doneBtnDisabled" (click)="OnDone()">{{'navbar.button.done' | translate}}</button>
       </ng-container>
@@ -52,8 +59,6 @@
       </ng-container>
 
     </div>
-
-
 
     <ng-container *ngIf="isOnQuestionsPage">
       <h1 class="section-title">Accessibility</h1>

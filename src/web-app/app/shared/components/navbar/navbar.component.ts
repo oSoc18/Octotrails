@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateService } from '../../services/translate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,23 @@ export class NavbarComponent implements OnInit {
   headerClass;
   headingClass;
 
-  constructor(private location: Location, private router: Router) {}
+  private get langs(): string[] {
+    return this.translateService.langs;
+  }
+
+  public get cuurentLang(): string {
+    return this.translateService.currentLang;
+  }
+
+  public set cuurentLang(v: string) {
+    this.translateService.currentLang = v;
+  }
+
+  constructor(
+    private location: Location,
+    private router: Router,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit() {
     this.isOnHistoriesPage = this.router.url.includes('/histories');
