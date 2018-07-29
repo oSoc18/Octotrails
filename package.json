@@ -24,7 +24,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "extract-translations": "ngx-translate-extract --input ./src/web-app --output ./src/web-app/assets/i18n/*.json --clean --sort --format namespaced-json --marker _",
     "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
   },
   "babel": {
@@ -45,7 +44,7 @@
       "docs/*",
       "test/*"
     ],
-    "delay": "2500",
+    "delay": "1500",
     "restartable": "rs",
     "execMap": {
       "js": "node --harmony"
