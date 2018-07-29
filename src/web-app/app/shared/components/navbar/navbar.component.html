@@ -19,8 +19,8 @@
         {{'navbar.button.back' | translate}}
       </a>
 
-      <mat-form-field>
-        <mat-select [(value)]="cuurentLang">
+      <mat-form-field class="lang-switch-select">
+        <mat-select [(value)]="activeLang">
           <mat-option [value]="lang" *ngFor="let lang of langs">{{lang | uppercase}}</mat-option>
         </mat-select>
       </mat-form-field>

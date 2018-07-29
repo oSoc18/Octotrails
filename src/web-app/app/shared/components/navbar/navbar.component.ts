@@ -32,11 +32,11 @@ export class NavbarComponent implements OnInit {
     return this.translateService.supportedLangs;
   }
 
-  public get cuurentLang(): string {
+  public get activeLang(): string {
     return this.translateService.activeLang;
   }
 
-  public set cuurentLang(lang: string) {
+  public set activeLang(lang: string) {
     this.translateService.activeLang = lang;
   }
 
