@@ -14,10 +14,10 @@ import { RangeValidatorDirective } from './directives/range.directive';
 import { MatDesignModule } from './mat-design/mat-design.module';
 import { TranslateService } from './services/translate.service';
 
-// export function setupTranslateFactory(service: TranslateService): Function {
-//   service.supportedLangs = ['fr', 'en'];
-//   return () => service.use('en');
-// }
+export function setupTranslateFactory(service: TranslateService): Function {
+  service.supportedLangs = ['en', 'fr', 'nl'];
+  return () => service.use('en');
+}
 
 @NgModule({
   imports: [CommonModule, MatDesignModule],
@@ -46,12 +46,12 @@ import { TranslateService } from './services/translate.service';
   ],
   providers: [
     // TranslateService
-    //   {
-    //     provide: APP_INITIALIZER,
-    //     useFactory: setupTranslateFactory,
-    //     deps: [TranslateService],
-    //     multi: true
-    //   }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateFactory,
+      deps: [TranslateService],
+      multi: true
+    }
   ]
 })
 export class SharedModule {}

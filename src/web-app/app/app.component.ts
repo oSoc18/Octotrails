@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { TranslateService } from './shared/services/translate.service';
 
