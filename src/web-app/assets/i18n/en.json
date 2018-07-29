@@ -12,7 +12,7 @@
 	"questions.type.boolean.yes": "Yes",
 	"stops.details.address": "Address",
 	"stops.details.button.history": "History",
-	"stops.details.button.show-map": "Show map",
+	"stops.details.button.show-map": "Show on map",
 	"stops.details.button.update": "Update",
 	"stops.details.served-lines": "Deserved lines",
 	"stops.seach-input.aria-label": "Search...",
