@@ -17,10 +17,9 @@
     "ng": "ng",
     "build": "ng build --prod --build-optimizer --ngsw-config-path ./src/web-app/ngsw-config.json --output-path src/web-api/public/",
     "start:server": "nodemon src/server-start.js",
-    "start:ng": "ng serve --host 0.0.0.0",
+    "start:ng": "ng serve --host 0.0.0.0 -o",
     "start:prod": "NODE_ENV=production pm2 start src/server-start.js -i max --node-args=\"--max_old_space_size=500 --harmony\"  ",
     "start": "concurrently \"npm run start:ng\" \"npm run start:server\"",
-    "pwa": "ng build --prod && sw-precache --root=src/web-app/dist --config=precache-config.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -44,7 +43,7 @@
       "docs/*",
       "test/*"
     ],
-    "delay": "2500",
+    "delay": "1500",
     "restartable": "rs",
     "execMap": {
       "js": "node --harmony"
@@ -64,6 +63,7 @@
     "@angular/pwa": "^0.6.8",
     "@angular/router": "^6.0.7",
     "@angular/service-worker": "^6.0.0",
+    "app-root-path": "^2.0.1",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",

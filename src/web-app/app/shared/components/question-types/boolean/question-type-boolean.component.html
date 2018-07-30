@@ -52,7 +52,7 @@
   </div>
   <p class="info-text">{{question.hint}}</p>
   <div class="buttons">
-    <button type="button" class="button" [class.active]="answer == 'true'" (click)="buttonClicked($event)" value="true" [disabled]="isReadOnly">Yes</button>
-    <button type="button" class="button" [class.active]="answer == 'false'" (click)="buttonClicked($event)" value="false" [disabled]="isReadOnly">No</button>
+    <button type="button" class="button" [class.active]="answer == 'true'" (click)="buttonClicked($event)" value="true" [disabled]="isReadOnly">{{'questions.type.boolean.yes' | translate}}</button>
+    <button type="button" class="button" [class.active]="answer == 'false'" (click)="buttonClicked($event)" value="false" [disabled]="isReadOnly">{{'questions.type.boolean.no' | translate}}</button>
   </div>
 </div>

@@ -16,11 +16,18 @@
               fill=url(#grad1)/>
           </g>
         </svg>
-        Back
+        {{'navbar.button.back' | translate}}
       </a>
+      <div class="lang-switch-select">
+
+        <mat-select [(value)]="activeLang">
+          <mat-option [value]="lang" *ngFor="let lang of translateService.supportedLangs">{{lang | uppercase}}</mat-option>
+        </mat-select>
+      </div>
+
 
       <ng-container *ngIf="isOnQuestionsPage">
-        <button class="done-button" [disabled]="doneBtnDisabled" (click)="OnDone()">Done</button>
+        <button class="done-button" [disabled]="doneBtnDisabled" (click)="OnDone()">{{'navbar.button.done' | translate}}</button>
       </ng-container>
 
       <ng-container *ngIf="isOnStopDetailPage">
@@ -53,11 +60,9 @@
 
     </div>
 
-
-
     <ng-container *ngIf="isOnQuestionsPage">
-      <h1 class="section-title">Accessibility</h1>
-      <h2 class="section-sub-title">Physical</h2>
+      <h1 class="section-title">{{title}}</h1>
+      <h2 class="section-sub-title">{{subTitle}}</h2>
     </ng-container>
 
     <ng-container *ngIf="isOnStopDetailPage || isOnLocationPage">
@@ -76,8 +81,8 @@
     </ng-container>
 
     <ng-container *ngIf="isOnCategoriesPage && !isOnQuestionsPage">
-      <h1 class="section-title">Categories</h1>
-      <h2 class="section-sub-title">Choose a category</h2>
+      <h1 class="section-title">{{'navbar.categories.title' | translate}}</h1>
+      <h2 class="section-sub-title">{{'navbar.categories.choose' | translate}}</h2>
     </ng-container>
 
     <ng-content></ng-content>

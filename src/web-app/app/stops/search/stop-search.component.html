@@ -5,25 +5,25 @@
 <section class="search-section">
   <form class="search-component">
     <mat-form-field class="search-form-field">
-      <input matInput placeholder="Search a stop" aria-label="Search..." [matAutocomplete]="auto" [formControl]="stopCtrl">
+      <input matInput placeholder="Search a stop" [matAutocomplete]="auto" [formControl]="stopCtrl">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option class="mat-option" *ngFor="let stop of filteredStops | async" [value]="stop.id">
+        <mat-option class="mat-option-stop" *ngFor="let stop of filteredStops | async" [value]="stop.id">
           <a class="search-result" (click)="showDetails(stop)">
             <section class="search-result-info">
               <div class="search-result-text">
-                <h1 class="search-result-info-title">{{stop.alpha["nl"]}}</h1>
+                <h1 class="search-result-info-title">{{stop.descrByLang(translateService.activeLang) }}</h1>
                 <div>
-                        <span>&rarr; </span>
-                        <span>{{stop.transport[0].direction["nl"]}}</span>
+                  <span>&rarr; </span>
+                  <span>{{stop.transport[0].directionByLang(translateService.activeLang) | lowercase }}</span>
                 </div>
               </div>
-              
+
               <div class="search-result-info-direction">
                 <ul class="search-result-info-lines">
-                            <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
-                    <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
-                        <span [ngStyle]="{'color':line.textColor}">{{line.number}}</span>
-                    </li>
+                  <!-- <span class="search-result-info-type">{{stop.type}}</span> -->
+                  <li class="search-result-info-line" *ngFor="let line of stop.transport" [ngStyle]="{'background-color':line.backColor}">
+                    <span [ngStyle]="{'color':line.textColor}">{{line.number}}</span>
+                  </li>
                 </ul>
                 <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In  -->
                 <svg class="arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -42,7 +42,7 @@
                     />
                   </g>
                 </svg>
-                
+
               </div>
             </section>
           </a>

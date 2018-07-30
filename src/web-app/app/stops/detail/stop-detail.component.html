@@ -1,5 +1,6 @@
 <div *ngIf="stop">
-  <app-navbar [stopName]="stop.alpha['nl']" [stopId]="stop.id" (back)="goBack()" (upload)="readURL($event)"> </app-navbar>
+  <app-navbar [stopName]="stop.alphaByLang(translate.activeLang)" [stopId]="stop.id" (back)="goBack()" (upload)="readURL($event)">
+  </app-navbar>
 
   <div class="carousel">
     <carousel *ngIf="enabledCaroussel" [sources]="imageSources" [config]="config"></carousel>
@@ -7,7 +8,7 @@
   <div class="detail-info">
     <section class="section">
       <header>
-        <h4 class="section-title">Served lines</h4>
+        <h4 class="section-title">{{'stops.details.served-lines' | translate }}</h4>
       </header>
       <article class="stop-line" *ngFor="let line of stop.transport">
         <div class="flex">
@@ -15,30 +16,30 @@
           <p class="line-number" [ngStyle]="{'color':line.textColor, 'background-color':line.backColor}">{{line.number}}</p>
         </div>
         <div>
-          <p class="line-direction">&rarr; {{line.direction['nl']}}</p>
-          <p class="search-result-info-title">{{stop.alpha["nl"]}}</p>
+          <p class="line-direction">&rarr; {{line.directionByLang(translate.activeLang)}}</p>
+          <p class="search-result-info-title">{{stop.alphaByLang(translate.activeLang)}}</p>
         </div>
       </article>
     </section>
     <section class="section">
       <header>
-        <h4 class="section-title">Address</h4>
+        <h4 class="section-title">{{'stops.details.address' | translate }}</h4>
       </header>
       <article class="address-content">
-        <div class="address">{{stop.address["nl"]}}</div>
+        <div class="address">{{stop.addressByLang(translate.activeLang)}}</div>
         <a class="location" routerLink="/stops/{{stop.id}}/location">
-          <img src="/assets/icons/locationPin.svg" height="30" alt="locationPin" /> Show map
+          <img src="/assets/icons/locationPin.svg" height="30" alt="locationPin" /> {{'stops.details.button.show-map' | translate}}
         </a>
       </article>
     </section>
   </div>
   <div class="buttons">
     <a class="history-button" [routerLink]="['./', 'histories']">
-      <img class="button-icon" src="/assets/icons/history.svg" width="30" height="30" alt="" /> History
+      <img class="button-icon" src="/assets/icons/history.svg" width="30" height="30" alt="" /> {{'stops.details.button.history' | translate}}
     </a>
     <div class="stripe"></div>
     <a class="update-button" [routerLink]="['./', 'categories']">
-      <img class="button-icon" src="/assets/icons/update.svg" width="30" height="30" alt="" /> Update
+      <img class="button-icon" src="/assets/icons/update.svg" width="30" height="30" alt="" /> {{'stops.details.button.update' | translate}}
     </a>
   </div>
   <div class="empty-div"></div>

@@ -1,0 +1,20 @@
+{
+	"histories.list.item": "Update of",
+	"navbar.button.back": "Back",
+	"navbar.button.done": "Done",
+	"navbar.categories.choose": "Choose a category",
+	"navbar.categories.title": "Categories",
+	"navbar.histories.date": "on",
+	"navbar.histories.title": "History of {{title}}",
+	"questions.overview.buttons.done": "Done",
+	"questions.overview.progress.of": "of",
+	"questions.type.boolean.no": "No",
+	"questions.type.boolean.yes": "Yes",
+	"stops.details.address": "Address",
+	"stops.details.button.history": "History",
+	"stops.details.button.show-map": "Show on map",
+	"stops.details.button.update": "Update",
+	"stops.details.served-lines": "Deserved lines",
+	"stops.seach-input.aria-label": "Search...",
+	"stops.seach-input.placeholder": "Search a stop"
+}

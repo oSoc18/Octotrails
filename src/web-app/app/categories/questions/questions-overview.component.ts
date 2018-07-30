@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Question } from '../question';
 import { QuestionService } from '../question.service';
 import { Data } from '../../shared/providers/data.provider';
 import { Category } from '../category';
@@ -18,6 +17,9 @@ export class QuestionsOverviewComponent implements OnInit {
   progressValue = 0;
   stop_id: string;
   category: Category;
+
+  categoryName: string;
+  categoryParentName: string;
 
   public get isDoneBtnDisabled(): boolean {
     return this.answeredQuestions == 0;
@@ -42,6 +44,13 @@ export class QuestionsOverviewComponent implements OnInit {
     this.questions = this.route.snapshot.data['questions'];
     this.category = this.route.snapshot.data['category'];
     this.totalNumberOfQuestions = this.questions.length;
+    if (this.category.parent) {
+      this.categoryParentName = this.category.parent.name;
+      this.categoryName = this.category.name;
+    } else {
+      this.categoryName = null;
+      this.categoryParentName = this.category.name;
+    }
   }
 
   /**
@@ -69,13 +78,6 @@ export class QuestionsOverviewComponent implements OnInit {
     }
     this.progressValue =
       (100 / this.totalNumberOfQuestions) * this.answeredQuestions;
-  }
-
-  /**
-   * Go back to the previous location
-   */
-  goBack(): void {
-    this.location.back();
   }
 
   /**

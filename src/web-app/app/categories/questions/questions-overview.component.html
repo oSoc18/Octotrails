@@ -1,7 +1,8 @@
-<app-navbar title="Stop Name" [subTitle]="stop_id" (back)="cancel()" [doneBtnDisabled]="isDoneBtnDisabled" (done)="saveAnswers()">
+<app-navbar [title]="categoryParentName" [subTitle]="categoryName" (back)="cancel()" [doneBtnDisabled]="isDoneBtnDisabled"
+  (done)="saveAnswers()">
   <div>
     <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>
-    <p class="progress-tag">{{answeredQuestions}} of {{totalNumberOfQuestions}}</p>
+    <p class="progress-tag">{{answeredQuestions}} {{'questions.overview.progress.of' | translate}} {{totalNumberOfQuestions}}</p>
   </div>
 </app-navbar>
 

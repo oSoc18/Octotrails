@@ -1,0 +1,20 @@
+{
+  "histories.list.item": "Réponses du ",
+  "navbar.button.back": "Retour",
+  "navbar.button.done": "Soumetre",
+  "navbar.categories.choose": "Sélectionner une catégorie",
+  "navbar.categories.title": "Catégories",
+  "navbar.histories.date": "le",
+  "navbar.histories.title": "Historique de {{title}}",
+  "questions.overview.buttons.done": "Soumettre",
+  "questions.overview.progress.of": "sur",
+  "questions.type.boolean.no": "Non",
+  "questions.type.boolean.yes": "Oui",
+  "stops.details.address": "Adresse",
+  "stops.details.button.history": "Historique",
+  "stops.details.button.show-map": "Localiser",
+  "stops.details.button.update": "Evaluer",
+  "stops.details.served-lines": "Lignes desservies",
+  "stops.seach-input.aria-label": "Chercher...",
+  "stops.seach-input.placeholder": "Chercher un arrêt"
+}

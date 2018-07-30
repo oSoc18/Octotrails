@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { TranslateService } from './shared/services/translate.service';
+
 import {
   Router,
   Event,
@@ -15,10 +17,9 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: string = 'Octotrails-starter';
   loading: boolean = true;
 
-  constructor(private router: Router) {
+  constructor(private translate: TranslateService, private router: Router) {
     router.events.subscribe((routerEvent: Event) => {
       this.checkRouterEvent(routerEvent);
     });
