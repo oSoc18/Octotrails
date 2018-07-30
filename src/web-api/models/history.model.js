@@ -53,8 +53,16 @@ HistorySchema.statics = {
    * @param {String} stop_id - The id of the the stop.
    * @returns {Promise<History, APIError>}
    */
-  getByStopId: async function get({ stop_id, full = false }) {
-    const query = this.find({ stop_id }).sort('-created_at');
+  getByStopId: async function get({
+    stop_id,
+    full = false,
+    skip = 0,
+    limit = 50
+  }) {
+    const query = this.find({ stop_id })
+      .sort('-created_at')
+      .skip(+skip)
+      .limit(+limit);
 
     if (full) {
       query.populate({

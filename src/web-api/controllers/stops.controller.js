@@ -78,13 +78,13 @@ function getProximity(req, res, next) {
  */
 async function getHistory(req, res) {
   const { stop_id, history_id } = req.params;
-  const { full } = req.query;
+  const { full, limit, skip } = req.query;
   let data;
 
   if (history_id) {
     return res.redirect('/api/histories/' + history_id);
   } else {
-    data = await History.getByStopId({ stop_id, full });
+    data = await History.getByStopId({ stop_id, full, limit, skip });
     res.json({ histories: data });
   }
 }

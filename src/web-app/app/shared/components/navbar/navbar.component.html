@@ -21,7 +21,7 @@
       <div class="lang-switch-select">
 
         <mat-select [(value)]="activeLang">
-          <mat-option [value]="lang" *ngFor="let lang of translateService.supportedLangs">{{lang | uppercase}}</mat-option>
+          <mat-option [value]="lang" *ngFor="let lang of langs">{{lang | uppercase}}</mat-option>
         </mat-select>
       </div>
 
@@ -68,6 +68,11 @@
     <ng-container *ngIf="isOnStopDetailPage || isOnLocationPage">
       <h1 class="section-title">{{stopName}}</h1>
       <h2 class="section-sub-title">ID : {{stopId}}</h2>
+      <h2 *ngIf="lastHistory" (click)="gotToLastHistory()">
+        <a>
+          <img class="button-icon" src="/assets/icons/history.svg" width="30" height="30" alt="" /> {{lastHistory.created_at}}
+        </a>
+      </h2>
     </ng-container>
 
     <ng-container *ngIf="isOnHistoriesPage && !historyDate">
