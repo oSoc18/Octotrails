@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateService } from '../../services/translate.service';
+import { History } from '../../../histories/history';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ export class NavbarComponent implements OnInit {
   @Input() subTitle;
   @Input() stopId;
   @Input() stopName;
+  @Input() lastHistory: History;
   @Input() historyDate;
   @Input() doneBtnDisabled: boolean;
   @Input() autoGoBack: boolean = true;
@@ -48,8 +50,10 @@ export class NavbarComponent implements OnInit {
     this.isOnQuestionsPage = this.router.url.includes('/questions');
     this.isOnCategoriesPage = this.router.url.includes('/categories');
     this.isOnLocationPage = this.router.url.includes('/location');
+
     // URL must end with the :stop_id to be on /stop-detail page
     this.isOnStopDetailPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
+
     // As the navbar is shown on all page related to specific stop
     if (!this.isOnStopDetailPage) {
       this.stopId = this.router.url.match('/stops/([0-9]+[a-zA-z_-]*).*')[1];
@@ -64,6 +68,15 @@ export class NavbarComponent implements OnInit {
     this.headingClass = {
       'stop-detail-header-content': !this.isOnQuestionsPage
     };
+  }
+
+  gotToLastHistory() {
+    return this.router.navigate([
+      'stops/',
+      this.stopId,
+      'histories',
+      this.lastHistory.id
+    ]);
   }
 
   onGoBack() {
