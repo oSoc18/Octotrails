@@ -17,3 +17,7 @@ export {
 } from './question-types/string/question-type-string.component';
 
 export { NavbarComponent } from './navbar/navbar.component';
+
+export {
+  DialogConfirmComponent
+} from './dialog/confirm/dialog-confirm.component';

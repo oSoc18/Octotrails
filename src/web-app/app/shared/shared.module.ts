@@ -7,7 +7,8 @@ import {
   QuestionTypeMultipleComponent,
   QuestionTypeNumberComponent,
   QuestionTypeStringComponent,
-  NavbarComponent
+  NavbarComponent,
+  DialogConfirmComponent
 } from './components/';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { RangeValidatorDirective } from './directives/range.directive';
@@ -30,8 +31,10 @@ export function setupTranslateFactory(service: TranslateService): Function {
     QuestionTypeBooleanComponent,
     QuestionTypeMultipleComponent,
     QuestionTypeStringComponent,
-    NavbarComponent
+    NavbarComponent,
+    DialogConfirmComponent
   ],
+  entryComponents: [DialogConfirmComponent],
   exports: [
     CommonModule,
     MatDesignModule,
@@ -43,7 +46,8 @@ export function setupTranslateFactory(service: TranslateService): Function {
     QuestionTypeBooleanComponent,
     QuestionTypeMultipleComponent,
     QuestionTypeStringComponent,
-    NavbarComponent
+    NavbarComponent,
+    DialogConfirmComponent
   ],
   providers: [
     // TranslateService

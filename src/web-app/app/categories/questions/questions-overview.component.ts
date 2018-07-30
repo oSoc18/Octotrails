@@ -1,10 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatSnackBar, MatDialog } from '@angular/material';
 
 import { QuestionService } from '../question.service';
 import { Data } from '../../shared/providers/data.provider';
 import { Category } from '../category';
+import { DialogConfirmComponent } from '../../shared/components';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './questions-overview.component.html',
@@ -30,7 +33,9 @@ export class QuestionsOverviewComponent implements OnInit {
     private router: Router,
     private location: Location,
     private questionService: QuestionService,
-    private data: Data
+    private data: Data,
+    public snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   /**
@@ -92,8 +97,22 @@ export class QuestionsOverviewComponent implements OnInit {
     return this.questionService
       .saveAnswers(this.stop_id, answers)
       .subscribe(msg => {
-        console.log(msg);
+        return this.router
+          .navigate(['stops', this.stop_id, 'categories'])
+          .then(_ =>
+            this.snackBar.open("New stop's updates SAVED", 'Undo', {
+              duration: 2500
+            })
+          );
       });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '250px'
+    });
+
+    return dialogRef.afterClosed().pipe(map(result => result == 'true'));
   }
 
   /**
@@ -101,16 +120,17 @@ export class QuestionsOverviewComponent implements OnInit {
    * save answers or clear localStorage depending on the answer from the popup
    */
   cancel() {
-    const OK = window.confirm('Do you want to save your progress?');
-
-    if (OK) {
-      this.saveAnswers();
-    } else {
-      // this.questionService.clearAnswers();
-      localStorage.clear();
+    if (!this.isDoneBtnDisabled) {
+      // const OK = window.confirm('Do you want to save your progress?');
+      this.openDialog().subscribe(wantTosave => {
+        if (wantTosave) {
+          this.saveAnswers();
+        } else {
+          // this.questionService.clearAnswers();
+          localStorage.clear();
+        }
+        return this.router.navigate(['stops', this.stop_id, 'categories']);
+      });
     }
-
-    // return this.router.navigate(['stops', this.stop_id, 'categories']);
-    return this.router.navigate(['stops', this.stop_id, 'categories']);
   }
 }
