@@ -24,8 +24,8 @@ export class QuestionsOverviewComponent implements OnInit {
   categoryName: string;
   categoryParentName: string;
 
-  public get isDoneBtnDisabled(): boolean {
-    return this.answeredQuestions == 0;
+  public get hasAnswered(): boolean {
+    return this.answeredQuestions !== 0;
   }
 
   constructor(
@@ -120,7 +120,7 @@ export class QuestionsOverviewComponent implements OnInit {
    * save answers or clear localStorage depending on the answer from the popup
    */
   cancel() {
-    if (!this.isDoneBtnDisabled) {
+    if (this.hasAnswered) {
       // const OK = window.confirm('Do you want to save your progress?');
       this.openDialog().subscribe(wantTosave => {
         if (wantTosave) {

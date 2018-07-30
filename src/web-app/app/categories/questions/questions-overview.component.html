@@ -1,4 +1,4 @@
-<app-navbar [title]="categoryParentName" [subTitle]="categoryName" (back)="cancel()" [doneBtnDisabled]="isDoneBtnDisabled"
+<app-navbar [title]="categoryParentName" [subTitle]="categoryName" [autoGoBack]="!hasAnswered" (back)="cancel()" [doneBtnDisabled]="!hasAnswered"
   (done)="saveAnswers()">
   <div>
     <mat-progress-bar class="progress-bar" mode="determinate" value="{{progressValue}}"></mat-progress-bar>

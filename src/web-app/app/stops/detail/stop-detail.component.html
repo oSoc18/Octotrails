@@ -1,5 +1,5 @@
 <div *ngIf="stop">
-  <app-navbar [stopName]="stop.alphaByLang(translate.activeLang)" [stopId]="stop.id" (back)="goBack()" (upload)="readURL($event)">
+  <app-navbar [stopName]="stop.alphaByLang(translate.activeLang)" [stopId]="stop.id" (upload)="readURL($event)">
   </app-navbar>
 
   <div class="carousel">

@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   @Input() stopName;
   @Input() historyDate;
   @Input() doneBtnDisabled: boolean;
+  @Input() autoGoBack: boolean = true;
 
   @Output('back') goBack: EventEmitter<null> = new EventEmitter<null>();
   @Output() done: EventEmitter<null> = new EventEmitter<null>();
@@ -66,20 +67,28 @@ export class NavbarComponent implements OnInit {
   }
 
   onGoBack() {
-    this.goBack.emit();
+    // Do I handle the goBack navigation ?
+    if (!this.autoGoBack) {
+      return this.goBack.emit();
+    }
 
     if (this.isOnQuestionsPage) {
-      return;
+      return this.router.navigate(['stops/', this.stopId, 'categories']);
     }
 
     if (this.historyDate) {
+      // On historyDetail page
       return this.router.navigate(['stops/', this.stopId, 'histories']);
+    }
+
+    if (this.isOnStopDetailPage) {
+      return this.router.navigateByUrl('stops/search');
     }
 
     return this.router.navigate(['stops/', this.stopId]);
   }
 
-  OnDone() {
+  onDone() {
     this.done.emit();
   }
 
