@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Stop } from './stop';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, first, take, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from '../../environments/environment';
+import { History } from '../histories/history';
 
 const httpOpts = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -83,6 +84,22 @@ export class StopService {
         catchError(this.handleError('searchStops', []))
       );
     }
+  }
+
+  /**
+   * Get the most recent update made for thte stop.
+   * @param stopId The current stop ID
+   */
+  getMostRecentHistory(stopId: string): Observable<History> {
+    const url = this.stopsUrl + '/' + stopId + '/histories?limit=1';
+
+    return this.http.get<Object>(url).pipe<History>(
+      map(resp => resp['histories'][0]),
+      map<any, History>(data => {
+        return data ? new History(data) : null;
+      }),
+      catchError(this.handleError('searchStops', new History({})))
+    );
   }
 
   /**
