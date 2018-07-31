@@ -28,22 +28,22 @@
   ],
   "dataGroups": [
     {
-      "name": "api-freshness",
+      "name": "from-api-freshness",
       "urls": ["/stops/*"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
-        "maxAge": "3d",
+        "maxAge": "5d",
         "timeout": "10s"
       }
     },
     {
-      "name": "api-performance",
-      "urls": ["/favorites"],
+      "name": "from-api-performance",
+      "urls": ["/questions", "/categories"],
       "cacheConfig": {
         "strategy": "performance",
         "maxSize": 100,
-        "maxAge": "3d"
+        "maxAge": "5d"
       }
     }
   ]
