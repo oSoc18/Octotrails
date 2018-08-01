@@ -149,3 +149,15 @@ html {
   display: flex;
   justify-content: space-between;
 }
+
+.search-progress {
+  // width: 90%;
+  // margin: 0.7rem 0;
+  // left: 25px;
+  width: 35px !important;
+  height: 30px !important;
+}
+.search-progress > svg {
+  width: 35px !important;
+  height: 30px !important;
+}

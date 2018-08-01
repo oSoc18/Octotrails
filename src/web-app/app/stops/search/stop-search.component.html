@@ -1,4 +1,6 @@
 <section>
+  <mat-progress-bar mode="indeterminate" *ngIf="isSearching"></mat-progress-bar>
+
   <map-box></map-box>
   <!-- <app-map-box [mode]="proximity"></app-map-box> -->
 </section>
@@ -6,6 +8,9 @@
   <form class="search-component">
     <mat-form-field class="search-form-field">
       <input matInput placeholder="Search a stop" [matAutocomplete]="auto" [formControl]="stopCtrl">
+      <!-- <mat-icon matSuffix>autorenew</mat-icon> -->
+      <!-- <mat-spinner matSuffix class="search-progress"></mat-spinner> -->
+
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option class="mat-option-stop" *ngFor="let stop of filteredStops | async" [value]="stop.id">
           <a class="search-result" (click)="showDetails(stop)">
