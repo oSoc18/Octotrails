@@ -33,7 +33,18 @@ export class Transport {
   }
 }
 
-const images_stops_id: string[] = ['1348', '1349', '1350', '1351', '1356'];
+const images_stops_id: string[] = [
+  '1348',
+  '1349',
+  '1350',
+  '1351',
+  '1356',
+  '3331',
+  '3351',
+  '6309F',
+  '6356F'
+];
+
 export class Stop {
   id: string;
   alpha: {
