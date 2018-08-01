@@ -56,7 +56,8 @@ export class NavbarComponent implements OnInit {
     this.isOnLocationPage = this.router.url.includes('/location');
 
     // URL must end with the :stop_id to be on /stop-detail page
-    this.isOnStopDetailPage = this.router.url.search(/stops\/[0-9]+$/) !== -1;
+    this.isOnStopDetailPage =
+      this.router.url.search(/stops\/[0-9a-zA-Z]+$/) !== -1;
 
     // As the navbar is shown on all page related to specific stop
     if (!this.isOnStopDetailPage) {
