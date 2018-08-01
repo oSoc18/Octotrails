@@ -9,7 +9,7 @@ import { ICarouselConfig, AnimationConfig } from './declarations';
 export class CarouselService {
   private imageLoadedCount = 0;
 
-  private imageLoad: Subject<string>;
+  private imageLoad: Subject<string> = new Subject<string>();
   private config: ICarouselConfig;
 
   constructor() {}

@@ -1,7 +1,18 @@
-import { Component, OnInit, Input, OnDestroy, ViewChild, forwardRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  ViewChild,
+  forwardRef
+} from '@angular/core';
 import 'rxjs/add/operator/takeWhile';
 
-import { CarouselService, ICarouselConfig, WindowWidthService } from '../../services';
+import {
+  CarouselService,
+  ICarouselConfig,
+  WindowWidthService
+} from '../../services';
 
 import { PinsComponent } from './pins';
 import { CarouselArrowsComponent } from './arrows';
@@ -16,8 +27,10 @@ export class CarouselComponent implements OnInit, OnDestroy {
   @Input() private sources: string[];
   @Input() private config: ICarouselConfig;
 
-  @ViewChild(forwardRef(() => CarouselHandlerDirective)) private carouselHandlerDirective: CarouselHandlerDirective;
-  @ViewChild(CarouselArrowsComponent) private carouselArrowsComponent: CarouselArrowsComponent;
+  @ViewChild(forwardRef(() => CarouselHandlerDirective))
+  private carouselHandlerDirective: CarouselHandlerDirective;
+  @ViewChild(CarouselArrowsComponent)
+  private carouselArrowsComponent: CarouselArrowsComponent;
   @ViewChild(PinsComponent) private pinsComponent: PinsComponent;
 
   private autoplayIntervalId;
@@ -27,7 +40,10 @@ export class CarouselComponent implements OnInit, OnDestroy {
   public galleryLength: number;
   public currentSlide = 0;
 
-  constructor(private carouselService: CarouselService, private windowWidthService: WindowWidthService) { }
+  constructor(
+    private carouselService: CarouselService,
+    private windowWidthService: WindowWidthService
+  ) {}
 
   ngOnInit() {
     this.initData();
@@ -37,7 +53,9 @@ export class CarouselComponent implements OnInit, OnDestroy {
     this.galleryLength = this.sources.length;
 
     const [showImmediate, ...showWhenLoad] = this.sources;
-    this.loadedImages = this.config.verifyBeforeLoad ? [showImmediate] : this.sources;
+    this.loadedImages = this.config.verifyBeforeLoad
+      ? [showImmediate]
+      : this.sources;
 
     if (this.galleryLength < 2) {
       return;
@@ -45,33 +63,42 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
     this.carouselService.init(showWhenLoad, this.config);
 
-    this.carouselService.onImageLoad()
+    this.carouselService
+      .onImageLoad()
       .takeWhile(() => !!this.galleryLength)
       .subscribe(
-        (image) => this.loadedImages.push(image)
+        image => this.loadedImages.push(image),
+        null,
+        () => (this.galleryLength = this.loadedImages.length)
       );
 
     if (this.config.autoplay) {
-      this.config.autoplayDelay = this.config.autoplayDelay < 1000 ? 1000 : this.config.autoplayDelay;
+      this.config.autoplayDelay =
+        this.config.autoplayDelay < 1000 ? 1000 : this.config.autoplayDelay;
 
       const minWidth = this.config.stopAutoplayMinWidth;
 
-      this.windowWidthService.onResize(minWidth, true)
+      this.windowWidthService
+        .onResize(minWidth, true)
         .takeWhile(() => !!this.galleryLength)
-        .subscribe(
-        (isMinWidth) => {
+        .subscribe(isMinWidth => {
           this.preventAutoplay = !isMinWidth;
           this.onHandleAutoplay(!this.config.autoplay);
-        }
-      );
+        });
     }
   }
 
   public onChangeSlide(direction: string): void {
     if (direction === 'prev') {
-      this.currentSlide = this.currentSlide === 0 ? this.loadedImages.length - 1 : --this.currentSlide;
+      this.currentSlide =
+        this.currentSlide === 0
+          ? this.loadedImages.length - 1
+          : --this.currentSlide;
     } else {
-      this.currentSlide = this.currentSlide === this.loadedImages.length - 1 ? 0 : ++this.currentSlide;
+      this.currentSlide =
+        this.currentSlide === this.loadedImages.length - 1
+          ? 0
+          : ++this.currentSlide;
     }
     this.carouselHandlerDirective.setNewSlide(this.currentSlide, direction);
     this.disableCarouselNavBtns();
