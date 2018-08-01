@@ -1,0 +1,18 @@
+<div *ngIf="histories">
+  <app-navbar [stopName]="stopName" [stopId]="stopId"> </app-navbar>
+
+  <!-- {{histories|json}} -->
+
+  <section class="histories">
+    <!-- <a class="history" *ngFor="let history of histories" [routerLink]="['./', history.id]"></a>> -->
+    <mat-list *ngFor="let history of histories">
+      <mat-list-item>
+        <a class="history" [routerLink]="['./', history.id]">
+          <img [ngStyle]="{'vertical-align': 'middle'}" src="/assets/icons/history.svg" width="30" height="30" alt="" /> {{'histories.list.item' | translate}} {{history.created_at | date }}
+        </a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+  </section>
+</div>

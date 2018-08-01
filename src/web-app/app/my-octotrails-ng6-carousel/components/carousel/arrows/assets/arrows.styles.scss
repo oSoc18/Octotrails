@@ -1,0 +1,60 @@
+.carousel-nav__clickable-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--left {
+    right: auto;
+    left: 0;
+
+  }
+
+  &--right {
+    left: auto;
+    right: 0;
+
+  }
+}
+
+.carousel-nav__btn {
+  position: absolute;
+  top: 50%;
+  font-size: 46px;
+  transform: scaleX(0.8) translateY(-50%);
+  text-shadow: rgba(0, 0, 0, 0.8) 0 0 7px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+
+  &--left {
+    left: 15px;
+  }
+
+  &--right {
+    right: 15px;
+  }
+
+  &--disabled {
+    pointer-events: none;
+  }
+}
+
+::ng-deep .carousel-nav__btn--left{
+    background-image: url("/assets/icons/arrow.svg");
+    background-repeat: no-repeat;
+    transform: rotate(180deg) !important;
+    width: 25px;
+    height: 25px;
+}
+
+::ng-deep .carousel-nav__btn--right{
+    background-image: url("/assets/icons/arrow.svg");
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    transform: none !important;
+}

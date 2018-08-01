@@ -1,0 +1,36 @@
+.carousel-nav-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: 0;
+  text-align: center;
+
+  &__item {
+    display: inline-block;
+    margin: 0 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &--active {
+      opacity: 0.9;
+    }
+  }
+
+  &__item--current {
+    background: linear-gradient(to right, #00C6FF , #0072FF);
+    opacity: 1;
+  }
+
+  &__item--disabled {
+    pointer-events: none;
+  }
+}
