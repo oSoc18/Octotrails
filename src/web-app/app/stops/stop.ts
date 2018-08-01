@@ -60,6 +60,18 @@ export class Stop {
     return [];
   }
 
+  public get uniqLines(): Transport[] {
+    const uniq = {};
+    const distincts = [];
+    this.transport.forEach(ln => {
+      if (!uniq[ln.number]) {
+        distincts.push(ln);
+        uniq[ln.number] = true;
+      }
+    });
+    return distincts;
+  }
+
   /**
    * Init a Stop from a raw JSON object, with all field matching
    * @param fields All raw field of a Stop
