@@ -34,7 +34,7 @@ export class StopDetailComponent implements OnInit, OnDestroy {
   imageSources: string[];
 
   carousselConfig = {
-    verifyBeforeLoad: false,
+    verifyBeforeLoad: true,
     log: false,
     animation: true,
     animationType: AnimationConfig.APPEAR,
